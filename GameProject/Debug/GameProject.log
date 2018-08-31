@@ -1,0 +1,7 @@
+﻿  GameProject.cpp
+c:\users\onii-chan\source\repos\gameproject\gameproject\lighting.h(89): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+c:\users\onii-chan\source\repos\gameproject\gameproject\meshobjconverter.h(87): warning C4018: '<': signed/unsigned mismatch
+c:\users\onii-chan\source\repos\gameproject\gameproject\meshobjconverter.h(100): warning C4018: '<': signed/unsigned mismatch
+c:\users\onii-chan\source\repos\gameproject\gameproject\meshobjconverter.h(245): warning C4018: '<': signed/unsigned mismatch
+c:\users\onii-chan\source\repos\gameproject\gameproject\meshobjconverter.h(272): warning C4018: '<': signed/unsigned mismatch
+  GameProject.vcxproj -> C:\Users\Onii-chan\source\repos\GameProject\Debug\GameProject.exe
