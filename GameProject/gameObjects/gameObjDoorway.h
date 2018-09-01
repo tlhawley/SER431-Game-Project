@@ -64,6 +64,7 @@ doorway newDoorway(float x, float y, float z, float ang, int locked, bool mirror
 
 void initDoorway() {
 	doorwayAmount = 0;
+	/* // Intro to graphics 332 map
 	doorways[doorwayAmount-1] = newDoorway(-30,0,0,90,1,false);
 	doorways[doorwayAmount - 1] = newDoorway(0, 0, -30, 0, 1, false);
 	doorways[doorwayAmount - 1] = newDoorway(-70.0, 0, 0, 90, 0, false);
@@ -74,6 +75,7 @@ void initDoorway() {
 	doorways[doorwayAmount - 1] = newDoorway(0, 0, -90.0, 0, 0, false);
 	doorways[doorwayAmount - 1] = newDoorway(0, 0, -150.0, 0, 1, false);
 	doorways[doorwayAmount - 1] = newDoorway(0, 0, -190.0, 0, 1, false);
+	*/
 }
 
 void actionDoorway() {

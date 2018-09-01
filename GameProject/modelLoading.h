@@ -35,7 +35,7 @@ GLuint meshPortal;
 GLuint meshFloor;
 GLuint meshWall;
 
-
+GLuint meshSkyBox;
 
 GLuint meshBench;
 GLuint meshChair;
@@ -50,7 +50,7 @@ void drawGear2();
 
 void loadModels() {
 
-	GLuint texture_array[9];
+	GLuint texture_array[10];
 	texture_from_file(&texture_array[0], "./src/textures/nullTexture.bmp");
 	texture_from_file(&texture_array[1], "./src/textures/oldbox.bmp");
 	texture_from_file(&texture_array[2], "./src/textures/Spikes.bmp");
@@ -60,6 +60,7 @@ void loadModels() {
 	texture_from_file(&texture_array[6], "./src/textures/doorFrame.bmp");
 	texture_from_file(&texture_array[7], "./src/textures/wood.bmp");
 	texture_from_file(&texture_array[8], "./src/textures/RoughTexture.bmp");
+	texture_from_file(&texture_array[9], "./src/textures/SkyBox.bmp"); //Skybox texture source : https://github.com/zogi/ocean_demo
 	
 	//Mesh* mesh1 = loadFile("./src/obj files/Object Thing2.obj");
 	Mesh* mesh1 = loadFile("./src/obj files/Map20.obj");
@@ -200,6 +201,13 @@ void loadModels() {
 	Mesh* mesh48 = loadFile("./src/obj files/furniture/Desk.obj");
 	if (mesh48 == NULL) exit(1);
 	meshDesk = meshToDisplayList(mesh48, 48, texture_array[7]);
+
+
+
+
+	Mesh* mesh49 = loadFile("./src/obj files/CubeMap.obj");
+	if (mesh49 == NULL) exit(1);
+	meshSkyBox = meshToDisplayList(mesh49, 49, texture_array[9]);
 
 
 }

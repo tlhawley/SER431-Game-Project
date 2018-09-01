@@ -30,7 +30,10 @@ furniture newfurniture(float x, float y, float z, float ax, float ay, float az, 
 }
 
 void initfurnitures() {
+
+	
 	furnitureAmount = 0;
+	/* // Intro to graphics 332 map
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
 			furnitures[furnitureAmount - 1] = newfurniture(-8 + i * 4.0, 0.0f, -128.0f + j * 4.0, 0.0f, 180.0f, 0.0f, 1);
@@ -43,6 +46,8 @@ void initfurnitures() {
 	for (int i = 0; i < 5; i++) {
 		furnitures[furnitureAmount - 1] = newfurniture(-110.0 +i*4.0f, 0.0f, -130.0f, 0.0f, 180.0f, 0.0f, 5);
 	}
+	*/
+
 }
 
 void actionfurnitures() {

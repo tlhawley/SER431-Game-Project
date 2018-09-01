@@ -24,6 +24,8 @@ float materialEmerald[] = { 0.0215f,0.1745f,0.0215f,1.0f,0.07568f,0.61424f,0.075
 float materialPlasticWhite[] = { 0,0,0,1.0f,0.55f,0.55f,0.55f,1,0.7f,0.7f,0.7f,1,0,0,0,1,32.0f };
 float materialObsidian[] = { 0.05375f,0.05f,0.06625f,1.0f,0.18275f,0.17f,0.22525f,1,0.332741f,0.328634f,0.346435f,1,0,0,0,1,38.4f };
 
+float materialSkyBox[] = {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,1};
+
 void materialz();
 
 
