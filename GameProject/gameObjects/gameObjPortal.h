@@ -25,7 +25,9 @@ portal newPortal(float x, float y, float z) {
 
 void initPortals() {
 	portalAmount = 0;
+	/* // Intro to graphics 332 map
 	portals[0] = newPortal(0.0f, 0.0f, -220.0f);
+	*/
 }
 
 void actionPortals() {
