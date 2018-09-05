@@ -45,13 +45,14 @@ Mesh* mesh1;
 Mesh* mesh2;
 Mesh* mesh3;
 Mesh* mesh4;
+Mesh* mesh5;
 
 /* // already defined
 int width = 1200;
 int height = 600;
 float ratio = 1.0;
 */
-GLuint display1, display2, display3, display4;
+GLuint display1, display2, display3, display4, display5;
 
 // controling parameters
 int mouse_button;
@@ -161,7 +162,9 @@ void codedTexture(UINT textureArray[], int n, int type) {
 			else
 				if (type == 1) pixelColor = marbleMap(t_scale(noise.perlinMarble(i * 5, j * 5)));
 				else
-					pixelColor = fireMap(t_scale(noise.perlinMarble(i * 5, j * 5)));
+					if (type == 2) pixelColor = fireMap(t_scale(noise.perlinMarble(i * 5, j * 5)));
+					else
+						pixelColor = fireMap(t_scale(noise.perlinMultiscale(i * 5, j * 5)));
 			textureImage[i][j][0] = pixelColor[0] * 255;
 			textureImage[i][j][1] = pixelColor[1] * 255;
 			textureImage[i][j][2] = pixelColor[2] * 255;
@@ -513,14 +516,17 @@ void initNoiseGen() {
 	mesh2 = createCube();
 	mesh3 = createCube();
 	mesh4 = createCube();
+	mesh5 = createPlane(2000, 2000, 200);
 	calculateNormalPerFace(mesh1);
 	calculateNormalPerFace(mesh2);
 	calculateNormalPerFace(mesh3);
 	calculateNormalPerFace(mesh4);
+	calculateNormalPerFace(mesh5);
 	calculateNormalPerVertex(mesh1);
 	calculateNormalPerVertex(mesh2);
 	calculateNormalPerVertex(mesh3);
 	calculateNormalPerVertex(mesh4);
+	calculateNormalPerVertex(mesh5);
 	// textures
 	//bmpTexture(textureArray, "../../BMP files/brick.bmp", 0);
 	//bmpTexture(textureArray, "../../BMP files/oldbox.bmp", 1);
@@ -528,12 +534,14 @@ void initNoiseGen() {
 	bmpTexture(textureArray, "./src/textures/oldbox.bmp", 1);
 	codedTexture(textureArray, 2, 0); //Sky texture - noise multiscale. Type=0
 	codedTexture(textureArray, 3, 2); //Fire texture - noise marble. Type=2
+	codedTexture(textureArray, 4, 3); //Fire texture - noise multiscale. Type=3
 	//codedTexture(textureArray, 4, 1); //Marble texture - noise fire. Type=1
 									  // display lists
 	display1 = meshToDisplayList(mesh1, 1, 0);
 	display2 = meshToDisplayList(mesh2, 2, 1);
 	display3 = meshToDisplayList(mesh3, 3, 2);
 	display4 = meshToDisplayList(mesh4, 4, 3);
+	display5 = meshToDisplayList(mesh5, 5, 4);
 	// light
 	GLfloat light_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
 	GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -614,6 +622,14 @@ void displayNoiseGenBox3(void) {
 	// box 3
 	glPushMatrix();
 	glCallList(display4);
+	glPopMatrix();
+}
+
+void displayNoiseGenLavaPlane(void) {
+	//plane
+	glPushMatrix();
+	//glTranslatef(-900, 0, -900);
+	glCallList(display5);
 	glPopMatrix();
 }
 
