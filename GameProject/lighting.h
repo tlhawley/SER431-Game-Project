@@ -86,7 +86,7 @@ void setlight() {
 	//float LightAmbient5[] = { 0.1f / distance, 0.1f / distance, 0.05f / distance, 1.0f };
 	float LightSpecular5[] = { 0.5f / distance, 0.5f / distance, 0.20f / distance, 1.0f };
 	float LightDiffuse5[] = { 0.5f / distance, 0.5f / distance, 0.20f / distance, 1.0f };
-	float LightDirection5[] = { -90.0f, 5.0f, -sin(timer*3.0)*5.0, 1};
+	float LightDirection5[] = { -90.0f, 5.0f, -sin(timer*3.0f)*5.0f, 1.0f};
 	//float LightSpecular2[] = { 0.1f, 0.1f, 0.1f, 0.1f };
 
 	glLightfv(GL_LIGHT5, GL_AMBIENT, LightAmbient);
