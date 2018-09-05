@@ -397,9 +397,59 @@ Mesh* createPlane(int arena_width, int arena_depth, int arena_cell) {
 	for (int i = 0; i<n; i++) {
 		for (int j = 0; j < m; j++) {
 
+			//pixelColor = marbleMap(t_scale(noise.perlinMarble(i * 20, j * 20))); // terrain height / pixel brightness using marble texture
+
+			//me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell, pixelColor[0]*400.0f-100.0f, j*arena_cell));
+
 			pixelColor = marbleMap(t_scale(noise.perlinMarble(i * 20, j * 20))); // terrain height / pixel brightness using marble texture
 
-			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell, pixelColor[0]*400.0f-100.0f, j*arena_cell));
+			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell*0.01f - 9.0f, (pixelColor[0] * 400.0f - 100.0f)*0.01f, (j*arena_cell*0.01f) - 9.0f));
+		}
+	}
+	//texture
+	me->dot_texture.push_back(Vec2<GLfloat>(0.0, 0.0));
+	me->dot_texture.push_back(Vec2<GLfloat>(0.0, 1.0));
+	me->dot_texture.push_back(Vec2<GLfloat>(1.0, 0.0));
+	me->dot_texture.push_back(Vec2<GLfloat>(1.0, 1.0));
+	// faces
+	for (int i = 0; i<(n*m) - m; i++) {
+		if ((i + 1) % n == 0) continue;
+		me->face_index_vertex.push_back(i); me->face_index_vertex.push_back(i + 1);
+		me->face_index_vertex.push_back(i + n);
+		me->face_index_vertex.push_back(i + 1); me->face_index_vertex.push_back(i + n + 1);
+		me->face_index_vertex.push_back(i + n);
+		// index for texture
+		for (int t = 0; t<6; t++) {
+			me->face_index_texture.push_back(3);//0
+			me->face_index_texture.push_back(2);//2
+			me->face_index_texture.push_back(1);//1
+			me->face_index_texture.push_back(2);//0
+			me->face_index_texture.push_back(0);//3
+			me->face_index_texture.push_back(1);//2
+		}
+	}
+	return me;
+}
+
+// creating a triangulated plane - Modified to create a terrain - Special for lava
+Mesh* createPlaneMultiscale(int arena_width, int arena_depth, int arena_cell) {
+	Mesh *me = new Mesh;
+	int n = arena_width / arena_cell;
+	int m = arena_depth / arena_cell;
+
+	ImprovedNoise noise; // modified for terrain
+	Vec3f pixelColor; // modified for terrain
+					  // vertices
+	for (int i = 0; i<n; i++) {
+		for (int j = 0; j < m; j++) {
+
+			//pixelColor = marbleMap(t_scale(noise.perlinMarble(i * 20, j * 20))); // terrain height / pixel brightness using marble texture
+
+			//me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell, pixelColor[0]*400.0f-100.0f, j*arena_cell));
+
+			pixelColor = marbleMap(t_scale(noise.perlinMultiscale(i * 20, j * 20))); // terrain height / pixel brightness using marble texture
+
+			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell*0.01f - 9.0f, (pixelColor[0] * 400.0f - 100.0f)*0.01f, (j*arena_cell*0.01f) - 9.0f));
 		}
 	}
 	//texture
@@ -516,7 +566,7 @@ void initNoiseGen() {
 	mesh2 = createCube();
 	mesh3 = createCube();
 	mesh4 = createCube();
-	mesh5 = createPlane(2000, 2000, 200);
+	mesh5 = createPlaneMultiscale(2000, 2000, 200);
 	calculateNormalPerFace(mesh1);
 	calculateNormalPerFace(mesh2);
 	calculateNormalPerFace(mesh3);
