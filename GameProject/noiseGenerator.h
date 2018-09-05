@@ -388,6 +388,25 @@ Mesh* createCube() {
 // creating a triangulated plane - Modified to create a terrain
 Mesh* createPlane(int arena_width, int arena_depth, int arena_cell) {
 	Mesh *me = new Mesh;
+
+	int n = 128;
+	int m = 128;
+
+	ImprovedNoise noise; // modified for terrain
+	Vec3f pixelColor; // modified for terrain
+					  // vertices
+	for (int i = 0; i<n; i++) {
+		for (int j = 0; j < m; j++) {
+
+			pixelColor = marbleMap(t_scale(noise.perlinMarble(i * 20, j * 20))); // terrain height / pixel brightness using marble texture
+
+																				 //me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell*0.01f-9.0f, (pixelColor[0]*400.0f-100.0f)*0.01f+20.0f, (j*arena_cell*0.01f) - 9.0f));
+			me->dot_vertex.push_back(Vec3<GLfloat>((i - 64)*2.0, (pixelColor[0] * 400.0f - 100.0f)*0.01f + 10.0f, (j - 64)*2.0));
+
+		}
+	}
+
+	/*
 	int n = arena_width / arena_cell;
 	int m = arena_depth / arena_cell;
 
@@ -406,6 +425,8 @@ Mesh* createPlane(int arena_width, int arena_depth, int arena_cell) {
 			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell*0.01f - 9.0f, (pixelColor[0] * 400.0f - 100.0f)*0.01f, (j*arena_cell*0.01f) - 9.0f));
 		}
 	}
+	*/
+
 	//texture
 	me->dot_texture.push_back(Vec2<GLfloat>(0.0, 0.0));
 	me->dot_texture.push_back(Vec2<GLfloat>(0.0, 1.0));
