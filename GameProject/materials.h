@@ -7,7 +7,7 @@ float materialWood[] = { 0.1f,0.1f,0.1f,1.0f,0.29f,0.24f,0.15f,1,0.0f,0.0f,0.0f,
 
 float materialRuby[] = { 0.0025f,0.0025f,0.0025f,1,0.75164f,0.1f,0.1f,1,0.9f,0.9f,0.9f,1,0,0,0,1,51.2f };
 
-float materialCastle[] = { 0.1f,0.1f,0.1f,1.0f,0.21f,0.24f,0.2f,1,0.0f,0.0f,0.0f,1,0,0,0,1,32.0f };
+float materialCastle[] = { 1.0f,1.0f,1.0f,1.0f,		1.0f,1.0f,1.0f,1,	1.0f,1.0f,1.0f,1,	0,0,0,1,	1.0f };
 
 float materialSpinSpike[] = { 0.125f,0.125f,0.125f,1,0.02f,0.02f,0.02f,1,0.474597f,0.474597f,0.474597f,1,0,0,0,1,2.5f };
 
@@ -25,6 +25,8 @@ float materialPlasticWhite[] = { 0,0,0,1.0f,0.55f,0.55f,0.55f,1,0.7f,0.7f,0.7f,1
 float materialObsidian[] = { 0.05375f,0.05f,0.06625f,1.0f,0.18275f,0.17f,0.22525f,1,0.332741f,0.328634f,0.346435f,1,0,0,0,1,38.4f };
 
 float materialSkyBox[] = {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,1};
+
+float materialMapUI[] = { 0,0,0,0,1,1,1,1,0,0,0,0,0.7f,0.8f,1,1,1 };
 
 void materialz();
 

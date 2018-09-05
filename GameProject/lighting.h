@@ -18,11 +18,11 @@ void setlight() {
 	float distance = getDistanceFromCam(0.125f, 0.7f, 0);
 	//printf("%f",distance);
 
-	float LightAmbient[] = { 0.05f, 0.05f, 0.025f, 1.0f };
-	float LightEmission[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float LightDiffuse[] = { 1.0f / distance, 1.1f / distance, 1.2f / distance, 1.0f };
-	float LightSpecular[] = { 1.0f / distance, 1.0f / distance, 1.0f / distance, 1.0f };
-	float LightDirection[] = { 0.125f, 0.7f,0, 1 };
+	float LightAmbient[] = { 0.3f, 0.35f, 0.4f, 1.0f };
+	//float LightEmission[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float LightDiffuse[] = { 50.0f, 50.0f, 50.0f, 100.0f };
+	float LightSpecular[] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	float LightDirection[] = { -0.5f, 0.7f,-0.5f, 0 };
 	//float LightDirection[] = { x, y,z, 0.01f, 0.0f };
 	glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmbient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, LightDiffuse);
@@ -129,13 +129,14 @@ void setlight() {
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+	/*
 	glEnable(GL_LIGHT1);
 	glEnable(GL_LIGHT2);
 	glEnable(GL_LIGHT3);
 	glEnable(GL_LIGHT4);
 	glEnable(GL_LIGHT5);
 	glEnable(GL_LIGHT6);
-
+	*/
 
 	/*
 	float LightAmbient1[] = { 0.1f, 0.1f, 0.05f, 1.0f };

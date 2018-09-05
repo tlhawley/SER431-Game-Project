@@ -38,9 +38,9 @@ void initCBoxes() {
 	
 	
 	//Cboxes[CboxAmount - 1] = newCBox(0, 5, -31, 20, 10, 2); // yellow back wall
-	Cboxes[CboxAmount - 1] = newCBox(6, 5, -30.25, 0.5, 10, 8); // green back wall
-	Cboxes[CboxAmount - 1] = newCBox(-6, 5, -30.25, 0.5, 10, 8); // green back wall
-	Cboxes[CboxAmount - 1] = newCBox(0, 7, -30.25, 0.5, 6, 4); // green back wall
+	Cboxes[CboxAmount - 1] = newCBox(6, 5, -30.25, 8, 10, 0.5); // green back wall
+	Cboxes[CboxAmount - 1] = newCBox(-6, 5, -30.25, 8, 10, 0.5); // green back wall
+	Cboxes[CboxAmount - 1] = newCBox(0, 7, -30.25, 4, 6, 0.5); // green back wall
 
 
 	Cboxes[CboxAmount - 1] = newCBox(31, 5, 0, 2, 10, 20); // red back wall
@@ -129,7 +129,7 @@ void initCBoxes() {
 
 	Cboxes[CboxAmount - 1] = newCBox(-90.0, 2.0, 20.0, 40.0, 12.0, 2.0);
 
-	Cboxes[CboxAmount - 1] = newCBox(-90.0, 5.75, 20.0, 4.0, 4.5, 2.0);
+	Cboxes[CboxAmount - 1] = newCBox(-90.0, 5.75, -20.0, 4.0, 4.5, 2.0);
 	Cboxes[CboxAmount - 1] = newCBox(-101.0, 2.0, -20.0, 18.0, 12.0, 2.0);
 	Cboxes[CboxAmount - 1] = newCBox(-79.0, 2.0, -20.0, 18.0, 12.0, 2.0);
 
@@ -249,9 +249,11 @@ void actionCBoxes() {
 		}
 	}
 	else {
+		/*
 		Cboxes[CboxAmount - 1].x = 0.0;
 		Cboxes[CboxAmount - 1].y = -10000.0;
 		Cboxes[CboxAmount - 1].z = 0.0;
+		*/
 	}
 	
 	for (int i = 0; i < CboxAmount; i++) {
