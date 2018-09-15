@@ -23,7 +23,7 @@
     <ProjectGuid>{A7E2D646-DEED-431C-957A-8335F71E64DD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>GameProject</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -73,8 +73,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files %28x86%29\Microsoft Visual Studio 14.0\VC\include;C:\Users\Onii-chan\Documents\ilmbase-2.2.1;C:\Users\Onii-chan\Documents\ilmbase-2.2.1\m4;C:\Users\Onii-chan\Documents\ilmbase-2.2.1\ImathTest;C:\Users\Onii-chan\Documents\ilmbase-2.2.1\Imath;C:\Users\Onii-chan\Documents\ilmbase-2.2.1\IlmThread;C:\Users\Onii-chan\Documents\ilmbase-2.2.1\IexTest;C:\Users\Onii-chan\Documents\ilmbase-2.2.1\IexMath;C:\Users\Onii-chan\Documents\ilmbase-2.2.1\Iex;C:\Users\Onii-chan\Documents\ilmbase-2.2.1\HalfTest;C:\Users\Onii-chan\Documents\ilmbase-2.2.1\Half;C:\Users\Onii-chan\Documents\ilmbase-2.2.1\config.windows;C:\Users\Onii-chan\Documents\ilmbase-2.2.1\config;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\IlmBase\inc;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\IlmBase\inc\Half;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\IlmBase\inc\Imath;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\IlmBase\inc\Iex;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\IlmBase\inc\IlmThread;C:\Users\cdianovi\source\repos\SER431-Game-Project-master\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\cdianovi\source\repos\SER431-Game-Project-master\lib;$(LibraryPath)</LibraryPath>
     <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -103,7 +103,8 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\include;C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\ilmbase-2.2.1\m4;C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\ilmbase-2.2.1\ImathTest;C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\ilmbase-2.2.1\Imath;C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\ilmbase-2.2.1\IexMath;C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\ilmbase-2.2.1\Iex;C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\ilmbase-2.2.1\HalfTest;C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\ilmbase-2.2.1\Half;C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\ilmbase-2.2.1\config.windows;C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\ilmbase-2.2.1\config;C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\OpenGL Libraries;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

@@ -44,6 +44,12 @@ GLuint hangingLampE;
 GLuint meshCouch;
 GLuint meshDesk;
 
+
+GLuint meshABox;
+
+GLuint meshq3MirrorRoom;
+
+
 void loadModels();
 void drawGear1();
 void drawGear2();
@@ -208,6 +214,15 @@ void loadModels() {
 	Mesh* mesh49 = loadFile("./src/obj files/CubeMap.obj");
 	if (mesh49 == NULL) exit(1);
 	meshSkyBox = meshToDisplayList(mesh49, 49, texture_array[9]);
+
+
+	Mesh* mesh50 = loadFile("./src/obj files/aBox.obj");
+	if (mesh50 == NULL) exit(1);
+	meshABox = meshToDisplayList(mesh50, 50, texture_array[1]);
+
+	Mesh* mesh51 = loadFile("./src/obj files/q3MirrorRoom.obj");
+	if (mesh51 == NULL) exit(1);
+	meshq3MirrorRoom = meshToDisplayList(mesh51, 51, texture_array[3]);
 
 
 }
