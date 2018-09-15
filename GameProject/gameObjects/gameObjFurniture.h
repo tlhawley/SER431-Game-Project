@@ -1,3 +1,7 @@
+
+// was used to display various .obj files and only furniature models
+// TODO: Refactor to display different wavefront models (Furniature models are no longer a required feature)
+
 struct furniture {
 	int model;
 	float x;
