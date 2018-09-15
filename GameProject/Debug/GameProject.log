@@ -1,7 +1,9 @@
 ﻿  GameProject.cpp
-c:\users\onii-chan\documents\github\ser431-game-project\gameproject\lighting.h(89): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\meshobjconverter.h(87): warning C4018: '<': signed/unsigned mismatch
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\meshobjconverter.h(100): warning C4018: '<': signed/unsigned mismatch
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\meshobjconverter.h(245): warning C4018: '<': signed/unsigned mismatch
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\meshobjconverter.h(272): warning C4018: '<': signed/unsigned mismatch
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\noisegenerator.h(124): warning C4018: '<': signed/unsigned mismatch
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\noisegenerator.h(139): warning C4018: '<': signed/unsigned mismatch
+  LINK : C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe not found or not built by the last incremental link; performing full link
   GameProject.vcxproj -> C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe
