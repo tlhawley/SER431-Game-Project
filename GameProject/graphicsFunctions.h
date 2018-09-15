@@ -35,7 +35,7 @@ void setUp3DView(){
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, width, height); // uses the entire screen for 3D
-	gluPerspective(45, ratio, 0.1, 350); // (aspect, field of view, camera close range, camera long range)
+	gluPerspective(45, ratio, 0.1, 2000); // (aspect, field of view, camera close range, camera long range)
 
 										  // view
 	glMatrixMode(GL_MODELVIEW);
