@@ -228,7 +228,7 @@ void loadModels() {
 
 	Mesh* mesh52 = loadFile("./src/obj files/q3MirrorPlane.obj");
 	if (mesh52 == NULL) exit(1);
-	meshq3MirrorPlane = meshToDisplayList(mesh52, 52, texture_array[0]);
+	meshq3MirrorPlane = meshToDisplayList(mesh52, 52, texture_array[3]);
 
 }
 
