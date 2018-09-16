@@ -1,4 +1,7 @@
 
+// Visible Collision Boxes - No longer in use
+// Use gameObjCollisionBox instead
+
 struct box {
 	float x;
 	float y;

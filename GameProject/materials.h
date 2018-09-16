@@ -28,6 +28,8 @@ float materialSkyBox[] = {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,1};
 
 float materialMapUI[] = { 0,0,0,0,1,1,1,1,0,0,0,0,0.7f,0.8f,1,1,1 };
 
+float matarialAlpha1[] = { 0,0,0,0,1,1,1,0.3f,0,0,0,0,1,1,1,0.3f,1 };
+
 void materialz();
 
 

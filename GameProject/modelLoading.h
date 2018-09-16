@@ -47,6 +47,9 @@ GLuint meshDesk;
 
 GLuint meshABox;
 
+GLuint meshq3MirrorRoom;
+GLuint meshq3MirrorPlane;
+
 
 void loadModels();
 void drawGear1();
@@ -218,6 +221,14 @@ void loadModels() {
 	if (mesh50 == NULL) exit(1);
 	meshABox = meshToDisplayList(mesh50, 50, texture_array[1]);
 
+	Mesh* mesh51 = loadFile("./src/obj files/q3MirrorRoom.obj");
+	if (mesh51 == NULL) exit(1);
+	meshq3MirrorRoom = meshToDisplayList(mesh51, 51, texture_array[3]);
+
+
+	Mesh* mesh52 = loadFile("./src/obj files/q3MirrorPlane.obj");
+	if (mesh52 == NULL) exit(1);
+	meshq3MirrorPlane = meshToDisplayList(mesh52, 52, texture_array[3]);
 
 }
 

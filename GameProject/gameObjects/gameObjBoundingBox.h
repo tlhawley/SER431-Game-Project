@@ -1,4 +1,7 @@
 
+// Displays green wireframe boxes
+// May be used to view collision boxes
+
 struct boundingBox
 {
 	float xOffset;
