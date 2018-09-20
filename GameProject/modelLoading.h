@@ -51,6 +51,7 @@ GLuint meshq3MirrorRoom;
 GLuint meshq3MirrorPlane;
 
 GLuint meshTree;
+GLuint meshGrassCluster;
 
 
 void loadModels();
@@ -59,7 +60,7 @@ void drawGear2();
 
 void loadModels() {
 
-	GLuint texture_array[11];
+	GLuint texture_array[12];
 	texture_from_file(&texture_array[0], "./src/textures/nullTexture.bmp");
 	texture_from_file(&texture_array[1], "./src/textures/oldbox.bmp");
 	texture_from_file(&texture_array[2], "./src/textures/Spikes.bmp");
@@ -71,6 +72,7 @@ void loadModels() {
 	texture_from_file(&texture_array[8], "./src/textures/RoughTexture.bmp");
 	texture_from_file(&texture_array[9], "./src/textures/SkyBox.bmp"); //Skybox texture source : https://github.com/zogi/ocean_demo
 	texture_from_file(&texture_array[10], "./src/textures/TreeTexture.bmp");
+	texture_from_file(&texture_array[11], "./src/textures/GrassClusterTexture.bmp");
 
 	//Mesh* mesh1 = loadFile("./src/obj files/Object Thing2.obj");
 	Mesh* mesh1 = loadFile("./src/obj files/Map20.obj");
@@ -237,6 +239,11 @@ void loadModels() {
 	Mesh* mesh53 = loadFile("./src/obj files/LowPolyTree.obj");
 	if (mesh53 == NULL) exit(1);
 	meshTree = meshToDisplayList(mesh53, 53, texture_array[10]);
+
+
+	Mesh* mesh54 = loadFile("./src/obj files/GrassCluster.obj");
+	if (mesh54 == NULL) exit(1);
+	meshGrassCluster = meshToDisplayList(mesh54, 54, texture_array[11]);
 
 }
 

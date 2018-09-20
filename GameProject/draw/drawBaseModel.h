@@ -37,6 +37,11 @@ void drawBaseModel() {
 		glCallList(meshTree);
 		glRotatef(-180, 0, 1, 0);
 		break;
+	case 7:
+		glRotatef(180, 0, 1, 0);
+		glCallList(meshGrassCluster);
+		glRotatef(-180, 0, 1, 0);
+		break;
 	}
 
 }
