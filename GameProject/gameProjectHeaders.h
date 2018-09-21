@@ -39,6 +39,8 @@
 #include "draw/drawPortal.h"
 #include "draw/drawfurniture.h"
 #include "draw/drawSkyBox.h"
+#include "draw/drawMirror1.h"
+#include "draw/drawBaseModel.h"
 
 #include "gameObjects/gameObjHealthPack.h"
 #include "gameObjects/gameObjSpinSpike.h"
@@ -50,4 +52,7 @@
 #include "gameObjects/gameObjPortal.h"
 #include "gameObjects/gameObjFurniture.h"
 #include "gameObjects/gameObjBoundingBox.h"
+#include "gameObjects/gameObjBaseModel.h"
 
+#include "displayAll.h"
+#include "reflection.h"

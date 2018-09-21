@@ -12,6 +12,7 @@ struct doorway {
 doorway newDoorway(float x, float y, float z, float ang, int locked, bool mirror) ;
 void initDoorway() ;
 void actionDoorway() ;
+void displayDoorway() ;
 
 #define maxDoorway 20
 doorway doorways[maxHealthPacks];
@@ -64,7 +65,7 @@ doorway newDoorway(float x, float y, float z, float ang, int locked, bool mirror
 
 void initDoorway() {
 	doorwayAmount = 0;
-	/* // Intro to graphics 332 map
+	 // Intro to graphics 332 map
 	doorways[doorwayAmount-1] = newDoorway(-30,0,0,90,1,false);
 	doorways[doorwayAmount - 1] = newDoorway(0, 0, -30, 0, 1, false);
 	doorways[doorwayAmount - 1] = newDoorway(-70.0, 0, 0, 90, 0, false);
@@ -75,13 +76,13 @@ void initDoorway() {
 	doorways[doorwayAmount - 1] = newDoorway(0, 0, -90.0, 0, 0, false);
 	doorways[doorwayAmount - 1] = newDoorway(0, 0, -150.0, 0, 1, false);
 	doorways[doorwayAmount - 1] = newDoorway(0, 0, -190.0, 0, 1, false);
-	*/
+	
 }
 
 void actionDoorway() {
 	for (int i = 0; i < doorwayAmount; i++) {
 		
-		if (abs(camx - doorways[i].x) < 80 && abs(camz - doorways[i].z) < 80) {
+		if (abs(camx - doorways[i].x) < 120 && abs(camz - doorways[i].z) < 120) {
 
 			if (doorways[i].locked == 0) {
 
@@ -98,17 +99,6 @@ void actionDoorway() {
 						if (doorways[i].doorAnimate > 0) doorways[i].doorAnimate = doorways[i].doorAnimate - 0.05f;
 					}
 
-					objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 0, 90.0f, 0, 1, 1, 1);
-					objPlacementTRS(drawDoorLeft, doorways[i].x, doorways[i].y, doorways[i].z + doorways[i].doorAnimate, 0, 90.0f, 0, 1, 1, 1);
-					objPlacementTRS(drawDoorRight, doorways[i].x, doorways[i].y, doorways[i].z - doorways[i].doorAnimate, 0, 90.0f, 0, 1, 1, 1);
-
-
-					if (doorways[i].mirror == true) {
-						objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 180, 90.0f, 0, 1, 1, 1);
-						objPlacementTRS(drawDoorLeft, doorways[i].x, doorways[i].y, doorways[i].z - doorways[i].doorAnimate, 180, 90.0f, 0, 1, 1, 1);
-						objPlacementTRS(drawDoorRight, doorways[i].x, doorways[i].y, doorways[i].z + doorways[i].doorAnimate, 180, 90.0f, 0, 1, 1, 1);
-					}
-
 
 
 				}
@@ -119,17 +109,6 @@ void actionDoorway() {
 					}
 					else {
 						if (doorways[i].doorAnimate > 0) doorways[i].doorAnimate = doorways[i].doorAnimate - 0.05f;
-					}
-
-					objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
-					objPlacementTRS(drawDoorLeft, doorways[i].x - doorways[i].doorAnimate, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
-					objPlacementTRS(drawDoorRight, doorways[i].x + doorways[i].doorAnimate, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
-
-
-					if (doorways[i].mirror == true) {
-						objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 180, 0, 0, 1, 1, 1);
-						objPlacementTRS(drawDoorLeft, doorways[i].x - doorways[i].doorAnimate, doorways[i].y, doorways[i].z, 180, 0, 0, 1, 1, 1);
-						objPlacementTRS(drawDoorRight, doorways[i].x + doorways[i].doorAnimate, doorways[i].y, doorways[i].z, 180, 0, 0, 1, 1, 1);
 					}
 
 
@@ -157,19 +136,6 @@ void actionDoorway() {
 						if (doorways[i].doorAnimate > 0) doorways[i].doorAnimate = doorways[i].doorAnimate - 0.05f;
 					}
 
-					objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 0, 90.0f, 0, 1, 1, 1);
-					objPlacementTRS(drawDoorLeft, doorways[i].x, doorways[i].y, doorways[i].z, 0, 90.0f, 0, 1, 1, 1);
-					objPlacementTRS(drawDoorRight, doorways[i].x, doorways[i].y, doorways[i].z, 0, 90.0f, 0, 1, 1, 1);
-					objPlacementTRS(drawDoorLock, doorways[i].x, doorways[i].y, doorways[i].z, 0, 90.0f, 0, 1, 1, 1);
-
-
-					if (doorways[i].mirror == true) {
-						objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 180, 90.0f, 0, 1, 1, 1);
-						objPlacementTRS(drawDoorLeft, doorways[i].x, doorways[i].y, doorways[i].z, 180, 90.0f, 0, 1, 1, 1);
-						objPlacementTRS(drawDoorRight, doorways[i].x, doorways[i].y, doorways[i].z, 180, 90.0f, 0, 1, 1, 1);
-						objPlacementTRS(drawDoorLock, doorways[i].x, doorways[i].y, doorways[i].z, 180, 90.0f, 0, 1, 1, 1);
-					}
-
 
 
 				}
@@ -186,29 +152,80 @@ void actionDoorway() {
 						if (doorways[i].doorAnimate > 0) doorways[i].doorAnimate = doorways[i].doorAnimate - 0.05f;
 					}
 
-					objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
-					objPlacementTRS(drawDoorLeft, doorways[i].x, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
-					objPlacementTRS(drawDoorRight, doorways[i].x, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
-					objPlacementTRS(drawDoorLock, doorways[i].x, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
-
-					if (doorways[i].mirror == true) {
-						objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 180, 0, 0, 1, 1, 1);
-						objPlacementTRS(drawDoorLeft, doorways[i].x, doorways[i].y, doorways[i].z, 180, 0, 0, 1, 1, 1);
-						objPlacementTRS(drawDoorRight, doorways[i].x, doorways[i].y, doorways[i].z, 180, 0, 0, 1, 1, 1);
-						objPlacementTRS(drawDoorLock, doorways[i].x, doorways[i].y, doorways[i].z, 180, 0, 0, 1, 1, 1);
-					}
-
 				}
-
-
-
-
-
-
-
 
 
 			}
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void displayDoorway() {
+	for (int i = 0; i < doorwayAmount; i++) {
+
+		if (abs(camx - doorways[i].x) < 120 && abs(camz - doorways[i].z) < 120) {
+
+			if (doorways[i].locked == 0) {
+
+				if (doorways[i].angle == 90) {
+
+					objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 0, 90.0f, 0, 1, 1, 1);
+					objPlacementTRS(drawDoorLeft, doorways[i].x, doorways[i].y, doorways[i].z + doorways[i].doorAnimate, 0, 90.0f, 0, 1, 1, 1);
+					objPlacementTRS(drawDoorRight, doorways[i].x, doorways[i].y, doorways[i].z - doorways[i].doorAnimate, 0, 90.0f, 0, 1, 1, 1);
+
+				}
+				else {
+
+					objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
+					objPlacementTRS(drawDoorLeft, doorways[i].x - doorways[i].doorAnimate, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
+					objPlacementTRS(drawDoorRight, doorways[i].x + doorways[i].doorAnimate, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
+				}
+			}
+			else { // The Door is locked
+
+				if (doorways[i].angle == 90) {
+
+					objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 0, 90.0f, 0, 1, 1, 1);
+					objPlacementTRS(drawDoorLeft, doorways[i].x, doorways[i].y, doorways[i].z, 0, 90.0f, 0, 1, 1, 1);
+					objPlacementTRS(drawDoorRight, doorways[i].x, doorways[i].y, doorways[i].z, 0, 90.0f, 0, 1, 1, 1);
+					objPlacementTRS(drawDoorLock, doorways[i].x, doorways[i].y, doorways[i].z, 0, 90.0f, 0, 1, 1, 1);
+
+				}
+				else {
+
+					objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
+					objPlacementTRS(drawDoorLeft, doorways[i].x, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
+					objPlacementTRS(drawDoorRight, doorways[i].x, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
+					objPlacementTRS(drawDoorLock, doorways[i].x, doorways[i].y, doorways[i].z, 0, 0, 0, 1, 1, 1);
+
+				}
+
+			}
+		}
+	}
+}
+
+
+
+
+
