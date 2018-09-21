@@ -94,5 +94,18 @@ void Update() {
 		objInit();
 	}
 
+	if (upPressed == true) {
+		rockz = rockz + 1.1f;
+	}
+	if (downPressed == true) {
+		rockz = rockz - 1.1f;
+	}
+	if (leftPressed == true) {
+		rockx = rockx - 1.1f;
+	}
+	if (rightPressed == true) {
+		rockx = rockx + 1.1f;
+	}
+
 	glutPostRedisplay();
 }
