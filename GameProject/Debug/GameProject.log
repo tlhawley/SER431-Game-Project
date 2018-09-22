@@ -1,15 +1,8 @@
 ﻿  GameProject.cpp
-c:\users\travi\documents\github\ser431-game-project\gameproject\gameproject.cpp(64): error C2061: syntax error: identifier 'Vec3f'
 c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(87): warning C4018: '<': signed/unsigned mismatch
 c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(100): warning C4018: '<': signed/unsigned mismatch
 c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(245): warning C4018: '<': signed/unsigned mismatch
 c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(272): warning C4018: '<': signed/unsigned mismatch
 c:\users\travi\documents\github\ser431-game-project\gameproject\noisegenerator.h(124): warning C4018: '<': signed/unsigned mismatch
 c:\users\travi\documents\github\ser431-game-project\gameproject\noisegenerator.h(139): warning C4018: '<': signed/unsigned mismatch
-c:\users\travi\documents\github\ser431-game-project\gameproject\gameproject.cpp(260): error C2665: 'shadowMatrix': none of the 2 overloads could convert all the argument types
-  c:\users\travi\documents\github\ser431-game-project\gameproject\gameproject.cpp(69): note: could be 'void shadowMatrix(GLfloat [][4],Vec3f,GLfloat [])'
-  c:\users\travi\documents\github\ser431-game-project\gameproject\gameproject.cpp(260): note: while trying to match the argument list '(GLfloat [4][4], std::vector<Vec3f,std::allocator<_Ty>>, GLfloat [4])'
-          with
-          [
-              _Ty=Vec3f
-          ]
+  GameProject.vcxproj -> C:\Users\travi\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe
