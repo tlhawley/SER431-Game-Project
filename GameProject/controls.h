@@ -51,29 +51,27 @@ void Update() {
 		orientMe2(camAngX);
 	}
 
-	/*
+	
 	if (upPressed == true) {
-		moveMeFlat(1.1f);
+		rockz = rockz + 1.1f;
 	}
 	if (downPressed == true) {
-		moveMeFlat(-1.1f);
+		rockz = rockz - 1.1f;
 	}
-	*/
 	if (leftPressed == true) {
-		camAngY -= 0.03f;
-		orientMe(camAngY);
+		rockx = rockx - 1.1f;
 	}
 	if (rightPressed == true) {
-		camAngY += 0.03f;
-		orientMe(camAngY);
+		rockx = rockx + 1.1f;
 	}
+
 	if (aKey == true) {
 		moveMeFlatStrafe(-1.1f);
 	}
 	if (dKey == true) {
 		moveMeFlatStrafe(1.1f);
 	}
-	if (wKey == true || upPressed == true) {
+	if (wKey == true) {
 		
 		if (sprint == false) {
 			moveMeFlat(1.1f);
@@ -84,7 +82,7 @@ void Update() {
 
 		//y = y + 0.1;
 	}
-	if (sKey == true || downPressed == true) {
+	if (sKey == true) {
 		moveMeFlat(-1.1f);
 		//y = y - 0.1;
 	}

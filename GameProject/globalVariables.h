@@ -19,6 +19,8 @@ float camx = 0.0f, camy = 1.75f, camz = 0.0f;
 float ox, oy, oz; // old x,y,z
 float gravity = 0.0;
 
+float rockx = 0.0f, rocky = 1.75f, rockz = 0.0f; // Temp Rock Values
+
 int health = 1000;
 int takingDamage = 0;
 
