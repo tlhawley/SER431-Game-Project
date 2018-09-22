@@ -1,4 +1,5 @@
 ﻿  GameProject.cpp
+<<<<<<< HEAD
 c:\users\cdianovi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(87): warning C4018: '<': signed/unsigned mismatch
 c:\users\cdianovi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(100): warning C4018: '<': signed/unsigned mismatch
 c:\users\cdianovi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(245): warning C4018: '<': signed/unsigned mismatch
@@ -6,3 +7,12 @@ c:\users\cdianovi\documents\github\ser431-game-project\gameproject\meshobjconver
 c:\users\cdianovi\documents\github\ser431-game-project\gameproject\noisegenerator.h(124): warning C4018: '<': signed/unsigned mismatch
 c:\users\cdianovi\documents\github\ser431-game-project\gameproject\noisegenerator.h(139): warning C4018: '<': signed/unsigned mismatch
   GameProject.vcxproj -> C:\Users\cdianovi\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe
+=======
+c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(87): warning C4018: '<': signed/unsigned mismatch
+c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(100): warning C4018: '<': signed/unsigned mismatch
+c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(245): warning C4018: '<': signed/unsigned mismatch
+c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(272): warning C4018: '<': signed/unsigned mismatch
+c:\users\travi\documents\github\ser431-game-project\gameproject\noisegenerator.h(124): warning C4018: '<': signed/unsigned mismatch
+c:\users\travi\documents\github\ser431-game-project\gameproject\noisegenerator.h(139): warning C4018: '<': signed/unsigned mismatch
+  GameProject.vcxproj -> C:\Users\travi\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe
+>>>>>>> e210027569aea687d15565a4c8e296cb0e4a3c6f
