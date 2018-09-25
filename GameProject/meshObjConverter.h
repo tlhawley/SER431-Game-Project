@@ -9,8 +9,9 @@
 
 
 struct Mesh;
-GLubyte* load_bmp_file(const char *filename, BITMAPINFO **info);
-void texture_from_file(GLuint *textureArray, const char * file);
+GLubyte* load_bmp_file(const char *filename, BITMAPINFO **info); // no longer in use
+void texture_from_file(GLuint *textureArray, const char * file); // no longer in use
+void loadBMP_custom(GLuint textureArray[], const char * imagepath, int n, int filterMode); // new bmp texture loading function
 int StrToInt(const string &str);
 vector<string> split_string(const string& str, const string& split_str);
 Mesh* loadFile(const char* file);
@@ -26,6 +27,8 @@ vector<string> split_stringO(const string& str, const string& split_str);
 MeshO* loadFileO(const char* file);
 GLuint meshToDisplayListO(MeshO* m2, int id);
 */
+
+
 
 
 // mesh data structure
@@ -60,7 +63,7 @@ struct MeshO {
 */
 
 
-// Load a DIB or BMP file from disk.
+// Load a DIB or BMP file from disk. // OLD FUNCTION NO LONGER IN USE
 GLubyte* load_bmp_file(const char *filename, BITMAPINFO **info) {
 	FILE *fp;
 	GLubyte * bits; // bitmap pixel bits
@@ -107,7 +110,94 @@ GLubyte* load_bmp_file(const char *filename, BITMAPINFO **info) {
 	return (bits); // Everything fine, return the allocated bitmap.
 }
 
-// Create texture from a DIB or BMP file
+
+
+
+
+
+
+
+
+
+// Source: https://github.com/javiergs/SER431/blob/master/Lecture10/shadows.cpp
+// A custom function for loading bmp file textures - currently in use for textures however transparent png support would be an upgrade.
+void loadBMP_custom(GLuint textureArray[], const char * imagepath, int n, int filterMode) {
+
+	printf("Reading image %s\n", imagepath);
+	// Data read from the header of the BMP file
+	unsigned char header[54];
+	unsigned int dataPos;
+	unsigned int imageSize;
+	unsigned int width, height;
+	unsigned char * data;
+
+	// Open the file
+	FILE * file = fopen(imagepath, "rb");
+	if (!file) {
+		printf("%s could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n", imagepath);
+		getchar();
+		return;
+	}
+	// If less than 54 bytes are read, problem
+	if (fread(header, 1, 54, file) != 54) {
+		printf("Not a correct BMP file\n");
+		fclose(file);
+		return;
+	}
+	// A BMP files always begins with "BM"
+	if (header[0] != 'B' || header[1] != 'M') {
+		printf("Not a correct BMP file\n");
+		fclose(file);
+		return;
+	}
+	// Make sure this is a 24bpp file
+	if (*(int*)&(header[0x1E]) != 0) { printf("Not a correct BMP file\n");    fclose(file); return; }
+	if (*(int*)&(header[0x1C]) != 24) { printf("Not a correct BMP file\n");    fclose(file); return; }
+	// Read the information about the image
+	dataPos = *(int*)&(header[0x0A]);
+	imageSize = *(int*)&(header[0x22]);
+	width = *(int*)&(header[0x12]);
+	height = *(int*)&(header[0x16]);
+	// Some BMP files are misformatted, guess missing information
+	if (imageSize == 0)    imageSize = width * height * 3; // 3 : one byte for each Red, Green and Blue component
+	if (dataPos == 0)      dataPos = 54; // The BMP header is done that way
+	data = new unsigned char[imageSize];
+	fread(data, 1, imageSize, file);
+	fclose(file);
+
+	// Create one OpenGL texture
+	glGenTextures(1, &textureArray[n]);
+	glBindTexture(GL_TEXTURE_2D, textureArray[n]);
+
+	glGenTextures(1, &textureArray[n]);
+	glBindTexture(GL_TEXTURE_2D, textureArray[n]);
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // must set to 1 for compact data
+										   // glTexImage2D Whith size and minification
+	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_BGR_EXT, GL_UNSIGNED_BYTE, data);
+
+	delete[] data;
+
+	// TODO: Add a filter parameter
+	// Poor filtering, or ...
+	if (filterMode == 0) {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	} else {
+	// ... nice trilinear filtering ...
+	//if (filterMode == 1) {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	}
+
+}
+
+
+
+
+
+// Create texture from a DIB or BMP file // NO LONGER USED FOR BMP LOADING
 void texture_from_file(GLuint *textureArray, const char * file) {
 	BITMAPINFO *bitmapInfo; // Bitmap information
 	GLubyte    *bitmapBits; // Bitmap data
@@ -158,6 +248,10 @@ vector<string> split_string(const string& str, const string& split_str) {
 
 // load file
 Mesh* loadFile(const char* file) {
+	printf("Reading model %s\n", file);
+	//if (file == "./src/obj files/LV1Grass.obj") {
+		//printf("Loading\n");
+	//}
 	Mesh *m = new Mesh;
 	m->dot_vertex.clear();
 	m->face_index_vertex.clear();

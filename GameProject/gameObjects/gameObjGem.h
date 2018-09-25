@@ -27,6 +27,7 @@ gem newGem(float x, float y, float z) {
 void initGems() {
 	gemAmount = 0;
 	// Intro to graphics 332 map
+	/*
 	gems[gemAmount - 1] = newGem(0.0f, 0.0f, -20.0f);
 	gems[gemAmount - 1] = newGem(-109.0, -4.0, -61.0f);
 	gems[gemAmount - 1] = newGem(-109.0, -4.0, -59.0f);
@@ -43,6 +44,7 @@ void initGems() {
 			gems[gemAmount - 1] = newGem(-9+i*3, 0.0f, -215.0f+j*3);
 		}
 	}
+	*/
 	
 }
 

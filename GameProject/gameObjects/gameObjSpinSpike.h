@@ -33,6 +33,8 @@ void initSpinSpikes() {
 	spinSpikeAmount = 0;
 	// Intro to graphics 332 map
 	spinSpikes[0] = newSpinSpike(0, 0.0f, 14.0f, 1, 0.0f, 8.0f);
+	/*
+	spinSpikes[0] = newSpinSpike(0, 0.0f, 14.0f, 1, 0.0f, 8.0f);
 	spinSpikes[1] = newSpinSpike(0, 0.0f, -14.0f, 1, 0.0f, 8.0f);
 	spinSpikes[2] = newSpinSpike(14, 0.0f, 0.0f, 2, 0.0f, 8.0f);
 	spinSpikes[3] = newSpinSpike(0.0f, 0.0f, 0.0f, 4, 0.0f, 8.0f);
@@ -58,7 +60,7 @@ void initSpinSpikes() {
 	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-90, 0.0f, -120, 3, PI/2.0, 8.0f);
 	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-90, 0.0f, -120, 3, PI+PI/2.0, 8.0f);
 	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-90, 0.0f, -120, 3, 0.0f, 8.0f);
-	
+	*/
 
 	/*
 	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-90, 0.0f, -120, 4, PI, 8.0f);
@@ -90,7 +92,7 @@ void actionSpinSpikes() {
 					camxv = -(num1 - camx)*0.4f;
 					camzv = -(spinSpikes[i].z - camz)*0.4f;
 					if (takingDamage <= 0) {
-						health = health - 100;
+						health = health - 1;
 						if (health < 0) { health = 0; }
 					}
 					takingDamage = 10;
@@ -103,7 +105,7 @@ void actionSpinSpikes() {
 					camxv = -(spinSpikes[i].x - camx)*0.4f;
 					camzv = -(num2 - camz)*0.4f;
 					if (takingDamage <= 0) {
-						health = health - 100;
+						health = health - 1;
 						if (health < 0) { health = 0; }
 					}
 					takingDamage = 10;
@@ -117,7 +119,7 @@ void actionSpinSpikes() {
 					camxv = -(num1 - camx)*0.4f;
 					camzv = -(num2 - camz)*0.4f;
 					if (takingDamage <= 0) {
-						health = health - 100;
+						health = health - 1;
 						if (health < 0) { health = 0; }
 					}
 					takingDamage = 10;
@@ -131,7 +133,7 @@ void actionSpinSpikes() {
 					camxv = -(num1 - camx)*0.4f;
 					camzv = -(num2 - camz)*0.4f;
 					if (takingDamage <= 0) {
-						health = health - 100;
+						health = health - 1;
 						if (health < 0) { health = 0; }
 					}
 					takingDamage = 10;

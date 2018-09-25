@@ -85,8 +85,10 @@ void draw2DMap(){
 	setlight();
 	//setmaterial2(1.0, 0.2, 0.2, 0.2, 0.0);
 	//setMaterialAdvanced(materialCastle);
-	setMaterialAdvanced(materialMapUI);
-	glCallList(meshUIMap);
+	//setMaterialAdvanced(materialMapUI);
+	setMaterialAdvanced(materialSkyBox);
+	//glCallList(meshUIMap);
+	glCallList(meshLV1MapUI);
 	glScalef(5, 5, 5);
 	glRotatef(-180, 0, 1, 0);
 	glRotatef(-90, 1, 0, 0);
@@ -202,9 +204,9 @@ void draw2DMap(){
 	*/
 
 	// borders
-	//glColor4f(.0, .0, .0, 1.0);
+	glColor4f(.0, .0, .0, 1.0);
 	//glColor4f(.35, .4, 0.5, 1.0);
-	glColor4f(.7, .8, 1.0, 1.0);
+	//glColor4f(.7, .8, 1.0, 1.0);
 	glVertex3f(-10, -10, 0.8);
 	glVertex3f(-9.8, -10, 0.8);
 	glVertex3f(-9.8, 10, 0.8);

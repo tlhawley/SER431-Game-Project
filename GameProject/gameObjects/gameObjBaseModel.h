@@ -42,13 +42,22 @@ void initBaseModels() {
 
 	baseModelAmount = 0;
 
+	baseModels[baseModelAmount - 1] = newBaseModel(0, 0, 0, 0, 0, 0, 4000.0, 11); // LV1
+	baseModels[baseModelAmount - 1] = newBaseModel(0, 0, 0, 0, 0, 0, 4000.0, 12); // LV1
+	baseModels[baseModelAmount - 1] = newBaseModel(0, 0, 0, 0, 0, 0, 4000.0, 13); // LV1
+	baseModels[baseModelAmount - 1] = newBaseModel(0, 0, 0, 0, 0, 0, 4000.0, 14); // LV1
+	baseModels[baseModelAmount - 1] = newBaseModel(0, 0, 0, 0, 0, 0, 4000.0, 15); // LV1
 
+	/*
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
-			baseModels[baseModelAmount - 1] = newBaseModel(-8 + i * 4.0, 0.0f, -20.0f + j * 4.0, 0.0f, 180.0f, 0.0f, 400.0, 6);
-			baseModels[baseModelAmount - 1] = newBaseModel(-8 + i * 4.0, 0.0f, -20.0f + j * 4.0, 0.0f, 180.0f, 0.0f, 400.0, 7);
+			if (j % 2 == 0 && i % 2 == 0) {
+				baseModels[baseModelAmount - 1] = newBaseModel(8 + i * 4.0, 0.0f, 20.0f + j * 4.0, 0.0f, 180.0f, 0.0f, 400.0, 6); // Tree Models
+			}
+			baseModels[baseModelAmount - 1] = newBaseModel(8 + i * 4.0, 0.0f, 20.0f + j * 4.0, 0.0f, 180.0f, 0.0f, 400.0, 7); // Grass Models
 		}
 	}
+	*/
 
 	/*
 	// Intro to graphics 332 map

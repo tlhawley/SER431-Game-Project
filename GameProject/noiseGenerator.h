@@ -385,8 +385,50 @@ Mesh* createCube() {
 	return mesh;
 }
 
-// creating a triangulated plane - Modified to create a terrain
+
+
+// creating a triangulated plane
 Mesh* createPlane(int arena_width, int arena_depth, int arena_cell) {
+	Mesh *me = new Mesh;
+	int n = arena_width / arena_cell;
+	int m = arena_depth / arena_cell;
+
+	// vertices
+	for (int i = 0; i<n; i++) {
+		for (int j = 0; j < m; j++) {
+			//-900, 0, 999
+			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell-900, j*arena_cell, 999.0));
+		}
+	}
+	//texture
+	me->dot_texture.push_back(Vec2<GLfloat>(0.0, 0.0));
+	me->dot_texture.push_back(Vec2<GLfloat>(0.0, 1.0));
+	me->dot_texture.push_back(Vec2<GLfloat>(1.0, 0.0));
+	me->dot_texture.push_back(Vec2<GLfloat>(1.0, 1.0));
+	// faces
+	for (int i = 0; i<(n*m) - m; i++) {
+		if ((i + 1) % n == 0) continue;
+		me->face_index_vertex.push_back(i); me->face_index_vertex.push_back(i + 1);
+		me->face_index_vertex.push_back(i + n);
+		me->face_index_vertex.push_back(i + 1); me->face_index_vertex.push_back(i + n + 1);
+		me->face_index_vertex.push_back(i + n);
+		// index for texture
+		for (int t = 0; t<6; t++) {
+			me->face_index_texture.push_back(3);//0
+			me->face_index_texture.push_back(2);//2
+			me->face_index_texture.push_back(1);//1
+			me->face_index_texture.push_back(2);//0
+			me->face_index_texture.push_back(0);//3
+			me->face_index_texture.push_back(1);//2
+		}
+	}
+	return me;
+}
+
+
+
+// creating a triangulated plane - Modified from plane function to create a terrain
+Mesh* createTerrain(int arena_width, int arena_depth, int arena_cell) {
 	Mesh *me = new Mesh;
 
 	int n = 128;

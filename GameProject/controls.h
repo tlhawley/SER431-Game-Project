@@ -1,4 +1,6 @@
 void Update();
+float crateX = 0;
+float crateY = 100;
 
 // NOTE: sync.h is used for some mouse click controls
 
@@ -53,19 +55,24 @@ void Update() {
 
 	/*
 	if (upPressed == true) {
-		moveMeFlat(1.1f);
+		//moveMeFlat(1.1f);
+		crateY = crateY + 1.1f;
 	}
 	if (downPressed == true) {
-		moveMeFlat(-1.1f);
+		//moveMeFlat(-1.1f);
+		crateY = crateY - 1.1f;
 	}
 	*/
+	
 	if (leftPressed == true) {
 		camAngY -= 0.03f;
 		orientMe(camAngY);
+		//crateX = crateX + 1.1f;
 	}
 	if (rightPressed == true) {
 		camAngY += 0.03f;
 		orientMe(camAngY);
+		//crateX = crateX - 1.1f;
 	}
 	if (aKey == true) {
 		moveMeFlatStrafe(-1.1f);
