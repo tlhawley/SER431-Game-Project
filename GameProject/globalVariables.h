@@ -19,7 +19,7 @@ float camx = 0.0f, camy = 1.75f, camz = 0.0f;
 float ox, oy, oz; // old x,y,z
 float gravity = 0.0;
 
-int health = 1000;
+int health = 20;
 int takingDamage = 0;
 
 int mouseX, mouseY, mouseOX, mouseOY;

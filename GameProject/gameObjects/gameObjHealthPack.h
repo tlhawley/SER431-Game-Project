@@ -27,12 +27,14 @@ healthPack newHealthPack(float x, float y, float z) {
 void initHealthPacks() {
 	healthPackAmount = 0;
 	// Intro to graphics 332 map
+	/*
 	healthPacks[0] = newHealthPack(-17.0f, 0.0f, 8.0f);
 	healthPacks[1] = newHealthPack(-20.0f, 0.0f, 8.0f);
 	healthPacks[2] = newHealthPack(-23.0f, 0.0f, 8.0f);
 	healthPacks[3] = newHealthPack(-17.0f, 0.0f, -8.0f);
 	healthPacks[4] = newHealthPack(-20.0f, 0.0f, -8.0f);
 	healthPacks[5] = newHealthPack(-23.0f, 0.0f, -8.0f);
+	*/
 	
 }
 

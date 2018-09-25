@@ -29,6 +29,9 @@ float materialSkyBox[] = {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,1};
 float materialMapUI[] = { 0,0,0,0,1,1,1,1,0,0,0,0,0.7f,0.8f,1,1,1 };
 
 float matarialAlpha1[] = { 0,0,0,0,1,1,1,0.3f,0,0,0,0,1,1,1,0.3f,1 };
+float materialAlpha2[] = { 0,0,0,0,0,0,0,0.7f,0,0,0,0,0,0,0,0.7f,1 };
+
+float materialCollisionBox[] = { 0,0,0,0,.1f,1,.1f,0.3f,0,0,0,0,.1f,1,.1f,0.3f,1 };
 
 void materialz();
 

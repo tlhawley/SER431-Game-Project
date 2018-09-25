@@ -53,6 +53,7 @@
 #include "gameObjects/gameObjFurniture.h"
 #include "gameObjects/gameObjBoundingBox.h"
 #include "gameObjects/gameObjBaseModel.h"
+#include "gameObjects/gameObjPointLight.h"
 
 #include "displayAll.h"
 #include "reflection.h"

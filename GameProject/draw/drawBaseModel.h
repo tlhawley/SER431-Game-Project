@@ -33,15 +33,36 @@ void drawBaseModel() {
 		break;
 	case 6:
 		//setMaterialAdvanced(materialWood);
-		glRotatef(180, 0, 1, 0);
+		//glRotatef(180, 0, 1, 0);
 		glCallList(meshTree);
-		glRotatef(-180, 0, 1, 0);
+		//glRotatef(-180, 0, 1, 0);
 		break;
 	case 7:
 		glRotatef(180, 0, 1, 0);
 		glCallList(meshGrassCluster);
 		glRotatef(-180, 0, 1, 0);
 		break;
+	case 11:
+		// Level 1 - Forest Grass
+		glCallList(meshLV1ForestGrass);
+		break;
+	case 12:
+		// Level 1 - Forest Trees
+		glCallList(meshLV1ForestTrees);
+		break;
+	case 13:
+		// Level 1 - Forest Rocks
+		glCallList(meshLV1Rocks);
+		break;
+	case 14:
+		// Level 1 - Structures
+		glCallList(meshLV1Structures);
+		break;
+	case 15:
+		// Level 1 - Floor
+		glCallList(meshLV1Floor);
+		break;
 	}
+	
 
 }
