@@ -36,11 +36,12 @@ Mesh* mesh1;
 Mesh* mesh2;
 Mesh* mesh3;
 Mesh* mesh4;
+Mesh* mesh5;
 
 int width = 1200;
 int height = 600;
 float ratio = 1.0;
-GLuint display1, display2, display3, display4;
+GLuint display1, display2, display3, display4, displayParticlePlane;
 
 // controling parameters
 int mouse_button;
@@ -107,7 +108,7 @@ Vec3f skyMap(float a) {
 	return ((1 - a) * white + a * color);
 }
 
-// Load a DIB/BMP file from disk.
+// Load a DIB/BMP file from disk. - NOTE: Modified to accept rgb or rgba files
 GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info, byte alphaType) {
 	FILE *fp;      // open file pointer
 	GLubyte * bits; // bitmap pixel bits
