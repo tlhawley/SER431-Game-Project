@@ -53,6 +53,9 @@ float y_angle = 0.0;
 // textures with BITMAPS
 GLuint textureArray[8];
 
+//NOTE: Forward declared new material function
+void setMaterialAdvanced(float MatData[17]);
+
 // mouse
 void mouse(int button, int state, int x, int y) {
 	mouse_x = x;
@@ -105,7 +108,7 @@ Vec3f skyMap(float a) {
 }
 
 // Load a DIB/BMP file from disk.
-GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info) {
+GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info, byte alphaType) {
 	FILE *fp;      // open file pointer
 	GLubyte * bits; // bitmap pixel bits
 	int bitsize;   // Size of bitmap
@@ -139,8 +142,10 @@ GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info) {
 		return (NULL);
 	}
 	// Now that we have all the header info read in, allocate memory for the bitmap and read *it* in.
-	if ((bitsize = (*info)->bmiHeader.biSizeImage) == 0)
+	if ((bitsize = (*info)->bmiHeader.biSizeImage) == 0) {
 		bitsize = ((*info)->bmiHeader.biWidth*(*info)->bmiHeader.biBitCount + 7) / 8 * abs((*info)->bmiHeader.biHeight);
+		if (alphaType == 1) { bitsize = bitsize + 128 * 128 * 8; }
+		}
 	if ((bits = (GLubyte *)malloc(bitsize)) == NULL) {
 		// Couldn't allocate memory - return NULL!
 		free(*info);
@@ -159,20 +164,24 @@ GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info) {
 	return (bits);
 }
 
-// Create texture from BMP file
-void bmpTexture(UINT textureArray[], const char *file, int n) {
+// Create texture from BMP file - NOTE: Modified to accept rgb or rgba files
+void bmpTexture(UINT textureArray[], const char *file, int n, byte alphaType) {
 	BITMAPINFO *bitmapInfo; // Bitmap information
 	GLubyte    *bitmapBits; // Bitmap data
 	if (!file) {
 		cout << "texture file not found!" << endl;
 		return;
 	}
-	bitmapBits = LoadDIBitmap(file, &bitmapInfo);
+	bitmapBits = LoadDIBitmap(file, &bitmapInfo, alphaType);
 	glGenTextures(1, &textureArray[n]);
 	glBindTexture(GL_TEXTURE_2D, textureArray[n]);
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // must set to 1 for compact data
 										   // glTexImage2D Whith size and minification
-	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, bitmapInfo->bmiHeader.biWidth, bitmapInfo->bmiHeader.biHeight, GL_BGR_EXT, GL_UNSIGNED_BYTE, bitmapBits);
+	if (alphaType == 0) {
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 4, bitmapInfo->bmiHeader.biWidth, bitmapInfo->bmiHeader.biHeight, GL_BGR_EXT, GL_UNSIGNED_BYTE, bitmapBits);
+	} else {
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 4, bitmapInfo->bmiHeader.biWidth, bitmapInfo->bmiHeader.biHeight, GL_BGRA_EXT, GL_UNSIGNED_BYTE, bitmapBits);
+	}
 }
 
 // OBJ file - str to int
@@ -479,3 +488,25 @@ GLuint meshToDisplayList(Mesh* m, int id, int textureId) {
 	glEndList();
 	return listID;
 }
+
+
+
+// Material Types
+float materialEmissive[] = { 0,0,0,0,1,1,1,1.0f,0,0,0,0,1,1,1,1.0f,1 };
+float materialAlpha2[] = { 0,0,0,0,0,0,0,0.7f,0,0,0,0,0,0,0,0.7f,1 };
+
+//NOTE: Added material setting function
+void setMaterialAdvanced(float MatData[17]) {
+	// Makes a Material
+	float MatAmbient[] = { MatData[0], MatData[1], MatData[2], MatData[3] };
+	float MatDiffuse[] = { MatData[4], MatData[5], MatData[6], MatData[7] };
+	float MatSpecular[] = { MatData[8], MatData[9], MatData[10], MatData[11] };
+	float MatEmission[] = { MatData[12], MatData[13], MatData[14], MatData[15] };
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, MatAmbient);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, MatDiffuse);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, MatSpecular);
+	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, MatData[16]);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, MatEmission);
+}
+
+
