@@ -511,3 +511,7 @@ void setMaterialAdvanced(float MatData[17]) {
 }
 
 
+// Random Numbers Source: https://stackoverflow.com/questions/10776073/random-double-between-min-and-max
+double getRnd(double min, double max) {
+	return ((double)rand()*(max - min) / (double)RAND_MAX - min)-abs(min-max);
+}

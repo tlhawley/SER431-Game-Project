@@ -59,6 +59,23 @@ public:
 		return sin(2 * (x*scale) + total);
 	}
 
+	// perlinCustom
+	double perlinCustom(float x, float y, double scale, double persistence, double octaves, bool sinus) {
+		double total = 0;
+		double frequency, amplitude;
+		for (int i = 0; i<octaves; i++) {
+			frequency = pow(2, (double)i);
+			amplitude = pow(persistence, (double)-i) * 2;
+			total = total + noise(scale*frequency* x, scale*frequency* y, 11.5) * amplitude;
+		}
+		if (sinus) {
+			return sin(2 * (x*scale) + total);
+		}
+		else {
+			return total;
+		}
+	}
+
 	// perlinMultiscale
 	double perlinMultiscale(float x, float y) {
 		double total = 0;
