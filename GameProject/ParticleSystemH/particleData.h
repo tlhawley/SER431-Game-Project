@@ -77,7 +77,7 @@ pSystem flameParticles() {
 	pSystemData.lifeLength = pSystemData.lifeMin;
 
 	//pSystemData.emissionRate = 20; // bigger number less particles
-	pSystemData.emissionAmount = 8;
+	pSystemData.emissionAmount = 2;
 
 	pSystemData.useDestroySubParticles = true;
 	pSystemData.destroyParticleID = 3; // flame smoke sub particles
