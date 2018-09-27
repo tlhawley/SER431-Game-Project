@@ -11,6 +11,7 @@ struct xyz {
 	float z;
 };
 
+/*
 // Similar to the xyz struct, this contains a min and max range for each x,y,z value
 struct xyzRng {
 	float xMin;
@@ -20,7 +21,9 @@ struct xyzRng {
 	float yMax;
 	float zMax;
 };
+*/
 
+/*
 // Used for color data involving red,green,blue, and alpha values
 struct rgba {
 	float r;
@@ -28,13 +31,16 @@ struct rgba {
 	float b;
 	float a;
 };
+*/
 
+/*
 // Used to set transitioning color values at given points in time
 struct timeColor {
 	rgba colorValues;
 	float colorTime;
 	timeColor *next; // a linked list struct allowing any number of color points
 };
+*/
 
 // An advansed structure containing all date within a particle system
 /*
@@ -79,7 +85,8 @@ struct pSystem {
 	bool useScaleMultiplier;
 	xyz scaleMultiplier;
 	
-	rgba colors[2]; // Currently only supports a beginning and ending color transitions - TODO: Add dynamic time based color settings
+	//rgba colors[2]; // Currently only supports a beginning and ending color transitions - TODO: Add dynamic time based color settings
+	int colorFunction;
 
 	// Floor Collision
 	bool useFloorCollider; // ignores floor collision if false
@@ -110,7 +117,7 @@ struct pSystem {
 	float delayTime;	// This is the amount of delay before the particles begin to spawn
 	float stopTime;		// If loopParticles = false then this will determine when the particles will stop spawning
 	float emissionRate;   // The speed the particles are spawned at 0=MaxSpeed		1=DelayOneSecond before spawning more	0.5= delay half a second before spawning more
-	float emmisionAmount; // The amount of particles spawned at any given time
+	float emissionAmount; // The amount of particles spawned at any given time
 	bool loopParticles; // TODO: This may need to be in a separate data type????
 
 	GLuint displayID; // model to be displayed
@@ -123,6 +130,15 @@ struct pSystem {
 	// Sub Model IDs??? - could be added to create animated particle systems
 };
 
+// Forward declarations for particleData.h & particleColorData.h
+pSystem flameParticles();
+const int flameColors = 1;
+pSystem smokeParticles();
+const int smokeColors = 2;
+pSystem flameSmokeSubParticles();
+const int smokeDarkColors = 3;
+pSystem snowParticles();
+const int snowColors = 4;
 
 // a structure to hold a particle
 class Particle { //TODO: Should take a struct perameter to allow a variety of particle system types
@@ -134,60 +150,7 @@ public:			//TODO: Color, Scale, Rotation, Acceleration, Noise, etc...
 	//float life;
 	Particle* next;
 	Particle() { // No longer using default particle systems
-
-		pSystemData.useGravity = false;
-		pSystemData.position.x = getRnd(-2,2)+0.5;
-		pSystemData.position.z = getRnd(-2, 2) + 0.5f;
-		pSystemData.position.y = 0.0f;
-		pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f;
-		pSystemData.velocity.y = (10000 - rand() % 20000) / 10000.0f+8.0f;
-		pSystemData.velocity.z = 0.00001f; //(10000 - rand() % 20000) / 10000.0f;
-		pSystemData.acceleration.x = 1.01f;
-		pSystemData.acceleration.y = 0.0f; //-1.81f;
-		pSystemData.acceleration.z = 1.01f;
-		pSystemData.useVelocityMultiplier = true;
-		pSystemData.velocityMultiplier.x = 60.0f;
-		pSystemData.velocityMultiplier.y = 59.0f;
-		pSystemData.velocityMultiplier.z = 60.0f;
-
-		pSystemData.pointAtCam = true;
-		pSystemData.rotation.x = 0.0f;
-		pSystemData.rotation.y = 0.0f;
-		pSystemData.rotation.z = 0.0f;
-		pSystemData.rotationVelocity.x = 0.0f;
-		pSystemData.rotationVelocity.y = 0.0f;
-		pSystemData.rotationVelocity.z = 400.0f;
-		pSystemData.rotationAcceleration.x = 0.0f;
-		pSystemData.rotationAcceleration.y = 0.0f;
-		pSystemData.rotationAcceleration.z = 0.0f;
-		pSystemData.useRotationMultiplier = true;
-		pSystemData.rotationMultiplier.x = 60.0f;
-		pSystemData.rotationMultiplier.y = 60.0f;
-		pSystemData.rotationMultiplier.z = 57.0f;
-
-		pSystemData.noScaleStretching = true;
-		pSystemData.scale.x = 1.01f;
-		pSystemData.scale.y = 9.81f;
-		pSystemData.scale.z = 1.01f;
-		pSystemData.scaleVelocity.x = 1.0f;
-		pSystemData.scaleVelocity.y = 0.0f;
-		pSystemData.scaleVelocity.z = 0.0f;
-		pSystemData.scaleAcceleration.x = 0.0f;
-		pSystemData.scaleAcceleration.y = 0.0f;
-		pSystemData.scaleAcceleration.z = 0.0f;
-		pSystemData.useScaleMultiplier = false;
-		pSystemData.scaleMultiplier.x = 59.f;
-		pSystemData.scaleMultiplier.y = 60.0f;
-		pSystemData.scaleMultiplier.z = 60.0f;
-
-		pSystemData.useFloorCollider = true;
-		pSystemData.destroyOnContact = false;
-		pSystemData.floorHeight = 0.0f;
-		pSystemData.bounceMultiplier = 0.9f;
-		pSystemData.floorFriction = 0.9f;
-
-		pSystemData.lifeMin = 5.0f; //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData = smokeParticles();
 	}
 	Particle(pSystem pSystemData) {
 		this->pSystemData = pSystemData;
@@ -202,6 +165,24 @@ public:
 	// add
 	void add() {
 		Particle* p = new Particle();
+		p->next = particle_head;
+		particle_head = p;
+	}
+	void add(pSystem pSystemData) { // creates x amount of particles
+		for (int i = 0; i < pSystemData.emissionAmount; i++) {
+			addAmount(pSystemData);
+		}
+	}
+	void addAmount(pSystem pSystemData) { // Creates a single particle
+		Particle* p = new Particle(pSystemData);
+		p->next = particle_head;
+		particle_head = p;
+	}
+	void addParticleAt(pSystem pSystemData, xyz position) { // creates a single particle at a specified starting location
+		pSystemData.position.x = position.x;
+		pSystemData.position.y = position.y;
+		pSystemData.position.z = position.z;
+		Particle* p = new Particle(pSystemData);
 		p->next = particle_head;
 		particle_head = p;
 	}
@@ -318,6 +299,12 @@ public:
 		Particle* prev = 0;
 		while (curr) {
 			if (curr->pSystemData.lifeMin<0) {
+				if (curr->pSystemData.useDestroySubParticles) {
+					if (curr->pSystemData.destroyParticleID == 3) {
+						addParticleAt(flameSmokeSubParticles(), curr->pSystemData.position);
+					}
+				}
+
 				if (prev) {
 					prev->next = curr->next;
 				}
@@ -343,7 +330,7 @@ ParticleSystem ps;
 
 
 
-
+void setParticleColor(Particle* curr);
 
 
 
@@ -372,12 +359,14 @@ void drawParticles() {
 		float blue = ((rand() + (int)(curr->life * 200)) % 255) / 255.0f;
 		float materialCustom[] = { 0,0,0,0,red,green,blue,1.0f,0,0,0,0,red,green,blue,1.0f,1 };
 		*/
-		float red = 1;
+		/*
+		float red = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
 		float green = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
 		float blue = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
 		float alpha = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
-		float materialCustom[] = { 0,0,0,0,red,green,blue,alpha,0,0,0,0,red,green,blue,alpha,1 };
-		setMaterialAdvanced(materialCustom);
+		*/
+
+		setParticleColor(curr);
 
 		glPushMatrix();
 		glScalef(100.0, 100.0, 100.0); // TODO: Scale
@@ -413,7 +402,7 @@ void drawParticles() {
 		//glRotatef(curr->position[2], 0.0f, 0.0f, 1.0f);
 
 		//glCallList(display3);
-		glCallList(displayParticlePlane);
+		glCallList(curr->pSystemData.displayID);
 		glPopMatrix();
 		curr = curr->next;
 	}

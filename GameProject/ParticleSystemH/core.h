@@ -36,12 +36,14 @@ Mesh* mesh1;
 Mesh* mesh2;
 Mesh* mesh3;
 Mesh* mesh4;
-Mesh* mesh5;
+Mesh* mesh5; // smoke
+Mesh* mesh6; // flame
+Mesh* mesh7; // snow
 
 int width = 1200;
 int height = 600;
 float ratio = 1.0;
-GLuint display1, display2, display3, display4, displayParticlePlane;
+GLuint display1, display2, display3, display4, displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow;
 
 // controling parameters
 int mouse_button;
@@ -494,7 +496,6 @@ GLuint meshToDisplayList(Mesh* m, int id, int textureId) {
 
 // Material Types
 float materialEmissive[] = { 0,0,0,0,1,1,1,1.0f,0,0,0,0,1,1,1,1.0f,1 };
-float materialAlpha2[] = { 0,0,0,0,0,0,0,0.7f,0,0,0,0,0,0,0,0.7f,1 };
 
 //NOTE: Added material setting function
 void setMaterialAdvanced(float MatData[17]) {
@@ -510,8 +511,12 @@ void setMaterialAdvanced(float MatData[17]) {
 	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, MatEmission);
 }
 
+int countingRand = 0;
 
 // Random Numbers Source: https://stackoverflow.com/questions/10776073/random-double-between-min-and-max
 double getRnd(double min, double max) {
+	countingRand = countingRand + 99999;
+	countingRand = countingRand * 37;
+	srand(countingRand);
 	return ((double)rand()*(max - min) / (double)RAND_MAX - min)-abs(min-max);
 }
