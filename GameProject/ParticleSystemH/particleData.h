@@ -76,7 +76,7 @@ pSystem flameParticles() {
 	pSystemData.lifeMin = 1.0f; //rand() % 10000 / 10000.0f+10.0f;
 	pSystemData.lifeLength = pSystemData.lifeMin;
 
-	//pSystemData.emissionRate = 20; // bigger number less particles
+	pSystemData.emissionRate = 1; // bigger number less particles
 	pSystemData.emissionAmount = 2;
 
 	pSystemData.useDestroySubParticles = true;
@@ -155,6 +155,7 @@ pSystem flameSmokeSubParticles() {
 	pSystemData.lifeMin = rand() % 10000 / 10000.0f + 1.0f; //rand() % 10000 / 10000.0f+10.0f;
 	pSystemData.lifeLength = pSystemData.lifeMin;
 
+	pSystemData.emissionRate = 1;
 	pSystemData.emissionAmount = 1;
 
 	pSystemData.displayID = displayParticlePlane;
@@ -234,6 +235,7 @@ pSystem smokeParticles() {
 	pSystemData.lifeMin = 5.0f; //rand() % 10000 / 10000.0f+10.0f;
 	pSystemData.lifeLength = pSystemData.lifeMin;
 
+	pSystemData.emissionRate = 1;
 	pSystemData.emissionAmount = 1;
 
 	pSystemData.displayID = displayParticlePlane;
@@ -327,7 +329,7 @@ pSystem snowParticles() {
 	pSystemData.lifeMin = 14.0f; //rand() % 10000 / 10000.0f+10.0f;
 	pSystemData.lifeLength = pSystemData.lifeMin;
 
-	//pSystemData.emissionRate = 20; // bigger number less particles
+	pSystemData.emissionRate = 1; // bigger number less particles
 	pSystemData.emissionAmount = 10;
 
 	pSystemData.useDestroySubParticles = false;
@@ -343,3 +345,74 @@ pSystem snowParticles() {
 
 
 
+pSystem bubbleParticles() {
+	pSystem pSystemData;
+
+	pSystemData.useGravity = true;
+	pSystemData.position.x = 0.5;
+	pSystemData.position.z = 0.5f;
+	pSystemData.position.y = 0.0f;
+	//pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f + 3.0f;
+	pSystemData.velocity.x = getRnd(-2.5, 2.5);
+	pSystemData.velocity.y = getRnd(-10, -8);
+	pSystemData.velocity.z = getRnd(-2.5, 2.5); //(10000 - rand() % 20000) / 10000.0f;
+	pSystemData.acceleration.x = 0.0f;
+	pSystemData.acceleration.y = 0.0f; //-1.81f;
+	pSystemData.acceleration.z = 0.0f;
+	pSystemData.useVelocityMultiplier = false;
+	pSystemData.velocityMultiplier.x = 60.0f;
+	pSystemData.velocityMultiplier.y = 59.0f;
+	pSystemData.velocityMultiplier.z = 60.0f;
+
+	pSystemData.pointAtCam = true;
+	pSystemData.rotation.x = 0.0f;
+	pSystemData.rotation.y = 0.0f;
+	pSystemData.rotation.z = 0.0f;
+	pSystemData.rotationVelocity.x = 0.0f;
+	pSystemData.rotationVelocity.y = 0.0f;
+	pSystemData.rotationVelocity.z = 0.0f;
+	pSystemData.rotationAcceleration.x = 0.0f;
+	pSystemData.rotationAcceleration.y = 0.0f;
+	pSystemData.rotationAcceleration.z = 0.0f;
+	pSystemData.useRotationMultiplier = false;
+	pSystemData.rotationMultiplier.x = 60.0f;
+	pSystemData.rotationMultiplier.y = 60.0f;
+	pSystemData.rotationMultiplier.z = 61.0f;
+
+	pSystemData.noScaleStretching = true;
+	pSystemData.scale.x = getRnd(0.8, 1.5);
+	pSystemData.scale.y = 0.8f;
+	pSystemData.scale.z = 0.8f;
+	pSystemData.scaleVelocity.x = 0.0f;
+	pSystemData.scaleVelocity.y = 0.0f;
+	pSystemData.scaleVelocity.z = 0.0f;
+	pSystemData.scaleAcceleration.x = 0.0f;
+	pSystemData.scaleAcceleration.y = 0.0f;
+	pSystemData.scaleAcceleration.z = 0.0f;
+	pSystemData.useScaleMultiplier = false;
+	pSystemData.scaleMultiplier.x = 59.f;
+	pSystemData.scaleMultiplier.y = 60.0f;
+	pSystemData.scaleMultiplier.z = 60.0f;
+
+	pSystemData.colorFunction = snowColors; // uses white for bubbles
+
+	pSystemData.useFloorCollider = true;
+	pSystemData.destroyOnContact = false;
+	pSystemData.floorHeight = 0.0f;
+	pSystemData.bounceMultiplier = 0.9f;
+	pSystemData.floorFriction = 0.9f;
+
+	pSystemData.lifeMin = 8.0f; //rand() % 10000 / 10000.0f+10.0f;
+	pSystemData.lifeLength = pSystemData.lifeMin;
+
+	pSystemData.emissionRate = 4; // bigger number less particles
+	pSystemData.emissionAmount = 1;
+
+	pSystemData.useDestroySubParticles = false;
+	pSystemData.destroyParticleID = 3; // flame smoke sub particles
+									   //pSystemData.subParticleID = 3;
+
+	pSystemData.displayID = displayParticlePlaneBubbles;
+
+	return pSystemData;
+}

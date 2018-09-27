@@ -23,7 +23,7 @@ void mySpecial(int key, int x, int y) {
 	case GLUT_KEY_LEFT:
 		leftPressed = true;
 		particleSystemType++;
-		if (particleSystemType > 2) {
+		if (particleSystemType > 3) {
 			particleSystemType = 0;
 		}
 		break;
@@ -31,7 +31,7 @@ void mySpecial(int key, int x, int y) {
 		rightPressed = true;
 		particleSystemType--;
 		if (particleSystemType < 0) {
-			particleSystemType = 2;
+			particleSystemType = 3;
 		}
 		break;
 	}

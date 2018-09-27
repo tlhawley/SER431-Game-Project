@@ -39,11 +39,12 @@ Mesh* mesh4;
 Mesh* mesh5; // smoke
 Mesh* mesh6; // flame
 Mesh* mesh7; // snow
+Mesh* mesh8; // bubble
 
 int width = 1200;
 int height = 600;
 float ratio = 1.0;
-GLuint display1, display2, display3, display4, displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow;
+GLuint display1, display2, display3, display4, displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles;
 
 // controling parameters
 int mouse_button;

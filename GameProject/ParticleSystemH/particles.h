@@ -116,7 +116,7 @@ struct pSystem {
 
 	float delayTime;	// This is the amount of delay before the particles begin to spawn
 	float stopTime;		// If loopParticles = false then this will determine when the particles will stop spawning
-	float emissionRate;   // The speed the particles are spawned at 0=MaxSpeed		1=DelayOneSecond before spawning more	0.5= delay half a second before spawning more
+	int emissionRate;   // The speed the particles are spawned at 0=MaxSpeed		1=DelayOneSecond before spawning more	0.5= delay half a second before spawning more
 	float emissionAmount; // The amount of particles spawned at any given time
 	bool loopParticles; // TODO: This may need to be in a separate data type????
 
@@ -139,6 +139,7 @@ pSystem flameSmokeSubParticles();
 const int smokeDarkColors = 3;
 pSystem snowParticles();
 const int snowColors = 4;
+pSystem bubbleParticles();
 
 // a structure to hold a particle
 class Particle { //TODO: Should take a struct perameter to allow a variety of particle system types
@@ -169,8 +170,12 @@ public:
 		particle_head = p;
 	}
 	void add(pSystem pSystemData) { // creates x amount of particles
-		for (int i = 0; i < pSystemData.emissionAmount; i++) {
-			addAmount(pSystemData);
+		__int64 end_clock;
+		QueryPerformanceCounter((LARGE_INTEGER*)&end_clock);
+		if ((int)end_clock % pSystemData.emissionRate == 0) {
+			for (int i = 0; i < pSystemData.emissionAmount; i++) {
+				addAmount(pSystemData);
+			}
 		}
 	}
 	void addAmount(pSystem pSystemData) { // Creates a single particle
