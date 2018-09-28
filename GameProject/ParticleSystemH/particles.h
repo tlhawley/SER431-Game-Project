@@ -1,8 +1,13 @@
 #pragma once
 
 //Notes:
-// Modified position and direction(velocity) to use an xyz struct instead of an array [0],[1],[2]
-// The direction varible has been refactored to velocity
+// Added lots of new features...
+
+
+// Enum used to identify different particle systems
+enum ParID { flame, smoke, snow, bubbles, flameSmoke };
+
+
 
 // Used for variables involving xyz axis such as - position, velocity, acceleration, scale, rotation...
 struct xyz {
@@ -11,53 +16,7 @@ struct xyz {
 	float z;
 };
 
-/*
-// Similar to the xyz struct, this contains a min and max range for each x,y,z value
-struct xyzRng {
-	float xMin;
-	float yMin;
-	float zMin;
-	float xMax;
-	float yMax;
-	float zMax;
-};
-*/
 
-/*
-// Used for color data involving red,green,blue, and alpha values
-struct rgba {
-	float r;
-	float g;
-	float b;
-	float a;
-};
-*/
-
-/*
-// Used to set transitioning color values at given points in time
-struct timeColor {
-	rgba colorValues;
-	float colorTime;
-	timeColor *next; // a linked list struct allowing any number of color points
-};
-*/
-
-// An advansed structure containing all date within a particle system
-/*
-struct pSystem {
-	xyz position;
-	xyz velocity;
-	xyz acceleration;
-	xyz rotation;
-	xyz rotationVelocity;
-	xyz rotationAcceleration;
-	xyz scale;
-	xyz scaleVelocity;
-	xyz scaleAcceleration;
-	rgba colors;
-	float life;
-	GLuint displayID; // model to be displayed
-};*/
 
 struct pSystem {
 
@@ -80,14 +39,14 @@ struct pSystem {
 	bool useRotationMultiplier;
 	xyz rotationMultiplier; // multiplies the rotationVelocity
 
-	// Scale
+							// Scale
 	bool noScaleStretching; // This is recomended and will make the xyz scale values to be equivalent. Only using x scale data
 	xyz scale; // particle starting size
 	xyz scaleVelocity; // the growth rate of the particles
 	xyz scaleAcceleration; // the acceleration of growth rate of the particles
 	bool useScaleMultiplier;
 	xyz scaleMultiplier;
-	
+
 	//rgba colors[2]; // Currently only supports a beginning and ending color transitions - TODO: Add dynamic time based color settings
 	int colorFunction;
 
@@ -99,7 +58,7 @@ struct pSystem {
 	float floorFriction; // determines the change of x&z velocity when in contact with the floor
 
 
-	//Perlin Noise - double perlinCustom(float x, float y, double scale, double persistence, double octaves, bool sinus) {...
+						 //Perlin Noise - double perlinCustom(float x, float y, double scale, double persistence, double octaves, bool sinus) {...
 	bool useNoise; // if false then ignore noise calculations
 	float noiseOffset; // the larger the number the farther appart the particles will be placed on the noise plane for calculations
 	float noiseSpeed; // the larger the number the faster the particles will move on the noise plane
@@ -124,37 +83,42 @@ struct pSystem {
 	bool loopParticles; // TODO: This may need to be in a separate data type????
 
 	GLuint displayID; // model to be displayed
-	
+
 	bool useTrailSubParticles; // trail particles are spawned in the location of the current particle
 	int trailParticleID; // DataType???? int???
-	
+
 	bool useDestroySubParticles; // spawns these particles when a particle is destoyed by timer or other factor
 	int destroyParticleID; // DataType???? int???
-	// Sub Model IDs??? - could be added to create animated particle systems
+						   // Sub Model IDs??? - could be added to create animated particle systems
 };
 
+
+
+
+
+
 // Forward declarations for particleData.h & particleColorData.h
-pSystem flameParticles();
 const int flameColors = 1;
-pSystem smokeParticles();
 const int smokeColors = 2;
-pSystem flameSmokeSubParticles();
 const int smokeDarkColors = 3;
-pSystem snowParticles();
 const int snowColors = 4;
-pSystem bubbleParticles();
+pSystem particleData(int p, float x, float y, float z);
+
+
+
+
+
+
 
 // a structure to hold a particle
-class Particle { //TODO: Should take a struct perameter to allow a variety of particle system types
-public:			//TODO: Color, Scale, Rotation, Acceleration, Noise, etc...
+class Particle {
+public:
 	
-	pSystem pSystemData; // contains a vast amount of information for a particle system
-	//xyz position;
-	//xyz velocity;
-	//float life;
+	pSystem pSystemData; // contains a vast amount of information for a particle system - coordinates, velocity, acceleration, scale, color, noise, etc...
+
 	Particle* next;
-	Particle() { // No longer using default particle systems
-		pSystemData = smokeParticles();
+	Particle() { // default particle
+		pSystemData = particleData(1, 0, 0, 0);
 	}
 	Particle(pSystem pSystemData) {
 		this->pSystemData = pSystemData;
@@ -172,58 +136,42 @@ public:
 		p->next = particle_head;
 		particle_head = p;
 	}
-	void add(pSystem pSystemData) { // creates x amount of particles
+	void add(int parID) { // creates x amount of particles
+		pSystem pSystemData;
+		pSystemData = particleData(parID, 0, 0, 0);
 		__int64 end_clock;
 		QueryPerformanceCounter((LARGE_INTEGER*)&end_clock);
 		if ((int)end_clock % pSystemData.emissionRate == 0) {
-			/*
-			countingRand = countingRand + 99999;
-			countingRand = countingRand * 37;
-			srand(countingRand);
-			*/
-			switch (pSystemData.pSystemTypeID) {
-			case 1:
-				for (int i = 0; i < pSystemData.emissionAmount; i++) {
-					addAmount(flameParticles());
-				}
-				break;
-			case 101:
-				for (int i = 0; i < pSystemData.emissionAmount; i++) {
-					addAmount(flameSmokeSubParticles());
-				}
-				break;
-			case 0:
-				for (int i = 0; i < pSystemData.emissionAmount; i++) {
-					addAmount(smokeParticles());
-				}
-				break;
-			case 2:
-				for (int i = 0; i < pSystemData.emissionAmount; i++) {
-					addAmount(snowParticles());
-				}
-				break;
-			case 3:
-				for (int i = 0; i < pSystemData.emissionAmount; i++) {
-					addAmount(bubbleParticles());
-				}
-				break;
+			
+			// Spawns x amount of particles
+			for (int i = 0; i < pSystemData.emissionAmount; i++) {
+				addAmount(particleData(pSystemData.pSystemTypeID,0,0,0));
 			}
 
 		}
 	}
-	void addAmount(pSystem pSystemData) { // Creates a single particle
+
+	void add(int parID,float x, float y, float z) { // creates x amount of particles with a given offset
+		pSystem pSystemData;
+		pSystemData = particleData(parID, 0, 0, 0);
+		__int64 end_clock;
+		QueryPerformanceCounter((LARGE_INTEGER*)&end_clock);
+		if ((int)end_clock % pSystemData.emissionRate == 0) {
+
+			// Spawns x amount of particles
+			for (int i = 0; i < pSystemData.emissionAmount; i++) {
+				addAmount(particleData(pSystemData.pSystemTypeID, x, y, z));
+			}
+
+		}
+	}
+
+	void addAmount(pSystem pSystemData) { // Creates a single particle - used by the add functions
 		Particle* p = new Particle(pSystemData);
 		p->next = particle_head;
 		particle_head = p;
 	}
-	void addParticleAt(pSystem pSystemData, xyz position) { // creates a single particle at a specified starting location
-		pSystemData.position.x = position.x;
-		pSystemData.position.y = position.y;
-		pSystemData.position.z = position.z;
-		Particle* p = new Particle(pSystemData);
-		p->next = particle_head;
-		particle_head = p;
-	}
+
 	// update
 	void update(float dt) {
 		Particle* p = particle_head;
@@ -338,9 +286,8 @@ public:
 		while (curr) {
 			if (curr->pSystemData.lifeMin<0) {
 				if (curr->pSystemData.useDestroySubParticles) {
-					if (curr->pSystemData.destroyParticleID == 3) {
-						addParticleAt(flameSmokeSubParticles(), curr->pSystemData.position);
-					}
+					add(curr->pSystemData.destroyParticleID, curr->pSystemData.position.x, curr->pSystemData.position.y, curr->pSystemData.position.z);
+					//addParticleAt(particleData(curr->pSystemData.destroyParticleID, 0, 0, 0), curr->pSystemData.position);
 				}
 
 				if (prev) {
@@ -361,68 +308,28 @@ public:
 	}
 };
 
+
 ParticleSystem ps;
-
-
-
-
-
-
-void setParticleColor(Particle* curr);
-
+void setParticleColor(Particle* curr); // forward declares color gradient function
 
 
 // draw particles
 void drawParticles() {
-	//setMaterialAdvanced(materialEmissive); //NOTE: Sets an emissive material for the particles
 
 	glDepthMask(GL_FALSE); // Fixes Transparency glitch
 	glEnable(GL_BLEND);
 	Particle* curr = ps.particle_head;
 
-
-	// glPointSize(2);
-	// glBegin(GL_POINTS);
-	// while (curr) {
-	//   glVertex3fv(curr->position);
-	//	 curr = curr->next;
-	// }
-	// glEnd();
 	while (curr) {
 
-		// Creates random color values - Warning: may cause seizures
-		/*
-		float red = ((rand() + (int)(curr->life * 200)) % 255) / 255.0f;
-		float green = ((rand() + (int)(curr->life * 200)) % 255) / 255.0f;
-		float blue = ((rand() + (int)(curr->life * 200)) % 255) / 255.0f;
-		float materialCustom[] = { 0,0,0,0,red,green,blue,1.0f,0,0,0,0,red,green,blue,1.0f,1 };
-		*/
-		/*
-		float red = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
-		float green = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
-		float blue = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
-		float alpha = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
-		*/
-
+		// Sets the color based on the particle system parameters
 		setParticleColor(curr);
 
 		glPushMatrix();
-		glScalef(100.0, 100.0, 100.0); // TODO: Scale
-									   // TODO: Color
-									   // TODO: Rotation
+		glScalef(100.0, 100.0, 100.0); // scale rotation and color complete
 
-
-		/*
-		if (p->pSystemData.useNoise) {
-			ImprovedNoise noise;
-			p->pSystemData.position.x += noise.perlinCustom(p->pSystemData.position.x, p->pSystemData.position.z, p->pSystemData.noiseScale,
-				p->pSystemData.noisePersistence, p->pSystemData.noiseOctaves, p->pSystemData.noiseSinus) * p->pSystemData.noiseVelocity.x * dt;
-			p->pSystemData.position.y += noise.perlinCustom(p->pSystemData.position.x, p->pSystemData.position.z, p->pSystemData.noiseScale,
-				p->pSystemData.noisePersistence, p->pSystemData.noiseOctaves, p->pSystemData.noiseSinus) * p->pSystemData.noiseVelocity.y * dt;
-			p->pSystemData.position.z += noise.perlinCustom(p->pSystemData.position.x, p->pSystemData.position.z, p->pSystemData.noiseScale,
-				p->pSystemData.noisePersistence, p->pSystemData.noiseOctaves, p->pSystemData.noiseSinus) * p->pSystemData.noiseVelocity.z * dt;
-		}
-		*/
+		// Positioning
+		// Offsets the position with perlin noise
 		if (curr->pSystemData.useNoise) {
 			ImprovedNoise noise;
 			float xnoise = curr->pSystemData.position.x + curr->pSystemData.position.y + curr->pSystemData.lifeMin*curr->pSystemData.noiseSpeed;
@@ -440,34 +347,28 @@ void drawParticles() {
 			glTranslatef(curr->pSystemData.position.x, curr->pSystemData.position.y, curr->pSystemData.position.z);
 		}
 		
+		// Scale only using the x scale value for all xyz
 		if (curr->pSystemData.noScaleStretching){
 			glScalef(curr->pSystemData.scale.x, curr->pSystemData.scale.x, curr->pSystemData.scale.x);
 		}
-		else {
+		else { // scale using the given xyz scale values
 			glScalef(curr->pSystemData.scale.x, curr->pSystemData.scale.y, curr->pSystemData.scale.z);
 		}
-		//glRotatef(90, 1, 0, 0);
+
+		// TODO: Add a velocity based rotation option
 		// Makes particles rotate to face the same angle as the camera
 		if (curr->pSystemData.pointAtCam) {
 			glRotatef(-y_angle, 0.0f, 1.0f, 0.0f);
-			//glRotatef(curr->life*400.0f + x_angle - 90.0f, 0.0f, 0.0f, 1.0f);
 			glRotatef(-x_angle, 1.0f, 0.0f, 0.0f);
-			//glRotatef(curr->pSystemData.lifeMin*400.0f, 0.0f, 0.0f, 1.0f);
 			glRotatef(curr->pSystemData.rotation.z, 0.0f, 0.0f, 1.0f);
 			glRotatef(-90, 1.0f, 0.0f, 0.0f);
 		}
-		else {
+		else { // rotates the particles using the given angle
 			glRotatef(curr->pSystemData.rotation.x, 1.0f, 0.0f, 0.0f);
 			glRotatef(curr->pSystemData.rotation.y, 0.0f, 1.0f, 0.0f);
 			glRotatef(curr->pSystemData.rotation.z, 0.0f, 0.0f, 1.0f);
 		}
 
-		//glScalef(curr->pSystemData.scale.x, curr->pSystemData.scale.y, curr->pSystemData.scale.z);
-
-		//glRotatef(curr->life*400.0f, 0.0f, 0.0f, 1.0f);
-		//glRotatef(curr->position[2], 0.0f, 0.0f, 1.0f);
-
-		//glCallList(display3);
 		glCallList(curr->pSystemData.displayID);
 		glPopMatrix();
 		curr = curr->next;
