@@ -87,7 +87,7 @@ public:
 			return sin(2 * (x*scale) + total);
 		}
 		else {
-			return total;
+			return (total-0.5f)*2.0f;
 		}
 	}
 

@@ -101,11 +101,11 @@ struct pSystem {
 	float noiseOffset; // the larger the number the farther appart the particles will be placed on the noise plane for calculations
 	float noiseSpeed; // the larger the number the faster the particles will move on the noise plane
 	double noiseScale;
-	double noisePersistece;
+	double noisePersistence;
 	double noiseOctaves;
 	bool noiseSinus;
 	xyz noiseVelocity; // this is used for calculating velocity changes in the particles
-
+	float noiseSeed;
 
 	//Sub particles will spawn when a particle dies
 	int subParticleID; // 0 (no sub particles), 1-? particles
@@ -273,19 +273,19 @@ public:
 
 
 			
-			
 			// modify position
 			p->pSystemData.position.x += p->pSystemData.velocity.x * dt;
 			p->pSystemData.position.y += p->pSystemData.velocity.y * dt;
+			p->pSystemData.position.z += p->pSystemData.velocity.z * dt;
 
 			// Floor Collision
 			if (p->pSystemData.useFloorCollider) {
-				if (p->pSystemData.position.y <= p->pSystemData.floorHeight) {
+				if (p->pSystemData.position.y < p->pSystemData.floorHeight) {
 					if (p->pSystemData.destroyOnContact) {
 						p->pSystemData.lifeMin = -1;
 					}
 					else {
-						p->pSystemData.position.y = 0.0f;
+						p->pSystemData.position.y = p->pSystemData.floorHeight;
 						p->pSystemData.velocity.y = abs(p->pSystemData.velocity.y) * p->pSystemData.bounceMultiplier;
 						p->pSystemData.velocity.x = p->pSystemData.velocity.x * p->pSystemData.floorFriction;
 						p->pSystemData.velocity.z = p->pSystemData.velocity.z * p->pSystemData.floorFriction;
@@ -293,7 +293,7 @@ public:
 					//p->position[1] -= dt * p->direction[1];
 				}
 			}
-			p->pSystemData.position.z += p->pSystemData.velocity.z * dt;
+			
 			// goto next particle
 			p = p->next;
 		}
@@ -377,7 +377,35 @@ void drawParticles() {
 		glScalef(100.0, 100.0, 100.0); // TODO: Scale
 									   // TODO: Color
 									   // TODO: Rotation
-		glTranslatef(curr->pSystemData.position.x, curr->pSystemData.position.y, curr->pSystemData.position.z);
+
+
+		/*
+		if (p->pSystemData.useNoise) {
+			ImprovedNoise noise;
+			p->pSystemData.position.x += noise.perlinCustom(p->pSystemData.position.x, p->pSystemData.position.z, p->pSystemData.noiseScale,
+				p->pSystemData.noisePersistence, p->pSystemData.noiseOctaves, p->pSystemData.noiseSinus) * p->pSystemData.noiseVelocity.x * dt;
+			p->pSystemData.position.y += noise.perlinCustom(p->pSystemData.position.x, p->pSystemData.position.z, p->pSystemData.noiseScale,
+				p->pSystemData.noisePersistence, p->pSystemData.noiseOctaves, p->pSystemData.noiseSinus) * p->pSystemData.noiseVelocity.y * dt;
+			p->pSystemData.position.z += noise.perlinCustom(p->pSystemData.position.x, p->pSystemData.position.z, p->pSystemData.noiseScale,
+				p->pSystemData.noisePersistence, p->pSystemData.noiseOctaves, p->pSystemData.noiseSinus) * p->pSystemData.noiseVelocity.z * dt;
+		}
+		*/
+		if (curr->pSystemData.useNoise) {
+			ImprovedNoise noise;
+			float xnoise = curr->pSystemData.position.x + curr->pSystemData.position.y + curr->pSystemData.lifeMin*curr->pSystemData.noiseSpeed;
+			float ynoise = curr->pSystemData.position.x + curr->pSystemData.position.y + curr->pSystemData.lifeMin*curr->pSystemData.noiseSpeed;
+			glTranslatef(noise.perlinCustom(xnoise, ynoise, curr->pSystemData.noiseScale,
+				curr->pSystemData.noisePersistence, curr->pSystemData.noiseOctaves, curr->pSystemData.noiseSinus) * curr->pSystemData.noiseVelocity.x + curr->pSystemData.position.x
+						,
+						noise.perlinCustom(xnoise + 12700, ynoise + 12700, curr->pSystemData.noiseScale,
+							curr->pSystemData.noisePersistence, curr->pSystemData.noiseOctaves, curr->pSystemData.noiseSinus) * curr->pSystemData.noiseVelocity.y + curr->pSystemData.position.y
+						,
+						noise.perlinCustom(xnoise + 31600, ynoise + 31600, curr->pSystemData.noiseScale,
+							curr->pSystemData.noisePersistence, curr->pSystemData.noiseOctaves, curr->pSystemData.noiseSinus) * curr->pSystemData.noiseVelocity.z + curr->pSystemData.position.z);
+		}
+		else {
+			glTranslatef(curr->pSystemData.position.x, curr->pSystemData.position.y, curr->pSystemData.position.z);
+		}
 		
 		if (curr->pSystemData.noScaleStretching){
 			glScalef(curr->pSystemData.scale.x, curr->pSystemData.scale.x, curr->pSystemData.scale.x);
