@@ -61,6 +61,9 @@ struct pSystem {
 
 struct pSystem {
 
+	// A unique id to identify the type of particle system
+	int pSystemTypeID;
+
 	// Positioning & Movement
 	xyz position;
 	xyz velocity;
@@ -173,9 +176,39 @@ public:
 		__int64 end_clock;
 		QueryPerformanceCounter((LARGE_INTEGER*)&end_clock);
 		if ((int)end_clock % pSystemData.emissionRate == 0) {
-			for (int i = 0; i < pSystemData.emissionAmount; i++) {
-				addAmount(pSystemData);
+			/*
+			countingRand = countingRand + 99999;
+			countingRand = countingRand * 37;
+			srand(countingRand);
+			*/
+			switch (pSystemData.pSystemTypeID) {
+			case 1:
+				for (int i = 0; i < pSystemData.emissionAmount; i++) {
+					addAmount(flameParticles());
+				}
+				break;
+			case 101:
+				for (int i = 0; i < pSystemData.emissionAmount; i++) {
+					addAmount(flameSmokeSubParticles());
+				}
+				break;
+			case 0:
+				for (int i = 0; i < pSystemData.emissionAmount; i++) {
+					addAmount(smokeParticles());
+				}
+				break;
+			case 2:
+				for (int i = 0; i < pSystemData.emissionAmount; i++) {
+					addAmount(snowParticles());
+				}
+				break;
+			case 3:
+				for (int i = 0; i < pSystemData.emissionAmount; i++) {
+					addAmount(bubbleParticles());
+				}
+				break;
 			}
+
 		}
 	}
 	void addAmount(pSystem pSystemData) { // Creates a single particle

@@ -512,12 +512,30 @@ void setMaterialAdvanced(float MatData[17]) {
 	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, MatEmission);
 }
 
-int countingRand = 0;
+int countingRand = 1267421;
+
+/*
+double randy() {
+	countingRand = countingRand + 31733 + rand() * 10000;
+	if (countingRand > 32767) {
+		countingRand = countingRand - 32767*2;
+	}
+	return countingRand;
+}
+*/
 
 // Random Numbers Source: https://stackoverflow.com/questions/10776073/random-double-between-min-and-max
 double getRnd(double min, double max) {
-	countingRand = countingRand + 99999;
-	countingRand = countingRand * 37;
-	srand(countingRand);
-	return ((double)rand()*(max - min) / (double)RAND_MAX - min)-abs(min-max);
+
+	countingRand = (countingRand * 9721 + 7873);
+	int num = abs(countingRand%100000);
+
+	return (max - min) * ((double)num / 100000.0) + min;
+
+	//srand(time(NULL));
+	//return rand() % ((max - min) + 1) + min;
+
+	//return min + (rand() % 10000 / 10000.0f) * (abs(min - max));
+	//return (max - min) * ((double)rand() / (double)RAND_MAX) + min;
+	//return ((double)randy()*(max - min) / (double)RAND_MAX - min)-abs(min-max);
 }

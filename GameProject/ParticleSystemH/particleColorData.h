@@ -29,7 +29,7 @@ void setParticleColor(Particle* curr) {
 		red = 0.1f;
 		green = 0.1f;
 		blue = 0.1f;
-		alpha = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength/4.0f;
+		alpha = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength/8.0f;
 		break;
 	case snowColors:
 		red = 1.0f;
