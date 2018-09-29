@@ -251,15 +251,15 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.position.y = 0.0f + y;
 		pSystemData.position.z = getRnd(-0.5, 0.5) + 0.5f + z;
 		//pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f + 3.0f;
-		pSystemData.velocity.x = getRnd(0, 2) + 3.0f;
+		pSystemData.velocity.x = getRnd(0, 2) + 1.0f;
 		pSystemData.velocity.y = getRnd(-2, 2) + 8.0f;
 		pSystemData.velocity.z = getRnd(-1, 1); //(10000 - rand() % 20000) / 10000.0f;
-		pSystemData.acceleration.x = 0.5f;
+		pSystemData.acceleration.x = 0.0f;
 		pSystemData.acceleration.y = 0.0f; //-1.81f;
 		pSystemData.acceleration.z = 0.0f;
 		pSystemData.useVelocityMultiplier = true;
 		pSystemData.velocityMultiplier.x = 60.0f;
-		pSystemData.velocityMultiplier.y = 59.0f;
+		pSystemData.velocityMultiplier.y = 59.5f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
 		pSystemData.pointAtCam = true;
@@ -446,7 +446,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.scaleMultiplier.y = 60.0f;
 		pSystemData.scaleMultiplier.z = 60.0f;
 
-		pSystemData.colorFunction = ParColorID::snowC; // uses white for bubbles
+		pSystemData.colorFunction = ParColorID::rainbowC; // rainbow bubbles
 
 		pSystemData.useFloorCollider = true;
 		pSystemData.destroyOnContact = false;
@@ -931,6 +931,78 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.destroyParticleID = 0;
 
 		pSystemData.displayID = displayParticlePlaneLeaves;
+
+		break;
+
+	case ParID::fog:
+
+		pSystemData.pSystemTypeID = ParID::fog;
+
+		pSystemData.useGravity = false;
+		pSystemData.position.x = getRnd(-40, 40) + 0.5 + x;
+		pSystemData.position.y = 0.0f + y;
+		pSystemData.position.z = getRnd(-40, 40) + 0.5f + z;
+		//pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f + 3.0f;
+		pSystemData.velocity.x = getRnd(0, 2) + 4.0f;
+		pSystemData.velocity.y = getRnd(-0.2, 0.2);
+		pSystemData.velocity.z = 0.0f; //(10000 - rand() % 20000) / 10000.0f;
+		pSystemData.acceleration.x = 0.0f;
+		pSystemData.acceleration.y = 0.0f; //-1.81f;
+		pSystemData.acceleration.z = 0.0f;
+		pSystemData.useVelocityMultiplier = false;
+		pSystemData.velocityMultiplier.x = 60.0f;
+		pSystemData.velocityMultiplier.y = 59.5f;
+		pSystemData.velocityMultiplier.z = 60.0f;
+
+		pSystemData.pointAtCam = true;
+		pSystemData.rotation.x = 0.0f;
+		pSystemData.rotation.y = 0.0f;
+		pSystemData.rotation.z = 0.0f;
+		pSystemData.rotationVelocity.x = 0.0f;
+		pSystemData.rotationVelocity.y = 0.0f;
+		pSystemData.rotationVelocity.z = 15.0f;
+		pSystemData.rotationAcceleration.x = 0.0f;
+		pSystemData.rotationAcceleration.y = 0.0f;
+		pSystemData.rotationAcceleration.z = 0.0f;
+		pSystemData.useRotationMultiplier = false;
+		pSystemData.rotationMultiplier.x = 60.0f;
+		pSystemData.rotationMultiplier.y = 60.0f;
+		pSystemData.rotationMultiplier.z = 57.0f;
+
+		pSystemData.noScaleStretching = true;
+		pSystemData.scale.x = 20.0f;
+		pSystemData.scale.y = 20.0f;
+		pSystemData.scale.z = 20.0f;
+		pSystemData.scaleVelocity.x = 0.0f;
+		pSystemData.scaleVelocity.y = 0.0f;
+		pSystemData.scaleVelocity.z = 0.0f;
+		pSystemData.scaleAcceleration.x = 0.0f;
+		pSystemData.scaleAcceleration.y = 0.0f;
+		pSystemData.scaleAcceleration.z = 0.0f;
+		pSystemData.useScaleMultiplier = false;
+		pSystemData.scaleMultiplier.x = 59.f;
+		pSystemData.scaleMultiplier.y = 60.0f;
+		pSystemData.scaleMultiplier.z = 60.0f;
+
+		pSystemData.colorFunction = ParColorID::fogC;
+
+		pSystemData.useFloorCollider = true;
+		pSystemData.destroyOnContact = false;
+		pSystemData.floorHeight = 0.0f;
+		pSystemData.bounceMultiplier = 0.9f;
+		pSystemData.floorFriction = 0.9f;
+
+		pSystemData.useNoise = false;
+
+		pSystemData.lifeMin = 5.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.lifeMin;
+
+		pSystemData.emissionRate = 1;
+		pSystemData.emissionAmount = 1;
+
+		pSystemData.useDestroySubParticles = false;
+
+		pSystemData.displayID = displayParticlePlane;
 
 		break;
 

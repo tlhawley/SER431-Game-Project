@@ -5,8 +5,8 @@
 
 
 // Enum used to identify different particle systems
-enum ParID { flame, flameWall, smoke, snow, bubbles, flameSmoke, waterfall, waterfallSub, frost, frostWall, ash, leaves};
-enum ParColorID { flameC, smokeC, smokeDarkC, snowC, waterfallC, waterfallSubC, frostC, leafC};
+enum ParID { flame, flameWall, smoke, snow, bubbles, flameSmoke, waterfall, waterfallSub, frost, frostWall, ash, leaves, fog};
+enum ParColorID { flameC, smokeC, smokeDarkC, snowC, waterfallC, waterfallSubC, frostC, leafC, rainbowC, fogC};
 
 
 // Used for variables involving xyz axis such as - position, velocity, acceleration, scale, rotation...

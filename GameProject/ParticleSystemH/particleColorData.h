@@ -64,11 +64,74 @@ void setParticleColor(Particle* curr) {
 		alpha = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength / 4.0f + 0.75f;
 		break;
 	case ParColorID::leafC:
-		
 		red = .9f;
 		green = 0.3f+curr->pSystemData.colorSeed/3000.0f;
 		blue = 0.1f;
 		alpha = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength / 4.0f + 0.75f;
+		break;
+	case ParColorID::rainbowC:
+		if (curr->pSystemData.lifeMin / curr->pSystemData.lifeLength > 0.8333333333333333) {
+			red = 1.0f;
+			green = (0.8333333333333333 -curr->pSystemData.lifeMin / curr->pSystemData.lifeLength) * 6.0 + 1;
+			blue = 0.0f;
+			alpha = 1.0f;
+		}
+		else {
+			if (curr->pSystemData.lifeMin / curr->pSystemData.lifeLength > 0.66666666666666666666) {
+				red = (-0.666666666666666666 + curr->pSystemData.lifeMin / curr->pSystemData.lifeLength) * 6.0;
+				green = 1.0;
+				blue = 0.0f;
+				alpha = 1.0f;
+			}
+			else {
+				if (curr->pSystemData.lifeMin / curr->pSystemData.lifeLength > 0.5) {
+					red = 0.0f;
+					green = 1.0f;
+					blue = (0.5 - curr->pSystemData.lifeMin / curr->pSystemData.lifeLength) * 6.0 + 1;
+					alpha = 1.0f;
+				}
+				else {
+					if (curr->pSystemData.lifeMin / curr->pSystemData.lifeLength > 0.333333333333333333333) {
+						red = 0.0f;
+						green = (-0.3333333333333333333 + curr->pSystemData.lifeMin / curr->pSystemData.lifeLength) * 6.0;
+						blue = 1.0f;
+						alpha = 1.0f;
+					}
+					else {
+						if (curr->pSystemData.lifeMin / curr->pSystemData.lifeLength > 0.16666666666666666666666666) {
+							red = (0.16666666666666666666666 - curr->pSystemData.lifeMin / curr->pSystemData.lifeLength) * 6.0 + 1;
+							green = 0.0f;
+							blue = 1.0f;
+							alpha = 1.0f;
+						}
+						else {
+							red = 1.0f;
+							green = 0.0f;
+							blue = 1.0f;
+							alpha = (curr->pSystemData.lifeMin / curr->pSystemData.lifeLength) * 6.0;
+						}
+					}
+				}
+			}
+		}
+		//alpha = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
+		break;
+	case ParColorID::fogC:
+		red = 0.4f;
+		green = 0.4f;
+		blue = 0.4f;
+
+		if (curr->pSystemData.lifeMin / curr->pSystemData.lifeLength > 0.8333333333333333) { // alpha fade in
+			alpha = (0.8333333333333333 - curr->pSystemData.lifeMin / curr->pSystemData.lifeLength) * 1.0 + 0.1666666666666666;
+		}
+		else { // alpha fade out
+			if (curr->pSystemData.lifeMin / curr->pSystemData.lifeLength < 0.16666666666666666666666666) {
+				alpha = (curr->pSystemData.lifeMin / curr->pSystemData.lifeLength) * 1.0;
+			}
+			else { // alpha solid
+				alpha = 0.1666666666666666666666f;
+			}
+		}
 		break;
 	default:
 		red = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength / 1.5f;
