@@ -5,8 +5,8 @@
 
 
 // Enum used to identify different particle systems
-enum ParID { flame, smoke, snow, bubbles, flameSmoke };
-
+enum ParID { flame, flameWall, smoke, snow, bubbles, flameSmoke, waterfall, waterfallSub, frost, frostWall, ash, leaves, fog};
+enum ParColorID { flameC, smokeC, smokeDarkC, snowC, waterfallC, waterfallSubC, frostC, leafC, rainbowC, fogC};
 
 
 // Used for variables involving xyz axis such as - position, velocity, acceleration, scale, rotation...
@@ -49,6 +49,7 @@ struct pSystem {
 
 	//rgba colors[2]; // Currently only supports a beginning and ending color transitions - TODO: Add dynamic time based color settings
 	int colorFunction;
+	int colorSeed;
 
 	// Floor Collision
 	bool useFloorCollider; // ignores floor collision if false
@@ -98,10 +99,6 @@ struct pSystem {
 
 
 // Forward declarations for particleData.h & particleColorData.h
-const int flameColors = 1;
-const int smokeColors = 2;
-const int smokeDarkColors = 3;
-const int snowColors = 4;
 pSystem particleData(int p, float x, float y, float z);
 
 

@@ -36,15 +36,13 @@ Mesh* mesh1;
 Mesh* mesh2;
 Mesh* mesh3;
 Mesh* mesh4;
-Mesh* mesh5; // smoke
-Mesh* mesh6; // flame
-Mesh* mesh7; // snow
-Mesh* mesh8; // bubble
+Mesh* mesh5; // particle plane
 
 int width = 1200;
 int height = 600;
 float ratio = 1.0;
-GLuint display1, display2, display3, display4, displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles;
+GLuint display1, display2, display3, display4, displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles, 
+		displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves;
 
 // controling parameters
 int mouse_button;
@@ -55,7 +53,7 @@ float x_angle = 0.0;
 float y_angle = 0.0;
 
 // textures with BITMAPS
-GLuint textureArray[8];
+GLuint textureArray[9];
 
 //NOTE: Forward declared new material function
 void setMaterialAdvanced(float MatData[17]);
@@ -518,7 +516,7 @@ int countingRand = 1267421;
 // Random Numbers between two values - Source: https://stackoverflow.com/questions/10776073/random-double-between-min-and-max
 double getRnd(double min, double max) {
 
-	countingRand = (countingRand * 9721 + 7873);
+	countingRand = (countingRand * 97213 + 78733);
 	int num = abs(countingRand%100000);
 
 	return (max - min) * ((double)num / 100000.0) + min;
