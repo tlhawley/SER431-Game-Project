@@ -1,7 +1,7 @@
 ﻿  GameProject.cpp
-c:\users\travi\documents\github\ser431-game-project\gameproject\particlesystemh\core.h(142): warning C4018: '<': signed/unsigned mismatch
-c:\users\travi\documents\github\ser431-game-project\gameproject\particlesystemh\core.h(159): warning C4018: '<': signed/unsigned mismatch
-c:\users\travi\documents\github\ser431-game-project\gameproject\particlesystemh\core.h(422): warning C4018: '<': signed/unsigned mismatch
-c:\users\travi\documents\github\ser431-game-project\gameproject\particlesystemh\core.h(449): warning C4018: '<': signed/unsigned mismatch
-c:\users\travi\documents\github\ser431-game-project\gameproject\gameproject.cpp(225): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  GameProject.vcxproj -> C:\Users\travi\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\particlesystemh\core.h(145): warning C4018: '<': signed/unsigned mismatch
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\particlesystemh\core.h(162): warning C4018: '<': signed/unsigned mismatch
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\particlesystemh\core.h(425): warning C4018: '<': signed/unsigned mismatch
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\particlesystemh\core.h(452): warning C4018: '<': signed/unsigned mismatch
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameproject.cpp(231): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  GameProject.vcxproj -> C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe

@@ -40,11 +40,14 @@ Mesh* mesh5; // smoke
 Mesh* mesh6; // flame
 Mesh* mesh7; // snow
 Mesh* mesh8; // bubble
+Mesh* mesh9; // ash
+Mesh* mesh10; // waterfallSub
 
 int width = 1200;
 int height = 600;
 float ratio = 1.0;
-GLuint display1, display2, display3, display4, displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles;
+GLuint display1, display2, display3, display4, displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles, 
+		displayParticlePlaneAsh, displayParticlePlaneWaterfallSub;
 
 // controling parameters
 int mouse_button;

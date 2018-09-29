@@ -589,7 +589,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.scale.x = 1.0f;
 		pSystemData.scale.y = 1.0f;
 		pSystemData.scale.z = 1.0f;
-		pSystemData.scaleVelocity.x = 20.0f;
+		pSystemData.scaleVelocity.x = 15.0f;
 		pSystemData.scaleVelocity.y = 0.0f;
 		pSystemData.scaleVelocity.z = 0.0f;
 		pSystemData.scaleAcceleration.x = 0.0f;
@@ -618,7 +618,7 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useDestroySubParticles = false;
 
-		pSystemData.displayID = displayParticlePlane;
+		pSystemData.displayID = displayParticlePlaneWaterfallSub;
 
 		break;
 	case ParID::frost:
@@ -845,7 +845,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.useDestroySubParticles = false;
 		pSystemData.destroyParticleID = 0;
 
-		pSystemData.displayID = displayParticlePlaneSnow;
+		pSystemData.displayID = displayParticlePlaneAsh;
 
 		break;
 	default:
