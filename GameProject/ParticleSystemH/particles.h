@@ -5,8 +5,8 @@
 
 
 // Enum used to identify different particle systems
-enum ParID { flame, smoke, snow, bubbles, flameSmoke };
-
+enum ParID { flame, flameWall, smoke, snow, bubbles, flameSmoke, waterfall, waterfallSub, frost, frostWall, ash };
+enum ParColorID { flameC, smokeC, smokeDarkC, snowC, waterfallC, waterfallSubC, frostC };
 
 
 // Used for variables involving xyz axis such as - position, velocity, acceleration, scale, rotation...
@@ -98,10 +98,6 @@ struct pSystem {
 
 
 // Forward declarations for particleData.h & particleColorData.h
-const int flameColors = 1;
-const int smokeColors = 2;
-const int smokeDarkColors = 3;
-const int snowColors = 4;
 pSystem particleData(int p, float x, float y, float z);
 
 
