@@ -848,6 +848,92 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.displayID = displayParticlePlaneAsh;
 
 		break;
+
+	case ParID::leaves:
+
+		pSystemData.pSystemTypeID = ParID::leaves;
+
+		pSystemData.useGravity = false;
+		pSystemData.position.x = -12.0f + x;
+		pSystemData.position.y = getRnd(-5.0, 10.0) + y;
+		pSystemData.position.z = getRnd(-10.0, 10.0) + z;
+
+		//pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f + 3.0f;
+		pSystemData.velocity.x = 20.01f;
+		pSystemData.velocity.y = 0.0f;
+		pSystemData.velocity.z = 0.0f; //(10000 - rand() % 20000) / 10000.0f;
+		pSystemData.acceleration.x = 0.0f;
+		pSystemData.acceleration.y = 0.0f; //-1.81f;
+		pSystemData.acceleration.z = 0.0f;
+		pSystemData.useVelocityMultiplier = false;
+		pSystemData.velocityMultiplier.x = 60.0f;
+		pSystemData.velocityMultiplier.y = 59.0f;
+		pSystemData.velocityMultiplier.z = 60.0f;
+
+		pSystemData.pointAtCam = false;
+		pSystemData.rotation.x = getRnd(0, 5000);
+		pSystemData.rotation.y = getRnd(0, 5000);
+		pSystemData.rotation.z = getRnd(0, 5000);
+		pSystemData.rotationVelocity.x = getRnd(-200, 200)*4.0f;
+		pSystemData.rotationVelocity.y = getRnd(-200, 200)*4.0f;
+		pSystemData.rotationVelocity.z = getRnd(-200, 200)*4.0f;
+		pSystemData.rotationAcceleration.x = 0.0f;
+		pSystemData.rotationAcceleration.y = 0.0f;
+		pSystemData.rotationAcceleration.z = 0.0f;
+		pSystemData.useRotationMultiplier = false;
+		pSystemData.rotationMultiplier.x = 60.0f;
+		pSystemData.rotationMultiplier.y = 60.0f;
+		pSystemData.rotationMultiplier.z = 61.0f;
+
+		pSystemData.noScaleStretching = true;
+		pSystemData.scale.x = getRnd(0.6f,0.8f);
+		pSystemData.scale.y = 0.2f;
+		pSystemData.scale.z = 0.2f;
+		pSystemData.scaleVelocity.x = 0.0f;
+		pSystemData.scaleVelocity.y = 0.0f;
+		pSystemData.scaleVelocity.z = 0.0f;
+		pSystemData.scaleAcceleration.x = 0.0f;
+		pSystemData.scaleAcceleration.y = 0.0f;
+		pSystemData.scaleAcceleration.z = 0.0f;
+		pSystemData.useScaleMultiplier = false;
+		pSystemData.scaleMultiplier.x = 59.f;
+		pSystemData.scaleMultiplier.y = 60.0f;
+		pSystemData.scaleMultiplier.z = 60.0f;
+
+		pSystemData.colorFunction = ParColorID::leafC;
+		pSystemData.colorSeed = getRnd(1, 1000);
+
+		pSystemData.useFloorCollider = true;
+		pSystemData.destroyOnContact = true;
+		pSystemData.floorHeight = 0.0f;
+		pSystemData.bounceMultiplier = 0.9f;
+		pSystemData.floorFriction = 0.9f;
+
+
+		pSystemData.useNoise = true;
+		pSystemData.noiseOctaves = 2;
+		pSystemData.noisePersistence = 2;
+		pSystemData.noiseScale = 0.05;
+		pSystemData.noiseSinus = true;
+		pSystemData.noiseVelocity.x = 3.1f;
+		pSystemData.noiseVelocity.y = 3.0f;
+		pSystemData.noiseVelocity.z = 3.1f;
+		pSystemData.noiseSpeed = 0.5;
+		//pSystemData.noiseSeed = getRnd(-100000, 100000);
+
+		pSystemData.lifeMin = 14.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.lifeMin;
+
+		pSystemData.emissionRate = 1; // bigger number less particles
+		pSystemData.emissionAmount = 1;
+
+		pSystemData.useDestroySubParticles = false;
+		pSystemData.destroyParticleID = 0;
+
+		pSystemData.displayID = displayParticlePlaneLeaves;
+
+		break;
+
 	default:
 		pSystemData.pSystemTypeID = ParID::smoke;
 
@@ -916,6 +1002,13 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.displayID = displayParticlePlane;
 
 		break;
+
+
+
+
+
+
+
 	}
 
 	return pSystemData;
