@@ -36,12 +36,7 @@ Mesh* mesh1;
 Mesh* mesh2;
 Mesh* mesh3;
 Mesh* mesh4;
-Mesh* mesh5; // smoke
-Mesh* mesh6; // flame
-Mesh* mesh7; // snow
-Mesh* mesh8; // bubble
-Mesh* mesh9; // ash
-Mesh* mesh10; // waterfallSub
+Mesh* mesh5; // particle plane
 
 int width = 1200;
 int height = 600;
