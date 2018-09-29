@@ -42,7 +42,7 @@ int width = 1200;
 int height = 600;
 float ratio = 1.0;
 GLuint display1, display2, display3, display4, displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles, 
-		displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves;
+		displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves, displayParticlePlaneFlameSparks;
 
 // controling parameters
 int mouse_button;
@@ -53,7 +53,7 @@ float x_angle = 0.0;
 float y_angle = 0.0;
 
 // textures with BITMAPS
-GLuint textureArray[9];
+GLuint textureArray[10];
 
 //NOTE: Forward declared new material function
 void setMaterialAdvanced(float MatData[17]);

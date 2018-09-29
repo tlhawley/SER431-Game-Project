@@ -92,8 +92,12 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 1; // the amount of particles spawned at a time
 
-		pSystemData.useDestroySubParticles = true;
-		pSystemData.destroyParticleID = ParID::flameSmoke; // flame smoke sub particles
+
+		pSystemData.useSubParticleSpawn = true;
+		pSystemData.subParticleSpawnID = ParID::flameSparks;
+
+		pSystemData.useSubParticleExit = true;
+		pSystemData.subParticleExitID = ParID::flameSmoke; // flame smoke sub particles
 														   //pSystemData.subParticleID = 3;
 
 		pSystemData.displayID = displayParticlePlaneFlames;
@@ -164,8 +168,12 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 8; // the amount of particles spawned at a time
 
-		pSystemData.useDestroySubParticles = true;
-		pSystemData.destroyParticleID = ParID::flameSmoke; // flame smoke sub particles
+
+		pSystemData.useSubParticleSpawn = true;
+		pSystemData.subParticleSpawnID = ParID::flameWallSparks;
+
+		pSystemData.useSubParticleExit = true;
+		pSystemData.subParticleExitID = ParID::flameSmoke; // flame smoke sub particles
 														   //pSystemData.subParticleID = 3;
 
 		pSystemData.displayID = displayParticlePlaneFlames;
@@ -237,11 +245,182 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
 
-		pSystemData.useDestroySubParticles = false;
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
 
 		pSystemData.displayID = displayParticlePlane;
 
 		break;
+
+	case ParID::flameSparks:
+
+		pSystemData.pSystemTypeID = ParID::flameSparks;
+
+		pSystemData.useGravity = false;
+		pSystemData.position.x = getRnd(-0.5, 0.5) + 1.5f + x;
+		pSystemData.position.y = 2.0f + y;
+		pSystemData.position.z = getRnd(-0.5, 0.5) + 0.5f + z;
+		//pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f + 3.0f;
+		pSystemData.velocity.x = getRnd(-3, 3);
+		pSystemData.velocity.y = getRnd(4, 8);
+		pSystemData.velocity.z = getRnd(-3, 3); //(10000 - rand() % 20000) / 10000.0f;
+		pSystemData.acceleration.x = 0.5f;
+		pSystemData.acceleration.y = 0.0f; //-1.81f;
+		pSystemData.acceleration.z = 0.0f;
+		pSystemData.useVelocityMultiplier = true;
+		pSystemData.velocityMultiplier.x = 60.0f;
+		pSystemData.velocityMultiplier.y = 59.0f;
+		pSystemData.velocityMultiplier.z = 60.0f;
+
+		pSystemData.pointAtCam = false;
+		pSystemData.rotation.x = getRnd(-200.0f, 200.0f);
+		pSystemData.rotation.y = getRnd(-200.0f, 200.0f);
+		pSystemData.rotation.z = getRnd(-200.0f, 200.0f);
+		pSystemData.rotationVelocity.x = getRnd(-200.0f, 200.0f);
+		pSystemData.rotationVelocity.y = getRnd(-200.0f, 200.0f);
+		pSystemData.rotationVelocity.z = getRnd(-200.0f,200.0f);
+		pSystemData.rotationAcceleration.x = 0.0f;
+		pSystemData.rotationAcceleration.y = 0.0f;
+		pSystemData.rotationAcceleration.z = 0.0f;
+		pSystemData.useRotationMultiplier = true;
+		pSystemData.rotationMultiplier.x = 60.0f;
+		pSystemData.rotationMultiplier.y = 60.0f;
+		pSystemData.rotationMultiplier.z = 57.0f;
+
+		pSystemData.noScaleStretching = true;
+		pSystemData.scale.x = getRnd(0.2f,0.4f);
+		pSystemData.scale.y = 0.2f;
+		pSystemData.scale.z = 0.2f;
+		pSystemData.scaleVelocity.x = 0.0f;
+		pSystemData.scaleVelocity.y = 0.0f;
+		pSystemData.scaleVelocity.z = 0.0f;
+		pSystemData.scaleAcceleration.x = 0.0f;
+		pSystemData.scaleAcceleration.y = 0.0f;
+		pSystemData.scaleAcceleration.z = 0.0f;
+		pSystemData.useScaleMultiplier = false;
+		pSystemData.scaleMultiplier.x = 59.f;
+		pSystemData.scaleMultiplier.y = 60.0f;
+		pSystemData.scaleMultiplier.z = 60.0f;
+
+		pSystemData.colorFunction = ParColorID::flameC;
+
+		pSystemData.useFloorCollider = true;
+		pSystemData.destroyOnContact = false;
+		pSystemData.floorHeight = 0.0f;
+		pSystemData.bounceMultiplier = 0.9f;
+		pSystemData.floorFriction = 0.9f;
+
+		pSystemData.useNoise = true;
+		pSystemData.noiseOctaves = 2;
+		pSystemData.noisePersistence = 2;
+		pSystemData.noiseScale = 0.05;
+		pSystemData.noiseSinus = true;
+		pSystemData.noiseVelocity.x = 2.1f;
+		pSystemData.noiseVelocity.y = 0.0f;
+		pSystemData.noiseVelocity.z = 2.1f;
+		pSystemData.noiseSpeed = 1.5;
+
+		pSystemData.lifeMin = getRnd(0, 1); //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.lifeMin;
+
+		pSystemData.emissionRate = 1;
+		pSystemData.emissionAmount = 1;
+
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
+
+		pSystemData.displayID = displayParticlePlaneFlameSparks;
+
+		break;
+
+	case ParID::flameWallSparks:
+
+		pSystemData.pSystemTypeID = ParID::flameWallSparks;
+
+		pSystemData.useGravity = false;
+		pSystemData.position.x = getRnd(-4.0f, 6.0f) + x;
+		pSystemData.position.y = 2.0f + y;
+		pSystemData.position.z = getRnd(-0.5, 0.5) + 2.0f + z;
+		//pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f + 3.0f;
+		pSystemData.velocity.x = getRnd(-3, 3);
+		pSystemData.velocity.y = getRnd(4, 8);
+		pSystemData.velocity.z = getRnd(-3, 3); //(10000 - rand() % 20000) / 10000.0f;
+		pSystemData.acceleration.x = 0.5f;
+		pSystemData.acceleration.y = 0.0f; //-1.81f;
+		pSystemData.acceleration.z = 0.0f;
+		pSystemData.useVelocityMultiplier = true;
+		pSystemData.velocityMultiplier.x = 60.0f;
+		pSystemData.velocityMultiplier.y = 59.0f;
+		pSystemData.velocityMultiplier.z = 60.0f;
+
+		pSystemData.pointAtCam = false;
+		pSystemData.rotation.x = getRnd(-200.0f, 200.0f);
+		pSystemData.rotation.y = getRnd(-200.0f, 200.0f);
+		pSystemData.rotation.z = getRnd(-200.0f, 200.0f);
+		pSystemData.rotationVelocity.x = getRnd(-200.0f, 200.0f);
+		pSystemData.rotationVelocity.y = getRnd(-200.0f, 200.0f);
+		pSystemData.rotationVelocity.z = getRnd(-200.0f, 200.0f);
+		pSystemData.rotationAcceleration.x = 0.0f;
+		pSystemData.rotationAcceleration.y = 0.0f;
+		pSystemData.rotationAcceleration.z = 0.0f;
+		pSystemData.useRotationMultiplier = true;
+		pSystemData.rotationMultiplier.x = 60.0f;
+		pSystemData.rotationMultiplier.y = 60.0f;
+		pSystemData.rotationMultiplier.z = 57.0f;
+
+		pSystemData.noScaleStretching = true;
+		pSystemData.scale.x = getRnd(0.2f, 0.4f);
+		pSystemData.scale.y = 0.2f;
+		pSystemData.scale.z = 0.2f;
+		pSystemData.scaleVelocity.x = 0.0f;
+		pSystemData.scaleVelocity.y = 0.0f;
+		pSystemData.scaleVelocity.z = 0.0f;
+		pSystemData.scaleAcceleration.x = 0.0f;
+		pSystemData.scaleAcceleration.y = 0.0f;
+		pSystemData.scaleAcceleration.z = 0.0f;
+		pSystemData.useScaleMultiplier = false;
+		pSystemData.scaleMultiplier.x = 59.f;
+		pSystemData.scaleMultiplier.y = 60.0f;
+		pSystemData.scaleMultiplier.z = 60.0f;
+
+		pSystemData.colorFunction = ParColorID::flameC;
+
+		pSystemData.useFloorCollider = true;
+		pSystemData.destroyOnContact = false;
+		pSystemData.floorHeight = 0.0f;
+		pSystemData.bounceMultiplier = 0.9f;
+		pSystemData.floorFriction = 0.9f;
+
+		pSystemData.useNoise = true;
+		pSystemData.noiseOctaves = 2;
+		pSystemData.noisePersistence = 2;
+		pSystemData.noiseScale = 0.025;
+		pSystemData.noiseSinus = true;
+		pSystemData.noiseVelocity.x = 2.1f;
+		pSystemData.noiseVelocity.y = 2.1f;
+		pSystemData.noiseVelocity.z = 2.1f;
+		pSystemData.noiseSpeed = 0.5;
+
+		pSystemData.lifeMin = getRnd(0, 1); //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.lifeMin;
+
+		pSystemData.emissionRate = 1;
+		pSystemData.emissionAmount = 4;
+
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
+
+		pSystemData.displayID = displayParticlePlaneFlameSparks;
+
+		break;
+
+
 	case ParID::smoke:
 
 		pSystemData.pSystemTypeID = ParID::smoke;
@@ -308,7 +487,11 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
 
-		pSystemData.useDestroySubParticles = false;
+
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
 
 		pSystemData.displayID = displayParticlePlane;
 
@@ -390,8 +573,11 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 1;
 
-		pSystemData.useDestroySubParticles = false;
-		pSystemData.destroyParticleID = 0;
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
+		pSystemData.subParticleExitID = 0;
 
 		pSystemData.displayID = displayParticlePlaneSnow;
 
@@ -470,8 +656,11 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 4; // bigger number less particles
 		pSystemData.emissionAmount = 1;
 
-		pSystemData.useDestroySubParticles = false;
-		//pSystemData.destroyParticleID = ParID::???;
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
+		//pSystemData.subParticleExitID = ParID::???;
 
 		pSystemData.displayID = displayParticlePlaneBubbles;
 
@@ -543,8 +732,11 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
 
-		pSystemData.useDestroySubParticles = true;
-		pSystemData.destroyParticleID = ParID::waterfallSub;
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = true;
+		pSystemData.subParticleExitID = ParID::waterfallSub;
 
 		pSystemData.displayID = displayParticlePlane;
 
@@ -616,7 +808,10 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
 
-		pSystemData.useDestroySubParticles = false;
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
 
 		pSystemData.displayID = displayParticlePlaneWaterfallSub;
 
@@ -686,8 +881,11 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 1; // the amount of particles spawned at a time
 
-		pSystemData.useDestroySubParticles = true;
-		pSystemData.destroyParticleID = ParID::flameSmoke; // flame smoke sub particles
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = true;
+		pSystemData.subParticleExitID = ParID::flameSmoke; // flame smoke sub particles
 														   //pSystemData.subParticleID = 3;
 
 		pSystemData.displayID = displayParticlePlaneFlames;
@@ -740,7 +938,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.useScaleMultiplier = true;
 		pSystemData.scaleMultiplier.x = 57.0f;
 		pSystemData.scaleMultiplier.y = 59.0f;
-		pSystemData.scaleMultiplier.z = 57.0f;
+		pSystemData.scaleMultiplier.z = 57.0f; 
 
 		pSystemData.colorFunction = ParColorID::frostC;
 
@@ -758,7 +956,10 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 8; // the amount of particles spawned at a time
 
-		pSystemData.useDestroySubParticles = false;
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
 		//pSystemData.destroyParticleID = ParID::flameSmoke; // flame smoke sub particles
 
 		pSystemData.displayID = displayParticlePlaneFlames;
@@ -841,8 +1042,11 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 1;
 
-		pSystemData.useDestroySubParticles = false;
-		pSystemData.destroyParticleID = 0;
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
+		pSystemData.subParticleExitID = 0;
 
 		pSystemData.displayID = displayParticlePlaneAsh;
 
@@ -926,8 +1130,11 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 1;
 
-		pSystemData.useDestroySubParticles = false;
-		pSystemData.destroyParticleID = 0;
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
+		pSystemData.subParticleExitID = 0;
 
 		pSystemData.displayID = displayParticlePlaneLeaves;
 
@@ -999,7 +1206,10 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
 
-		pSystemData.useDestroySubParticles = false;
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
 
 		pSystemData.displayID = displayParticlePlane;
 
@@ -1069,6 +1279,12 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
+
+
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
 
 		pSystemData.displayID = displayParticlePlane;
 

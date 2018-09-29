@@ -5,7 +5,7 @@
 
 
 // Enum used to identify different particle systems
-enum ParID { flame, flameWall, smoke, snow, bubbles, flameSmoke, waterfall, waterfallSub, frost, frostWall, ash, leaves, fog};
+enum ParID { flame, flameWall, flameSparks, flameWallSparks, flameSmoke, smoke, snow, bubbles, waterfall, waterfallSub, frost, frostWall, ash, leaves, fog};
 enum ParColorID { flameC, smokeC, smokeDarkC, snowC, waterfallC, waterfallSubC, frostC, leafC, rainbowC, fogC};
 
 
@@ -70,9 +70,6 @@ struct pSystem {
 	xyz noiseVelocity; // this is used for calculating velocity changes in the particles
 	float noiseSeed;
 
-	//Sub particles will spawn when a particle dies
-	int subParticleID; // 0 (no sub particles), 1-? particles
-
 	float lifeMin; // these determine the lifetime of individual particles
 	float lifeMax;
 	float lifeLength; // a constant for calculating color changes over time
@@ -85,12 +82,16 @@ struct pSystem {
 
 	GLuint displayID; // model to be displayed
 
-	bool useTrailSubParticles; // trail particles are spawned in the location of the current particle
-	int trailParticleID; // DataType???? int???
+	
+	bool useSubParticleSpawn; // spawnSubParticles will spawn at the same time the main particle spawns
+	int subParticleSpawnID; // subParticleSpawnID is the particle ID that spawns when the
 
-	bool useDestroySubParticles; // spawns these particles when a particle is destoyed by timer or other factor
-	int destroyParticleID; // DataType???? int???
-						   // Sub Model IDs??? - could be added to create animated particle systems
+	bool useTrailSubParticles; // trail particles are spawned in the location of the current particle over time
+	int trailParticleID; // DataType???? int??? spawnRate????
+
+	bool useSubParticleExit; //subParticleExit spawns these particles on exit or when a particle is destoyed by timer or other factor
+	int subParticleExitID; // subParticleExitID is the particle ID that spawns when the 
+
 };
 
 
@@ -140,6 +141,10 @@ public:
 		QueryPerformanceCounter((LARGE_INTEGER*)&end_clock);
 		if ((int)end_clock % pSystemData.emissionRate == 0) {
 			
+			if (pSystemData.useSubParticleSpawn) { // recrusively spawns sub particle(s) on creation
+				add(pSystemData.subParticleSpawnID);
+			}
+
 			// Spawns x amount of particles
 			for (int i = 0; i < pSystemData.emissionAmount; i++) {
 				addAmount(particleData(pSystemData.pSystemTypeID,0,0,0));
@@ -154,6 +159,10 @@ public:
 		__int64 end_clock;
 		QueryPerformanceCounter((LARGE_INTEGER*)&end_clock);
 		if ((int)end_clock % pSystemData.emissionRate == 0) {
+
+			if (pSystemData.useSubParticleSpawn) { // recrusively spawns sub particle(s) on creation
+				add(pSystemData.subParticleSpawnID, x, y, z);
+			}
 
 			// Spawns x amount of particles
 			for (int i = 0; i < pSystemData.emissionAmount; i++) {
@@ -282,8 +291,8 @@ public:
 		Particle* prev = 0;
 		while (curr) {
 			if (curr->pSystemData.lifeMin<0) {
-				if (curr->pSystemData.useDestroySubParticles) {
-					add(curr->pSystemData.destroyParticleID, curr->pSystemData.position.x, curr->pSystemData.position.y, curr->pSystemData.position.z);
+				if (curr->pSystemData.useSubParticleExit) {
+					add(curr->pSystemData.subParticleExitID, curr->pSystemData.position.x, curr->pSystemData.position.y, curr->pSystemData.position.z);
 					//addParticleAt(particleData(curr->pSystemData.destroyParticleID, 0, 0, 0), curr->pSystemData.position);
 				}
 
