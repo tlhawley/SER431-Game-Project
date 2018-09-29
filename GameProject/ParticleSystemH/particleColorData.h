@@ -55,13 +55,16 @@ void setParticleColor(Particle* curr) {
 	case ParColorID::frostC:
 		if (curr->pSystemData.lifeMin > curr->pSystemData.lifeLength / 2.0) {
 			red = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
+			//alpha = 1.0f;
 		}
 		else {
+			//alpha = 2 * curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
 			red = 0.0f;
 		}
-		green = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength*1.0 + 0.4f;
+		green = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength*1.0 + 0.5f;
 		blue = 1.0f;
-		alpha = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength / 4.0f + 0.75f;
+		alpha = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
+		//alpha = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength / 4.0f + 0.75f;
 		break;
 	case ParColorID::leafC:
 		red = .9f;
