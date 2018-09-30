@@ -1,18 +1,16 @@
 
 // This file is used for defining different particle systems
-// Flame Particles
-// Flame Smoke Sub Particles
+// It contains all the variable data for each particle system.
 
-// Smoke Particles
-
-// Snow Particles
-
-// Rain Particles
-// Rain Splash Sub Particles
-
-// Waterfall Particles
-
-// Bubble Particles
+// Flame particles
+// Flame smoke sub sarticles
+// Flame spark/ash sub particles
+// Smoke particles
+// Snow particles
+// Fog particles
+// Waterfall particles
+// Bubble particles
+// etc...
 
 
 
@@ -46,6 +44,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = true;
 		pSystemData.rotation.x = 0.0f;
 		pSystemData.rotation.y = 0.0f;
@@ -86,8 +85,8 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useNoise = false;
 
-		pSystemData.lifeMin = getRnd(0.5f, 1.0f); //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = getRnd(0.5f, 1.0f); //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 1; // the amount of particles spawned at a time
@@ -122,6 +121,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = true;
 		pSystemData.rotation.x = 0.0f;
 		pSystemData.rotation.y = 0.0f;
@@ -162,8 +162,8 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useNoise = false;
 
-		pSystemData.lifeMin = getRnd(0.5f, 1.0f); //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = getRnd(0.5f, 1.0f); //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 8; // the amount of particles spawned at a time
@@ -199,6 +199,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = true;
 		pSystemData.rotation.x = 0.0f;
 		pSystemData.rotation.y = 0.0f;
@@ -239,8 +240,8 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useNoise = false;
 
-		pSystemData.lifeMin = getRnd(0, 1); //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = getRnd(0, 1); //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
@@ -274,6 +275,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = false;
 		pSystemData.rotation.x = getRnd(-200.0f, 200.0f);
 		pSystemData.rotation.y = getRnd(-200.0f, 200.0f);
@@ -322,8 +324,8 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.noiseVelocity.z = 2.1f;
 		pSystemData.noiseSpeed = 1.5;
 
-		pSystemData.lifeMin = getRnd(0, 1); //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = getRnd(0, 1); //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
@@ -357,6 +359,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = false;
 		pSystemData.rotation.x = getRnd(-200.0f, 200.0f);
 		pSystemData.rotation.y = getRnd(-200.0f, 200.0f);
@@ -405,8 +408,8 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.noiseVelocity.z = 2.1f;
 		pSystemData.noiseSpeed = 0.5;
 
-		pSystemData.lifeMin = getRnd(0, 1); //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = getRnd(0, 1); //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 4;
@@ -441,6 +444,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.5f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = true;
 		pSystemData.rotation.x = 0.0f;
 		pSystemData.rotation.y = 0.0f;
@@ -481,8 +485,8 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useNoise = false;
 
-		pSystemData.lifeMin = 5.0f; //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = 5.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
@@ -517,6 +521,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = false;
 		pSystemData.rotation.x = getRnd(0, 5000);
 		pSystemData.rotation.y = getRnd(0, 5000);
@@ -567,8 +572,8 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.noiseSpeed = 0.5;
 		//pSystemData.noiseSeed = getRnd(-100000, 100000);
 
-		pSystemData.lifeMin = 14.0f; //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = 14.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 1;
@@ -582,6 +587,173 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.displayID = displayParticlePlaneSnow;
 
 		break;
+
+	case ParID::rain:
+
+		pSystemData.pSystemTypeID = ParID::rain;
+
+		pSystemData.useGravity = false;
+		pSystemData.position.x = getRnd(-15.0, 15.0) + x;
+		pSystemData.position.y = 24.0f + y;
+		pSystemData.position.z = getRnd(-15.0, 15.0) + z;
+
+		//pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f + 3.0f;
+		pSystemData.velocity.x = getRnd(0.1f,5.0f);
+		pSystemData.velocity.y = -40;
+		pSystemData.velocity.z = getRnd(0.1f, 5.0f); //(10000 - rand() % 20000) / 10000.0f;
+		pSystemData.acceleration.x = 0.0f;
+		pSystemData.acceleration.y = 0.0f; //-1.81f;
+		pSystemData.acceleration.z = 0.0f;
+		pSystemData.useVelocityMultiplier = false;
+		pSystemData.velocityMultiplier.x = 60.0f;
+		pSystemData.velocityMultiplier.y = 59.0f;
+		pSystemData.velocityMultiplier.z = 60.0f;
+
+		pSystemData.useRotationByVelocity = true;
+		pSystemData.pointAtCam = false;
+		pSystemData.rotation.x = 0.0f;
+		pSystemData.rotation.y = 0.0f;
+		pSystemData.rotation.z = 0.0f;
+		pSystemData.rotationVelocity.x = 0.0f;
+		pSystemData.rotationVelocity.y = 0.0f;
+		pSystemData.rotationVelocity.z = 0.0f;
+		pSystemData.rotationAcceleration.x = 0.0f;
+		pSystemData.rotationAcceleration.y = 0.0f;
+		pSystemData.rotationAcceleration.z = 0.0f;
+		pSystemData.useRotationMultiplier = false;
+		pSystemData.rotationMultiplier.x = 60.0f;
+		pSystemData.rotationMultiplier.y = 60.0f;
+		pSystemData.rotationMultiplier.z = 60.0f;
+
+		pSystemData.noScaleStretching = true;
+		pSystemData.scale.x = 0.5f;
+		pSystemData.scale.y = 4.0f;
+		pSystemData.scale.z = 0.5f;
+		pSystemData.scaleVelocity.x = 0.0f;
+		pSystemData.scaleVelocity.y = 0.0f;
+		pSystemData.scaleVelocity.z = 0.0f;
+		pSystemData.scaleAcceleration.x = 0.0f;
+		pSystemData.scaleAcceleration.y = 0.0f;
+		pSystemData.scaleAcceleration.z = 0.0f;
+		pSystemData.useScaleMultiplier = false;
+		pSystemData.scaleMultiplier.x = 59.f;
+		pSystemData.scaleMultiplier.y = 60.0f;
+		pSystemData.scaleMultiplier.z = 60.0f;
+
+		pSystemData.colorFunction = ParColorID::rainC;
+
+		pSystemData.useFloorCollider = true;
+		pSystemData.destroyOnContact = true;
+		pSystemData.floorHeight = 0.0f;
+		pSystemData.bounceMultiplier = 0.9f;
+		pSystemData.floorFriction = 0.9f;
+
+
+		pSystemData.useNoise = false;
+		pSystemData.noiseOctaves = 2;
+		pSystemData.noisePersistence = 2;
+		pSystemData.noiseScale = 0.05;
+		pSystemData.noiseSinus = true;
+		pSystemData.noiseVelocity.x = 2.1f;
+		pSystemData.noiseVelocity.y = 0.0f;
+		pSystemData.noiseVelocity.z = 2.1f;
+		pSystemData.noiseSpeed = 0.5;
+		//pSystemData.noiseSeed = getRnd(-100000, 100000);
+
+		pSystemData.life = 14.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
+
+		pSystemData.emissionRate = 1; // bigger number less particles
+		pSystemData.emissionAmount = 10;
+
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::rainSplash;
+
+		pSystemData.useSubParticleExit = true;
+		pSystemData.subParticleExitID = ParID::rainSplash;
+
+		pSystemData.displayID = displayParticleRain;
+
+		break;
+
+
+	case ParID::rainSplash:
+
+		pSystemData.pSystemTypeID = ParID::rainSplash;
+
+		pSystemData.useGravity = false;
+		pSystemData.position.x = 0.0f + x;
+		pSystemData.position.y = 0.1f + y;
+		pSystemData.position.z = 0.0f + z;
+		//pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f + 3.0f;
+		pSystemData.velocity.x = 0.0f;
+		pSystemData.velocity.y = 0.0f;
+		pSystemData.velocity.z = 0.0f; //(10000 - rand() % 20000) / 10000.0f;
+		pSystemData.acceleration.x = 0.0f;
+		pSystemData.acceleration.y = 0.0f;
+		pSystemData.acceleration.z = 0.0f;
+		pSystemData.useVelocityMultiplier = false;
+		pSystemData.velocityMultiplier.x = 60.0f;
+		pSystemData.velocityMultiplier.y = 59.0f;
+		pSystemData.velocityMultiplier.z = 60.0f;
+
+		pSystemData.useRotationByVelocity = false;
+		pSystemData.pointAtCam = false;
+		pSystemData.rotation.x = 0.0f;
+		pSystemData.rotation.y = 0.0f;
+		pSystemData.rotation.z = 0.0f;
+		pSystemData.rotationVelocity.x = 0.0f;
+		pSystemData.rotationVelocity.y = 0.0f;
+		pSystemData.rotationVelocity.z = 0.0f;
+		pSystemData.rotationAcceleration.x = 0.0f;
+		pSystemData.rotationAcceleration.y = 0.0f;
+		pSystemData.rotationAcceleration.z = 0.0f;
+		pSystemData.useRotationMultiplier = false;
+		pSystemData.rotationMultiplier.x = 60.0f;
+		pSystemData.rotationMultiplier.y = 60.0f;
+		pSystemData.rotationMultiplier.z = 57.0f;
+
+		pSystemData.noScaleStretching = true;
+		pSystemData.scale.x = 0.1f;
+		pSystemData.scale.y = 0.1f;
+		pSystemData.scale.z = 0.1f;
+		pSystemData.scaleVelocity.x = 8.0f;
+		pSystemData.scaleVelocity.y = 0.0f;
+		pSystemData.scaleVelocity.z = 0.0f;
+		pSystemData.scaleAcceleration.x = 0.0f;
+		pSystemData.scaleAcceleration.y = 0.0f;
+		pSystemData.scaleAcceleration.z = 0.0f;
+		pSystemData.useScaleMultiplier = false;
+		pSystemData.scaleMultiplier.x = 59.f;
+		pSystemData.scaleMultiplier.y = 60.0f;
+		pSystemData.scaleMultiplier.z = 60.0f;
+
+		pSystemData.colorFunction = ParColorID::whiteFadeC;
+
+		pSystemData.useFloorCollider = false;
+		pSystemData.destroyOnContact = false;
+		pSystemData.floorHeight = 0.0f;
+		pSystemData.bounceMultiplier = 0.9f;
+		pSystemData.floorFriction = 0.9f;
+
+		pSystemData.useNoise = false;
+
+		pSystemData.life = 0.1f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
+
+		pSystemData.emissionRate = 1;
+		pSystemData.emissionAmount = 1;
+
+		pSystemData.useSubParticleSpawn = false;
+		//pSystemData.subParticleSpawnID = ParID::??
+
+		pSystemData.useSubParticleExit = false;
+
+		pSystemData.displayID = displayParticlePlaneRing;
+
+		break;
+
+
 	case ParID::bubbles:
 
 		pSystemData.pSystemTypeID = ParID::bubbles;
@@ -602,6 +774,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = true;
 		pSystemData.rotation.x = 0.0f;
 		pSystemData.rotation.y = 0.0f;
@@ -650,8 +823,8 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.noiseVelocity.z = 4.1f;
 		pSystemData.noiseSpeed = 0.5;
 
-		pSystemData.lifeMin = 8.0f; //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = 8.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 4; // bigger number less particles
 		pSystemData.emissionAmount = 1;
@@ -686,6 +859,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = true;
 		pSystemData.rotation.x = 0.0f;
 		pSystemData.rotation.y = 0.0f;
@@ -726,8 +900,8 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useNoise = false;
 
-		pSystemData.lifeMin = 5.0f; //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = 5.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
@@ -762,6 +936,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = false;
 		pSystemData.rotation.x = 0.0f;
 		pSystemData.rotation.y = 0.0f;
@@ -802,8 +977,8 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useNoise = false;
 
-		pSystemData.lifeMin = 1.0f; //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = 1.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
@@ -835,6 +1010,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = true;
 		pSystemData.rotation.x = 0.0f;
 		pSystemData.rotation.y = 0.0f;
@@ -875,8 +1051,8 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useNoise = false;
 
-		pSystemData.lifeMin = getRnd(0.5f, 1.0f); //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = getRnd(0.5f, 1.0f); //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 1; // the amount of particles spawned at a time
@@ -910,6 +1086,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = true;
 		pSystemData.rotation.x = 0.0f;
 		pSystemData.rotation.y = 0.0f;
@@ -950,8 +1127,8 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useNoise = false;
 
-		pSystemData.lifeMin = getRnd(0.5f, 1.0f); //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = getRnd(0.5f, 1.0f); //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 8; // the amount of particles spawned at a time
@@ -986,6 +1163,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = false;
 		pSystemData.rotation.x = getRnd(0, 5000);
 		pSystemData.rotation.y = getRnd(0, 5000);
@@ -1036,8 +1214,8 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.noiseSpeed = 0.5;
 		//pSystemData.noiseSeed = getRnd(-100000, 100000);
 
-		pSystemData.lifeMin = 14.0f; //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = 14.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 1;
@@ -1073,6 +1251,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = false;
 		pSystemData.rotation.x = getRnd(0, 5000);
 		pSystemData.rotation.y = getRnd(0, 5000);
@@ -1124,8 +1303,8 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.noiseSpeed = 0.5;
 		//pSystemData.noiseSeed = getRnd(-100000, 100000);
 
-		pSystemData.lifeMin = 14.0f; //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = 14.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1; // bigger number less particles
 		pSystemData.emissionAmount = 1;
@@ -1160,6 +1339,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.5f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = true;
 		pSystemData.rotation.x = 0.0f;
 		pSystemData.rotation.y = 0.0f;
@@ -1200,8 +1380,8 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useNoise = false;
 
-		pSystemData.lifeMin = 5.0f; //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = 5.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;
@@ -1234,6 +1414,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.velocityMultiplier.y = 59.0f;
 		pSystemData.velocityMultiplier.z = 60.0f;
 
+		pSystemData.useRotationByVelocity = false;
 		pSystemData.pointAtCam = true;
 		pSystemData.rotation.x = 0.0f;
 		pSystemData.rotation.y = 0.0f;
@@ -1274,8 +1455,8 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useNoise = false;
 
-		pSystemData.lifeMin = 5.0f; //rand() % 10000 / 10000.0f+10.0f;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.life = 5.0f; //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1;
 		pSystemData.emissionAmount = 1;

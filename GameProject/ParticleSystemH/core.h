@@ -37,12 +37,13 @@ Mesh* mesh2;
 Mesh* mesh3;
 Mesh* mesh4;
 Mesh* mesh5; // particle plane
+Mesh* mesh6; // particle rain
 
 int width = 1200;
 int height = 600;
 float ratio = 1.0;
 GLuint display1, display2, display3, display4, displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles, 
-		displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves, displayParticlePlaneFlameSparks;
+		displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves, displayParticlePlaneFlameSparks, displayParticleRain, displayParticlePlaneRing;
 
 // controling parameters
 int mouse_button;
@@ -53,7 +54,7 @@ float x_angle = 0.0;
 float y_angle = 0.0;
 
 // textures with BITMAPS
-GLuint textureArray[10];
+GLuint textureArray[12];
 
 //NOTE: Forward declared new material function
 void setMaterialAdvanced(float MatData[17]);
@@ -146,7 +147,7 @@ GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info, byte alphaType) {
 	// Now that we have all the header info read in, allocate memory for the bitmap and read *it* in.
 	if ((bitsize = (*info)->bmiHeader.biSizeImage) == 0) {
 		bitsize = ((*info)->bmiHeader.biWidth*(*info)->bmiHeader.biBitCount + 7) / 8 * abs((*info)->bmiHeader.biHeight);
-		if (alphaType == 1) { bitsize = bitsize + 128 * 128 * 8; }
+		if (alphaType == 1) { bitsize = bitsize + (*info)->bmiHeader.biWidth * abs((*info)->bmiHeader.biHeight) * 8; }
 		}
 	if ((bits = (GLubyte *)malloc(bitsize)) == NULL) {
 		// Couldn't allocate memory - return NULL!

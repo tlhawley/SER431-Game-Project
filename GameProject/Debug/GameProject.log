@@ -1,1 +1,1 @@
-﻿  GameProject.vcxproj -> C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe
+﻿C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\GameProject\GameProject.vcxproj : error MSB4025: The project file could not be loaded. Could not find file 'C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\GameProject\GameProject.vcxproj'.

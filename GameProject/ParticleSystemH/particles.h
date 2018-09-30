@@ -1,12 +1,13 @@
 #pragma once
 
 //Notes:
-// Added lots of new features...
+// Now uses a struct for particle variable data - the data being used can be found in particleData.h
+// Added: velocity, acceleration, multipliers, rotation settings, scale settings, floor collision, noise offset settings, emissionRate, emissionAmount, sub particles...
 
 
-// Enum used to identify different particle systems
-enum ParID { flame, flameWall, flameSparks, flameWallSparks, flameSmoke, smoke, snow, bubbles, waterfall, waterfallSub, frost, frostWall, ash, leaves, fog};
-enum ParColorID { flameC, smokeC, smokeDarkC, snowC, waterfallC, waterfallSubC, frostC, leafC, rainbowC, fogC};
+// Enum used to identify different particle systems & particle color functions
+enum ParID { flame, flameWall, flameSparks, flameWallSparks, flameSmoke, smoke, snow, rain, rainSplash, bubbles, waterfall, waterfallSub, frost, frostWall, ash, leaves, fog};
+enum ParColorID { flameC, smokeC, smokeDarkC, snowC, waterfallC, waterfallSubC, frostC, leafC, rainbowC, fogC, rainC, whiteFadeC};
 
 
 // Used for variables involving xyz axis such as - position, velocity, acceleration, scale, rotation...
@@ -32,6 +33,7 @@ struct pSystem {
 	bool useGravity;
 
 	// Rotation
+	bool useRotationByVelocity; // if true it will rotate the particles in the direction they are moving - excluding noise movement (noise may need to be updated)
 	bool pointAtCam; // true (rotates facing the camera), false (free rotation)
 	xyz rotation; // the starting rotation - if (pointAtCam) then ignore x&y rotations
 	xyz rotationVelocity; // the rotation speed
@@ -70,9 +72,8 @@ struct pSystem {
 	xyz noiseVelocity; // this is used for calculating velocity changes in the particles
 	float noiseSeed;
 
-	float lifeMin; // these determine the lifetime of individual particles
-	float lifeMax;
-	float lifeLength; // a constant for calculating color changes over time
+	float life; // determine the lifetime of individual particles
+	float lifeLength; // unlike the life variable this does not change over time and is used to calculate particle colors
 
 	float delayTime;	// This is the amount of delay before the particles begin to spawn
 	float stopTime;		// If loopParticles = false then this will determine when the particles will stop spawning
@@ -120,7 +121,7 @@ public:
 	}
 	Particle(pSystem pSystemData) {
 		this->pSystemData = pSystemData;
-		pSystemData.lifeLength = pSystemData.lifeMin;
+		pSystemData.lifeLength = pSystemData.life;
 	}
 };
 
@@ -182,8 +183,10 @@ public:
 	void update(float dt) {
 		Particle* p = particle_head;
 		while (p) {
+			//dt = 0.016666666666;
+			
 			// decrease lifespan
-			p->pSystemData.lifeMin -= dt;
+			p->pSystemData.life -= dt;
 			// apply gravity
 			//p->pSystemData.velocity.y -= 9.81f * dt;
 
@@ -205,29 +208,37 @@ public:
 
 
 
-			// Apply Rotation Multiplier
-			if (p->pSystemData.useRotationMultiplier) {
-				if (p->pSystemData.pointAtCam == false) {
-					p->pSystemData.rotationVelocity.x = p->pSystemData.rotationVelocity.x * p->pSystemData.rotationMultiplier.x * dt;
-					p->pSystemData.rotationVelocity.y = p->pSystemData.rotationVelocity.y * p->pSystemData.rotationMultiplier.y * dt;
+			// Rotation by velocity
+			if (p->pSystemData.useRotationByVelocity) { // TODO: The angles aren't correct. The particles should point in the direction of the current particle velocity.
+				p->pSystemData.rotation.y = -atan2(-p->pSystemData.velocity.z, -p->pSystemData.velocity.x);// *57.29578;
+				//p->pSystemData.rotation.x = atan2(sqrt(p->pSystemData.velocity.y*p->pSystemData.velocity.y + p->pSystemData.velocity.x*p->pSystemData.velocity.x), p->pSystemData.velocity.y)*57.29578;
+				p->pSystemData.rotation.z = atan2(sqrt(p->pSystemData.velocity.y*p->pSystemData.velocity.y + p->pSystemData.velocity.x*p->pSystemData.velocity.x), p->pSystemData.velocity.y);//*57.29578;
+			}
+			else { // rotation
+				
+				// Apply Rotation Multiplier
+				if (p->pSystemData.useRotationMultiplier) {
+					if (p->pSystemData.pointAtCam == false) {
+						p->pSystemData.rotationVelocity.x = p->pSystemData.rotationVelocity.x * p->pSystemData.rotationMultiplier.x * dt;
+						p->pSystemData.rotationVelocity.y = p->pSystemData.rotationVelocity.y * p->pSystemData.rotationMultiplier.y * dt;
+					}
+					p->pSystemData.rotationVelocity.z = p->pSystemData.rotationVelocity.z * p->pSystemData.rotationMultiplier.z * dt;
 				}
-				p->pSystemData.rotationVelocity.z = p->pSystemData.rotationVelocity.z * p->pSystemData.rotationMultiplier.z * dt;
-			}
 
-			// Apply Rotation Acceleration
-			if (p->pSystemData.pointAtCam == false) {
-				p->pSystemData.rotationVelocity.x += p->pSystemData.rotationAcceleration.x * dt;
-				p->pSystemData.rotationVelocity.y += p->pSystemData.rotationAcceleration.y  * dt;
-			}
-			p->pSystemData.rotationVelocity.z += p->pSystemData.rotationAcceleration.z  * dt;
+				// Apply Rotation Acceleration
+				if (p->pSystemData.pointAtCam == false) {
+					p->pSystemData.rotationVelocity.x += p->pSystemData.rotationAcceleration.x * dt;
+					p->pSystemData.rotationVelocity.y += p->pSystemData.rotationAcceleration.y  * dt;
+				}
+				p->pSystemData.rotationVelocity.z += p->pSystemData.rotationAcceleration.z  * dt;
 
-			// Apply Rotation Velocity
-			if (p->pSystemData.pointAtCam == false) {
-				p->pSystemData.rotation.x += p->pSystemData.rotationVelocity.x * dt;
-				p->pSystemData.rotation.y += p->pSystemData.rotationVelocity.y * dt;
+				// Apply Rotation Velocity
+				if (p->pSystemData.pointAtCam == false) {
+					p->pSystemData.rotation.x += p->pSystemData.rotationVelocity.x * dt;
+					p->pSystemData.rotation.y += p->pSystemData.rotationVelocity.y * dt;
+				}
+				p->pSystemData.rotation.z += p->pSystemData.rotationVelocity.z * dt;
 			}
-			p->pSystemData.rotation.z += p->pSystemData.rotationVelocity.z * dt;
-
 
 
 
@@ -269,7 +280,8 @@ public:
 			if (p->pSystemData.useFloorCollider) {
 				if (p->pSystemData.position.y < p->pSystemData.floorHeight) {
 					if (p->pSystemData.destroyOnContact) {
-						p->pSystemData.lifeMin = -1;
+						p->pSystemData.position.y = p->pSystemData.floorHeight;
+						p->pSystemData.life = -1;
 					}
 					else {
 						p->pSystemData.position.y = p->pSystemData.floorHeight;
@@ -290,7 +302,7 @@ public:
 		Particle* curr = particle_head;
 		Particle* prev = 0;
 		while (curr) {
-			if (curr->pSystemData.lifeMin<0) {
+			if (curr->pSystemData.life<0) {
 				if (curr->pSystemData.useSubParticleExit) {
 					add(curr->pSystemData.subParticleExitID, curr->pSystemData.position.x, curr->pSystemData.position.y, curr->pSystemData.position.z);
 					//addParticleAt(particleData(curr->pSystemData.destroyParticleID, 0, 0, 0), curr->pSystemData.position);
@@ -338,8 +350,8 @@ void drawParticles() {
 		// Offsets the position with perlin noise
 		if (curr->pSystemData.useNoise) {
 			ImprovedNoise noise;
-			float xnoise = curr->pSystemData.position.x + curr->pSystemData.position.y + curr->pSystemData.lifeMin*curr->pSystemData.noiseSpeed;
-			float ynoise = curr->pSystemData.position.x + curr->pSystemData.position.y + curr->pSystemData.lifeMin*curr->pSystemData.noiseSpeed;
+			float xnoise = curr->pSystemData.position.x + curr->pSystemData.position.y + curr->pSystemData.life*curr->pSystemData.noiseSpeed;
+			float ynoise = curr->pSystemData.position.x + curr->pSystemData.position.y + curr->pSystemData.life*curr->pSystemData.noiseSpeed;
 			glTranslatef(noise.perlinCustom(xnoise, ynoise, curr->pSystemData.noiseScale,
 				curr->pSystemData.noisePersistence, curr->pSystemData.noiseOctaves, curr->pSystemData.noiseSinus) * curr->pSystemData.noiseVelocity.x + curr->pSystemData.position.x
 						,
@@ -361,7 +373,6 @@ void drawParticles() {
 			glScalef(curr->pSystemData.scale.x, curr->pSystemData.scale.y, curr->pSystemData.scale.z);
 		}
 
-		// TODO: Add a velocity based rotation option
 		// Makes particles rotate to face the same angle as the camera
 		if (curr->pSystemData.pointAtCam) {
 			glRotatef(-y_angle, 0.0f, 1.0f, 0.0f);
