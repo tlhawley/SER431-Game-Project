@@ -212,16 +212,23 @@ void displayEnvironment() {
 	//glCallList(meshFloor);
 	//glCallList(meshQ4Map);
 	setMaterialAdvanced(materialSkyBox);
-	glEnable(GL_CULL_FACE);
-	displayBaseModels();
-	glDisable(GL_CULL_FACE);
+	if (refectOn == 0) {
+		glEnable(GL_CULL_FACE);
+		displayBaseModels();
+		glDisable(GL_CULL_FACE);
+	}
+	else {
+		displayBaseModels();
+	}
 
 	// TODO: Make shadows for this object on the wall
+	/*
 	glTranslatef(0.0f, 2.0, 5);
 	glScalef(0.01f, 0.01f, 0.01f);
 	//displayNoiseGenBox1(); // wood box
 	glScalef(100.0f, 100.0f, 100.0f);
 	glTranslatef(0.0f, -2.0, -5);
+	*/
 
 	/*
 	glTranslatef(2.0f, 2.0, 5);
@@ -448,18 +455,20 @@ void displayEnvironment() {
 
 
 void displayGameObjects() {
-	displayDoorway();
+	if (refectOn == 0) {
+		displayDoorway();
 
-	setMaterialAdvanced(materialGold);
-	displayKeys();
+		setMaterialAdvanced(materialGold);
+		displayKeys();
 
-	setMaterialAdvanced(materialRuby);
-	displayGems();
+		setMaterialAdvanced(materialRuby);
+		displayGems();
 
-	setMaterialAdvanced(materialSpinSpike);
-	displaySpinSpikes();
+		setMaterialAdvanced(materialSpinSpike);
+		displaySpinSpikes();
 
-	displayHealthPacks();
+		displayHealthPacks();
+	}
 
 }
 

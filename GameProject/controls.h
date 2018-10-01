@@ -75,26 +75,60 @@ void Update() {
 		//crateX = crateX - 1.1f;
 	}
 	if (aKey == true) {
-		moveMeFlatStrafe(-1.1f);
+		pxv = pxv - 0.05f;
+		if (pxv < -1.5f) {
+			pxv = -1.5f;
+		}
+		//moveMeFlatStrafe(-2.1f);
 	}
 	if (dKey == true) {
-		moveMeFlatStrafe(1.1f);
+		pxv = pxv + 0.05f;
+		if (pxv > 1.5f) {
+			pxv = 1.5f;
+		}
+		//moveMeFlatStrafe(2.1f);
 	}
 	if (wKey == true || upPressed == true) {
-		
+		pzv = pzv + 0.4f;
+		if (pzv > 2.2f) {
+			pzv = 2.2f;
+		}
+		/*
 		if (sprint == false) {
-			moveMeFlat(1.1f);
+			moveMeFlat(2.1f);
 		}
 		else {
 			moveMeFlat(2.0f);
 		}
+		*/
 
 		//y = y + 0.1;
 	}
 	if (sKey == true || downPressed == true) {
-		moveMeFlat(-1.1f);
+		pzv = pzv - 0.05f;
+		if (pzv < -1.5f) {
+			pzv = -1.5f;
+		}
+		//moveMeFlat(-2.1f);
 		//y = y - 0.1;
 	}
+	if (aKey == false && dKey == false && wKey == false && sKey == false) {
+		pxv = pxv * 0.95f;
+		pzv = pzv * 0.95f;
+		if (pxv < 0.04f && pxv > -0.04f) {
+			pxv = 0.0f;
+		}
+		if (pzv < 0.04f && pzv > -0.04f) {
+			pzv = 0.0f;
+		}
+	}
+
+	pxv = pxv * 0.92f;
+	pzv = pzv * 0.92f;
+
+	moveMeFlatStrafe(pxv);
+	moveMeFlat(pzv);
+
 
 	//checkCollision(); // collision is now detected using collision boxes
 	if (camy < -200 || health == 0) {

@@ -19,6 +19,7 @@ struct Position {
 void reflection(void(*objFunction)(), Position pos, MirrorDirection mirrorDir);
 
 void reflection(void(*objFunction)(), Position pos, MirrorDirection mirrorDir) {
+	refectOn = 1;
 
 	glEnable(GL_STENCIL_TEST); //Start using the stencil
 	glDisable(GL_DEPTH_TEST);
@@ -46,7 +47,7 @@ void reflection(void(*objFunction)(), Position pos, MirrorDirection mirrorDir) {
 
 
 
-
+	/*
 	// blue atmospheric fog
 	glEnable(GL_FOG);
 	GLfloat color[4] = { 0.75f, 0.8f, 1.0f, 1.0f };
@@ -55,6 +56,7 @@ void reflection(void(*objFunction)(), Position pos, MirrorDirection mirrorDir) {
 	//glFogf(GL_FOG_END, 50.0);
 	glFogi(GL_FOG_MODE, GL_EXP);
 	glFogf(GL_FOG_DENSITY, .007);
+	*/
 
 	setlight();
 
@@ -77,7 +79,7 @@ void reflection(void(*objFunction)(), Position pos, MirrorDirection mirrorDir) {
 
 	// Mirrored Sky box
 	glScalef(mirrorDir.x, mirrorDir.y, mirrorDir.z);
-	displaySkyBox(2000, 0, 0);
+	displaySkyBox(2000, 90, 0);
 	glScalef(1.0 / mirrorDir.x, 1.0 / mirrorDir.y, 1.0 / mirrorDir.z);
 
 
@@ -106,7 +108,7 @@ void reflection(void(*objFunction)(), Position pos, MirrorDirection mirrorDir) {
 
 	glPopMatrix();
 
-
+	refectOn = 0;
 
 
 
