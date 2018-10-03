@@ -48,7 +48,7 @@ void Update() {
 	}
 	if (mouseMoveY != 0) {
 		camAngX = camAngX + mouseMoveY * 0.001f;
-		if (camAngX > 1.5) camAngX = 1.5;
+		if (camAngX > 0.7) camAngX = 0.7;
 		if (camAngX < -1.5)camAngX =-1.5;
 		orientMe2(camAngX);
 	}

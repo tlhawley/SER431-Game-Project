@@ -13,10 +13,17 @@
 
 #include "meshObjConverter.h"
 #include "modelLoading.h"
-#include "quiz6methods.h"
+//#include "quiz6methods.h"
 
 #include "noise.h"
 #include "noiseGenerator.h"
+
+
+#include "ParticleSystem/particles.h"
+#include "ParticleSystem/particleColorData.h"
+#include "ParticleSystem/particleData.h"
+
+
 
 #include "GUI/map2D.h"
 #include "GUI/healthBar2D.h"

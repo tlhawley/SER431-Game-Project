@@ -85,6 +85,15 @@ GLuint meshLV1WaterMirror;
 GLuint meshHeartUI[5];
 
 
+
+
+
+GLuint displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles,
+displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves, displayParticlePlaneFlameSparks, displayParticleRain, displayParticlePlaneRing;
+
+
+
+
 int uniqueMeshID = 0;
 
 void loadModels();
@@ -102,7 +111,7 @@ GLuint loadObj(char const* file, GLuint textureID) {
 	return meshToDisplayList(aMesh, uniqueMeshID, textureID);
 }
 
-// Function used for loading a mesh and returning the mesh instead of the meshID
+// Function used for loading a mesh and returning the mesh instead of the meshID / displayListID
 Mesh* loadObjMesh(char const* file) {
 	Mesh* aMesh = loadFile(file);
 	if (aMesh == NULL) exit(1);
@@ -110,31 +119,88 @@ Mesh* loadObjMesh(char const* file) {
 }
 
 
+Mesh* meshParticlePlane;
+Mesh* meshParticleRain;
+
 
 void loadModels() {
 
 	printf("Loading\n");
 
-	GLuint texture_array[21];
-	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1);
-	loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 1, 1);
-	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1);
-	loadBMP_custom(texture_array, "./src/textures/CheckerTiles.bmp", 3, 1);
-	loadBMP_custom(texture_array, "./src/textures/door.bmp", 5, 1);
-	loadBMP_custom(texture_array, "./src/textures/doorFrame.bmp", 6, 1);
-	loadBMP_custom(texture_array, "./src/textures/SkyBox.bmp", 9, 1);
-	loadBMP_custom(texture_array, "./src/textures/TreeTexture.bmp", 10, 1);
-	loadBMP_custom(texture_array, "./src/textures/GrassClusterTexture.bmp", 11, 1);
-	loadBMP_custom(texture_array, "./src/textures/LightBulbTexture.bmp", 13, 1);
+	GLuint texture_array[32];
+	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 1, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/CheckerTiles.bmp", 3, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/door.bmp", 5, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/doorFrame.bmp", 6, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/SkyBox.bmp", 9, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/TreeTexture.bmp", 10, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/GrassClusterTexture.bmp", 11, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LightBulbTexture.bmp", 13, 1, 0);
 
-	loadBMP_custom(texture_array, "./src/textures/LV1Floor.bmp", 14, 1);
-	loadBMP_custom(texture_array, "./src/textures/LV1Rocks.bmp", 15, 1);
-	loadBMP_custom(texture_array, "./src/textures/LV1Structures.bmp", 16, 1);
-	loadBMP_custom(texture_array, "./src/textures/LV1MapUI.bmp", 17, 1);
-	loadBMP_custom(texture_array, "./src/textures/LV1BackgroundRocks.bmp", 19, 1);
+	loadBMP_custom(texture_array, "./src/textures/LV1Floor.bmp", 14, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LV1Rocks.bmp", 15, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LV1Structures.bmp", 16, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LV1MapUI.bmp", 17, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LV1BackgroundRocks.bmp", 19, 1, 0);
 
-	loadBMP_custom(texture_array, "./src/textures/HeartsUI.bmp", 18, 1);
-	loadBMP_custom(texture_array, "./src/textures/CharacterTexture.bmp", 20, 1);
+	loadBMP_custom(texture_array, "./src/textures/HeartsUI.bmp", 18, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/CharacterTexture.bmp", 20, 1, 0);
+	
+
+	// particle images
+	loadBMP_custom(texture_array, "./src/textures/Particle Images/smoke.bmp", 21, 1, 1);
+	//loadBMP_custom(texture_array, "./BMP files/oldbox.bmp", 22, 0);
+	//loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 23, 1, 1);
+	loadBMP_custom(texture_array, "./src/textures/Particle Images/flame05.bmp", 23, 1, 1);
+	loadBMP_custom(texture_array, "./src/textures/Particle Images/snowflake.bmp", 24, 1, 1);
+	loadBMP_custom(texture_array, "./src/textures/Particle Images/bubble.bmp", 25, 1, 1);
+	loadBMP_custom(texture_array, "./src/textures/Particle Images/particle3.bmp", 26, 1, 1);
+	loadBMP_custom(texture_array, "./src/textures/Particle Images/waterFallSub.bmp", 27, 1, 1);
+	loadBMP_custom(texture_array, "./src/textures/Particle Images/leaf.bmp", 28, 1, 1);
+	loadBMP_custom(texture_array, "./src/textures/Particle Images/flame01.bmp", 29, 1, 1);
+	loadBMP_custom(texture_array, "./src/textures/Particle Images/gradient.bmp", 30, 1, 1);
+	loadBMP_custom(texture_array, "./src/textures/Particle Images/ring.bmp", 31, 1, 1);
+
+
+	// Load particle mesh & images
+	meshParticlePlane = loadObjMesh("./src/obj files/ParticlePlane.obj"); // mesh5 is reused multiple times for particles
+	meshParticleRain = loadObjMesh("./src/obj files/ParticleRain.obj");
+
+	/*
+	uniqueMeshID = uniqueMeshID + 1;
+	displayParticlePlane = meshToDisplayList(meshParticlePlane, uniqueMeshID, 21);
+	uniqueMeshID = uniqueMeshID + 1;
+	displayParticlePlaneFlames = meshToDisplayList(meshParticlePlane, uniqueMeshID, 23);
+	uniqueMeshID = uniqueMeshID + 1;
+	displayParticlePlaneSnow = meshToDisplayList(meshParticlePlane, uniqueMeshID, 24);
+	uniqueMeshID = uniqueMeshID + 1;
+	displayParticlePlaneBubbles = meshToDisplayList(meshParticlePlane, uniqueMeshID, 25);
+	uniqueMeshID = uniqueMeshID + 1;
+	displayParticlePlaneAsh = meshToDisplayList(meshParticlePlane, uniqueMeshID, 26);
+	uniqueMeshID = uniqueMeshID + 1;
+	displayParticlePlaneWaterfallSub = meshToDisplayList(meshParticlePlane, uniqueMeshID, 27);
+	uniqueMeshID = uniqueMeshID + 1;
+	displayParticlePlaneLeaves = meshToDisplayList(meshParticlePlane, uniqueMeshID, 28);
+	uniqueMeshID = uniqueMeshID + 1;
+	displayParticlePlaneFlameSparks = meshToDisplayList(meshParticlePlane, uniqueMeshID, 29);
+	uniqueMeshID = uniqueMeshID + 1;
+	displayParticleRain = meshToDisplayList(meshParticleRain, uniqueMeshID, 30);
+	uniqueMeshID = uniqueMeshID + 1;
+	displayParticlePlaneRing = meshToDisplayList(meshParticlePlane, uniqueMeshID, 31);
+	*/
+
+	displayParticlePlane = loadObj("./src/obj files/ParticlePlane.obj", texture_array[21]);
+	displayParticlePlaneFlames = loadObj("./src/obj files/ParticlePlane.obj", texture_array[23]);
+	displayParticlePlaneSnow = loadObj("./src/obj files/ParticlePlane.obj", texture_array[24]);
+	displayParticlePlaneBubbles = loadObj("./src/obj files/ParticlePlane.obj", texture_array[25]);
+	displayParticlePlaneAsh = loadObj("./src/obj files/ParticlePlane.obj", texture_array[26]);
+	displayParticlePlaneWaterfallSub = loadObj("./src/obj files/ParticlePlane.obj", texture_array[27]);
+	displayParticlePlaneLeaves = loadObj("./src/obj files/ParticlePlane.obj", texture_array[28]);
+	displayParticlePlaneFlameSparks = loadObj("./src/obj files/ParticlePlane.obj", texture_array[29]);
+	displayParticleRain = loadObj("./src/obj files/ParticleRain.obj", texture_array[30]);
+	displayParticlePlaneRing = loadObj("./src/obj files/ParticlePlane.obj", texture_array[31]);
 
 
 

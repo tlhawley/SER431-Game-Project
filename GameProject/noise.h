@@ -74,6 +74,23 @@ public:
 		return total;
 	}
 
+	// perlinCustom
+	double perlinCustom(float x, float y, double scale, double persistence, double octaves, bool sinus) {
+		double total = 0;
+		double frequency, amplitude;
+		for (int i = 0; i<octaves; i++) {
+			frequency = pow(2, (double)i);
+			amplitude = pow(persistence, (double)-i) * 2;
+			total = total + noise(scale*frequency* x, scale*frequency* y, 11.5) * amplitude;
+		}
+		if (sinus) {
+			return sin(2 * (x*scale) + total);
+		}
+		else {
+			return (total - 0.5f)*2.0f;
+		}
+	}
+
 	// noise core
 	double noise(double x, double y, double z) {
 		// find unit cube that contains point
@@ -103,3 +120,16 @@ public:
 	}
 
 };
+
+
+// variable used for creating psudo random numbers
+int countingRand = 1267421;
+
+// Random Numbers between two values - Source: https://stackoverflow.com/questions/10776073/random-double-between-min-and-max
+double getRnd(double min, double max) {
+
+	countingRand = (countingRand * 97213 + 78733);
+	int num = abs(countingRand % 100000);
+
+	return (max - min) * ((double)num / 100000.0) + min;
+}
