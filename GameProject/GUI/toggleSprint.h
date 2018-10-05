@@ -27,7 +27,7 @@ void toggleSprint() {
 	}
 	*/
 
-	/*
+	
 	char msgXYZ[100];
 	//sprintf_s(msgXYZ, "TOGGLE SHADING");
 	if (sprint) {
@@ -101,6 +101,6 @@ void toggleSprint() {
 	glVertex3f(-10, 9.4, 0.8);
 
 	glEnd();
-	*/
+	
 
 }

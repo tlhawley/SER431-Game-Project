@@ -5,6 +5,7 @@
 #include "lighting.h"
 #include "drawingList.h"
 #include "checkCollision.h"
+#include "GUI/buttonUI.h"
 #include "sync.h"
 #include "input.h"
 #include "camera.h"
