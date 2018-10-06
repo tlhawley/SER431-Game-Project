@@ -37,29 +37,38 @@ buttonsUI newButtonUI(float x, float y, bool active, bool toggle, const char *te
 void initButtonUI() {
 	buttonAmount = 0;
 
-	buttons[buttonAmount - 1] = newButtonUI(0,0,true,false,"Boundbox OFF","Boundbox ON");
+	buttons[buttonAmount - 1] = newButtonUI(0, 880, true, false, "Menu OFF", "Menu ON");
+	buttons[buttonAmount - 1] = newButtonUI(0,780,true,false,"Boundbox OFF","Boundbox ON");
+	buttons[buttonAmount - 1] = newButtonUI(0, 680, true, false, "Boundbox OFF", "Boundbox ON");
 
 }
 
 void actionButtonUI() {
-	for (int i = 0; i < buttonAmount+1; i++) { /// ?????????????????????? NOT WORKING WHEN IN LOOP???? WHY
-		//if (buttons[i].active == true) {
+	for (int i = 0; i < buttonAmount; i++) {
 
-		//if ((float)mouseX / (float)width < 1.0f && (float)mouseX / (float)width > 0.8f && (float)mouseY / (float)width < 0.25f && (float)mouseY / (float)width > 0.2f) {
-			if ((float)mouseX / (float)width < 1.0f && (float)mouseX / (float)width > 0.8f && (float)mouseY / (float)height - mouseY - width * 0.04 - width * 0.2 < 0.0 && height - mouseY - width * 0.2 > 0.0) {
-				if (sprint) { //SmoothingSetting == 1) {
-					sprint = false; //SmoothingSetting = 0;
+		if (i > 0) {
+			if (buttons[0].toggle) {
+				buttons[i].active = true;
+			}
+			else {
+				buttons[i].active = false;
+			}
+		}
+
+		if (buttons[i].active == true) {
+
+
+			if (1920 * (float)mouseX / (float)width > buttons[i].x && 1920 * (float)mouseX / (float)width < buttons[i].x + 320 && 1080 * (float)mouseY / (float)height > buttons[i].y && 1080 * (float)mouseY / (float)height < buttons[i].y + 64) {
+				if (buttons[i].toggle) {
+					buttons[i].toggle = false;
 				}
 				else {
-					sprint = true; //SmoothingSetting = 1;
+					buttons[i].toggle = true;
 				}
 				buttonMouseActive = 1;
 			}
-			//buttonMouseActive = 1;
-		//}
 
-
-		//}
+		}
 	}
 }
 
@@ -81,8 +90,22 @@ void displayButtonUI() {
 
 	glOrtho(0, 1920, 1080, 0, -10, 10);
 
-	for (int i = 0; i < buttonAmount+1; i++) {
+	for (int i = 0; i < buttonAmount; i++) {
 		if (buttons[i].active == true) {
+
+
+			char msgXYZ[100];
+
+			if (buttons[i].toggle) {
+				sprintf_s(msgXYZ, buttons[i].text2);
+			}
+			else {
+				sprintf_s(msgXYZ, buttons[i].text1);
+			}
+
+			glColor3f(1, 1, 1);
+			renderBitmapString(buttons[i].x + 31, buttons[i].y + 38, 0.0, GLUT_BITMAP_HELVETICA_18, msgXYZ); // uses graphicsFunctions.h
+
 
 			glBegin(GL_POLYGON);
 
@@ -94,19 +117,12 @@ void displayButtonUI() {
 
 			glEnd();
 
-			
-			char msgXYZ[100];
 
-			if (buttons[i].toggle) {
-				sprintf_s(msgXYZ, buttons[i].text2);
-			}
-			else {
-				sprintf_s(msgXYZ, buttons[i].text1);
-			}
-			glColor3f(1, 1, 1);
-			renderBitmapString(buttons[i].x, buttons[i].y, 0.0, GLUT_BITMAP_HELVETICA_18, msgXYZ); // uses graphicsFunctions.h
-			glColor3f(0.0, 0.0, 0.0);
-			renderBitmapString(buttons[i].x+1, buttons[i].y+1, 0.0, GLUT_BITMAP_HELVETICA_18, msgXYZ); // uses "graphicsFunctions.h"
+
+
+			//glColor3f(0.0, 0.0, 0.0);
+			//renderBitmapString(buttons[i].x + 6, buttons[i].y + 4, 0.0, GLUT_BITMAP_HELVETICA_18, msgXYZ); // uses "graphicsFunctions.h"
+
 
 		}
 	}
