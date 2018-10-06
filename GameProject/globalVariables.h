@@ -8,6 +8,7 @@ float spikeAngY = 0.0;
 float camAngY = -PI/2.0;
 float camAngX = 0.0;
 bool sprint = false;
+bool displayMenu = false;
 int score = 0;
 int inventoryKeys = 0;
 bool levelComplete = false;

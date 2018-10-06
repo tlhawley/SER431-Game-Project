@@ -39,6 +39,14 @@ void mySpecial(int key, int x, int y) {
 	//case GLUT_ACTIVE_SHIFT:
 		//sprint = true;
 		//break;
+	case GLUT_KEY_F2:
+		if (displayMenu == true) {
+			displayMenu = false;
+		}
+		else {
+			displayMenu = true;
+		}
+		break;
 	case GLUT_KEY_F11:
 		if (windowed == true) {
 			windowed = false;
