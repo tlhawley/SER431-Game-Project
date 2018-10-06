@@ -33,6 +33,8 @@ float materialAlpha2[] = { 0,0,0,0,0,0,0,0.7f,0,0,0,0,0,0,0,0.7f,1 };
 
 float materialCollisionBox[] = { 0,0,0,0,.1f,1,.1f,0.3f,0,0,0,0,.1f,1,.1f,0.3f,1 };
 
+float materialEmissive[] = { 0,0,0,0,1,1,1,1.0f,0,0,0,0,1,1,1,1.0f,1 };
+
 void materialz();
 
 

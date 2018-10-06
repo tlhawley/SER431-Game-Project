@@ -8,12 +8,14 @@ float spikeAngY = 0.0;
 float camAngY = -PI/2.0;
 float camAngX = 0.0;
 bool sprint = false;
+bool displayMenu = true;
 int score = 0;
 int inventoryKeys = 0;
 bool levelComplete = false;
 
 int SmoothingSetting = 1;
 
+float pxv = 0.0f, pzv = 0.0f;
 float camxv = 0.0f, camyv = 0.0f, camzv = 0.0f; // x,y,z velocity
 float camx = 0.0f, camy = 1.75f, camz = 0.0f;
 float ox, oy, oz; // old x,y,z
@@ -57,6 +59,8 @@ bool mouseRDown = false;
 bool mouseRWait = false;
 bool mouseWait = false;
 bool windowed = true;
+
+int refectOn = 0;
 
 void globalVariables();
 

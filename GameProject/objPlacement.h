@@ -20,3 +20,4 @@ void objPlacementTRS(void(*objFunction)(), float translateX, float translateY, f
 	glTranslatef(-translateX, -translateY, -translateZ);
 	glPopMatrix();
 }
+

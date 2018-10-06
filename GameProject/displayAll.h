@@ -212,16 +212,23 @@ void displayEnvironment() {
 	//glCallList(meshFloor);
 	//glCallList(meshQ4Map);
 	setMaterialAdvanced(materialSkyBox);
-	glEnable(GL_CULL_FACE);
-	displayBaseModels();
-	glDisable(GL_CULL_FACE);
+	if (refectOn == 0) {
+		glEnable(GL_CULL_FACE);
+		displayBaseModels();
+		glDisable(GL_CULL_FACE);
+	}
+	else {
+		displayBaseModels();
+	}
 
 	// TODO: Make shadows for this object on the wall
+	/*
 	glTranslatef(0.0f, 2.0, 5);
 	glScalef(0.01f, 0.01f, 0.01f);
 	//displayNoiseGenBox1(); // wood box
 	glScalef(100.0f, 100.0f, 100.0f);
 	glTranslatef(0.0f, -2.0, -5);
+	*/
 
 	/*
 	glTranslatef(2.0f, 2.0, 5);
@@ -448,18 +455,20 @@ void displayEnvironment() {
 
 
 void displayGameObjects() {
-	displayDoorway();
+	if (refectOn == 0) {
+		displayDoorway();
 
-	setMaterialAdvanced(materialGold);
-	displayKeys();
+		setMaterialAdvanced(materialGold);
+		displayKeys();
 
-	setMaterialAdvanced(materialRuby);
-	displayGems();
+		setMaterialAdvanced(materialRuby);
+		displayGems();
 
-	setMaterialAdvanced(materialSpinSpike);
-	displaySpinSpikes();
+		setMaterialAdvanced(materialSpinSpike);
+		displaySpinSpikes();
 
-	displayHealthPacks();
+		displayHealthPacks();
+	}
 
 }
 
@@ -470,19 +479,21 @@ void displayGameObjects() {
 
 
 void displaySkyBox(float scale, float yAngle, int skyboxID) {
-
-	glDisable(GL_FOG); // the sky box should not be affected by fog
 	setlight(); // this allows the sky box to be visible
 	setMaterialAdvanced(materialSkyBox); // This allows sets the skybox to a bright emissive material displaying no shading
-
-	glTranslatef(camx, camy, camz);
+	if (buttons[4].toggle == true) {
+		glDisable(GL_FOG); // the sky box should not be affected by fog
+		glTranslatef(camx, camy, camz);
 		glScalef(scale, -scale, scale); // TODO: Fix skybox UVs to work correctly without inverting the y axis
-			glRotatef(yAngle, 0, 1.0, 0);
-				glCallList(meshSkyBox); // TODO: skyBoxID for swapping different skybox images
-			glRotatef(-yAngle, 0, 1.0, 0);
+		glRotatef(yAngle, 0, 1.0, 0);
+		glCallList(meshSkyBox); // TODO: skyBoxID for swapping different skybox images
+		glRotatef(-yAngle, 0, 1.0, 0);
 		glScalef(1.0 / scale, 1.0 / -scale, 1.0 / scale);
-	glTranslatef(-camx, -camy, -camz);
-	glEnable(GL_FOG);
+		glTranslatef(-camx, -camy, -camz);
+		if (buttons[5].toggle == true) {
+			glEnable(GL_FOG);
+		}
+	}
 
 }
 

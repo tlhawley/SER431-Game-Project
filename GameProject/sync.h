@@ -24,6 +24,10 @@ void sync() {
 	}
 	if (mouseWait == true && mouseDown == false) { // the mouse has been released
 
+
+		buttonMouseActive = 0;
+
+		/*
 		//if ((float)mouseX / (float)width < 1.0f && (float)mouseX / (float)width > 0.8f && (float)mouseY / (float)width < 0.25f && (float)mouseY / (float)width > 0.2f) {
 		if ((float)mouseX / (float)width < 1.0f && (float)mouseX / (float)width > 0.8f && (float)mouseY / (float)height - mouseY - width * 0.04 - width * 0.2 < 0.0 && height - mouseY - width * 0.2 > 0.0) {
 			if (sprint) { //SmoothingSetting == 1) {
@@ -33,7 +37,12 @@ void sync() {
 				sprint = true; //SmoothingSetting = 1;
 			}
 		}
-		else {
+		*/
+		actionButtonUI();
+		
+
+
+		if (buttonMouseActive== 0){
 
 			if (lockMouse == true) {
 				lockMouse = false;
