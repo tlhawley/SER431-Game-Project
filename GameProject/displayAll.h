@@ -479,19 +479,21 @@ void displayGameObjects() {
 
 
 void displaySkyBox(float scale, float yAngle, int skyboxID) {
-
-	glDisable(GL_FOG); // the sky box should not be affected by fog
 	setlight(); // this allows the sky box to be visible
 	setMaterialAdvanced(materialSkyBox); // This allows sets the skybox to a bright emissive material displaying no shading
-
-	glTranslatef(camx, camy, camz);
+	if (buttons[4].toggle == true) {
+		glDisable(GL_FOG); // the sky box should not be affected by fog
+		glTranslatef(camx, camy, camz);
 		glScalef(scale, -scale, scale); // TODO: Fix skybox UVs to work correctly without inverting the y axis
-			glRotatef(yAngle, 0, 1.0, 0);
-				glCallList(meshSkyBox); // TODO: skyBoxID for swapping different skybox images
-			glRotatef(-yAngle, 0, 1.0, 0);
+		glRotatef(yAngle, 0, 1.0, 0);
+		glCallList(meshSkyBox); // TODO: skyBoxID for swapping different skybox images
+		glRotatef(-yAngle, 0, 1.0, 0);
 		glScalef(1.0 / scale, 1.0 / -scale, 1.0 / scale);
-	glTranslatef(-camx, -camy, -camz);
-	glEnable(GL_FOG);
+		glTranslatef(-camx, -camy, -camz);
+		if (buttons[5].toggle == true) {
+			glEnable(GL_FOG);
+		}
+	}
 
 }
 
