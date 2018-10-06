@@ -1,3 +1,5 @@
+// This is used for menu buttons
+
 struct buttonsUI {
 	bool active;
 	bool toggle;

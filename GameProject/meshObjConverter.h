@@ -167,7 +167,7 @@ void loadBMP_custom(GLuint textureArray[], const char * imagepath, int n, int fi
 	} else 
 	if (*(int*)&(header[0x1C]) != 24) { printf("Not a correct BMP file\n");    fclose(file); return; }
 	// Read the information about the image
-	dataPos = *(int*)&(header[0x0A]); printf("%d", *(int*)&(header[0x0A]));
+	dataPos = *(int*)&(header[0x0A]); //printf("%d", *(int*)&(header[0x0A]));
 	imageSize = *(int*)&(header[0x22]);
 	width = *(int*)&(header[0x12]);
 	height = *(int*)&(header[0x16]);
