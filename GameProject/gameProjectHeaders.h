@@ -1,4 +1,10 @@
 
+// graphics functions.h forward declare
+void setUp3DView();
+void renderBitmapString(float x, float y, float z, void *font, char *string);
+void myReshape(int w, int h);
+void myInit();
+
 
 #include "globalVariables.h"
 #include "materials.h"

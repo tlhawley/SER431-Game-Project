@@ -4,17 +4,33 @@ void toggleSprint();
 
 void toggleSprint() {
 
-
+	/*
 	glEnable(GL_DEPTH_TEST);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glViewport(width - width * 0.2, height - width * 0.25, width*0.2, width*0.04);
+	//glViewport(width - width * 0.2, height - width * 0.25, width*0.2, width*0.04);
+
+
+	glViewport(0, 0, width, height);
+
 	//glViewport(width - width * 0.2, width * 0.2, width*0.2, width*0.04);
 	gluPerspective(0, 0, 0.1, 1000);
 
-	glOrtho(-10, 10, -10, 10, -10, 10);
+	//glOrtho(-10, 10, -10, 10, -10, 10);
 
+	glOrtho(0, 1920, 1080, 0, -10, 10);
+
+
+	glBegin(GL_POLYGON);
+	glColor4f(.0, .0, .0, 0.5);
+	glVertex3f(0, 0, 0);
+	glVertex3f(1920, 0, 0);
+	glVertex3f(1920, 50, 0);
+	glVertex3f(0, 50, 0);
+
+	glEnd();
+	*/
 
 
 	// 1.0>x/w>0.8
@@ -27,7 +43,7 @@ void toggleSprint() {
 	}
 	*/
 
-	
+	/*
 	char msgXYZ[100];
 	//sprintf_s(msgXYZ, "TOGGLE SHADING");
 	if (sprint) {
@@ -101,6 +117,7 @@ void toggleSprint() {
 	glVertex3f(-10, 9.4, 0.8);
 
 	glEnd();
+	*/
 	
 
 }

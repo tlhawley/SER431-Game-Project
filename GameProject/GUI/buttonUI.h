@@ -11,7 +11,7 @@ struct buttonsUI {
 int buttonAmount;
 int buttonMouseActive = 0; // used with buttonUI.h to detect if the mouse is available to click on the button
 
-buttonsUI newButtonUI(float x, float y, bool active, int toggle, const char *text1, const char *text2);
+buttonsUI newButtonUI(float x, float y, bool active, bool toggle, const char *text1, const char *text2);
 void initButtonUI();
 void actionButtonUI();
 void displayButtonUI();
@@ -22,7 +22,7 @@ void displayButtonUI();
 #define maxButtons 20
 buttonsUI buttons[maxButtons];
 
-buttonsUI newButtonUI(float x, float y, bool active, int toggle, const char *text1, const char *text2) {
+buttonsUI newButtonUI(float x, float y, bool active, bool toggle, const char *text1, const char *text2) {
 	buttonAmount++;
 	buttonsUI theButton;
 	theButton.active = active;
@@ -37,12 +37,12 @@ buttonsUI newButtonUI(float x, float y, bool active, int toggle, const char *tex
 void initButtonUI() {
 	buttonAmount = 0;
 
-	buttons[buttonAmount - 1] = newButtonUI(0,0,true,0,"Boundbox ON","Boundbox OFF");
+	buttons[buttonAmount - 1] = newButtonUI(0,0,true,false,"Boundbox OFF","Boundbox ON");
 
 }
 
 void actionButtonUI() {
-	//for (int i = 0; i < buttonAmount; i++) { /// ?????????????????????? NOT WORKING WHEN IN LOOP???? WHY
+	for (int i = 0; i < buttonAmount+1; i++) { /// ?????????????????????? NOT WORKING WHEN IN LOOP???? WHY
 		//if (buttons[i].active == true) {
 
 		//if ((float)mouseX / (float)width < 1.0f && (float)mouseX / (float)width > 0.8f && (float)mouseY / (float)width < 0.25f && (float)mouseY / (float)width > 0.2f) {
@@ -60,15 +60,53 @@ void actionButtonUI() {
 
 
 		//}
-	//}
+	}
 }
 
 
 void displayButtonUI() {
-	for (int i = 0; i < buttonAmount; i++) {
+
+	glEnable(GL_DEPTH_TEST);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	//glViewport(width - width * 0.2, height - width * 0.25, width*0.2, width*0.04);
+
+	glViewport(0, 0, width, height);
+
+	//glViewport(width - width * 0.2, width * 0.2, width*0.2, width*0.04);
+	gluPerspective(0, 0, 0.1, 1000);
+
+	//glOrtho(-10, 10, -10, 10, -10, 10);
+
+	glOrtho(0, 1920, 1080, 0, -10, 10);
+
+	for (int i = 0; i < buttonAmount+1; i++) {
 		if (buttons[i].active == true) {
 
+			glBegin(GL_POLYGON);
 
+			glColor4f(.0, .0, .0, 0.5);
+			glVertex3f(buttons[i].x, buttons[i].y, 0);
+			glVertex3f(buttons[i].x + 320, buttons[i].y, 0);
+			glVertex3f(buttons[i].x + 320, buttons[i].y+64, 0);
+			glVertex3f(buttons[i].x, buttons[i].y+64, 0);
+
+			glEnd();
+
+			
+			char msgXYZ[100];
+
+			if (buttons[i].toggle) {
+				sprintf_s(msgXYZ, buttons[i].text2);
+			}
+			else {
+				sprintf_s(msgXYZ, buttons[i].text1);
+			}
+			glColor3f(1, 1, 1);
+			renderBitmapString(buttons[i].x, buttons[i].y, 0.0, GLUT_BITMAP_HELVETICA_18, msgXYZ); // uses graphicsFunctions.h
+			glColor3f(0.0, 0.0, 0.0);
+			renderBitmapString(buttons[i].x+1, buttons[i].y+1, 0.0, GLUT_BITMAP_HELVETICA_18, msgXYZ); // uses "graphicsFunctions.h"
 
 		}
 	}
