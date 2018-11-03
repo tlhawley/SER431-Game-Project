@@ -13,13 +13,22 @@ void Update() {
 		takingDamage = takingDamage - 1;
 	}
 
-	ox = camx;
-	oy = camy;
-	oz = camz;
+	ox = 0;
+	oy = 0;
+	oz = 0;
 
-	camxv = camxv * 0.8f;
-	camzv = camzv * 0.8f;
-	camyv = camyv - 0.01f;
+	camx = 0;
+	camy = 0;
+	camz = 0;
+
+	//camxv = camxv * 0.8f;
+	//camzv = camzv * 0.8f;
+	//camyv = camyv - 0.01f;
+
+	camxv = 0;
+	camzv = 0;
+	camyv = 0;
+
 	/*
 	if (creativeMode >= 1) {
 		canJump = true;
@@ -40,7 +49,6 @@ void Update() {
 	camy = camy + camyv;
 	camz = camz + camzv;
 
-	
 
 	if (mouseMoveX != 0) {
 		camAngY -= mouseMoveX * 0.001f;
@@ -51,6 +59,32 @@ void Update() {
 		if (camAngX > 0.7) camAngX = 0.7;
 		if (camAngX < -1.5)camAngX =-1.5;
 		orientMe2(camAngX);
+	}
+
+	if (upPressed == true) {
+		box1Y = box1Y + 0.04;
+	}
+	if (downPressed == true) {
+		box1Y = box1Y - 0.04;
+	}
+	if (rightPressed == true) {
+		box1Z = box1Z - 0.04;
+	}
+	if (leftPressed == true) {
+		box1Z = box1Z + 0.04;
+	}
+
+	if (wKey == true) {
+		box2Y = box2Y + 0.04;
+	}
+	if (sKey == true) {
+		box2Y = box2Y - 0.04;
+	}
+	if (dKey == true) {
+		box2Z = box2Z - 0.04;
+	}
+	if (aKey == true) {
+		box2Z = box2Z + 0.04;
 	}
 
 	/*
@@ -64,6 +98,7 @@ void Update() {
 	}
 	*/
 	
+	/*
 	if (leftPressed == true) {
 		camAngY -= 0.03f;
 		orientMe(camAngY);
@@ -74,6 +109,8 @@ void Update() {
 		orientMe(camAngY);
 		//crateX = crateX - 1.1f;
 	}
+	*/
+	/*
 	if (aKey == true) {
 		pxv = pxv - 0.05f;
 		if (pxv < -1.5f) {
@@ -93,16 +130,10 @@ void Update() {
 		if (pzv > 2.2f) {
 			pzv = 2.2f;
 		}
-		/*
-		if (sprint == false) {
-			moveMeFlat(2.1f);
-		}
-		else {
-			moveMeFlat(2.0f);
-		}
-		*/
+
 
 		//y = y + 0.1;
+	
 	}
 	if (sKey == true || downPressed == true) {
 		pzv = pzv - 0.05f;
@@ -112,6 +143,7 @@ void Update() {
 		//moveMeFlat(-2.1f);
 		//y = y - 0.1;
 	}
+	
 	if (aKey == false && dKey == false && wKey == false && sKey == false) {
 		pxv = pxv * 0.95f;
 		pzv = pzv * 0.95f;
@@ -122,9 +154,10 @@ void Update() {
 			pzv = 0.0f;
 		}
 	}
+	*/
 
-	pxv = pxv * 0.92f;
-	pzv = pzv * 0.92f;
+	//pxv = pxv * 0.92f;
+	//pzv = pzv * 0.92f;
 
 	moveMeFlatStrafe(pxv);
 	moveMeFlat(pzv);

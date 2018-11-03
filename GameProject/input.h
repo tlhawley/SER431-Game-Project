@@ -189,8 +189,8 @@ void keyboardInputUp(unsigned char key, int x2, int y2)
 
 void myMouseMotion(int x, int y) {
 
-	mouseX = x;
-	mouseY = y;
+	//mouseX = x;
+	//mouseY = y;
 }
 
 void mouseClicks(int button, int state, int x, int y) {

@@ -128,7 +128,9 @@ void loadModels() {
 	printf("Loading\n");
 
 	GLuint texture_array[32];
+	
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
+	/*
 	loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 1, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/CheckerTiles.bmp", 3, 1, 0);
@@ -147,6 +149,7 @@ void loadModels() {
 
 	loadBMP_custom(texture_array, "./src/textures/HeartsUI.bmp", 18, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/CharacterTexture.bmp", 20, 1, 0);
+	
 	
 
 	// particle images
@@ -191,6 +194,7 @@ void loadModels() {
 	displayParticlePlaneRing = meshToDisplayList(meshParticlePlane, uniqueMeshID, 31);
 	*/
 
+	/*
 	displayParticlePlane = loadObj("./src/obj files/ParticlePlane.obj", texture_array[21]);
 	displayParticlePlaneFlames = loadObj("./src/obj files/ParticlePlane.obj", texture_array[23]);
 	displayParticlePlaneSnow = loadObj("./src/obj files/ParticlePlane.obj", texture_array[24]);
@@ -201,7 +205,7 @@ void loadModels() {
 	displayParticlePlaneFlameSparks = loadObj("./src/obj files/ParticlePlane.obj", texture_array[29]);
 	displayParticleRain = loadObj("./src/obj files/ParticleRain.obj", texture_array[30]);
 	displayParticlePlaneRing = loadObj("./src/obj files/ParticlePlane.obj", texture_array[31]);
-
+	*/
 
 
 	/* // images currently not in use
@@ -219,7 +223,7 @@ void loadModels() {
 
 	displayListClockWhite = loadObj("./src/obj files/ClockWhite.obj", texture_array[0]);
 	*/
-
+	/*
 	meshSpikes = loadObj("./src/obj files/Spikes2.obj", texture_array[2]);
 
 	meshDoorFrame = loadObj("./src/obj files/DoorFrame3.obj", texture_array[6]);
@@ -229,14 +233,15 @@ void loadModels() {
 	meshDoorRight = loadObj("./src/obj files/DoorLeft3.obj", texture_array[5]);
 
 	meshDoorLock = loadObj("./src/obj files/DoorLock3.obj", texture_array[0]);
-
+	*/
 	/*
 	meshRoomWall1 = loadObj("./src/obj files/RoomWall1Colored.obj", texture_array[0]);
 
 	meshRoomWall2 = loadObj("./src/obj files/RoomWall2Colored.obj", texture_array[0]);
 	*/
-
+	
 	meshBox = loadObj("./src/obj files/box.obj", texture_array[0]);
+	/*
 
 	//meshUIMap = loadObj("./src/obj files/Map18_map.obj", texture_array[0]);
 	//meshUIMap = loadObj("./src/obj files/q4_Map.obj", texture_array[3]);
@@ -327,7 +332,7 @@ void loadModels() {
 	meshHeartUI[2] = loadObj("./src/obj files/HeartUI03.obj", texture_array[18]);
 	meshHeartUI[3] = loadObj("./src/obj files/HeartUI04.obj", texture_array[18]);
 	meshHeartUI[4] = loadObj("./src/obj files/HeartUI05.obj", texture_array[18]);
-	
+	*/
 
 
 }
