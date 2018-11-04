@@ -35,6 +35,8 @@ float materialCollisionBox[] = { 0,0,0,0,.1f,1,.1f,0.3f,0,0,0,0,.1f,1,.1f,0.3f,1
 
 float materialEmissive[] = { 0,0,0,0,1,1,1,1.0f,0,0,0,0,1,1,1,1.0f,1 };
 
+float materialHeart[] = { 0.25f,0.25f,0.25f,1,0.4f,0.4f,0.4f,1,80.9f,80.9f,80.9f,1,0,0,0,1,50.0f };
+
 void materialz();
 
 

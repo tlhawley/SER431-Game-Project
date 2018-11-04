@@ -467,6 +467,7 @@ void displayGameObjects() {
 		setMaterialAdvanced(materialSpinSpike);
 		displaySpinSpikes();
 
+		setMaterialAdvanced(materialHeart);
 		displayHealthPacks();
 	}
 

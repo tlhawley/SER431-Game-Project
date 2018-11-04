@@ -87,6 +87,9 @@ GLuint meshHeartUI[5];
 
 
 
+GLuint meshHeart;
+
+
 
 GLuint displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles,
 displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves, displayParticlePlaneFlameSparks, displayParticleRain, displayParticlePlaneRing;
@@ -127,7 +130,7 @@ void loadModels() {
 
 	printf("Loading\n");
 
-	GLuint texture_array[32];
+	GLuint texture_array[33];
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 1, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
@@ -162,6 +165,12 @@ void loadModels() {
 	loadBMP_custom(texture_array, "./src/textures/Particle Images/flame01.bmp", 29, 1, 1);
 	loadBMP_custom(texture_array, "./src/textures/Particle Images/gradient.bmp", 30, 1, 1);
 	loadBMP_custom(texture_array, "./src/textures/Particle Images/ring.bmp", 31, 1, 1);
+
+	loadBMP_custom(texture_array, "./src/textures/HeartTexture.bmp", 32, 1, 0);
+
+
+
+	
 
 
 	// Load particle mesh & images
@@ -322,12 +331,17 @@ void loadModels() {
 	meshCharacterStanding01 = loadObj("./src/obj files/CharacterStanding01.obj", texture_array[20]);
 	meshCharacterForward01 = loadObj("./src/obj files/CharacterForward01.obj", texture_array[20]);
 	
+	// heart UI models
 	meshHeartUI[0] = loadObj("./src/obj files/HeartUI01.obj", texture_array[18]);
 	meshHeartUI[1] = loadObj("./src/obj files/HeartUI02.obj", texture_array[18]);
 	meshHeartUI[2] = loadObj("./src/obj files/HeartUI03.obj", texture_array[18]);
 	meshHeartUI[3] = loadObj("./src/obj files/HeartUI04.obj", texture_array[18]);
 	meshHeartUI[4] = loadObj("./src/obj files/HeartUI05.obj", texture_array[18]);
 	
+	// heart model
+	meshHeart = loadObj("./src/obj files/Heart.obj", texture_array[32]);
+
+
 
 
 }

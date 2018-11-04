@@ -23,10 +23,10 @@ void setlight() {
 	//float distance = getDistanceFromCam(0.125f, 0.7f, 0);
 	//printf("%f",distance);
 
-	float LightAmbient[] = { 0.003f, 0.0035f, 0.004f, 1.0f };
+	float LightAmbient[] = { 0.03f, 0.035f, 0.04f, 1.0f };
 	//float LightEmission[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float LightDiffuse[] = { 500.0f, 500.0f, 500.0f, 100.0f };
-	float LightSpecular[] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	float LightDiffuse[] = { 3.0f, 3.0f, 3.0f, 1.0f };
+	float LightSpecular[] = { 300.0f, 300.0f, 300.0f, 1.0f };
 	float LightDirection[] = { 0.5f, 0.7f,0.5f, 0 };
 	//float LightDirection[] = { x, y,z, 0.01f, 0.0f };
 	glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmbient);

@@ -26,15 +26,18 @@ healthPack newHealthPack(float x, float y, float z) {
 
 void initHealthPacks() {
 	healthPackAmount = 0;
+
+	//healthPacks[0] = newHealthPack(-17.0f, 0.0f, 8.0f);
+
 	// Intro to graphics 332 map
-	/*
+	
 	healthPacks[0] = newHealthPack(-17.0f, 0.0f, 8.0f);
 	healthPacks[1] = newHealthPack(-20.0f, 0.0f, 8.0f);
 	healthPacks[2] = newHealthPack(-23.0f, 0.0f, 8.0f);
 	healthPacks[3] = newHealthPack(-17.0f, 0.0f, -8.0f);
 	healthPacks[4] = newHealthPack(-20.0f, 0.0f, -8.0f);
 	healthPacks[5] = newHealthPack(-23.0f, 0.0f, -8.0f);
-	*/
+	
 	
 }
 
@@ -42,9 +45,9 @@ void actionHealthPacks() {
 	for (int i = 0; i < healthPackAmount; i++) {
 		if (healthPacks[i].active == true) {
 				if (fabs(camx - healthPacks[i].x) < 1 && fabs(camz - healthPacks[i].z) < 1 && fabs(camy - healthPacks[i].y) < 2) {
-					health = health + 200;
-					if (health > 1000) {
-						health = 1000;
+					health = health + 4;
+					if (health > 20) {
+						health = 20;
 					}
 					healthPacks[i].active = false;
 				}
