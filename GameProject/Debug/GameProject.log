@@ -1,8 +1,0 @@
-﻿  GameProject.cpp
-c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(257): warning C4018: '<': signed/unsigned mismatch
-c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(274): warning C4018: '<': signed/unsigned mismatch
-c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(457): warning C4018: '<': signed/unsigned mismatch
-c:\users\travi\documents\github\ser431-game-project\gameproject\meshobjconverter.h(484): warning C4018: '<': signed/unsigned mismatch
-c:\users\travi\documents\github\ser431-game-project\gameproject\noisegenerator.h(124): warning C4018: '<': signed/unsigned mismatch
-c:\users\travi\documents\github\ser431-game-project\gameproject\noisegenerator.h(139): warning C4018: '<': signed/unsigned mismatch
-  GameProject.vcxproj -> C:\Users\travi\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe
