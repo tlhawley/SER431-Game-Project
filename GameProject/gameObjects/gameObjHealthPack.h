@@ -42,9 +42,15 @@ void initHealthPacks() {
 }
 
 void actionHealthPacks() {
+	if (itemTimer > 0) {
+		itemTimer = itemTimer - 1;
+
+	}
 	for (int i = 0; i < healthPackAmount; i++) {
 		if (healthPacks[i].active == true) {
 				if (fabs(camx - healthPacks[i].x) < 1 && fabs(camz - healthPacks[i].z) < 1 && fabs(camy - healthPacks[i].y) < 2) {
+					SoundEngine->play2D("./src/audio/ItemPickup.wav", GL_FALSE);
+					itemTimer = 40;
 					health = health + 4;
 					if (health > 20) {
 						health = 20;

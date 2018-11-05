@@ -12,6 +12,7 @@ bool displayMenu = true;
 int score = 0;
 int inventoryKeys = 0;
 bool levelComplete = false;
+int currentLevel = -2; // -2 = title screen, -1 = intro level,  0 = hub world, 1 = level 1, 2 = level 2....
 
 int SmoothingSetting = 1;
 
@@ -23,6 +24,8 @@ float gravity = 0.0;
 
 int health = 20;
 int takingDamage = 0;
+int itemTimer = 0;
+int itemTimerID = 0;
 
 int mouseX, mouseY, mouseOX, mouseOY;
 int mouseMoveX = 0, mouseMoveY = 0;
