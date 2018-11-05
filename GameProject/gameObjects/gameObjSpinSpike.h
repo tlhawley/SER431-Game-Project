@@ -7,6 +7,8 @@ struct spinSpike {
 	float range;
 };
 
+#define spikeDamage 4
+
 spinSpike newSpinSpike(float x, float y, float z, int motion, float offset, float range);
 void initSpinSpikes();
 void actionSpinSpikes();
@@ -92,7 +94,7 @@ void actionSpinSpikes() {
 					camxv = -(num1 - camx)*0.4f;
 					camzv = -(spinSpikes[i].z - camz)*0.4f;
 					if (takingDamage <= 0) {
-						health = health - 1;
+						health = health - spikeDamage;
 						if (health < 0) { health = 0; }
 					}
 					takingDamage = 10;
@@ -105,7 +107,7 @@ void actionSpinSpikes() {
 					camxv = -(spinSpikes[i].x - camx)*0.4f;
 					camzv = -(num2 - camz)*0.4f;
 					if (takingDamage <= 0) {
-						health = health - 1;
+						health = health - spikeDamage;
 						if (health < 0) { health = 0; }
 					}
 					takingDamage = 10;
@@ -119,7 +121,7 @@ void actionSpinSpikes() {
 					camxv = -(num1 - camx)*0.4f;
 					camzv = -(num2 - camz)*0.4f;
 					if (takingDamage <= 0) {
-						health = health - 1;
+						health = health - spikeDamage;
 						if (health < 0) { health = 0; }
 					}
 					takingDamage = 10;
@@ -133,7 +135,7 @@ void actionSpinSpikes() {
 					camxv = -(num1 - camx)*0.4f;
 					camzv = -(num2 - camz)*0.4f;
 					if (takingDamage <= 0) {
-						health = health - 1;
+						health = health - spikeDamage;
 						if (health < 0) { health = 0; }
 					}
 					takingDamage = 10;

@@ -44,6 +44,7 @@ void Update() {
 
 	if (mouseMoveX != 0) {
 		camAngY -= mouseMoveX * 0.001f;
+		playerAngle -= mouseMoveX * 0.001f;
 		orientMe(camAngY);
 	}
 	if (mouseMoveY != 0) {
@@ -75,14 +76,14 @@ void Update() {
 		//crateX = crateX - 1.1f;
 	}
 	if (aKey == true) {
-		pxv = pxv - 0.05f;
+		pxv = pxv - 0.4f;
 		if (pxv < -1.5f) {
 			pxv = -1.5f;
 		}
 		//moveMeFlatStrafe(-2.1f);
 	}
 	if (dKey == true) {
-		pxv = pxv + 0.05f;
+		pxv = pxv + 0.4f;
 		if (pxv > 1.5f) {
 			pxv = 1.5f;
 		}
@@ -105,7 +106,7 @@ void Update() {
 		//y = y + 0.1;
 	}
 	if (sKey == true || downPressed == true) {
-		pzv = pzv - 0.05f;
+		pzv = pzv - 0.4f;
 		if (pzv < -1.5f) {
 			pzv = -1.5f;
 		}
@@ -133,6 +134,13 @@ void Update() {
 	//checkCollision(); // collision is now detected using collision boxes
 	if (camy < -200 || health == 0) {
 		objInit();
+	}
+
+	if (pzv == 0 && pxv == 0) {
+		
+	}
+	else {
+		playerAngle = atan2(pzv, pxv);
 	}
 
 	glutPostRedisplay();
