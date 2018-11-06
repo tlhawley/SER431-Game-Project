@@ -62,8 +62,11 @@ GLuint meshLightBulb;
 
 GLuint meshBulb;
 
-GLuint meshCharacterStanding01;
-GLuint meshCharacterForward01;
+//GLuint meshCharacterStanding01;
+//GLuint meshCharacterForward01;
+GLuint meshCharacterFrames[26];
+int runFrame = 1;
+
 
 // Level 1 - Forest Grass
 GLuint meshLV1ForestGrass;
@@ -328,8 +331,16 @@ void loadModels() {
 	meshLV1WaterMirror = loadObj("./src/obj files/LV1WaterMirror.obj", texture_array[0]);
 
 
-	meshCharacterStanding01 = loadObj("./src/obj files/CharacterStanding01.obj", texture_array[20]);
-	meshCharacterForward01 = loadObj("./src/obj files/CharacterForward01.obj", texture_array[20]);
+	//meshCharacterStanding01 = loadObj("./src/obj files/CharacterStanding01.obj", texture_array[20]);
+	//meshCharacterForward01 = loadObj("./src/obj files/CharacterForward01.obj", texture_array[20]);
+
+	meshCharacterFrames[0] = loadObj("./src/obj files/CharacterStanding01.obj", texture_array[20]);
+	for (int i = 1; i < 26; i++) {
+		std::string str = "./src/obj files/CharacterRun/Main Character _ Pose_Run_B" + std::to_string(i) + ".obj";
+		const char * c = str.c_str();
+		meshCharacterFrames[i] = loadObj(c, texture_array[20]);
+	}
+
 	
 	// heart UI models
 	meshHeartUI[0] = loadObj("./src/obj files/HeartUI01.obj", texture_array[18]);

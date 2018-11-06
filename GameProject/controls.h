@@ -76,21 +76,21 @@ void Update() {
 		//crateX = crateX - 1.1f;
 	}
 	if (aKey == true) {
-		pxv = pxv - 0.4f;
+		pxv = pxv - 0.3f;
 		if (pxv < -1.5f) {
 			pxv = -1.5f;
 		}
 		//moveMeFlatStrafe(-2.1f);
 	}
 	if (dKey == true) {
-		pxv = pxv + 0.4f;
+		pxv = pxv + 0.3f;
 		if (pxv > 1.5f) {
 			pxv = 1.5f;
 		}
 		//moveMeFlatStrafe(2.1f);
 	}
 	if (wKey == true || upPressed == true) {
-		pzv = pzv + 0.4f;
+		pzv = pzv + 0.3f;
 		if (pzv > 2.2f) {
 			pzv = 2.2f;
 		}
@@ -106,7 +106,7 @@ void Update() {
 		//y = y + 0.1;
 	}
 	if (sKey == true || downPressed == true) {
-		pzv = pzv - 0.4f;
+		pzv = pzv - 0.3f;
 		if (pzv < -1.5f) {
 			pzv = -1.5f;
 		}
