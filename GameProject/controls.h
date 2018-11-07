@@ -76,23 +76,23 @@ void Update() {
 		//crateX = crateX - 1.1f;
 	}
 	if (aKey == true) {
-		pxv = pxv - 0.3f;
+		pxv = pxv - 0.2f;
 		if (pxv < -1.5f) {
 			pxv = -1.5f;
 		}
 		//moveMeFlatStrafe(-2.1f);
 	}
 	if (dKey == true) {
-		pxv = pxv + 0.3f;
+		pxv = pxv + 0.2f;
 		if (pxv > 1.5f) {
 			pxv = 1.5f;
 		}
 		//moveMeFlatStrafe(2.1f);
 	}
 	if (wKey == true || upPressed == true) {
-		pzv = pzv + 0.3f;
-		if (pzv > 2.2f) {
-			pzv = 2.2f;
+		pzv = pzv + 0.2f;
+		if (pzv > 1.5f) {
+			pzv = 1.5f;
 		}
 		/*
 		if (sprint == false) {
@@ -106,7 +106,7 @@ void Update() {
 		//y = y + 0.1;
 	}
 	if (sKey == true || downPressed == true) {
-		pzv = pzv - 0.3f;
+		pzv = pzv - 0.2f;
 		if (pzv < -1.5f) {
 			pzv = -1.5f;
 		}
@@ -127,8 +127,15 @@ void Update() {
 	pxv = pxv * 0.92f;
 	pzv = pzv * 0.92f;
 
-	moveMeFlatStrafe(pxv);
-	moveMeFlat(pzv);
+	float maxVelocity = abs(pxv) + abs(pzv);
+	if (maxVelocity > 1.5f) {
+		maxVelocity = 1.5f;
+	}
+	//moveMeFlatStrafe(pxv);
+	//moveMeFlat(pzv);
+	moveMeFlatStrafe(cos(atan2(pzv, pxv))*maxVelocity);
+	moveMeFlat(sin(atan2(pzv, pxv))*maxVelocity);
+	
 
 
 	//checkCollision(); // collision is now detected using collision boxes

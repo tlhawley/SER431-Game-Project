@@ -461,11 +461,13 @@ void displayGameObjects() {
 		setMaterialAdvanced(materialGold);
 		displayKeys();
 
+		
 		setMaterialAdvanced(materialRuby);
 		displayGems();
 
 		setMaterialAdvanced(materialSpinSpike);
 		displaySpinSpikes();
+
 
 		setMaterialAdvanced(materialHeart);
 		displayHealthPacks();

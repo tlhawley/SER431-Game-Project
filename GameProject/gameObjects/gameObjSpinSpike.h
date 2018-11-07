@@ -22,7 +22,7 @@ int spinSpikeAmount;
 spinSpike newSpinSpike(float x, float y, float z, int motion, float offset, float range) {
 	spinSpikeAmount++;
 	spinSpike theSpinSpike;
-	theSpinSpike.motion = motion; // 1 x axis motion, 2 y axis motion, 3 circular motion, 4 circular counter clockwise
+	theSpinSpike.motion = motion; // 1 x axis motion, 2 z axis motion, 3 circular motion, 4 circular counter clockwise
 	theSpinSpike.offset = offset;
 	theSpinSpike.x = x;
 	theSpinSpike.y = y;
@@ -33,8 +33,19 @@ spinSpike newSpinSpike(float x, float y, float z, int motion, float offset, floa
 
 void initSpinSpikes() {
 	spinSpikeAmount = 0;
+
+	spinSpikes[spinSpikeAmount-1] = newSpinSpike(-50, 0.0f, -24.0f, 2, 0.0f, 9.0f);
+	spinSpikes[spinSpikeAmount-1] = newSpinSpike(-70, 0.0f, -26.0f, 2, 30.0f, 8.0f);
+	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-90, 0.0f, -24.0f, 2, 60.0f, 9.0f);
+	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-110, 0.0f, -24.0f, 2, 90.0f, 9.0f);
+	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-130, 0.0f, -24.0f, 2, 120.0f, 9.0f);
+	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-150, 0.0f, -24.0f, 2, 150.0f, 9.0f);
+	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-170, 0.0f, -19.0f, 2, 180.0f, 9.0f);
+
+
+
 	// Intro to graphics 332 map
-	spinSpikes[0] = newSpinSpike(0, 0.0f, 14.0f, 1, 0.0f, 8.0f);
+	//spinSpikes[0] = newSpinSpike(0, 0.0f, 14.0f, 1, 0.0f, 8.0f);
 	/*
 	spinSpikes[0] = newSpinSpike(0, 0.0f, 14.0f, 1, 0.0f, 8.0f);
 	spinSpikes[1] = newSpinSpike(0, 0.0f, -14.0f, 1, 0.0f, 8.0f);

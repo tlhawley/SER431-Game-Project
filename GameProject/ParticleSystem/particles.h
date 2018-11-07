@@ -371,6 +371,7 @@ void drawParticles() {
 			glTranslatef(curr->pSystemData.position.x, curr->pSystemData.position.y, curr->pSystemData.position.z);
 		}
 
+
 		// Scale only using the x scale value for all xyz
 		if (curr->pSystemData.noScaleStretching) {
 			glScalef(curr->pSystemData.scale.x, curr->pSystemData.scale.x, curr->pSystemData.scale.x);
@@ -385,16 +386,26 @@ void drawParticles() {
 			//glRotatef(-x_angle, 1.0f, 0.0f, 0.0f);
 			//glRotatef(curr->pSystemData.rotation.z, 0.0f, 0.0f, 1.0f);
 			//glRotatef(-90, 1.0f, 0.0f, 0.0f);
+
+
 			glRotatef(-camAngY* 57.29578, 0.0f, 1.0f, 0.0f);
 			glRotatef(camAngX* 57.29578, 1.0f, 0.0f, 0.0f);
+
+			//glRotatef(-atan2f(camz - curr->pSystemData.position.z, camx - curr->pSystemData.position.x)* 57.29578, 0.0f, 1.0f, 0.0f);
+			//float nummy = sqrtf((camz - curr->pSystemData.position.z)*(camz - curr->pSystemData.position.z) + (camx - curr->pSystemData.position.x)*(camx - curr->pSystemData.position.x));
+			//glRotatef(atan2f(camy - curr->pSystemData.position.y, nummy)* 57.29578, 1.0f, 0.0f, 0.0f);
+			//glRotatef(90, 1.0f, 0.0f, 0.0f);
 			glRotatef(curr->pSystemData.rotation.z, 0.0f, 0.0f, 1.0f);
-			glRotatef(90, 1.0f, 0.0f, 0.0f);
+			glRotatef(-90, 1.0f, 0.0f, 0.0f);
+			//glRotatef(180, 0.0f, 1.0f, 0.0f);
 		}
 		else { // rotates the particles using the given angle
 			glRotatef(curr->pSystemData.rotation.x, 1.0f, 0.0f, 0.0f);
 			glRotatef(curr->pSystemData.rotation.y, 0.0f, 1.0f, 0.0f);
 			glRotatef(curr->pSystemData.rotation.z, 0.0f, 0.0f, 1.0f);
 		}
+
+
 
 		glCallList(curr->pSystemData.displayID);
 		glPopMatrix();

@@ -9,7 +9,7 @@
 
 
 struct Mesh;
-//GLubyte* load_bmp_file(const char *filename, BITMAPINFO **info); // no longer in use
+GLubyte* LoadDIBitmap(const char *filename, BITMAPINFO **info, int alphaType);
 //void texture_from_file(GLuint *textureArray, const char * file); // no longer in use
 void loadBMP_custom(GLuint textureArray[], const char * imagepath, int n, int filterMode, int alphaMode); // new bmp texture loading function
 int StrToInt(const string &str);
@@ -120,10 +120,114 @@ GLubyte* load_bmp_file(const char *filename, BITMAPINFO **info) {
 
 
 
+// Load a DIB/BMP file from disk. - NOTE: Modified to accept rgb or rgba files
+GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info, int alphaType) {
+	FILE *fp;      // open file pointer
+	GLubyte * bits; // bitmap pixel bits
+	int bitsize;   // Size of bitmap
+	int infosize;  // Size of header information
+	BITMAPFILEHEADER header; // File header
+							 // try opening the file; use "rb" mode to read this *binary* file.
+	if ((fp = fopen(filename, "rb")) == NULL)
+		return (NULL);
+	// read the file header and any following bitmap information.
+	if (fread(&header, sizeof(BITMAPFILEHEADER), 1, fp) < 1) {
+		// Couldn't read the file header - return NULL.
+		fclose(fp);
+		return (NULL);
+	}
+	// Check for BM reversed.
+	if (header.bfType != 'MB') {
+		// not a bitmap file - return NULL.
+		fclose(fp);
+		return (NULL);
+	}
+	infosize = header.bfOffBits - sizeof(BITMAPFILEHEADER);
+	if ((*info = (BITMAPINFO *)malloc(infosize)) == NULL) {
+		// couldn't allocate memory for bitmap info - return NULL.
+		fclose(fp);
+		return (NULL);
+	}
+	if (fread(*info, 1, infosize, fp) < infosize) {
+		// Couldn't read the bitmap header - return NULL.
+		free(*info);
+		fclose(fp);
+		return (NULL);
+	}
+	// Now that we have all the header info read in, allocate memory for the bitmap and read *it* in.
+	if ((bitsize = (*info)->bmiHeader.biSizeImage) == 0) {
+		bitsize = ((*info)->bmiHeader.biWidth*(*info)->bmiHeader.biBitCount + 7) / 8 * abs((*info)->bmiHeader.biHeight);
+		if (alphaType == 1) { bitsize = bitsize + 128 * 128 * 8; }
+	}
+	if ((bits = (GLubyte *)malloc(bitsize)) == NULL) {
+		// Couldn't allocate memory - return NULL!
+		free(*info);
+		fclose(fp);
+		return (NULL);
+	}
+	if (fread(bits, 1, bitsize, fp) < bitsize) {
+		// couldn't read bitmap - free memory and return NULL!
+		free(*info);
+		free(bits);
+		fclose(fp);
+		return (NULL);
+	}
+	// OK, everything went fine - return the allocated bitmap.
+	fclose(fp);
+	return (bits);
+}
+
+
+
+//UINT textureArray[], const char *file, int n, byte alphaType
+
 // Source: https://github.com/javiergs/SER431/blob/master/Lecture10/shadows.cpp
 // A function for loading bmp file textures
-
 void loadBMP_custom(GLuint textureArray[], const char * imagepath, int n, int filterMode, int alphaMode) {
+	printf("Reading image %s\n", imagepath);
+
+	BITMAPINFO *bitmapInfo; // Bitmap information
+	GLubyte    *bitmapBits; // Bitmap data
+	if (!imagepath) {
+		cout << "texture file not found!" << endl;
+		return;
+	}
+	bitmapBits = LoadDIBitmap(imagepath, &bitmapInfo, alphaMode);
+	glGenTextures(1, &textureArray[n]);
+	glBindTexture(GL_TEXTURE_2D, textureArray[n]);
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // must set to 1 for compact data
+										   // glTexImage2D Whith size and minification
+	if (alphaMode == 0) {
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 4, bitmapInfo->bmiHeader.biWidth, bitmapInfo->bmiHeader.biHeight, GL_BGR_EXT, GL_UNSIGNED_BYTE, bitmapBits);
+	}
+	else {
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 4, bitmapInfo->bmiHeader.biWidth, bitmapInfo->bmiHeader.biHeight, GL_BGRA_EXT, GL_UNSIGNED_BYTE, bitmapBits);
+	}
+
+
+
+	delete[] bitmapBits;
+
+	// Poor filtering, or ...
+
+	if (filterMode == 0) {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	}
+	else {
+		// ... nice trilinear filtering ...
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	}
+
+
+}
+
+
+
+void loadBMP_customz(GLuint textureArray[], const char * imagepath, int n, int filterMode, int alphaMode) {
 
 	printf("Reading image %s\n", imagepath);
 	// Data read from the header of the BMP file
@@ -225,7 +329,7 @@ void loadBMP_custom(GLuint textureArray[], const char * imagepath, int n, int fi
 
 
 
-
+/*
 // Load a DIB/BMP file from disk. - NOTE: Modified to accept rgb or rgba files
 GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info, byte alphaType) {
 	FILE *fp;      // open file pointer
@@ -282,6 +386,7 @@ GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info, byte alphaType) {
 	fclose(fp);
 	return (bits);
 }
+*/
 
 // Create texture from BMP file - NOTE: Modified to accept rgb or rgba files
 void bmpTexture(UINT textureArray[], const char *file, int n, byte alphaType) {

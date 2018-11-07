@@ -29,16 +29,16 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.pSystemTypeID = ParID::flame; // A uniqe value to identify the type of particle
 
 		pSystemData.useGravity = false;
-		pSystemData.position.x = x;
-		pSystemData.position.y = y;
-		pSystemData.position.z = z;
+		pSystemData.position.x = getRnd(-0.125, 0.125)+x;
+		pSystemData.position.y = getRnd(-0.125, 0.125) + y;
+		pSystemData.position.z = getRnd(-0.125, 0.125) + z;
 
-		pSystemData.velocity.x = getRnd(-0.5, 0.5);
-		pSystemData.velocity.y = getRnd(5, 4);
-		pSystemData.velocity.z = getRnd(-0.5, 0.5); //(10000 - rand() % 20000) / 10000.0f;
-		pSystemData.acceleration.x = getRnd(-2.5, 2.5);
+		pSystemData.velocity.x = getRnd(-0.25, 0.25);
+		pSystemData.velocity.y = getRnd(2.5, 2.0);
+		pSystemData.velocity.z = getRnd(-0.25, 0.25); //(10000 - rand() % 20000) / 10000.0f;
+		pSystemData.acceleration.x = getRnd(-1.5, 1.5);
 		pSystemData.acceleration.y = 2.0f; //-1.81f;
-		pSystemData.acceleration.z = getRnd(-2.5, 2.5);
+		pSystemData.acceleration.z = getRnd(-1.5, 1.5);
 		pSystemData.useVelocityMultiplier = false;
 		pSystemData.velocityMultiplier.x = 60.0f;
 		pSystemData.velocityMultiplier.y = 59.0f;
@@ -55,18 +55,18 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.rotationAcceleration.x = 0.0f;
 		pSystemData.rotationAcceleration.y = 0.0f;
 		pSystemData.rotationAcceleration.z = 0.0f;
-		pSystemData.useRotationMultiplier = true;
+		pSystemData.useRotationMultiplier = false;
 		pSystemData.rotationMultiplier.x = 60.0f;
 		pSystemData.rotationMultiplier.y = 60.0f;
 		pSystemData.rotationMultiplier.z = 61.0f;
 
 		pSystemData.noScaleStretching = true;
-		pSystemData.scale.x = 2.0f;
-		pSystemData.scale.y = 2.0f;
-		pSystemData.scale.z = 2.0f;
-		pSystemData.scaleVelocity.x = 4.0f;
-		pSystemData.scaleVelocity.y = 4.0f;
-		pSystemData.scaleVelocity.z = 4.0f;
+		pSystemData.scale.x = 1.0f;
+		pSystemData.scale.y = 1.0f;
+		pSystemData.scale.z = 1.0f;
+		pSystemData.scaleVelocity.x = 2.0f;
+		pSystemData.scaleVelocity.y = 2.0f;
+		pSystemData.scaleVelocity.z = 2.0f;
 		pSystemData.scaleAcceleration.x = 0.0f;
 		pSystemData.scaleAcceleration.y = 0.0f;
 		pSystemData.scaleAcceleration.z = 0.0f;
@@ -260,13 +260,18 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.pSystemTypeID = ParID::flameSparks;
 
 		pSystemData.useGravity = false;
-		pSystemData.position.x = getRnd(-0.5, 0.5) + x;
-		pSystemData.position.y = 2.0f + y;
-		pSystemData.position.z = getRnd(-0.5, 0.5) + z;
+		pSystemData.position.x = getRnd(-0.25, 0.25) + x;
+		pSystemData.position.y = 1.0f + y;
+		pSystemData.position.z = getRnd(-0.25, 0.25) + z;
+		//pSystemData.position.x = 0;
+		//pSystemData.position.y = 0;
+		//pSystemData.position.z = 0;
+
+
 		//pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f + 3.0f;
-		pSystemData.velocity.x = getRnd(-3, 3);
-		pSystemData.velocity.y = getRnd(4, 8);
-		pSystemData.velocity.z = getRnd(-3, 3); //(10000 - rand() % 20000) / 10000.0f;
+		pSystemData.velocity.x = getRnd(-1.5, 1.5);
+		pSystemData.velocity.y = getRnd(2, 4);
+		pSystemData.velocity.z = getRnd(-1.5, 1.5); //(10000 - rand() % 20000) / 10000.0f;
 		pSystemData.acceleration.x = 0.5f;
 		pSystemData.acceleration.y = 0.0f; //-1.81f;
 		pSystemData.acceleration.z = 0.0f;
@@ -292,7 +297,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.rotationMultiplier.z = 57.0f;
 
 		pSystemData.noScaleStretching = true;
-		pSystemData.scale.x = getRnd(0.2f,0.4f);
+		pSystemData.scale.x = getRnd(0.15f,0.3f);
 		pSystemData.scale.y = 0.2f;
 		pSystemData.scale.z = 0.2f;
 		pSystemData.scaleVelocity.x = 0.0f;
@@ -314,7 +319,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.bounceMultiplier = 0.9f;
 		pSystemData.floorFriction = 0.9f;
 
-		pSystemData.useNoise = true;
+		pSystemData.useNoise = false;
 		pSystemData.noiseOctaves = 2;
 		pSystemData.noisePersistence = 2;
 		pSystemData.noiseScale = 0.05;
