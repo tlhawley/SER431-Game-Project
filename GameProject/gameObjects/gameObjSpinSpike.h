@@ -34,13 +34,16 @@ spinSpike newSpinSpike(float x, float y, float z, int motion, float offset, floa
 void initSpinSpikes() {
 	spinSpikeAmount = 0;
 
-	spinSpikes[spinSpikeAmount-1] = newSpinSpike(-50, 0.0f, -24.0f, 2, 0.0f, 9.0f);
-	spinSpikes[spinSpikeAmount-1] = newSpinSpike(-70, 0.0f, -26.0f, 2, 30.0f, 8.0f);
-	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-90, 0.0f, -24.0f, 2, 60.0f, 9.0f);
-	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-110, 0.0f, -24.0f, 2, 90.0f, 9.0f);
-	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-130, 0.0f, -24.0f, 2, 120.0f, 9.0f);
-	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-150, 0.0f, -24.0f, 2, 150.0f, 9.0f);
-	spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-170, 0.0f, -19.0f, 2, 180.0f, 9.0f);
+	// intro levels
+	if (currentLevel == -1) {
+		spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-50, 0.0f, -24.0f, 2, 0.0f, 9.0f);
+		spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-70, 0.0f, -26.0f, 2, 30.0f, 8.0f);
+		spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-90, 0.0f, -24.0f, 2, 60.0f, 9.0f);
+		spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-110, 0.0f, -24.0f, 2, 90.0f, 9.0f);
+		spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-130, 0.0f, -24.0f, 2, 120.0f, 9.0f);
+		spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-150, 0.0f, -24.0f, 2, 150.0f, 9.0f);
+		spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-170, 0.0f, -19.0f, 2, 180.0f, 9.0f);
+	}
 
 
 

@@ -96,7 +96,7 @@ void initshadow() {
 	//glEnable(GL_DEPTH_TEST);
 	// general
 	//ratio = (double)width / (double)height;
-	mesh1 = createPlane(2000, 2000, 200);
+	//mesh1 = createPlane(2000, 2000, 200);
 	mesh2 = createCube();
 	mesh3 = createCube();
 	mesh4 = createCube();
@@ -111,7 +111,7 @@ void initshadow() {
 	// textures
 	//loadBMP_custom(textureArray, "../../BMP files/brick.bmp", 0);
 	//loadBMP_custom(textureArray, "../../BMP files/oldbox.bmp", 1);
-	display1 = meshToDisplayList(mesh1, 1, 0);
+	//display1 = meshToDisplayList(mesh1, 1, 0);
 	display2 = meshToDisplayList(mesh2, 2, 1);
 	display3 = meshToDisplayList(mesh3, 3, 1);
 	display4 = meshToDisplayList(mesh4, 4, 1);
@@ -215,11 +215,16 @@ void displayEnvironment() {
 	if (refectOn == 0) {
 		glEnable(GL_CULL_FACE);
 		displayBaseModels();
+		//displayNoiseGen();
+		if (currentLevel == 0) { //hub world terrain
+			displayNoiseGenPlane();
+		}
 		glDisable(GL_CULL_FACE);
 	}
 	else {
 		displayBaseModels();
 	}
+
 
 	// TODO: Make shadows for this object on the wall
 	/*

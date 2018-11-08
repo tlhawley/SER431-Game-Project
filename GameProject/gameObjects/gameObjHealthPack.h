@@ -27,13 +27,16 @@ healthPack newHealthPack(float x, float y, float z) {
 void initHealthPacks() {
 	healthPackAmount = 0;
 
-	healthPacks[healthPackAmount-1] = newHealthPack(4.6f, 0.0f, 21.0f);
-	healthPacks[healthPackAmount - 1] = newHealthPack(0.1f, 0.0f, 26.2f);
-	healthPacks[healthPackAmount - 1] = newHealthPack(-5.2f, 0.0f, 23.1f);
-	healthPacks[healthPackAmount - 1] = newHealthPack(-10.6f, 0.0f, 21.5f);
-	healthPacks[healthPackAmount - 1] = newHealthPack(-15.6f, 0.0f, 23.2f);
-	healthPacks[healthPackAmount - 1] = newHealthPack(-188.3f, 0.5f, -15.4f);
-	healthPacks[healthPackAmount - 1] = newHealthPack(-188.4f, 0.5f, -24.4f);
+	// intro level
+	if (currentLevel == -1) {
+		healthPacks[healthPackAmount - 1] = newHealthPack(4.6f, 0.0f, 21.0f);
+		healthPacks[healthPackAmount - 1] = newHealthPack(0.1f, 0.0f, 26.2f);
+		healthPacks[healthPackAmount - 1] = newHealthPack(-5.2f, 0.0f, 23.1f);
+		healthPacks[healthPackAmount - 1] = newHealthPack(-10.6f, 0.0f, 21.5f);
+		healthPacks[healthPackAmount - 1] = newHealthPack(-15.6f, 0.0f, 23.2f);
+		healthPacks[healthPackAmount - 1] = newHealthPack(-188.3f, 0.5f, -15.4f);
+		healthPacks[healthPackAmount - 1] = newHealthPack(-188.4f, 0.5f, -24.4f);
+	}
 
 	//healthPacks[0] = newHealthPack(-17.0f, 0.0f, 8.0f);
 

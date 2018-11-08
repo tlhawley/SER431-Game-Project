@@ -27,27 +27,31 @@ gem newGem(float x, float y, float z) {
 void initGems() {
 	gemAmount = 0;
 
-	gems[gemAmount - 1] = newGem(27.2f, 0.0f, 1.8f);
-	gems[gemAmount - 1] = newGem(27.9f, 0.0f, -3.5f);
-	gems[gemAmount - 1] = newGem(29.0f, 0.0f, -7.5f);
 
-	gems[gemAmount - 1] = newGem(-11.0f, 0.0f, -5.0f);
-	gems[gemAmount - 1] = newGem(-19.2f, 0.0f, -9.5f);
-	gems[gemAmount - 1] = newGem(-28.0f, 0.0f, -14.7f);
-	gems[gemAmount - 1] = newGem(-37.9f, 0.0f, -20.2f);
-	gems[gemAmount - 1] = newGem(-47.4f, 0.0f, -22.7f);
-	gems[gemAmount - 1] = newGem(-57.5f, 0.0f, -24.0f);
-	gems[gemAmount - 1] = newGem(-68.0f, 0.0f, -24.2f);
-	gems[gemAmount - 1] = newGem(-78.6f, 0.0f, -24.4f);
-	gems[gemAmount - 1] = newGem(-89.5f, 0.0f, -24.5f);
-	gems[gemAmount - 1] = newGem(-101.2f, 0.0f, -24.3f);
-	gems[gemAmount - 1] = newGem(-113.5f, 0.0f, -24.0f);
-	gems[gemAmount - 1] = newGem(-125.0f, 0.0f, -23.5f);
-	gems[gemAmount - 1] = newGem(-136.0f, 0.0f, -23.0f);
-	gems[gemAmount - 1] = newGem(-151.0f, 0.0f, -22.2f);
-	gems[gemAmount - 1] = newGem(-161.0f, 0.0f, -21.7f);
-	gems[gemAmount - 1] = newGem(-172.9f, 0.0f, -21.2f);
-	gems[gemAmount - 1] = newGem(-182.5f, 0.0f, -20.7f);
+	// intro level
+	if (currentLevel == -1) {
+		gems[gemAmount - 1] = newGem(27.2f, 0.0f, 1.8f);
+		gems[gemAmount - 1] = newGem(27.9f, 0.0f, -3.5f);
+		gems[gemAmount - 1] = newGem(29.0f, 0.0f, -7.5f);
+
+		gems[gemAmount - 1] = newGem(-11.0f, 0.0f, -5.0f);
+		gems[gemAmount - 1] = newGem(-19.2f, 0.0f, -9.5f);
+		gems[gemAmount - 1] = newGem(-28.0f, 0.0f, -14.7f);
+		gems[gemAmount - 1] = newGem(-37.9f, 0.0f, -20.2f);
+		gems[gemAmount - 1] = newGem(-47.4f, 0.0f, -22.7f);
+		gems[gemAmount - 1] = newGem(-57.5f, 0.0f, -24.0f);
+		gems[gemAmount - 1] = newGem(-68.0f, 0.0f, -24.2f);
+		gems[gemAmount - 1] = newGem(-78.6f, 0.0f, -24.4f);
+		gems[gemAmount - 1] = newGem(-89.5f, 0.0f, -24.5f);
+		gems[gemAmount - 1] = newGem(-101.2f, 0.0f, -24.3f);
+		gems[gemAmount - 1] = newGem(-113.5f, 0.0f, -24.0f);
+		gems[gemAmount - 1] = newGem(-125.0f, 0.0f, -23.5f);
+		gems[gemAmount - 1] = newGem(-136.0f, 0.0f, -23.0f);
+		gems[gemAmount - 1] = newGem(-151.0f, 0.0f, -22.2f);
+		gems[gemAmount - 1] = newGem(-161.0f, 0.0f, -21.7f);
+		gems[gemAmount - 1] = newGem(-172.9f, 0.0f, -21.2f);
+		gems[gemAmount - 1] = newGem(-182.5f, 0.0f, -20.7f);
+	}
 
 
 	// Intro to graphics 332 map

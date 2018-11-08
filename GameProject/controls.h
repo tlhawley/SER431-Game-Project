@@ -32,7 +32,7 @@ void Update() {
 
 	//canJump = true; // infinite jump
 	if (canJump == true && spaceKey == true) {
-		camyv = 0.2f;
+		camyv = 0.25f;
 		canJump = false;
 	}
 

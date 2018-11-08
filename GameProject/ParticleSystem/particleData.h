@@ -1329,9 +1329,9 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.pSystemTypeID = ParID::fog;
 
 		pSystemData.useGravity = false;
-		pSystemData.position.x = getRnd(-40, 40) + x;
+		pSystemData.position.x = getRnd(-60, 60) + x;
 		pSystemData.position.y = y;
-		pSystemData.position.z = getRnd(-40, 40) + z;
+		pSystemData.position.z = getRnd(-60, 60) + z;
 		//pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f + 3.0f;
 		pSystemData.velocity.x = getRnd(0, 2) + 4.0f;
 		pSystemData.velocity.y = getRnd(-0.2, 0.2);
