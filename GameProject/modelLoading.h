@@ -69,19 +69,19 @@ GLuint meshCharacterFrames[26];
 int runFrame = 1;
 
 
-// Level 1 - Forest Grass
+// Level S - Forest Grass
 GLuint meshLV1ForestGrass;
-// Level 1 - Forest Trees
+// Level S - Forest Trees
 GLuint meshLV1ForestTrees;
-// Level 1 - Forest Rocks
+// Level S - Forest Rocks
 GLuint meshLV1Rocks;
-// Level 1 - Structures
+// Level S - Structures
 GLuint meshLV1Structures;
-// Level 1 - Floor
+// Level S - Floor
 GLuint meshLV1Floor;
-// Level 1 - Map UI
-GLuint meshLV1MapUI;
-// Level 1 - Background Rocks
+// Level S - Map UI
+GLuint meshLVSMapUI;
+// Level S - Background Rocks
 GLuint meshLV1BackgroundRocks;
 GLuint meshLV1WaterMirror;
 
@@ -93,6 +93,10 @@ GLuint meshHeart;
 GLuint meshHubWalls;
 
 GLuint meshLVHMapUI;
+
+
+GLuint meshLV1MapUI;
+GLuint meshLV1;
 
 GLuint displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles,
 displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves, displayParticlePlaneFlameSparks, displayParticleRain, displayParticlePlaneRing;
@@ -133,7 +137,7 @@ void loadModels() {
 
 	printf("Loading\n");
 
-	GLuint texture_array[36];
+	GLuint texture_array[38];
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 1, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
@@ -176,9 +180,14 @@ void loadModels() {
 	
 	loadBMP_custom(texture_array, "./src/textures/HubMapUI.bmp", 35, 1, 0);
 
+	loadBMP_custom(texture_array, "./src/textures/LV01_map512.bmp", 36, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LV1Texture.bmp", 37, 1, 0);
+	
+
 	// Load particle mesh & images
-	meshParticlePlane = loadObjMesh("./src/obj files/ParticlePlane.obj"); // mesh5 is reused multiple times for particles
+	meshParticlePlane = loadObjMesh("./src/obj files/ParticlePlane.obj");
 	meshParticleRain = loadObjMesh("./src/obj files/ParticleRain.obj");
+
 
 	/*
 	uniqueMeshID = uniqueMeshID + 1;
@@ -325,7 +334,7 @@ void loadModels() {
 	// Level 1 - Floor
 	meshLV1Floor = loadObj("./src/obj files/LV1Floor.obj", texture_array[14]);
 	// Level 1 - Map UI
-	meshLV1MapUI = loadObj("./src/obj files/LV1MapUI.obj", texture_array[17]);
+	meshLVSMapUI = loadObj("./src/obj files/LV1MapUI.obj", texture_array[17]);
 	// Level 1 - Background Rocks
 	meshLV1BackgroundRocks = loadObj("./src/obj files/LV1BackgroundRocks.obj", texture_array[19]);
 	meshLV1WaterMirror = loadObj("./src/obj files/LV1WaterMirror.obj", texture_array[0]);
@@ -360,6 +369,15 @@ void loadModels() {
 	meshPortalClosed = loadObj("./src/obj files/portalClosed.obj", texture_array[34]);
 	
 	meshLVHMapUI = loadObj("./src/obj files/hubMapUI01.obj", texture_array[35]);
+
+
+
+
+	//LV 1 map
+	meshLV1MapUI = loadObj("./src/obj files/Level01UIMap.obj", texture_array[36]);
+	meshLV1 = loadObj("./src/obj files/Level01.obj", texture_array[37]);
+
+
 
 
 }

@@ -5,10 +5,10 @@ struct healthPack {
 	float z;
 };
 
-healthPack newHealthPack(float x, float y, float z) ;
-void initHealthPacks() ;
-void actionHealthPacks() ;
-void displayHealthPacks() ;
+healthPack newHealthPack(float x, float y, float z);
+void initHealthPacks();
+void actionHealthPacks();
+void displayHealthPacks();
 
 #define maxHealthPacks 100
 healthPack healthPacks[maxHealthPacks];
@@ -49,8 +49,8 @@ void initHealthPacks() {
 	healthPacks[4] = newHealthPack(-20.0f, 0.0f, -8.0f);
 	healthPacks[5] = newHealthPack(-23.0f, 0.0f, -8.0f);
 	*/
-	
-	
+
+
 }
 
 void actionHealthPacks() {
@@ -60,16 +60,16 @@ void actionHealthPacks() {
 	}
 	for (int i = 0; i < healthPackAmount; i++) {
 		if (healthPacks[i].active == true) {
-				if (fabs(camx - healthPacks[i].x) < 1 && fabs(camz - healthPacks[i].z) < 1 && fabs(camy - healthPacks[i].y) < 2) {
-					SoundEngine->play2D("./src/audio/ItemPickup.wav", GL_FALSE);
-					itemTimer = 40;
-					heartPickUp = true;
-					health = health + 4;
-					if (health > 20) {
-						health = 20;
-					}
-					healthPacks[i].active = false;
+			if (fabs(camx - healthPacks[i].x) < 1 && fabs(camz - healthPacks[i].z) < 1 && fabs(camy - healthPacks[i].y) < 2) {
+				SoundEngine->play2D("./src/audio/ItemPickup.wav", GL_FALSE);
+				itemTimer = 40;
+				heartPickUp = true;
+				health = health + 4;
+				if (health > 20) {
+					health = 20;
 				}
+				healthPacks[i].active = false;
+			}
 		}
 	}
 	if (itemTimer == 0)

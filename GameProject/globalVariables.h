@@ -5,13 +5,14 @@ float lx = 0.0f, ly = 0.0f, lz = -1.0f;
 float ratio = 1.0;
 float timer = 0;
 float spikeAngY = 0.0;
-float camAngY = -PI/2.0;
+float camAngY = -PI / 2.0;
 float camAngX = 0.0;
 bool sprint = false;
 bool displayMenu = true;
 int score = 0;
 int inventoryKeys = 0;
 bool levelComplete = false;
+int levelUnlocked = 1;
 int currentLevel = -1; // -2 = title screen, -1 = intro level,  0 = hub world, 1 = level 1, 2 = level 2....
 
 int SmoothingSetting = 1;
