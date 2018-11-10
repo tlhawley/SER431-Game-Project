@@ -108,6 +108,8 @@ void actionSpinSpikes() {
 					camxv = -(num1 - camx)*0.4f;
 					camzv = -(spinSpikes[i].z - camz)*0.4f;
 					if (takingDamage <= 0) {
+						//Source: http://soundbible.com/1008-Decapitation.html
+						SoundEngine->play2D("./src/audio/Decapitation-SoundBible.com-800292304.mp3");
 						health = health - spikeDamage;
 						if (health < 0) { health = 0; }
 					}
@@ -121,6 +123,8 @@ void actionSpinSpikes() {
 					camxv = -(spinSpikes[i].x - camx)*0.4f;
 					camzv = -(num2 - camz)*0.4f;
 					if (takingDamage <= 0) {
+						//Source: http://soundbible.com/1008-Decapitation.html
+						SoundEngine->play2D("./src/audio/Decapitation-SoundBible.com-800292304.mp3");
 						health = health - spikeDamage;
 						if (health < 0) { health = 0; }
 					}
@@ -135,6 +139,8 @@ void actionSpinSpikes() {
 					camxv = -(num1 - camx)*0.4f;
 					camzv = -(num2 - camz)*0.4f;
 					if (takingDamage <= 0) {
+						//Source: http://soundbible.com/1008-Decapitation.html
+						SoundEngine->play2D("./src/audio/Decapitation-SoundBible.com-800292304.mp3");
 						health = health - spikeDamage;
 						if (health < 0) { health = 0; }
 					}
@@ -149,6 +155,8 @@ void actionSpinSpikes() {
 					camxv = -(num1 - camx)*0.4f;
 					camzv = -(num2 - camz)*0.4f;
 					if (takingDamage <= 0) {
+						//Source: http://soundbible.com/1008-Decapitation.html
+						SoundEngine->play2D("./src/audio/Decapitation-SoundBible.com-800292304.mp3");
 						health = health - spikeDamage;
 						if (health < 0) { health = 0; }
 					}
