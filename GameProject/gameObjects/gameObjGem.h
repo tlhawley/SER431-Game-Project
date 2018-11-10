@@ -53,28 +53,6 @@ void initGems() {
 		gems[gemAmount - 1] = newGem(-182.5f, 0.0f, -20.7f);
 	}
 
-	// level 1
-	if (currentLevel == 1) {
-		gems[gemAmount - 1] = newGem(-12.0f,0.0f,0.0f);
-		gems[gemAmount - 1] = newGem(-18.0f, 0.0f, 0.0f);
-		gems[gemAmount - 1] = newGem(-24.0f, 0.0f, 0.0f);
-		gems[gemAmount - 1] = newGem(-30.0f, 0.0f, 0.0f);
-		gems[gemAmount - 1] = newGem(-36.0f, 0.0f, 0.0f);
-		gems[gemAmount - 1] = newGem(-42.0f, 0.0f, 0.0f);
-		gems[gemAmount - 1] = newGem(-48.0f, 0.0f, 0.0f);
-
-		gems[gemAmount - 1] = newGem(2.0f, 30.0f, -26.0f);
-		gems[gemAmount - 1] = newGem(6.0f, 30.0f, -20.0f);
-		gems[gemAmount - 1] = newGem(9.0f, 30.0f, -14.0f);
-		gems[gemAmount - 1] = newGem(10.0f, 30.0f, -8.0f);
-		gems[gemAmount - 1] = newGem(10.0f, 30.0f, 8.0f);
-		gems[gemAmount - 1] = newGem(9.0f, 30.0f, 14.0f);
-		gems[gemAmount - 1] = newGem(6.0f, 30.0f, 20.0f);
-		gems[gemAmount - 1] = newGem(2.0f, 30.0f, 26.0f);
-
-		gems[gemAmount - 1] = newGem(10.0f, 30.0f, 0.0f);
-	}
-
 
 	// Intro to graphics 332 map
 	/*

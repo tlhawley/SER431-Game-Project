@@ -35,11 +35,7 @@ void initPortals() {
 	}
 
 	if (currentLevel == 0) {
-		portals[0] = newPortal(-18.5f, -2.0f, 10.0f, 1);
-	}
-
-	if (currentLevel == 1) {
-		portals[0] = newPortal(-1.0f, 30.0f, 39.5f, 0);
+		portals[0] = newPortal(-18.5f, -2.0f, 10.0f, -1);
 	}
 
 }
@@ -53,10 +49,6 @@ void actionPortals() {
 			if (camx < portals[i].x + 1.0 && camx > portals[i].x - 1.0 && camz < portals[i].z + 1.0 && camz > portals[i].z - 1.0 && camy < portals[i].y + 3 && camy > portals[i].y - 3) {
 				portals[i].active = false;
 				clearParticles = 1;
-				//level unlocks
-				if (levelUnlocked < currentLevel) {
-					levelUnlocked = currentLevel;
-				}
 				loadLevel(portals[i].levelID);
 
 

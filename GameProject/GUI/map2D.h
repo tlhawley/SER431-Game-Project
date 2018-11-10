@@ -89,13 +89,10 @@ void draw2DMap(){
 	setMaterialAdvanced(materialSkyBox);
 	//glCallList(meshUIMap);
 	if (currentLevel == -1) {
-		glCallList(meshLVSMapUI);
+		glCallList(meshLV1MapUI);
 	}
 	if (currentLevel == 0) {
 		glCallList(meshLVHMapUI);
-	}
-	if (currentLevel == 1) {
-		glCallList(meshLV1MapUI);
 	}
 	glScalef(5, 5, 5);
 	glRotatef(-180, 0, 1, 0);
