@@ -85,6 +85,9 @@ void drawBaseModel() {
 	case 18:
 		glCallList(meshPortalClosed);
 		break;
+	case 19:
+		glCallList(meshLV1);
+		break;
 	}
 	
 
