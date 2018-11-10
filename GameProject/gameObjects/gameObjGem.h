@@ -55,7 +55,7 @@ void initGems() {
 
 	// level 1
 	if (currentLevel == 1) {
-		gems[gemAmount - 1] = newGem(-12.0f,0.0f,0.0f);
+		gems[gemAmount - 1] = newGem(-12.0f, 0.0f, 0.0f);
 		gems[gemAmount - 1] = newGem(-18.0f, 0.0f, 0.0f);
 		gems[gemAmount - 1] = newGem(-24.0f, 0.0f, 0.0f);
 		gems[gemAmount - 1] = newGem(-30.0f, 0.0f, 0.0f);
@@ -90,12 +90,12 @@ void initGems() {
 	gems[gemAmount - 1] = newGem(-2.0f, 0.0f, -168.0f);
 
 	for (int i = 0; i < 5; i++) {
-		for (int j = 0; j < 5; j++) {
-			gems[gemAmount - 1] = newGem(-9+i*3, 0.0f, -215.0f+j*3);
-		}
+	for (int j = 0; j < 5; j++) {
+	gems[gemAmount - 1] = newGem(-9+i*3, 0.0f, -215.0f+j*3);
+	}
 	}
 	*/
-	
+
 }
 
 void actionGems() {
@@ -128,7 +128,7 @@ void displayGems() {
 	for (int i = 0; i < gemAmount; i++) {
 		if (gems[i].active == true) {
 			if (abs(camx - gems[i].x) < 60 && abs(camz - gems[i].z) < 60) {
-				objPlacementTRS(drawGem, gems[i].x, sin(timer * 4)*0.1f + gems[i].y + 0.2f, gems[i].z, 0.0, timer * 100, 0.0, 0.9, 0.9, 0.9);
+				objPlacementTRS(drawGem, gems[i].x, sin(timer * 4)*0.1f + gems[i].y + 0.2f, gems[i].z, 0.0, timer * 100, 0.0, 1.0, 1.0, 1.0);
 			}
 		}
 	}

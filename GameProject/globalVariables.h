@@ -5,7 +5,7 @@ float lx = 0.0f, ly = 0.0f, lz = -1.0f;
 float ratio = 1.0;
 float timer = 0;
 float spikeAngY = 0.0;
-float camAngY = -PI/2.0;
+float camAngY = -PI / 2.0;
 float camAngX = 0.0;
 bool sprint = false;
 bool displayMenu = true;
