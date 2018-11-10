@@ -305,7 +305,7 @@ public:
 		Particle* curr = particle_head;
 		Particle* prev = 0;
 		while (curr) {
-			if (curr->pSystemData.life<0) {
+			if (curr->pSystemData.life<0 || clearParticles == 1) {
 				if (curr->pSystemData.useSubParticleExit) {
 					add(curr->pSystemData.subParticleExitID, curr->pSystemData.position.x, curr->pSystemData.position.y, curr->pSystemData.position.z);
 					//addParticleAt(particleData(curr->pSystemData.destroyParticleID, 0, 0, 0), curr->pSystemData.position);

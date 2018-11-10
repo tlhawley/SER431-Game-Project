@@ -441,8 +441,8 @@ Mesh* createPlane(int arena_width, int arena_depth, int arena_cell) {
 Mesh* createTerrain(int arena_width, int arena_depth, int arena_cell) {
 	Mesh *me = new Mesh;
 
-	int n = 128;
-	int m = 128;
+	int n = 129;
+	int m = 129;
 
 	ImprovedNoise noise; // modified for terrain
 	Vec3f pixelColor; // modified for terrain

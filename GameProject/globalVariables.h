@@ -12,7 +12,7 @@ bool displayMenu = true;
 int score = 0;
 int inventoryKeys = 0;
 bool levelComplete = false;
-int currentLevel = 0; // -2 = title screen, -1 = intro level,  0 = hub world, 1 = level 1, 2 = level 2....
+int currentLevel = -1; // -2 = title screen, -1 = intro level,  0 = hub world, 1 = level 1, 2 = level 2....
 
 int SmoothingSetting = 1;
 
@@ -65,6 +65,8 @@ bool mouseWait = false;
 bool windowed = true;
 
 int refectOn = 0;
+
+int clearParticles = 0;
 
 void globalVariables();
 

@@ -17,8 +17,8 @@ GLuint meshRoomWall2;
 
 GLuint meshBox;
 
-GLuint meshUIMap;
-
+//GLuint meshUIMap;
+//GLuint meshUIMapH;
 
 GLuint meshGem;
 GLuint meshKey;
@@ -29,6 +29,7 @@ GLuint meshGear1;
 GLuint meshGear2;
 
 GLuint meshPortal;
+GLuint meshPortalClosed;
 //GLuint meshPortalE;
 //GLuint meshPortalGlow;
 
@@ -87,12 +88,11 @@ GLuint meshLV1WaterMirror;
 
 GLuint meshHeartUI[5];
 
-
-
-
 GLuint meshHeart;
 
+GLuint meshHubWalls;
 
+GLuint meshLVHMapUI;
 
 GLuint displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles,
 displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves, displayParticlePlaneFlameSparks, displayParticleRain, displayParticlePlaneRing;
@@ -133,7 +133,7 @@ void loadModels() {
 
 	printf("Loading\n");
 
-	GLuint texture_array[33];
+	GLuint texture_array[36];
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 1, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
@@ -145,11 +145,11 @@ void loadModels() {
 	loadBMP_custom(texture_array, "./src/textures/GrassClusterTexture.bmp", 11, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/LightBulbTexture.bmp", 13, 1, 0);
 
-	loadBMP_custom(texture_array, "./src/textures/LV1Floor.bmp", 14, 1, 0);
-	loadBMP_custom(texture_array, "./src/textures/LV1Rocks.bmp", 15, 1, 0);
-	loadBMP_custom(texture_array, "./src/textures/LV1Structures.bmp", 16, 1, 0);
-	loadBMP_custom(texture_array, "./src/textures/LV1MapUI.bmp", 17, 1, 0);
-	loadBMP_custom(texture_array, "./src/textures/LV1BackgroundRocks.bmp", 19, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LVSFloor.bmp", 14, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LVSRocks.bmp", 15, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LVSStructures.bmp", 16, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LVSMapUI.bmp", 17, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LVSBackgroundRocks.bmp", 19, 1, 0);
 
 	loadBMP_custom(texture_array, "./src/textures/HeartsUI.bmp", 18, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/CharacterTexture.bmp", 20, 1, 0);
@@ -171,10 +171,10 @@ void loadModels() {
 
 	loadBMP_custom(texture_array, "./src/textures/HeartTexture.bmp", 32, 1, 0);
 
-
-
+	loadBMP_custom(texture_array, "./src/textures/hubWallTexture.bmp", 33, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/PortalTexture.bmp", 34, 1, 0);
 	
-
+	loadBMP_custom(texture_array, "./src/textures/HubMapUI.bmp", 35, 1, 0);
 
 	// Load particle mesh & images
 	meshParticlePlane = loadObjMesh("./src/obj files/ParticlePlane.obj"); // mesh5 is reused multiple times for particles
@@ -354,7 +354,12 @@ void loadModels() {
 	// heart model
 	meshHeart = loadObj("./src/obj files/Heart.obj", texture_array[32]);
 
+	meshHubWalls = loadObj("./src/obj files/hubWalls.obj", texture_array[33]);
 
+	meshPortal = loadObj("./src/obj files/portal.obj", texture_array[34]);
+	meshPortalClosed = loadObj("./src/obj files/portalClosed.obj", texture_array[34]);
+	
+	meshLVHMapUI = loadObj("./src/obj files/hubMapUI01.obj", texture_array[35]);
 
 
 }

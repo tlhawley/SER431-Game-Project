@@ -152,6 +152,14 @@ void initBaseModels() {
 
 	}
 
+	if (currentLevel == 0) { // hub world
+		baseModels[baseModelAmount - 1] = newBaseModel(0, 0, 0, 0, 0, 0, 4000.0, 16); // hub walls
+
+		// TODO: Add conditions for the portals to open, close, or mark complete based on what levels are unlocked
+		baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, 10, 0, 90, 0, 4000.0, 17); // hub portal LV 1
+		baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, -10, 0, 90, 0, 4000.0, 18); // hub portal LV 2
+	}
+
 	/*
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {

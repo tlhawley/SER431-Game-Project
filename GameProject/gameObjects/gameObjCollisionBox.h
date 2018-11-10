@@ -243,7 +243,21 @@ void initCBoxes() {
 
 
 
+	// LV 0 Hub world
+	if (currentLevel == 0) {
 
+		// hub map walls
+		Cboxes[CboxAmount - 1] = newCBox(129, 0.0, 0.0, 2, 20, 300);
+		Cboxes[CboxAmount - 1] = newCBox(-129, 0.0, 0.0, 2, 20, 300);
+		Cboxes[CboxAmount - 1] = newCBox(0.0, 0.0, 129, 300, 20, 2);
+		Cboxes[CboxAmount - 1] = newCBox(0.0, 0.0, -129, 300, 20, 2);
+
+
+		// portals
+		Cboxes[CboxAmount - 1] = newCBox(-20, -3.2, 10, 1.9829, 20, 6.42671);
+		Cboxes[CboxAmount - 1] = newCBox(-20, -3.2, -10, 1.9829, 20, 6.42671);
+
+	}
 
 
 
