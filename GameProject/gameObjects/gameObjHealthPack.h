@@ -63,6 +63,7 @@ void actionHealthPacks() {
 				if (fabs(camx - healthPacks[i].x) < 1 && fabs(camz - healthPacks[i].z) < 1 && fabs(camy - healthPacks[i].y) < 2) {
 					SoundEngine->play2D("./src/audio/ItemPickup.wav", GL_FALSE);
 					itemTimer = 40;
+					heartPickUp = true;
 					health = health + 4;
 					if (health > 20) {
 						health = 20;
@@ -70,6 +71,10 @@ void actionHealthPacks() {
 					healthPacks[i].active = false;
 				}
 		}
+	}
+	if (itemTimer == 0)
+	{
+		heartPickUp = false;
 	}
 }
 

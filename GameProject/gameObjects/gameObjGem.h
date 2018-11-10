@@ -99,17 +99,27 @@ void initGems() {
 }
 
 void actionGems() {
+	if (itemTimer > 0) {
+		itemTimer = itemTimer - 1;
+
+	}
 	for (int i = 0; i < gemAmount; i++) {
 		if (gems[i].active == true) {
 			if (abs(camx - gems[i].x) < 120 && abs(camz - gems[i].z) < 120) {
 				if (fabs(camx - gems[i].x) < 1.2 && fabs(camz - gems[i].z) < 1.2 && fabs(camy - gems[i].y) < 2) {
 					gems[i].active = false;
 					SoundEngine->play2D("./src/audio/ItemPickup.wav", GL_FALSE);
+					itemTimer = 40;
+					gemPickUp = true;
 					score = score + 1000;
 					//inventoryGems = inventoryGems + 1;
 				}
 			}
 		}
+	}
+	if (itemTimer == 0)
+	{
+		gemPickUp = false;
 	}
 }
 
