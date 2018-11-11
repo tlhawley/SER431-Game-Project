@@ -87,6 +87,21 @@ void Update() {
 		canJump = false;
 	}
 
+	if (abs(camyv) > 0.04f) {
+		canJump = false;
+	}
+
+	// jump attack animation frame counter
+	if (jumpFrame > 0) {
+		jumpFrame = jumpFrame + 1;
+	}
+
+	// jump attack input
+	if (camyv > 0.0f && canJump == false && jumpFrame == 0 && eKey == true) { // if the player is in the air with a positive velocity and presses e (attack button) then start a jump attack animation
+		jumpFrame = 1;
+	}
+
+
 	camx = camx + camxv;
 	camy = camy + camyv;
 	camz = camz + camzv;

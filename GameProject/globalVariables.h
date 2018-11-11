@@ -24,6 +24,9 @@ float ox, oy, oz; // old x,y,z
 float gravity = 0.0;
 float playerAngle = 0;
 
+int runFrame = 1;
+int jumpFrame = 0;
+
 int health = 20;
 int takingDamage = 0;
 int itemTimer = 0;
@@ -56,6 +59,7 @@ bool aKey = false;
 bool sKey = false;
 bool dKey = false;
 bool wKey = false;
+bool eKey = false;
 bool spaceKey = false;
 bool canJump = false;
 bool lockMouse = false;

@@ -616,6 +616,7 @@ void actionCBoxes() {
 								camy = Cboxes[i].y + playerHeight + Cboxes[i].sy / 2;
 								//oy = y;
 								camyv = 0.0f;
+								jumpFrame = 0;
 								canJump = true;
 							}
 						}

@@ -66,7 +66,6 @@ GLuint meshBulb;
 //GLuint meshCharacterStanding01;
 //GLuint meshCharacterForward01;
 GLuint meshCharacterFrames[31];
-int runFrame = 1;
 
 
 // Level S - Forest Grass
