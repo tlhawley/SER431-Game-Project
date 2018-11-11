@@ -5,6 +5,6 @@ c:\users\onii-chan\documents\github\ser431-game-project\gameproject\meshobjconve
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\meshobjconverter.h(589): warning C4018: '<': signed/unsigned mismatch
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\noisegenerator.h(131): warning C4018: '<': signed/unsigned mismatch
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\noisegenerator.h(146): warning C4018: '<': signed/unsigned mismatch
-c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameproject.cpp(462): warning C4018: '>=': signed/unsigned mismatch
-c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameproject.cpp(577): warning C4018: '<': signed/unsigned mismatch
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameproject.cpp(463): warning C4018: '>=': signed/unsigned mismatch
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameproject.cpp(589): warning C4018: '<': signed/unsigned mismatch
   GameProject.vcxproj -> C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe

@@ -65,7 +65,7 @@ GLuint meshBulb;
 
 //GLuint meshCharacterStanding01;
 //GLuint meshCharacterForward01;
-GLuint meshCharacterFrames[26];
+GLuint meshCharacterFrames[31];
 int runFrame = 1;
 
 
@@ -141,7 +141,7 @@ void loadModels() {
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 1, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
-	loadBMP_custom(texture_array, "./src/textures/CheckerTiles.bmp", 3, 1, 0);
+	//loadBMP_custom(texture_array, "./src/textures/CheckerTiles.bmp", 3, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/door.bmp", 5, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/doorFrame.bmp", 6, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/SkyBox.bmp", 9, 1, 0);
@@ -349,6 +349,11 @@ void loadModels() {
 		std::string str = "./src/obj files/CharacterRun/Main Character _ Pose_Run_B" + std::to_string(i) + ".obj";
 		const char * c = str.c_str();
 		meshCharacterFrames[i] = loadObj(c, texture_array[20]);
+	}
+	for (int i = 1; i < 6; i++) {
+		std::string str = "./src/obj files/CharacterJump/Main Character _ Pose_Jump_B" + std::to_string(i) + ".obj";
+		const char * c = str.c_str();
+		meshCharacterFrames[i+25] = loadObj(c, texture_array[20]);
 	}
 	
 

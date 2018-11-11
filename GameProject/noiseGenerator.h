@@ -157,8 +157,21 @@ GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info) {
 
 // Create texture from algorithm
 void codedTexture(UINT textureArray[], int n, int type) {
-	const int TexHeight = 256;
-	const int TexWidth = 256;
+
+	/*
+	int TexHeight = 2;
+	int TexWidth = 2;
+
+	if (type == 4){
+		const int TexHeight = 512;
+		const int TexWidth = 512;
+	}
+	else {
+	}
+	*/
+	const int TexHeight = 512;
+	const int TexWidth = 512;
+
 	// create texture in memory
 	GLubyte textureImage[TexHeight][TexWidth][3];
 	ImprovedNoise noise;
@@ -631,41 +644,42 @@ GLuint meshToDisplayList(Mesh* m, int id, int textureId) {
 
 // init
 void initNoiseGen() {
-	glShadeModel(GL_SMOOTH);
-	glEnable(GL_DEPTH_TEST);
-	ratio = (double)width / (double)height;
+	//glShadeModel(GL_SMOOTH);
+	//glEnable(GL_DEPTH_TEST);
+	//ratio = (double)width / (double)height;
 	// mesh
 	mesh1 = createTerrain(2000, 2000, 200);
-	mesh2 = createCube();
-	mesh3 = createCube();
-	mesh4 = createCube();
-	mesh5 = createPlaneMultiscale(2000, 2000, 200);
+	//mesh2 = createCube();
+	//mesh3 = createCube();
+	//mesh4 = createCube();
+	//mesh5 = createPlaneMultiscale(2000, 2000, 200);
 	calculateNormalPerFace(mesh1);
-	calculateNormalPerFace(mesh2);
-	calculateNormalPerFace(mesh3);
-	calculateNormalPerFace(mesh4);
-	calculateNormalPerFace(mesh5);
+	//calculateNormalPerFace(mesh2);
+	//calculateNormalPerFace(mesh3);
+	//calculateNormalPerFace(mesh4);
+	//calculateNormalPerFace(mesh5);
 	calculateNormalPerVertex(mesh1);
-	calculateNormalPerVertex(mesh2);
-	calculateNormalPerVertex(mesh3);
-	calculateNormalPerVertex(mesh4);
-	calculateNormalPerVertex(mesh5);
+	//calculateNormalPerVertex(mesh2);
+	//calculateNormalPerVertex(mesh3);
+	//calculateNormalPerVertex(mesh4);
+	//calculateNormalPerVertex(mesh5);
 	// textures
 	//bmpTexture(textureArray, "../../BMP files/brick.bmp", 0);
 	//bmpTexture(textureArray, "../../BMP files/oldbox.bmp", 1);
 	//bmpTexture(textureArray, "./src/textures/brick.bmp", 0);
-	bmpTexture(textureArray, "./src/textures/oldbox.bmp", 1);
-	codedTexture(textureArray, 2, 0); //Sky texture - noise multiscale. Type=0
-	codedTexture(textureArray, 3, 2); //Fire texture - noise marble. Type=2
+	//bmpTexture(textureArray, "./src/textures/oldbox.bmp", 1);
+	//codedTexture(textureArray, 2, 0); //Sky texture - noise multiscale. Type=0
+	//codedTexture(textureArray, 3, 2); //Fire texture - noise marble. Type=2
 	codedTexture(textureArray, 4, 4); //Floor texture - noise multiscale. Type=4
 	//codedTexture(textureArray, 4, 1); //Marble texture - noise fire. Type=1
 									  // display lists
 	displayx1 = meshToDisplayList(mesh1, 1, 4);
-	display2 = meshToDisplayList(mesh2, 2, 1);
-	display3 = meshToDisplayList(mesh3, 3, 2);
-	display4 = meshToDisplayList(mesh4, 4, 3);
-	display5 = meshToDisplayList(mesh5, 5, 4);
+	//display2 = meshToDisplayList(mesh2, 2, 1);
+	//display3 = meshToDisplayList(mesh3, 3, 2);
+	//display4 = meshToDisplayList(mesh4, 4, 3);
+	//display5 = meshToDisplayList(mesh5, 5, 4);
 	// light
+	/*
 	GLfloat light_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
 	GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
 	GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -676,6 +690,7 @@ void initNoiseGen() {
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHTING);
+	*/
 }
 
 // reshape

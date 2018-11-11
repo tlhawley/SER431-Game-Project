@@ -217,6 +217,7 @@ void displayEnvironment() {
 		displayBaseModels();
 		//displayNoiseGen();
 		if (currentLevel == 0) { //hub world terrain
+			setMaterialAdvanced(materialSand);
 			displayNoiseGenPlane();
 		}
 		glDisable(GL_CULL_FACE);
