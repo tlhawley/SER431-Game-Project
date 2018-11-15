@@ -5,13 +5,15 @@ float lx = 0.0f, ly = 0.0f, lz = -1.0f;
 float ratio = 1.0;
 float timer = 0;
 float spikeAngY = 0.0;
-float camAngY = -PI/2.0;
+float camAngY = -PI / 2.0;
 float camAngX = 0.0;
 bool sprint = false;
 bool displayMenu = true;
 int score = 0;
 int inventoryKeys = 0;
 bool levelComplete = false;
+int levelUnlocked = 1;
+int currentLevel = -1; // -2 = title screen, -1 = intro level,  0 = hub world, 1 = level 1, 2 = level 2....
 
 int SmoothingSetting = 1;
 
@@ -20,9 +22,15 @@ float camxv = 0.0f, camyv = 0.0f, camzv = 0.0f; // x,y,z velocity
 float camx = 0.0f, camy = 1.75f, camz = 0.0f;
 float ox, oy, oz; // old x,y,z
 float gravity = 0.0;
+float playerAngle = 0;
+
+int runFrame = 1;
+int jumpFrame = 0;
 
 int health = 20;
 int takingDamage = 0;
+int itemTimer = 0;
+int itemTimerID = 0;
 
 int mouseX, mouseY, mouseOX, mouseOY;
 int mouseMoveX = 0, mouseMoveY = 0;
@@ -51,6 +59,7 @@ bool aKey = false;
 bool sKey = false;
 bool dKey = false;
 bool wKey = false;
+bool eKey = false;
 bool spaceKey = false;
 bool canJump = false;
 bool lockMouse = false;
@@ -59,8 +68,12 @@ bool mouseRDown = false;
 bool mouseRWait = false;
 bool mouseWait = false;
 bool windowed = true;
+bool heartPickUp = false;
+bool gemPickUp = false;
 
 int refectOn = 0;
+
+int clearParticles = 0;
 
 void globalVariables();
 

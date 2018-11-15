@@ -84,7 +84,7 @@ void drawingList() {
 
 
 
-
+	/* // No longer using health pack model - loading heart.obj instead
 	GLuint worldDL3 = glGenLists(1);
 	glNewList(worldDL3, GL_COMPILE);
 
@@ -98,7 +98,7 @@ void drawingList() {
 	glEndList();
 
 	drawList3 = worldDL3;
-
+	*/
 
 
 

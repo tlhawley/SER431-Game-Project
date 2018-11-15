@@ -121,9 +121,14 @@ void setParticleColor(Particle* curr) {
 		//alpha = curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
 		break;
 	case ParColorID::fogC:
+		/*
 		red = 0.4f;
 		green = 0.4f;
 		blue = 0.4f;
+		*/
+		red = 1.0f;
+		green = 1.0f;
+		blue = 1.0f;
 
 		if (curr->pSystemData.life / curr->pSystemData.lifeLength > 0.8333333333333333) { // alpha fade in
 			alpha = (0.8333333333333333 - curr->pSystemData.life / curr->pSystemData.lifeLength) * 1.0 + 0.1666666666666666;

@@ -76,6 +76,18 @@ void drawBaseModel() {
 			glCallList(meshLV1Floor);
 		}
 		break;
+	case 16:
+		glCallList(meshHubWalls);
+		break;
+	case 17:
+		glCallList(meshPortal);
+		break;
+	case 18:
+		glCallList(meshPortalClosed);
+		break;
+	case 19:
+		glCallList(meshLV1);
+		break;
 	}
 	
 

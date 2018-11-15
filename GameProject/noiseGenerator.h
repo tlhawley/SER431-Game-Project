@@ -52,7 +52,7 @@ int width = 1200;
 int height = 600;
 float ratio = 1.0;
 */
-GLuint display1, display2, display3, display4, display5;
+GLuint displayx1, display2, display3, display4, display5;
 
 // controling parameters
 int mouse_button;
@@ -90,6 +90,13 @@ Vec3f fireMap(float a) {
 	Vec3f red = Vec3f(0, 0.125f, 1);
 	Vec3f color = Vec3f(0.5f, 1.0f, 1.0f);
 	return ((1 - a) * color + a * red);
+}
+
+// floorMap
+Vec3f floorMap(float a) {
+	Vec3f c2 = Vec3f(0.6f, 0.65f, 0.7f);
+	Vec3f color = Vec3f(0.8f, 0.85f, 0.9f);
+	return ((1 - a) * color + a * c2);
 }
 
 
@@ -150,8 +157,21 @@ GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info) {
 
 // Create texture from algorithm
 void codedTexture(UINT textureArray[], int n, int type) {
-	const int TexHeight = 128;
-	const int TexWidth = 128;
+
+	/*
+	int TexHeight = 2;
+	int TexWidth = 2;
+
+	if (type == 4){
+		const int TexHeight = 512;
+		const int TexWidth = 512;
+	}
+	else {
+	}
+	*/
+	const int TexHeight = 512;
+	const int TexWidth = 512;
+
 	// create texture in memory
 	GLubyte textureImage[TexHeight][TexWidth][3];
 	ImprovedNoise noise;
@@ -164,7 +184,10 @@ void codedTexture(UINT textureArray[], int n, int type) {
 				else
 					if (type == 2) pixelColor = fireMap(t_scale(noise.perlinMarble(i * 5, j * 5)));
 					else
-						pixelColor = fireMap(t_scale(noise.perlinMultiscale(i * 5, j * 5)));
+						if (type == 3)
+							pixelColor = fireMap(t_scale(noise.perlinMultiscale(i * 5, j * 5)));
+						else
+							pixelColor = floorMap(t_scale(noise.perlinMultiscale(i * 50, j * 50)));
 			textureImage[i][j][0] = pixelColor[0] * 255;
 			textureImage[i][j][1] = pixelColor[1] * 255;
 			textureImage[i][j][2] = pixelColor[2] * 255;
@@ -431,8 +454,8 @@ Mesh* createPlane(int arena_width, int arena_depth, int arena_cell) {
 Mesh* createTerrain(int arena_width, int arena_depth, int arena_cell) {
 	Mesh *me = new Mesh;
 
-	int n = 128;
-	int m = 128;
+	int n = 129;
+	int m = 129;
 
 	ImprovedNoise noise; // modified for terrain
 	Vec3f pixelColor; // modified for terrain
@@ -621,41 +644,42 @@ GLuint meshToDisplayList(Mesh* m, int id, int textureId) {
 
 // init
 void initNoiseGen() {
-	glShadeModel(GL_SMOOTH);
-	glEnable(GL_DEPTH_TEST);
-	ratio = (double)width / (double)height;
+	//glShadeModel(GL_SMOOTH);
+	//glEnable(GL_DEPTH_TEST);
+	//ratio = (double)width / (double)height;
 	// mesh
-	mesh1 = createPlane(2000, 2000, 200);
-	mesh2 = createCube();
-	mesh3 = createCube();
-	mesh4 = createCube();
-	mesh5 = createPlaneMultiscale(2000, 2000, 200);
+	mesh1 = createTerrain(2000, 2000, 200);
+	//mesh2 = createCube();
+	//mesh3 = createCube();
+	//mesh4 = createCube();
+	//mesh5 = createPlaneMultiscale(2000, 2000, 200);
 	calculateNormalPerFace(mesh1);
-	calculateNormalPerFace(mesh2);
-	calculateNormalPerFace(mesh3);
-	calculateNormalPerFace(mesh4);
-	calculateNormalPerFace(mesh5);
+	//calculateNormalPerFace(mesh2);
+	//calculateNormalPerFace(mesh3);
+	//calculateNormalPerFace(mesh4);
+	//calculateNormalPerFace(mesh5);
 	calculateNormalPerVertex(mesh1);
-	calculateNormalPerVertex(mesh2);
-	calculateNormalPerVertex(mesh3);
-	calculateNormalPerVertex(mesh4);
-	calculateNormalPerVertex(mesh5);
+	//calculateNormalPerVertex(mesh2);
+	//calculateNormalPerVertex(mesh3);
+	//calculateNormalPerVertex(mesh4);
+	//calculateNormalPerVertex(mesh5);
 	// textures
 	//bmpTexture(textureArray, "../../BMP files/brick.bmp", 0);
 	//bmpTexture(textureArray, "../../BMP files/oldbox.bmp", 1);
-	bmpTexture(textureArray, "./src/textures/brick.bmp", 0);
-	bmpTexture(textureArray, "./src/textures/oldbox.bmp", 1);
-	codedTexture(textureArray, 2, 0); //Sky texture - noise multiscale. Type=0
-	codedTexture(textureArray, 3, 2); //Fire texture - noise marble. Type=2
-	codedTexture(textureArray, 4, 3); //Fire texture - noise multiscale. Type=3
+	//bmpTexture(textureArray, "./src/textures/brick.bmp", 0);
+	//bmpTexture(textureArray, "./src/textures/oldbox.bmp", 1);
+	//codedTexture(textureArray, 2, 0); //Sky texture - noise multiscale. Type=0
+	//codedTexture(textureArray, 3, 2); //Fire texture - noise marble. Type=2
+	codedTexture(textureArray, 4, 4); //Floor texture - noise multiscale. Type=4
 	//codedTexture(textureArray, 4, 1); //Marble texture - noise fire. Type=1
 									  // display lists
-	display1 = meshToDisplayList(mesh1, 1, 0);
-	display2 = meshToDisplayList(mesh2, 2, 1);
-	display3 = meshToDisplayList(mesh3, 3, 2);
-	display4 = meshToDisplayList(mesh4, 4, 3);
-	display5 = meshToDisplayList(mesh5, 5, 4);
+	displayx1 = meshToDisplayList(mesh1, 1, 4);
+	//display2 = meshToDisplayList(mesh2, 2, 1);
+	//display3 = meshToDisplayList(mesh3, 3, 2);
+	//display4 = meshToDisplayList(mesh4, 4, 3);
+	//display5 = meshToDisplayList(mesh5, 5, 4);
 	// light
+	/*
 	GLfloat light_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
 	GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
 	GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -666,6 +690,7 @@ void initNoiseGen() {
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHTING);
+	*/
 }
 
 // reshape
@@ -713,7 +738,8 @@ void displayNoiseGenPlane(void) {
 	//plane
 	glPushMatrix();
 	//glTranslatef(-900, 0, -900);
-	glCallList(display1);
+	glTranslatef(0, -15, 0);
+	glCallList(displayx1);
 	glPopMatrix();
 }
 

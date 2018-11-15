@@ -5,7 +5,7 @@ float materialLamp[] = { 0.24725f,0.1995f,0.0745f,1,0.75164f,0.60648f,0.22648f,1
 
 float materialWood[] = { 0.1f,0.1f,0.1f,1.0f,0.29f,0.24f,0.15f,1,0.0f,0.0f,0.0f,1,0,0,0,1,32.0f };
 
-float materialRuby[] = { 0.0025f,0.0025f,0.0025f,1,0.75164f,0.1f,0.1f,1,0.9f,0.9f,0.9f,1,0,0,0,1,51.2f };
+float materialRuby[] = { 0.0025f,0.0025f,0.0025f,1,0.75164f,0.1f,0.1f,1,0.9f,0.9f,0.9f,1,0.2f,0.1f,0.1f,1,51.2f };
 
 float materialCastle[] = { 1.0f,1.0f,1.0f,1.0f,		1.0f,1.0f,1.0f,1,	1.0f,1.0f,1.0f,1,	0,0,0,1,	1.0f };
 
@@ -34,6 +34,13 @@ float materialAlpha2[] = { 0,0,0,0,0,0,0,0.7f,0,0,0,0,0,0,0,0.7f,1 };
 float materialCollisionBox[] = { 0,0,0,0,.1f,1,.1f,0.3f,0,0,0,0,.1f,1,.1f,0.3f,1 };
 
 float materialEmissive[] = { 0,0,0,0,1,1,1,1.0f,0,0,0,0,1,1,1,1.0f,1 };
+
+
+float materialPlayer[] = { 0.25f,0.25f,0.25f,1,1,1,1,1.0f,0,0,0,0,0.25f,0.25f,0.25f,1.0f,1 };
+
+float materialSand[] = { 0.25f,0.25f,0.25f,1.0,1.0,1.0,1,1.0f,0.1f,0.1f,0.1f,1,0.0f,0.0f,0.0f,1.0f,1.0f };
+
+float materialHeart[] = { 0.25f,0.25f,0.25f,1,0.4f,0.4f,0.4f,1,80.9f,80.9f,80.9f,1,0.5f,0.5f,0.5f,1,50.0f };
 
 void materialz();
 
