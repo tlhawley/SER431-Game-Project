@@ -7,6 +7,13 @@ float crateY = 100;
 
 void UpdateCam() {
 
+	Geometry[0][0] = box1X;
+	Geometry[0][1] = box1Y;
+	Geometry[0][2] = box1Z;
+	Geometry[1][0] = box2X;
+	Geometry[1][1] = box2Y;
+	Geometry[1][2] = box2Z;
+
 	// use the parametric time value 0 to 1
 	//for (int i = 0; i != N - 1; i++) {
 		float t = (float)camTimer / (N - 1);

@@ -71,3 +71,5 @@ void myInit();
 
 #include "displayAll.h"
 #include "reflection.h"
+
+#include "mapInitialize.h"

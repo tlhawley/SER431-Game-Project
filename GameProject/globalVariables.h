@@ -75,5 +75,44 @@ int refectOn = 0;
 
 int clearParticles = 0;
 
+
+
+
+
+// Used for the camera intro movement
+// curve variables
+float box1X = -15;
+float box1Y = 10;
+float box1Z = 80;
+
+float box2X = 0;
+float box2Y = 1.5;
+float box2Z = 0;
+
+float Geometry[4][3] = {
+	{ box1X, box1Y, box1Z },  //  Point 1
+{ box2X,  box2Y, box2Z },	  //	Point2
+{ 0,  0, -50 },	  //	Tangent1
+{ -70,   0, 0 }		//	Tangent2
+};
+unsigned int N = 800;
+
+int camTimer = 0; //used for camera hermite curve animation on startup
+
+
+
+
+
+int frameTimer = 0;
+
+
+
+
+
+
+
+
+
+
 void globalVariables();
 
