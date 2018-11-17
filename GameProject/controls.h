@@ -16,7 +16,7 @@ void UpdateCam() {
 
 	// use the parametric time value 0 to 1
 	//for (int i = 0; i != N - 1; i++) {
-		float t = (float)camTimer / (N - 1);
+		float t = (float)frameTimer / (N - 1);
 		// calculate blending functions
 		float b0 = 2 * t*t*t - 3 * t*t + 1;
 		float b1 = -2 * t*t*t + 3 * t*t;
@@ -28,7 +28,7 @@ void UpdateCam() {
 		float z = b0 * Geometry[0][2] + b1 * Geometry[1][2] + b2 * Geometry[2][2] + b3 * Geometry[3][2];
 
 
-		float t2 = (float)(camTimer + 1) / (N - 1);
+		float t2 = (float)(frameTimer + 1) / (N - 1);
 		// calculate blending functions
 		float b02 = 2 * t2*t2*t2 - 3 * t2*t2 + 1;
 		float b12 = -2 * t2*t2*t2 + 3 * t2*t2;
@@ -109,10 +109,13 @@ void Update() {
 	}
 
 
-	camx = camx + camxv;
-	camy = camy + camyv;
-	camz = camz + camzv;
+	camx = camx + camxv - collisionVelocityX;
+	camy = camy + camyv - collisionVelocityY;
+	camz = camz + camzv - collisionVelocityZ;
 
+	collisionVelocityX = 0;
+	collisionVelocityY = 0;
+	collisionVelocityZ = 0;
 	
 
 	if (mouseMoveX != 0) {

@@ -60,6 +60,8 @@ bool sKey = false;
 bool dKey = false;
 bool wKey = false;
 bool eKey = false;
+bool pKey = false;
+//bool pWait = true;
 bool spaceKey = false;
 bool canJump = false;
 bool lockMouse = false;
@@ -97,7 +99,7 @@ float Geometry[4][3] = {
 };
 unsigned int N = 800;
 
-int camTimer = 0; //used for camera hermite curve animation on startup
+//int camTimer = 0; //used for camera hermite curve animation on startup
 
 
 
@@ -107,9 +109,9 @@ int frameTimer = 0;
 
 
 
-
-
-
+float collisionVelocityX;
+float collisionVelocityY;
+float collisionVelocityZ;
 
 
 

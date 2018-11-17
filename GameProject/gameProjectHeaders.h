@@ -60,6 +60,7 @@ void myInit();
 #include "gameObjects/gameObjSpinSpike.h"
 #include "gameObjects/gameObjBox.h"
 #include "gameObjects/gameObjCollisionBox.h"
+#include "gameObjects/gameObjMovingPlatform.h"
 #include "gameObjects/gameObjDoorway.h"
 #include "gameObjects/gameObjKey.h"
 #include "gameObjects/gameObjGem.h"
@@ -73,3 +74,4 @@ void myInit();
 #include "reflection.h"
 
 #include "mapInitialize.h"
+

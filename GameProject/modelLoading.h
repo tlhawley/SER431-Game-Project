@@ -97,6 +97,10 @@ GLuint meshLVHMapUI;
 GLuint meshLV1MapUI;
 GLuint meshLV1;
 
+
+
+GLuint meshMovingPlatform;
+
 GLuint displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles,
 displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves, displayParticlePlaneFlameSparks, displayParticleRain, displayParticlePlaneRing;
 
@@ -136,7 +140,7 @@ void loadModels() {
 
 	printf("Loading\n");
 
-	GLuint texture_array[38];
+	GLuint texture_array[39];
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 1, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
@@ -181,6 +185,9 @@ void loadModels() {
 
 	loadBMP_custom(texture_array, "./src/textures/LV01_map512.bmp", 36, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/LV1Texture.bmp", 37, 1, 0);
+
+
+	loadBMP_custom(texture_array, "./src/textures/movingPlatform.bmp", 38, 1, 0);
 	
 
 	// Load particle mesh & images
@@ -317,7 +324,7 @@ void loadModels() {
 
 
 
-
+	meshMovingPlatform = loadObj("./src/obj files/MovingPlatform.obj", texture_array[38]);
 
 
 

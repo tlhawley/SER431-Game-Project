@@ -42,7 +42,7 @@ void initButtonUI() {
 	buttons[buttonAmount - 1] = newButtonUI(0, 980, true, false, "Menu OFF", "Menu ON");
 	buttons[buttonAmount - 1] = newButtonUI(0, 880,false,false,"Boundbox OFF","Boundbox ON");
 	buttons[buttonAmount - 1] = newButtonUI(0, 780, false, true, "Particles OFF", "Particles ON");
-	buttons[buttonAmount - 1] = newButtonUI(0, 680, false, false, "Info OFF", "Info ON");
+	buttons[buttonAmount - 1] = newButtonUI(0, 680, false, false, "Info ON", "Info OFF");
 	buttons[buttonAmount - 1] = newButtonUI(0, 580, false, true, "Sky OFF", "Sky ON");
 	buttons[buttonAmount - 1] = newButtonUI(0, 480, false, true, "Fog OFF", "Fog ON");
 	buttons[buttonAmount - 1] = newButtonUI(0, 380, false, true, "Reflections OFF", "Reflections ON");

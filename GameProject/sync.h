@@ -19,29 +19,19 @@ void sync() {
 		mouseMoveY = 0;
 	}
 
+	
 	if (mouseDown == true) { // the mouse is being held down
 		mouseWait = true;
 	}
-	if (mouseWait == true && mouseDown == false) { // the mouse has been released
+	if (mouseWait == true && mouseDown == false) { // the mouse has been released - pKey replaced (mouseDown)
 
-
+		
 		buttonMouseActive = 0;
 
-		/*
-		//if ((float)mouseX / (float)width < 1.0f && (float)mouseX / (float)width > 0.8f && (float)mouseY / (float)width < 0.25f && (float)mouseY / (float)width > 0.2f) {
-		if ((float)mouseX / (float)width < 1.0f && (float)mouseX / (float)width > 0.8f && (float)mouseY / (float)height - mouseY - width * 0.04 - width * 0.2 < 0.0 && height - mouseY - width * 0.2 > 0.0) {
-			if (sprint) { //SmoothingSetting == 1) {
-				sprint = false; //SmoothingSetting = 0;
-			}
-			else {
-				sprint = true; //SmoothingSetting = 1;
-			}
-		}
-		*/
+
 		actionButtonUI();
 		
-
-
+		
 		if (buttonMouseActive== 0){
 
 			if (lockMouse == true) {
@@ -63,8 +53,63 @@ void sync() {
 				lockMouse = true;
 			}
 		}
+		
 		mouseWait = false;
 	}
+	
+
+
+
+
+
+
+
+	/*
+	if (pKey == true) { // the mouse is being held down
+		pWait = true;
+	}
+	if (pWait == true && pKey == false) { // the mouse has been released - pKey replaced (mouseDown)
+
+		//buttonMouseActive = 0;
+
+
+		//actionButtonUI();
+
+
+
+		//if (buttonMouseActive == 0) {
+
+			if (lockMouse == true) {
+				lockMouse = false;
+				glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
+				mouseOX = width / 2;
+				mouseOY = height / 2;
+				mouseX = mouseOX;
+				mouseY = mouseOY;
+				glutWarpPointer(width / 2, height / 2);
+			}
+			else {
+				glutSetCursor(GLUT_CURSOR_NONE);
+				mouseOX = width / 2;
+				mouseOY = height / 2;
+				mouseX = mouseOX;
+				mouseY = mouseOY;
+				glutWarpPointer(width / 2, height / 2);
+				lockMouse = true;
+			}
+		//}
+		pWait = false;
+	}
+	*/
+
+
+
+
+
+
+
+
+
 
 	// Roughly syncs the framerate to 60 fps
 	fps = 62;

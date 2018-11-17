@@ -27,6 +27,16 @@ void objLoadInit() {
 // Initializes game objects and noiseGen
 void objInit() {
 
+
+	if (lockMouse == true) { 
+		glutSetCursor(GLUT_CURSOR_NONE);
+		mouseOX = width / 2;
+		mouseOY = height / 2;
+		mouseX = mouseOX;
+		mouseY = mouseOY;
+		glutWarpPointer(width / 2, height / 2);
+	}
+
 	// reset global variables
 
 	lx = 0.0f; ly = 0.0f; lz = -1.0f;
@@ -76,6 +86,7 @@ void objInit() {
 	initBoundingBoxes();
 	initBaseModels();
 	initPointLights();
+	initMovingPlatforms();
 
 }
 
@@ -83,10 +94,10 @@ void objInit() {
 void loadLevel(int mapID) {
 
 	if (mapID == -1) {
-		camTimer = 0; // camera hermite curve animation on startup
+		frameTimer = 0; // camera hermite curve animation on startup
 	}
 	else {
-		camTimer = 10000;
+		frameTimer = 10000;
 	}
 
 	SoundEngine->stopAllSounds();
@@ -142,6 +153,9 @@ void loadLevel(int mapID) {
 	levelComplete = false;
 
 
+	
+
+
 	initNoiseGen(); // from noiseGenerator.h
 
 
@@ -160,5 +174,6 @@ void loadLevel(int mapID) {
 	initBoundingBoxes();
 	initBaseModels();
 	initPointLights();
+	initMovingPlatforms();
 
 }

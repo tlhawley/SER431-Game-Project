@@ -125,6 +125,9 @@ void keyboardInput(unsigned char key, int x2, int y2)
 	case 69:
 		eKey = true;
 		break;
+	case 80:
+		pKey = true;
+		break;
 
 	case 100:
 		dKey = true;
@@ -140,6 +143,9 @@ void keyboardInput(unsigned char key, int x2, int y2)
 		break;
 	case 101:
 		eKey = true;
+		break;
+	case 112:
+		pKey = true;
 		break;
 	case 27:
 		exit(0);
@@ -176,7 +182,9 @@ void keyboardInputUp(unsigned char key, int x2, int y2)
 	case 69:
 		eKey = false;
 		break;
-
+	case 80:
+		pKey = false;
+		break;
 
 	case 100:
 		dKey = false;
@@ -192,6 +200,9 @@ void keyboardInputUp(unsigned char key, int x2, int y2)
 		break;
 	case 101:
 		eKey = false;
+		break;
+	case 112:
+		pKey = false;
 		break;
 	}
 

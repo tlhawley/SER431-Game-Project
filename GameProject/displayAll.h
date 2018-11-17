@@ -108,7 +108,7 @@ void displayEnvironment() {
 
 
 	// Character Placement
-	if (camTimer >= N) {
+	if (frameTimer >= N) {
 		glPushMatrix();
 		setMaterialAdvanced(materialPlayer);
 		glTranslatef(camx, camy, camz);
@@ -259,6 +259,9 @@ void displayEnvironment() {
 // displays interactive objects
 void displayGameObjects() {
 	if (refectOn == 0) {
+
+		actionMovingPlatforms();
+
 		displayDoorway();
 
 		setMaterialAdvanced(materialGold);
