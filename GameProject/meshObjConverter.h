@@ -621,9 +621,9 @@ GLuint meshToDisplayList(Mesh* m, int id, GLuint texture) {
 			glTexCoord2fv(&m->dot_texture[m->face_index_texture[i]].x);
 		}
 		// COLOR
-		Vec3f offset = (m->dot_vertex[m->face_index_vertex[i]]);
+		//Vec3f offset = (m->dot_vertex[m->face_index_vertex[i]]);
 		// VERTEX
-		glColor3f(fabs(sin(offset.x)), fabs(cos(offset.y)), fabs(offset.z));
+		//glColor3f(fabs(sin(offset.x)), fabs(cos(offset.y)), fabs(offset.z));
 		glVertex3fv(&m->dot_vertex[m->face_index_vertex[i]].x);
 	}
 

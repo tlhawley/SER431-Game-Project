@@ -145,7 +145,7 @@ void loadModels() {
 
 	GLuint texture_array[42];
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
-	loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 1, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 1, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
 	//loadBMP_custom(texture_array, "./src/textures/CheckerTiles.bmp", 3, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/door.bmp", 5, 1, 0);
