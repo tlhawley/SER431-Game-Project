@@ -7,8 +7,8 @@
 #define dt 0.01666666666666f // frames are capped at 60fps, delta time is assumed to run at 60 fps 1/60
 
 // Enum used to identify different particle systems & particle color functions
-enum ParID { flame, flameWall, flameSparks, flameWallSparks, flameSmoke, smoke, snow, rain, rainSplash, bubbles, waterfall, waterfallSub, frost, frostWall, ash, leaves, fog };
-enum ParColorID { flameC, smokeC, smokeDarkC, snowC, waterfallC, waterfallSubC, frostC, leafC, rainbowC, fogC, rainC, whiteFadeC };
+enum ParID { flame, flame2, flameWall, flameSparks, flameWallSparks, flameSmoke, smoke, snow, rain, rainSplash, bubbles, waterfall, waterfallSub, frost, frostWall, ash, leaves, fog };
+enum ParColorID { flameC, flame2C, smokeC, smokeDarkC, snowC, waterfallC, waterfallSubC, frostC, leafC, rainbowC, fogC, rainC, whiteFadeC };
 
 
 void actionParticleSystem();

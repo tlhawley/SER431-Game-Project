@@ -96,10 +96,13 @@ GLuint meshLVHMapUI;
 
 GLuint meshLV1MapUI;
 GLuint meshLV1;
-
+GLuint meshLV2MapUI;
+GLuint meshLV2;
 
 
 GLuint meshMovingPlatform;
+
+GLuint meshFireball;
 
 GLuint displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles,
 displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves, displayParticlePlaneFlameSparks, displayParticleRain, displayParticlePlaneRing;
@@ -140,13 +143,13 @@ void loadModels() {
 
 	printf("Loading\n");
 
-	GLuint texture_array[39];
+	GLuint texture_array[42];
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 1, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
 	//loadBMP_custom(texture_array, "./src/textures/CheckerTiles.bmp", 3, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/door.bmp", 5, 1, 0);
-	loadBMP_custom(texture_array, "./src/textures/doorFrame.bmp", 6, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/gateTexture.bmp", 6, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/SkyBox.bmp", 9, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/TreeTexture.bmp", 10, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/GrassClusterTexture.bmp", 11, 1, 0);
@@ -188,6 +191,11 @@ void loadModels() {
 
 
 	loadBMP_custom(texture_array, "./src/textures/movingPlatform.bmp", 38, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/Fireball.bmp", 39, 1, 0);
+
+
+	loadBMP_custom(texture_array, "./src/textures/LV2Texture.bmp", 40, 1, 0);
+	loadBMP_custom(texture_array, "./src/textures/LV02_map512.bmp", 41, 1, 0);
 	
 
 	// Load particle mesh & images
@@ -249,13 +257,13 @@ void loadModels() {
 
 	meshSpikes = loadObj("./src/obj files/Spikes2.obj", texture_array[2]);
 
-	meshDoorFrame = loadObj("./src/obj files/DoorFrame3.obj", texture_array[6]);
+	meshDoorFrame = loadObj("./src/obj files/Gate.obj", texture_array[6]);
 
-	meshDoorLeft = loadObj("./src/obj files/DoorRight3.obj", texture_array[5]);
+	//meshDoorLeft = loadObj("./src/obj files/DoorRight3.obj", texture_array[5]);
 
-	meshDoorRight = loadObj("./src/obj files/DoorLeft3.obj", texture_array[5]);
+	//meshDoorRight = loadObj("./src/obj files/DoorLeft3.obj", texture_array[5]);
 
-	meshDoorLock = loadObj("./src/obj files/DoorLock3.obj", texture_array[0]);
+	//meshDoorLock = loadObj("./src/obj files/DoorLock3.obj", texture_array[0]);
 
 	/*
 	meshRoomWall1 = loadObj("./src/obj files/RoomWall1Colored.obj", texture_array[0]);
@@ -326,7 +334,7 @@ void loadModels() {
 
 	meshMovingPlatform = loadObj("./src/obj files/MovingPlatform.obj", texture_array[38]);
 
-
+	meshFireball = loadObj("./src/obj files/Fireball.obj", texture_array[39]);
 
 
 	// Level 1 - Forest Grass
@@ -389,7 +397,9 @@ void loadModels() {
 	meshLV1 = loadObj("./src/obj files/Level01.obj", texture_array[37]);
 
 
-
+	//LV 2 Map
+	meshLV2 = loadObj("./src/obj files/Level02.obj", texture_array[40]);
+	meshLV2MapUI = loadObj("./src/obj files/Level02_Map.obj", texture_array[41]);
 
 }
 

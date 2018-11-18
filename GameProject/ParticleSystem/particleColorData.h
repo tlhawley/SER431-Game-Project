@@ -29,6 +29,20 @@ void setParticleColor(Particle* curr) {
 		}
 		//alpha = 2*curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
 		break;
+	case ParColorID::flame2C:
+		red = 1.0f;
+		green = curr->pSystemData.life / curr->pSystemData.lifeLength*1.0 + 0.4f;
+		if (curr->pSystemData.life > curr->pSystemData.lifeLength / 2.0) {
+			blue = curr->pSystemData.life / curr->pSystemData.lifeLength /2.0;
+			alpha = 1.0f;
+		}
+		else {
+			alpha = 2 * curr->pSystemData.life / curr->pSystemData.lifeLength;
+
+			blue = 0.0f;
+		}
+		//alpha = 2*curr->pSystemData.lifeMin / curr->pSystemData.lifeLength;
+		break;
 	case ParColorID::smokeDarkC:
 		red = 0.1f;
 		green = 0.1f;

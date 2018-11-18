@@ -97,6 +97,9 @@ void draw2DMap(){
 	if (currentLevel == 1) {
 		glCallList(meshLV1MapUI);
 	}
+	if (currentLevel == 2) {
+		glCallList(meshLV2MapUI);
+	}
 	glScalef(5, 5, 5);
 	glRotatef(-180, 0, 1, 0);
 	glRotatef(-90, 1, 0, 0);

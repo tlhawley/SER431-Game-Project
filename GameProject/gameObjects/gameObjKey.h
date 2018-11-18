@@ -27,6 +27,12 @@ key newKey(float x, float y, float z) {
 void initKeys() {
 	keyAmount = 0;
 	// Intro to graphics 332 map
+
+
+	if (currentLevel == 2){
+		keys[keyAmount - 1] = newKey(-0.102766f, 4.32769f, -49.8305f);
+		keys[keyAmount - 1] = newKey(81.0096f , -0.26221f, -0.561697f);
+	}
 	/*
 	keys[keyAmount-1] = newKey(-20.0f, 0.0f, 0.0f);
 	keys[keyAmount-1] = newKey(26.0f, -4.0, -62.0f);

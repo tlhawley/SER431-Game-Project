@@ -88,6 +88,9 @@ void drawBaseModel() {
 	case 19:
 		glCallList(meshLV1);
 		break;
+	case 20:
+		glCallList(meshLV2);
+		break;
 	}
 	
 

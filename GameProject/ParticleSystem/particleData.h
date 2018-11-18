@@ -102,6 +102,83 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.displayID = displayParticlePlaneFlames;
 
 		break;
+	case ParID::flame2:
+		pSystemData.pSystemTypeID = ParID::flame2; // A uniqe value to identify the type of particle
+
+		pSystemData.useGravity = false;
+		pSystemData.position.x = getRnd(-0.125, 0.125) + x;
+		pSystemData.position.y = getRnd(-0.125, 0.125) + y;
+		pSystemData.position.z = getRnd(-0.125, 0.125) + z;
+
+		pSystemData.velocity.x = getRnd(-0.25, 0.25);
+		pSystemData.velocity.y = getRnd(-0.25, 0.25);
+		pSystemData.velocity.z = getRnd(-0.25, 0.25); //(10000 - rand() % 20000) / 10000.0f;
+		pSystemData.acceleration.x = getRnd(-1.5, 1.5);
+		pSystemData.acceleration.y = getRnd(-1.5, 1.5); //-1.81f;
+		pSystemData.acceleration.z = getRnd(-1.5, 1.5);
+		pSystemData.useVelocityMultiplier = false;
+		pSystemData.velocityMultiplier.x = 60.0f;
+		pSystemData.velocityMultiplier.y = 59.0f;
+		pSystemData.velocityMultiplier.z = 60.0f;
+
+		pSystemData.useRotationByVelocity = false;
+		pSystemData.pointAtCam = true;
+		pSystemData.rotation.x = 0.0f;
+		pSystemData.rotation.y = 0.0f;
+		pSystemData.rotation.z = getRnd(0, 5);
+		pSystemData.rotationVelocity.x = 0.0f;
+		pSystemData.rotationVelocity.y = 0.0f;
+		pSystemData.rotationVelocity.z = getRnd(-400, 400);
+		pSystemData.rotationAcceleration.x = 0.0f;
+		pSystemData.rotationAcceleration.y = 0.0f;
+		pSystemData.rotationAcceleration.z = 0.0f;
+		pSystemData.useRotationMultiplier = false;
+		pSystemData.rotationMultiplier.x = 60.0f;
+		pSystemData.rotationMultiplier.y = 60.0f;
+		pSystemData.rotationMultiplier.z = 61.0f;
+
+		pSystemData.noScaleStretching = true;
+		pSystemData.scale.x = 0.6f;
+		pSystemData.scale.y = 1.0f;
+		pSystemData.scale.z = 1.0f;
+		pSystemData.scaleVelocity.x = 2.0f;
+		pSystemData.scaleVelocity.y = 2.0f;
+		pSystemData.scaleVelocity.z = 2.0f;
+		pSystemData.scaleAcceleration.x = 0.0f;
+		pSystemData.scaleAcceleration.y = 0.0f;
+		pSystemData.scaleAcceleration.z = 0.0f;
+		pSystemData.useScaleMultiplier = false;
+		pSystemData.scaleMultiplier.x = 60.2f;
+		pSystemData.scaleMultiplier.y = 59.0f;
+		pSystemData.scaleMultiplier.z = 57.0f;
+
+		pSystemData.colorFunction = ParColorID::flame2C;
+
+		pSystemData.useFloorCollider = true;
+		pSystemData.destroyOnContact = true;
+		pSystemData.floorHeight = 0.0f;
+		pSystemData.bounceMultiplier = 0.9f;
+		pSystemData.floorFriction = 0.9f;
+
+		pSystemData.useNoise = false;
+
+		pSystemData.life = getRnd(0.5f, 1.0f); //rand() % 10000 / 10000.0f+10.0f;
+		pSystemData.lifeLength = pSystemData.life;
+
+		pSystemData.emissionRate = 2; // bigger number less particles
+		pSystemData.emissionAmount = 1; // the amount of particles spawned at a time
+
+
+		pSystemData.useSubParticleSpawn = false;
+		pSystemData.subParticleSpawnID = ParID::flameSparks;
+
+		pSystemData.useSubParticleExit = false;
+		pSystemData.subParticleExitID = ParID::flameSmoke; // flame smoke sub particles
+														   //pSystemData.subParticleID = 3;
+
+		pSystemData.displayID = displayParticlePlaneFlames;
+
+		break;
 	case ParID::flameWall:
 		pSystemData.pSystemTypeID = ParID::flameWall; // A uniqe value to identify the type of particle
 

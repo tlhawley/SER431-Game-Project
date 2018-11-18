@@ -31,15 +31,20 @@ void initPortals() {
 	portals[0] = newPortal(0.0f, 0.0f, -220.0f);
 	*/
 	if (currentLevel == -1) {
-		portals[0] = newPortal(-192.5f, 1.0f, -20.0f, 0);
+		portals[portalAmount-1] = newPortal(-192.5f, 1.0f, -20.0f, 0);
 	}
 
 	if (currentLevel == 0) {
-		portals[0] = newPortal(-18.5f, -2.0f, 10.0f, 1);
+		portals[portalAmount - 1] = newPortal(-18.5f, -2.0f, 10.0f, 1);
+		portals[portalAmount - 1] = newPortal(-18.5f, -2.0f, -10.0f, 2);
 	}
 
 	if (currentLevel == 1) {
-		portals[0] = newPortal(-1.0f, 30.0f, 39.5f, 0);
+		portals[portalAmount - 1] = newPortal(-1.0f, 30.0f, 39.5f, 0);
+	}
+
+	if (currentLevel == 2) {
+		portals[portalAmount - 1] = newPortal(-12.5f, 5.77f, -75.0f, 0);
 	}
 
 }

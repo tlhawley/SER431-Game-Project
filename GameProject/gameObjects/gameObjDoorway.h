@@ -31,11 +31,14 @@ doorway newDoorway(float x, float y, float z, float ang, int locked, bool mirror
 	theDoorway.mirror = mirror;
 
 	if (ang == 90) {
-		Cboxes[CboxAmount - 1] = newCBox(x, y + 1.5, z, 2.0, 4.0, 4.0); // Door
-		Cboxes[CboxAmount - 1] = newCBox(x, y + 1, z + 2.5, 2.5, 4.0, 2.0); // Door Frame Left
+
+		Cboxes[CboxAmount - 1] = newCBox(x, y + 5, z, 1.0, 10.0, 6.0); // Door
+
+		//Cboxes[CboxAmount - 1] = newCBox(x, y + 1.5, z, 2.0, 4.0, 4.0); // Door
+		//Cboxes[CboxAmount - 1] = newCBox(x, y + 1, z + 2.5, 2.5, 4.0, 2.0); // Door Frame Left
 		//Cboxes[CboxAmount - 1] = newCBox(x, y + 1, z - 2.5, 2.5, 4.0, 2.0); // Door Frame Right Again?
-		Cboxes[CboxAmount - 1] = newCBox(x, y + 1, z - 2.5, 2.5, 4.0, 2.0); // Door Frame Right
-		Cboxes[CboxAmount - 1] = newCBox(x, y + 4, z, 2.5, 2.0, 7.0); // Door Frame Top
+		//Cboxes[CboxAmount - 1] = newCBox(x, y + 1, z - 2.5, 2.5, 4.0, 2.0); // Door Frame Right
+		//Cboxes[CboxAmount - 1] = newCBox(x, y + 4, z, 2.5, 2.0, 7.0); // Door Frame Top
 		
 		/*
 		Cboxes[CboxAmount - 1] = newCBox(x, y + 2, z, 1.25, 4, 3.0); // Door Frame
@@ -46,11 +49,13 @@ doorway newDoorway(float x, float y, float z, float ang, int locked, bool mirror
 	}
 	else {
 
+		Cboxes[CboxAmount - 1] = newCBox(x, y + 5, z, 6.0, 10.0, 1.0); // Door
 
-		Cboxes[CboxAmount - 1] = newCBox(x, y + 1.5, z, 4.0, 4.0, 2.0); // Door
-		Cboxes[CboxAmount - 1] = newCBox(x + 2.5, y + 1, z, 2.0, 4.0, 2.5); // Door Frame Left
-		Cboxes[CboxAmount - 1] = newCBox(x - 2.5, y + 1, z, 2.0, 4.0, 2.5); // Door Frame Right
-		Cboxes[CboxAmount - 1] = newCBox(x, y + 4, z, 7.0, 2.0, 2.5); // Door Frame Top
+
+		//Cboxes[CboxAmount - 1] = newCBox(x, y + 1.5, z, 4.0, 4.0, 2.0); // Door
+		//Cboxes[CboxAmount - 1] = newCBox(x + 2.5, y + 1, z, 2.0, 4.0, 2.5); // Door Frame Left
+		//Cboxes[CboxAmount - 1] = newCBox(x - 2.5, y + 1, z, 2.0, 4.0, 2.5); // Door Frame Right
+		//Cboxes[CboxAmount - 1] = newCBox(x, y + 4, z, 7.0, 2.0, 2.5); // Door Frame Top
 
 		/*
 		Cboxes[CboxAmount - 1] = newCBox(x, y + 2, z, 3.0, 4, 1.25); // Door Frame
@@ -65,6 +70,12 @@ doorway newDoorway(float x, float y, float z, float ang, int locked, bool mirror
 
 void initDoorway() {
 	doorwayAmount = 0;
+
+	if (currentLevel == 2) {
+		doorways[doorwayAmount - 1] = newDoorway(-17.0, 0, 0, 90, 1, false);
+		doorways[doorwayAmount - 1] = newDoorway(-34.0, 0, 0, 90, 1, false);
+	}
+
 	 // Intro to graphics 332 map
 	/*
 	doorways[doorwayAmount-1] = newDoorway(-30,0,0,90,1,false);
@@ -81,7 +92,33 @@ void initDoorway() {
 	
 }
 
+
+
+
+
 void actionDoorway() {
+
+	for (int i = 0; i < doorwayAmount; i++) {
+
+		if (abs(camx - doorways[i].x) < 3 && abs(camz - doorways[i].z) < 3 && doorways[i].locked == 1 && inventoryKeys > 0) {
+			inventoryKeys = inventoryKeys - 1;
+			doorways[i].locked = 0;
+		}
+		if (doorways[i].locked == 0 && doorways[i].doorAnimate < 3.0) {
+			doorways[i].doorAnimate = doorways[i].doorAnimate + 0.05f;
+			Cboxes[doorways[i].lockCollision].y = Cboxes[doorways[i].lockCollision].y + 0.05f;
+		}
+
+
+	}
+
+}
+
+
+
+
+
+void actionDoorwayzzzzzzzzzz() {
 	for (int i = 0; i < doorwayAmount; i++) {
 		
 		if (abs(camx - doorways[i].x) < 120 && abs(camz - doorways[i].z) < 120) {
@@ -181,7 +218,7 @@ void actionDoorway() {
 
 
 
-
+/*
 void displayDoorway() {
 	for (int i = 0; i < doorwayAmount; i++) {
 
@@ -226,6 +263,38 @@ void displayDoorway() {
 		}
 	}
 }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+void displayDoorway() {
+	for (int i = 0; i < doorwayAmount; i++) {
+
+
+		objPlacementTRS(drawDoor, doorways[i].x, doorways[i].y + doorways[i].doorAnimate, doorways[i].z, 0, doorways[i].angle, 0, 1, 1, 1);
+
+		//if (doorways[i].active == true) {
+			//if (abs(camx - doorways[i].x) < 60 && abs(camz - doorways[i].z) < 60) {
+				//objPlacementTRS(drawGem, doorways[i].x, sin(timer * 4)*0.1f + gems[i].y + 0.2f, gems[i].z, 0.0, timer * 100, 0.0, 1.0, 1.0, 1.0);
+			//}
+		//}
+	}
+}
+
+
+
+
+
+
 
 
 

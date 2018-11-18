@@ -354,8 +354,70 @@ void initCBoxes() {
 
 
 
+	// Level 2 platforms
+	if (currentLevel == 2) {
 
+		Cboxes[CboxAmount - 1] = newCBox(-11.0f, 5.77f, -75.0f, 1.9829, 20, 6.42671);
 
+		Cboxes[CboxAmount - 1] = newCBox(51.0, 0.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(55.0, 0.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(59.0, 0.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(63.0, 0.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(67.0, 0.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(71.0, 0.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-78.0, 5.0, -27.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-78.0, 5.0, -31.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-78.0, 5.0, -35.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-78.0, 5.0, -39.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-78.0, 5.0, -43.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-78.0, 5.0, -47.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-50.0, -1.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-54.0, -1.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-58.0, -1.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-62.0, -1.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-66.0, -1.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-70.0, -1.0, 0.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(31.724998, -0.8100004, -9.02, 31.749998, 31.62, 12.04);
+		Cboxes[CboxAmount - 1] = newCBox(0.16499996, -0.8100004, 15.495001, 31.43, 31.62, 1.71);
+		Cboxes[CboxAmount - 1] = newCBox(-21.145, -0.8100004, -29.73, 36.29, 31.62, 29.400002);
+		Cboxes[CboxAmount - 1] = newCBox(31.724998, -7.96, -0.68499994, 31.749998, 15.92, 10.75);
+		Cboxes[CboxAmount - 1] = newCBox(31.724998, -0.8100004, 9.635, 31.749998, 31.62, 13.27);
+		Cboxes[CboxAmount - 1] = newCBox(-31.455002, -7.91, -0.49, 31.750002, 15.82, 10.780001);
+		Cboxes[CboxAmount - 1] = newCBox(-31.455002, -0.8100004, 9.64, 31.750002, 31.62, 13.280001);
+		Cboxes[CboxAmount - 1] = newCBox(20.675, -0.8100004, -29.73, 35.35, 31.62, 29.400002);
+		Cboxes[CboxAmount - 1] = newCBox(0.22000003, 1.11, -25.05, 6.44, 0.9200001, 10.940001);
+		Cboxes[CboxAmount - 1] = newCBox(-31.455002, -0.8100004, -9.035, 31.750002, 31.62, 12.07);
+		Cboxes[CboxAmount - 1] = newCBox(0.22000003, 3.865, -27.22, 6.44, 0.9299998, 10.939999);
+		Cboxes[CboxAmount - 1] = newCBox(0.22000003, 2.95, -26.545, 6.44, 0.9200001, 10.950001);
+		Cboxes[CboxAmount - 1] = newCBox(0.29500008, -8.06, -0.24499989, 31.75, 16.12, 29.39);
+		Cboxes[CboxAmount - 1] = newCBox(0.22000003, 3.87, -38.485, 6.44, 0.91999984, 11.889999);
+		Cboxes[CboxAmount - 1] = newCBox(0.22000003, 2.02, -25.73, 6.44, 0.9200001, 10.940001);
+		Cboxes[CboxAmount - 1] = newCBox(0.22000003, -0.575, -20.41, 6.44, 1.15, 10.94);
+		Cboxes[CboxAmount - 1] = newCBox(0.22000003, 0.20000002, -24.380001, 6.44, 0.92, 10.940001);
+		Cboxes[CboxAmount - 1] = newCBox(-47.04, 4.65, -72.93, 2.2799988, 2.28, 2.2799988);
+		Cboxes[CboxAmount - 1] = newCBox(-42.03, 4.65, -74.18, 2.2799988, 2.28, 2.2799988);
+		Cboxes[CboxAmount - 1] = newCBox(-24.415, 4.65, -74.94, 32.93, 2.28, 13.700005);
+		Cboxes[CboxAmount - 1] = newCBox(-51.93, 4.65, -70.435, 2.2799988, 2.28, 2.2699966);
+		Cboxes[CboxAmount - 1] = newCBox(-56.559998, 4.65, -69.34, 2.2800026, 2.28, 2.2800064);
+		Cboxes[CboxAmount - 1] = newCBox(-58.25, 4.65, -64.770004, 2.2799988, 2.28, 2.2800026);
+		Cboxes[CboxAmount - 1] = newCBox(-60.64, 4.65, -60.37, 2.2799988, 2.28, 2.2799988);
+		Cboxes[CboxAmount - 1] = newCBox(-75.505005, 4.65, -56.949997, 14.290001, 2.28, 13.700001);
+		Cboxes[CboxAmount - 1] = newCBox(-64.91, 4.65, -57.5, 2.2800026, 2.28, 2.2799988);
+		Cboxes[CboxAmount - 1] = newCBox(-77.755005, 4.965, -17.295, 9.43, 1.4500003, 13.150001);
+		Cboxes[CboxAmount - 1] = newCBox(-77.755005, 3.505, -15.385, 9.43, 1.45, 13.149999);
+		Cboxes[CboxAmount - 1] = newCBox(-77.755005, 2.065, -13.46, 9.43, 1.4499999, 13.140001);
+		Cboxes[CboxAmount - 1] = newCBox(-77.755005, 0.68, -11.495, 9.43, 1.4599999, 13.15);
+		Cboxes[CboxAmount - 1] = newCBox(-77.755005, -1.16, -0.37000012, 9.43, 2.28, 13.139999);
+		Cboxes[CboxAmount - 1] = newCBox(87.56, 6.7200003, -1.19, 0.8199997, 16.56, 11.7);
+		Cboxes[CboxAmount - 1] = newCBox(81.100006, 6.7200003, -6.56, 12.120003, 16.56, 0.96000004);
+		Cboxes[CboxAmount - 1] = newCBox(81.009995, -0.715, -0.56500006, 12.239998, 0.90999997, 10.75);
+		Cboxes[CboxAmount - 1] = newCBox(81.515, 6.7200003, 5.13, 12.949997, 16.56, 0.96000004);
+		Cboxes[CboxAmount - 1] = newCBox(6.445, 9.015, -50.394997, 0.8299999, 11.97, 11.91);
+		Cboxes[CboxAmount - 1] = newCBox(-6.71, 9.015, -50.394997, 0.8199997, 11.97, 11.91);
+		Cboxes[CboxAmount - 1] = newCBox(-0.119999886, 9.015, -55.87, 12.34, 11.97, 0.9599991);
+		Cboxes[CboxAmount - 1] = newCBox(-0.099999905, 3.875, -49.83, 12.24, 0.90999985, 10.84);
+
+	}
 
 
 
