@@ -76,25 +76,38 @@ void initGems() {
 	}
 
 
-	// Intro to graphics 332 map
-	/*
-	gems[gemAmount - 1] = newGem(0.0f, 0.0f, -20.0f);
-	gems[gemAmount - 1] = newGem(-109.0, -4.0, -61.0f);
-	gems[gemAmount - 1] = newGem(-109.0, -4.0, -59.0f);
-	gems[gemAmount - 1] = newGem(-107.0, -4.0, -61.0f);
-	gems[gemAmount - 1] = newGem(-107.0, -4.0, -59.0f);
+	// level 2
+	if (currentLevel == 2) {
+		gems[gemAmount - 1] = newGem(51.0f, 1.0f, 0.0f);
+		gems[gemAmount - 1] = newGem(55.0f, 1.0f, 0.0f);
+		gems[gemAmount - 1] = newGem(59.0f, 1.0f, 0.0f);
+		gems[gemAmount - 1] = newGem(63.0f, 1.0f, 0.0f);
+		gems[gemAmount - 1] = newGem(67.0f, 1.0f, 0.0f);
+		gems[gemAmount - 1] = newGem(71.0f, 1.0f, 0.0f);
 
-	gems[gemAmount - 1] = newGem(2.0f, 0.0f, -172.0f);
-	gems[gemAmount - 1] = newGem(2.0f, 0.0f, -168.0f);
-	gems[gemAmount - 1] = newGem(-2.0f, 0.0f, -172.0f);
-	gems[gemAmount - 1] = newGem(-2.0f, 0.0f, -168.0f);
+		gems[gemAmount - 1] = newGem(-50.0f, 0.0f, 0.0f);
+		gems[gemAmount - 1] = newGem(-54.0f, 0.0f, 0.0f);
+		gems[gemAmount - 1] = newGem(-58.0f, 0.0f, 0.0f);
+		gems[gemAmount - 1] = newGem(-62.0f, 0.0f, 0.0f);
+		gems[gemAmount - 1] = newGem(-66.0f, 0.0f, 0.0f);
+		gems[gemAmount - 1] = newGem(-70.0f, 0.0f, 0.0f);
 
-	for (int i = 0; i < 5; i++) {
-	for (int j = 0; j < 5; j++) {
-	gems[gemAmount - 1] = newGem(-9+i*3, 0.0f, -215.0f+j*3);
+		gems[gemAmount - 1] = newGem(-78.0f, 6.0f, -27.0f);
+		gems[gemAmount - 1] = newGem(-78.0f, 6.0f, -31.0f);
+		gems[gemAmount - 1] = newGem(-78.0f, 6.0f, -35.0f);
+		gems[gemAmount - 1] = newGem(-78.0f, 6.0f, -39.0f);
+		gems[gemAmount - 1] = newGem(-78.0f, 6.0f, -43.0f);
+		gems[gemAmount - 1] = newGem(-78.0f, 6.0f, -47.0f);
+
+		gems[gemAmount - 1] = newGem(-64.9117, 5.78911f, -57.4967f);
+		gems[gemAmount - 1] = newGem(-60.6421f, 5.78911f, -60.368f);
+		gems[gemAmount - 1] = newGem(-58.2516f, 5.78911f, -64.7682f);
+		gems[gemAmount - 1] = newGem(-56.5603f, 5.78911f, -69.3403f);
+		gems[gemAmount - 1] = newGem(-51.9296f, 5.78911f, -70.4354f);
+		gems[gemAmount - 1] = newGem(-47.0403f, 5.78911f, -72.9285f);
+		gems[gemAmount - 1] = newGem(-42.0339f, 5.78912f, -74.1757f);
+
 	}
-	}
-	*/
 
 }
 
@@ -122,6 +135,8 @@ void actionGems() {
 		gemPickUp = false;
 	}
 }
+
+
 
 
 void displayGems() {

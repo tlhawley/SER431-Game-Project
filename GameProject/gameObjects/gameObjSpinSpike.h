@@ -45,6 +45,11 @@ void initSpinSpikes() {
 		spinSpikes[spinSpikeAmount - 1] = newSpinSpike(-170, 0.0f, -19.0f, 2, 180.0f, 9.0f);
 	}
 
+	// Level 2
+	if (currentLevel == 2) {
+		spinSpikes[spinSpikeAmount - 1] = newSpinSpike(0.0f, 0.0f, 0.0f, 3, 0.0f, 9.0f);
+	}
+
 
 
 	// Intro to graphics 332 map
