@@ -114,6 +114,19 @@ float collisionVelocityY;
 float collisionVelocityZ;
 
 
+struct buttonsUI {
+	bool active;
+	bool toggle;
+	const char *text1;
+	const char *text2;
+	float x;
+	float y;
+	//GLuint buttonImg;
+};
+
+// used for the buttonUI.h objects
+#define maxButtons 20
+buttonsUI buttons[maxButtons];
 
 
 void globalVariables();

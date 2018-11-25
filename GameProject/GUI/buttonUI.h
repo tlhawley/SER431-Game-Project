@@ -1,14 +1,6 @@
 // This is used for menu buttons
 
-struct buttonsUI {
-	bool active;
-	bool toggle;
-	const char *text1;
-	const char *text2;
-	float x;
-	float y;
-	//GLuint buttonImg;
-};
+
 
 int buttonAmount;
 int buttonMouseActive = 0; // used with buttonUI.h to detect if the mouse is available to click on the button
@@ -19,10 +11,6 @@ void actionButtonUI();
 void displayButtonUI();
 
 
-
-
-#define maxButtons 20
-buttonsUI buttons[maxButtons];
 
 buttonsUI newButtonUI(float x, float y, bool active, bool toggle, const char *text1, const char *text2) {
 	buttonAmount++;
@@ -39,13 +27,23 @@ buttonsUI newButtonUI(float x, float y, bool active, bool toggle, const char *te
 void initButtonUI() {
 	buttonAmount = 0;
 
-	buttons[buttonAmount - 1] = newButtonUI(0, 980, true, false, "Menu OFF", "Menu ON");
-	buttons[buttonAmount - 1] = newButtonUI(0, 880,false,false,"Boundbox OFF","Boundbox ON");
-	buttons[buttonAmount - 1] = newButtonUI(0, 780, false, true, "Particles OFF", "Particles ON");
-	buttons[buttonAmount - 1] = newButtonUI(0, 680, false, false, "Info ON", "Info OFF");
-	buttons[buttonAmount - 1] = newButtonUI(0, 580, false, true, "Sky OFF", "Sky ON");
-	buttons[buttonAmount - 1] = newButtonUI(0, 480, false, true, "Fog OFF", "Fog ON");
-	buttons[buttonAmount - 1] = newButtonUI(0, 380, false, true, "Reflections OFF", "Reflections ON");
+	buttons[buttonAmount - 1] = newButtonUI(0, 980, true, false, "Menu OFF", "Menu ON");				// 0 -- Complete
+	buttons[buttonAmount - 1] = newButtonUI(0, 890,false,false,"Boundbox OFF","Boundbox ON");			// 1 -- Complete
+	buttons[buttonAmount - 1] = newButtonUI(0, 800, false, true, "Particles OFF", "Particles ON");		// 2 -- Complete
+	buttons[buttonAmount - 1] = newButtonUI(0, 710, false, false, "Info OFF", "Info ON");				// 3 -- Complete
+	buttons[buttonAmount - 1] = newButtonUI(0, 620, false, true, "Sky OFF", "Sky ON");					// 4 -- Complete
+	buttons[buttonAmount - 1] = newButtonUI(0, 530, false, true, "Fog OFF", "Fog ON");					// 5 -- Complete
+	buttons[buttonAmount - 1] = newButtonUI(0, 440, false, true, "Reflections OFF", "Reflections ON");	// 6 -- Complete
+	buttons[buttonAmount - 1] = newButtonUI(0, 350, false, false, "Shadows OFF", "Shadows ON");			// 7 -- TODO
+
+	buttons[buttonAmount - 1] = newButtonUI(300, 980, false, false, "Fractals OFF", "Fractals ON");		// 8 -- TODO
+	buttons[buttonAmount - 1] = newButtonUI(300, 890, false, true, "Lights OFF", "Lights ON");			// 9 -- Complete
+	buttons[buttonAmount - 1] = newButtonUI(300, 800, false, false, "Textures OFF", "Textures ON");		// 10 -- TODO
+	buttons[buttonAmount - 1] = newButtonUI(300, 710, false, false, "Procedural OFF", "Procedural ON");	// 11 -- TODO
+	buttons[buttonAmount - 1] = newButtonUI(300, 620, false, false, "Materials OFF", "Materials ON");	// 12 -- TODO
+	buttons[buttonAmount - 1] = newButtonUI(300, 530, false, false, "Collision OFF", "Collision ON");	// 13 -- TODO
+	buttons[buttonAmount - 1] = newButtonUI(300, 440, false, false, "Terrain OFF", "Terrain ON");		// 14 -- TODO
+	buttons[buttonAmount - 1] = newButtonUI(300, 350, false, false, "View Mode OFF", "View Mode ON");	// 15 -- TODO
 
 }
 

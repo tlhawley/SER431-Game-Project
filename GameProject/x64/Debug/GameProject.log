@@ -1,4 +1,11 @@
-﻿GameProject.obj : error LNK2019: unresolved external symbol __imp___glutInitWithExit referenced in function glutInit_ATEXIT_HACK
+﻿  GameProject.cpp
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\meshobjconverter.h(571): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameobjects\gameobjmovingplatform.h(153): warning C4101: 'magnitude': unreferenced local variable
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameobjects\gameobjmovingplatform.h(152): warning C4101: 'direction': unreferenced local variable
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\displayall.h(111): warning C4018: '>=': signed/unsigned mismatch
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameproject.cpp(270): warning C4018: '<': signed/unsigned mismatch
+GameProject.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) class irrklang::ISoundEngine * __cdecl irrklang::createIrrKlangDevice(enum irrklang::E_SOUND_OUTPUT_DRIVER,int,char const *,char const *)" (__imp_?createIrrKlangDevice@irrklang@@YAPEAVISoundEngine@1@W4E_SOUND_OUTPUT_DRIVER@1@HPEBD1@Z) referenced in function "void __cdecl `dynamic initializer for 'SoundEngine''(void)" (??__ESoundEngine@@YAXXZ)
+GameProject.obj : error LNK2019: unresolved external symbol __imp___glutInitWithExit referenced in function glutInit_ATEXIT_HACK
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutInitDisplayMode referenced in function main
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutInitWindowPosition referenced in function main
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutInitWindowSize referenced in function main
@@ -9,16 +16,18 @@ GameProject.obj : error LNK2019: unresolved external symbol __imp_glutSwapBuffer
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutPositionWindow referenced in function "void __cdecl mySpecial(int,int,int)" (?mySpecial@@YAXHHH@Z)
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutReshapeWindow referenced in function "void __cdecl mySpecial(int,int,int)" (?mySpecial@@YAXHHH@Z)
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutFullScreen referenced in function "void __cdecl mySpecial(int,int,int)" (?mySpecial@@YAXHHH@Z)
-GameProject.obj : error LNK2019: unresolved external symbol __imp_glutSetCursor referenced in function "void __cdecl sync(void)" (?sync@@YAXXZ)
-GameProject.obj : error LNK2019: unresolved external symbol __imp_glutWarpPointer referenced in function "void __cdecl sync(void)" (?sync@@YAXXZ)
+GameProject.obj : error LNK2019: unresolved external symbol __imp_glutSetCursor referenced in function "void __cdecl objInit(void)" (?objInit@@YAXXZ)
+GameProject.obj : error LNK2019: unresolved external symbol __imp_glutWarpPointer referenced in function "void __cdecl objInit(void)" (?objInit@@YAXXZ)
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutDisplayFunc referenced in function main
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutReshapeFunc referenced in function main
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutKeyboardFunc referenced in function main
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutMouseFunc referenced in function main
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutPassiveMotionFunc referenced in function main
+GameProject.obj : error LNK2019: unresolved external symbol __imp_glutIdleFunc referenced in function main
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutSpecialFunc referenced in function main
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutKeyboardUpFunc referenced in function main
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutSpecialUpFunc referenced in function main
 GameProject.obj : error LNK2019: unresolved external symbol __imp_glutBitmapCharacter referenced in function "void __cdecl renderBitmapString(float,float,float,void *,char *)" (?renderBitmapString@@YAXMMMPEAXPEAD@Z)
-C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\lib\glut32.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\x64\Debug\GameProject.exe : fatal error LNK1120: 22 unresolved externals
+C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\lib\glut32.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\irrKlang-1.6.0\lib\Win32-visualStudio\irrKlang.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\Onii-Chan\Documents\GitHub\SER431-Game-Project\x64\Debug\GameProject.exe : fatal error LNK1120: 24 unresolved externals

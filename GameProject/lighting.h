@@ -19,56 +19,39 @@ float getDistanceFromCam(float pointX, float pointY, float pointZ) {
 */
 
 void setlight() {
-	//here you set the lights and parameters, example with one light
-	//float distance = getDistanceFromCam(0.125f, 0.7f, 0);
-	//printf("%f",distance);
-
-	float LightAmbient[] = { 0.03f, 0.035f, 0.04f, 1.0f };
-	//float LightEmission[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float LightDiffuse[] = { 3.0f, 3.0f, 3.0f, 1.0f };
-	float LightSpecular[] = { 300.0f, 300.0f, 300.0f, 1.0f };
-	float LightDirection[] = { 0.5f, 0.7f,0.5f, 0 };
-	//float LightDirection[] = { x, y,z, 0.01f, 0.0f };
-	glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmbient);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, LightDiffuse);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, LightSpecular);
-	glLightfv(GL_LIGHT0, GL_POSITION, LightDirection);
 
 
-	actionPointLights();
+	if (buttons[9].toggle == true) {
+		//here you set the lights and parameters, example with one light
+		//float distance = getDistanceFromCam(0.125f, 0.7f, 0);
+		//printf("%f",distance);
+
+		float LightAmbient[] = { 0.03f, 0.035f, 0.04f, 1.0f };
+		//float LightEmission[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+		float LightDiffuse[] = { 3.0f, 3.0f, 3.0f, 1.0f };
+		float LightSpecular[] = { 300.0f, 300.0f, 300.0f, 1.0f };
+		float LightDirection[] = { 0.5f, 0.7f,0.5f, 0 };
+		//float LightDirection[] = { x, y,z, 0.01f, 0.0f };
+		glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmbient);
+		glLightfv(GL_LIGHT0, GL_DIFFUSE, LightDiffuse);
+		glLightfv(GL_LIGHT0, GL_SPECULAR, LightSpecular);
+		glLightfv(GL_LIGHT0, GL_POSITION, LightDirection);
 
 
-	
+		actionPointLights();
 
 
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-
-	enablePointLights();
 
 
-	/*
-	glEnable(GL_LIGHT1);
-	glEnable(GL_LIGHT2);
-	glEnable(GL_LIGHT3);
-	glEnable(GL_LIGHT4);
-	glEnable(GL_LIGHT5);
-	glEnable(GL_LIGHT6);
-	*/
 
-	/*
-	float LightAmbient1[] = { 0.1f, 0.1f, 0.05f, 1.0f };
-	float LightEmission1[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float LightDiffuse1[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float LightSpecular1[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float LightDirection1[] = { -1.0f, 0.5f,0, 1.0f, 0.0f };
-	glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient1);
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse1);
-	glLightfv(GL_LIGHT1, GL_SPECULAR, LightSpecular1);
-	glLightfv(GL_LIGHT1, GL_POSITION, LightDirection1);
-	//glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT1);
-	*/
+		glEnable(GL_LIGHTING);
+		glEnable(GL_LIGHT0);
+
+		enablePointLights();
+
+	}
+
+
 }
 
 void disableLights() {

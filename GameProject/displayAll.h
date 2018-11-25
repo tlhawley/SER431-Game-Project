@@ -105,7 +105,7 @@ void initshadow() {
 // Displays most objects in the environment
 void displayEnvironment() {
 
-
+	glDisable(GL_BLEND);
 
 	// Character Placement
 	if (frameTimer >= N) {
