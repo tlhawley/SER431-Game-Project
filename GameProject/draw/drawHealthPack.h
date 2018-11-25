@@ -3,6 +3,6 @@ void drawHealthPack();
 
 void drawHealthPack(){
 //glCallList(drawList3);
-glCallList(meshHeart);
+glCallList(meshHeart.l1);
 }
 

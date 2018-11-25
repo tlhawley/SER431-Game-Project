@@ -2,109 +2,109 @@
 
 //GLuint meshFloor;
 
-GLuint displayListMaterialTest1;
-GLuint displayListClockFrame;
-GLuint displayListClockWhite;
-GLuint meshSpikes;
+GLuint2 displayListMaterialTest1;
+GLuint2 displayListClockFrame;
+GLuint2 displayListClockWhite;
+GLuint2 meshSpikes;
 
-GLuint meshDoorFrame;
-GLuint meshDoorLeft;
-GLuint meshDoorRight;
-GLuint meshDoorLock;
+GLuint2 meshDoorFrame;
+GLuint2 meshDoorLeft;
+GLuint2 meshDoorRight;
+GLuint2 meshDoorLock;
 
-GLuint meshRoomWall1;
-GLuint meshRoomWall2;
+GLuint2 meshRoomWall1;
+GLuint2 meshRoomWall2;
 
-GLuint meshBox;
+GLuint2 meshBox;
 
 //GLuint meshUIMap;
 //GLuint meshUIMapH;
 
-GLuint meshGem;
-GLuint meshKey;
-GLuint meshPorsche;
-GLuint meshAL;
+GLuint2 meshGem;
+GLuint2 meshKey;
+GLuint2 meshPorsche;
+GLuint2 meshAL;
 
-GLuint meshGear1;
-GLuint meshGear2;
+GLuint2 meshGear1;
+GLuint2 meshGear2;
 
-GLuint meshPortal;
-GLuint meshPortalClosed;
+GLuint2 meshPortal;
+GLuint2 meshPortalClosed;
 //GLuint meshPortalE;
 //GLuint meshPortalGlow;
 
-GLuint meshFloor;
-GLuint meshWall;
+GLuint2 meshFloor;
+GLuint2 meshWall;
 
-GLuint meshSkyBox;
+GLuint2 meshSkyBox;
 
-GLuint meshBench;
-GLuint meshChair;
-GLuint hangingLamp;
-GLuint hangingLampE;
-GLuint meshCouch;
-GLuint meshDesk;
-
-
-GLuint meshABox;
-
-GLuint meshq3MirrorRoom;
-GLuint meshq3MirrorPlane;
-
-GLuint meshTree;
-GLuint meshGrassCluster;
+GLuint2 meshBench;
+GLuint2 meshChair;
+GLuint2 hangingLamp;
+GLuint2 hangingLampE;
+GLuint2 meshCouch;
+GLuint2 meshDesk;
 
 
-GLuint meshStar;
-GLuint meshBigRock;
-GLuint meshQ4Map;
+GLuint2 meshABox;
 
-GLuint meshLightBulb;
+GLuint2 meshq3MirrorRoom;
+GLuint2 meshq3MirrorPlane;
 
-GLuint meshBulb;
+GLuint2 meshTree;
+GLuint2 meshGrassCluster;
+
+
+GLuint2 meshStar;
+GLuint2 meshBigRock;
+GLuint2 meshQ4Map;
+
+GLuint2 meshLightBulb;
+
+GLuint2 meshBulb;
 
 //GLuint meshCharacterStanding01;
 //GLuint meshCharacterForward01;
-GLuint meshCharacterFrames[31];
+GLuint2 meshCharacterFrames[31];
 
 
 // Level S - Forest Grass
-GLuint meshLV1ForestGrass;
+GLuint2 meshLV1ForestGrass;
 // Level S - Forest Trees
-GLuint meshLV1ForestTrees;
+GLuint2 meshLV1ForestTrees;
 // Level S - Forest Rocks
-GLuint meshLV1Rocks;
+GLuint2 meshLV1Rocks;
 // Level S - Structures
-GLuint meshLV1Structures;
+GLuint2 meshLV1Structures;
 // Level S - Floor
-GLuint meshLV1Floor;
+GLuint2 meshLV1Floor;
 // Level S - Map UI
-GLuint meshLVSMapUI;
+GLuint2 meshLVSMapUI;
 // Level S - Background Rocks
-GLuint meshLV1BackgroundRocks;
-GLuint meshLV1WaterMirror;
+GLuint2 meshLV1BackgroundRocks;
+GLuint2 meshLV1WaterMirror;
 
 
-GLuint meshHeartUI[5];
+GLuint2 meshHeartUI[5];
 
-GLuint meshHeart;
+GLuint2 meshHeart;
 
-GLuint meshHubWalls;
+GLuint2 meshHubWalls;
 
-GLuint meshLVHMapUI;
-
-
-GLuint meshLV1MapUI;
-GLuint meshLV1;
-GLuint meshLV2MapUI;
-GLuint meshLV2;
+GLuint2 meshLVHMapUI;
 
 
-GLuint meshMovingPlatform;
+GLuint2 meshLV1MapUI;
+GLuint2 meshLV1;
+GLuint2 meshLV2MapUI;
+GLuint2 meshLV2;
 
-GLuint meshFireball;
 
-GLuint displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles,
+GLuint2 meshMovingPlatform;
+
+GLuint2 meshFireball;
+
+GLuint2 displayParticlePlane, displayParticlePlaneFlames, displayParticlePlaneSnow, displayParticlePlaneBubbles,
 displayParticlePlaneAsh, displayParticlePlaneWaterfallSub, displayParticlePlaneLeaves, displayParticlePlaneFlameSparks, displayParticleRain, displayParticlePlaneRing;
 
 
@@ -125,16 +125,18 @@ struct meshTextured {
 //#define maxModels 100
 //meshTextured meshArray[maxModels];
 
-GLuint loadObj(char const* file, GLuint textureID);
+GLuint2 loadObj(char const* file, GLuint textureID);
+
+GLuint blankTexture;
 
 // Function used to simplify loading objects and reduce repetitive code
-GLuint loadObj(char const* file, GLuint textureID) {
+GLuint2 loadObj(char const* file, GLuint textureID) {
 	Mesh* aMesh = loadFile(file);
 	if (aMesh == NULL) exit(1);
 	//meshArray[uniqueMeshID].aMesh = aMesh;
 	//meshArray[uniqueMeshID].textureID = textureID;
-	uniqueMeshID = uniqueMeshID + 1;
-	return meshToDisplayList(aMesh, uniqueMeshID, textureID);
+	uniqueMeshID = uniqueMeshID + 2;
+	return meshToDisplayList(aMesh, uniqueMeshID, textureID, blankTexture);
 }
 
 // Function used for loading a mesh and returning the mesh instead of the meshID / displayListID
@@ -148,14 +150,16 @@ Mesh* loadObjMesh(char const* file) {
 Mesh* meshParticlePlane;
 Mesh* meshParticleRain;
 
-GLuint texture_array[42];
+
 
 void loadModels() {
 
 	printf("Loading\n");
 
-	
+	GLuint texture_array[42];
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
+	blankTexture = texture_array[0];
+
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 1, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
 	//loadBMP_custom(texture_array, "./src/textures/CheckerTiles.bmp", 3, 1, 0);
@@ -241,29 +245,30 @@ void loadModels() {
 	meshParticleRain = loadObjMesh("./src/obj files/ParticleRain.obj");
 
 
-	
-	uniqueMeshID = uniqueMeshID + 1;
-	displayParticlePlane = meshToDisplayList(meshParticlePlane, uniqueMeshID, 21);
-	uniqueMeshID = uniqueMeshID + 1;
-	displayParticlePlaneFlames = meshToDisplayList(meshParticlePlane, uniqueMeshID, 23);
-	uniqueMeshID = uniqueMeshID + 1;
-	displayParticlePlaneSnow = meshToDisplayList(meshParticlePlane, uniqueMeshID, 24);
-	uniqueMeshID = uniqueMeshID + 1;
-	displayParticlePlaneBubbles = meshToDisplayList(meshParticlePlane, uniqueMeshID, 25);
-	uniqueMeshID = uniqueMeshID + 1;
-	displayParticlePlaneAsh = meshToDisplayList(meshParticlePlane, uniqueMeshID, 26);
-	uniqueMeshID = uniqueMeshID + 1;
-	displayParticlePlaneWaterfallSub = meshToDisplayList(meshParticlePlane, uniqueMeshID, 27);
-	uniqueMeshID = uniqueMeshID + 1;
-	displayParticlePlaneLeaves = meshToDisplayList(meshParticlePlane, uniqueMeshID, 28);
-	uniqueMeshID = uniqueMeshID + 1;
-	displayParticlePlaneFlameSparks = meshToDisplayList(meshParticlePlane, uniqueMeshID, 29);
-	uniqueMeshID = uniqueMeshID + 1;
-	displayParticleRain = meshToDisplayList(meshParticleRain, uniqueMeshID, 30);
-	uniqueMeshID = uniqueMeshID + 1;
-	displayParticlePlaneRing = meshToDisplayList(meshParticlePlane, uniqueMeshID, 31);
-	
 	/*
+	uniqueMeshID = uniqueMeshID + 1;
+	displayParticlePlane = meshToDisplayList(meshParticlePlane, uniqueMeshID, 21, 0);
+	uniqueMeshID = uniqueMeshID + 2;
+	displayParticlePlaneFlames = meshToDisplayList(meshParticlePlane, uniqueMeshID, 23, 0);
+	uniqueMeshID = uniqueMeshID + 2;
+	displayParticlePlaneSnow = meshToDisplayList(meshParticlePlane, uniqueMeshID, 24, 0);
+	uniqueMeshID = uniqueMeshID + 2;
+	displayParticlePlaneBubbles = meshToDisplayList(meshParticlePlane, uniqueMeshID, 25, 0);
+	uniqueMeshID = uniqueMeshID + 2;
+	displayParticlePlaneAsh = meshToDisplayList(meshParticlePlane, uniqueMeshID, 26, 0);
+	uniqueMeshID = uniqueMeshID + 2;
+	displayParticlePlaneWaterfallSub = meshToDisplayList(meshParticlePlane, uniqueMeshID, 27, 0);
+	uniqueMeshID = uniqueMeshID + 2;
+	displayParticlePlaneLeaves = meshToDisplayList(meshParticlePlane, uniqueMeshID, 28, 0);
+	uniqueMeshID = uniqueMeshID + 2;
+	displayParticlePlaneFlameSparks = meshToDisplayList(meshParticlePlane, uniqueMeshID, 29, 0);
+	uniqueMeshID = uniqueMeshID + 2;
+	displayParticleRain = meshToDisplayList(meshParticleRain, uniqueMeshID, 30, 0);
+	uniqueMeshID = uniqueMeshID + 2;
+	displayParticlePlaneRing = meshToDisplayList(meshParticlePlane, uniqueMeshID, 31, 0);
+	*/
+	
+	
 	displayParticlePlane = loadObj("./src/obj files/ParticlePlane.obj", texture_array[21]);
 	displayParticlePlaneFlames = loadObj("./src/obj files/ParticlePlane.obj", texture_array[23]);
 	displayParticlePlaneSnow = loadObj("./src/obj files/ParticlePlane.obj", texture_array[24]);
@@ -274,7 +279,7 @@ void loadModels() {
 	displayParticlePlaneFlameSparks = loadObj("./src/obj files/ParticlePlane.obj", texture_array[29]);
 	displayParticleRain = loadObj("./src/obj files/ParticleRain.obj", texture_array[30]);
 	displayParticlePlaneRing = loadObj("./src/obj files/ParticlePlane.obj", texture_array[31]);
-	*/
+	
 
 	/* // images currently not in use
 	//texture_from_file(&texture_array[4], "./src/textures/bricks.bmp");
@@ -441,10 +446,131 @@ void loadModels() {
 }
 
 
+
+
+
+
+
+
+
+void swapLists() {
+
+	displayParticlePlane=swapGLuint2(displayParticlePlane);
+
+	displayParticlePlaneFlames=swapGLuint2(displayParticlePlaneFlames);
+
+	displayParticlePlaneSnow=swapGLuint2(displayParticlePlaneSnow);
+
+	displayParticlePlaneBubbles=swapGLuint2(displayParticlePlaneBubbles);
+
+	displayParticlePlaneAsh=swapGLuint2(displayParticlePlaneAsh);
+
+	displayParticlePlaneWaterfallSub=swapGLuint2(displayParticlePlaneWaterfallSub);
+
+	displayParticlePlaneLeaves=swapGLuint2(displayParticlePlaneLeaves);
+
+	displayParticlePlaneFlameSparks=swapGLuint2(displayParticlePlaneFlameSparks);
+
+	displayParticleRain=swapGLuint2(displayParticleRain);
+
+	displayParticlePlaneRing=swapGLuint2(displayParticlePlaneRing);
+
+
+
+	meshSpikes=swapGLuint2(meshSpikes);
+
+	meshDoorFrame=swapGLuint2(meshDoorFrame);
+
+
+	meshBox=swapGLuint2(meshBox);
+
+
+	meshGem=swapGLuint2(meshGem);
+
+	meshKey=swapGLuint2(meshKey);
+
+
+	meshSkyBox=swapGLuint2(meshSkyBox);
+
+	meshABox=swapGLuint2(meshABox);
+
+	meshTree=swapGLuint2(meshTree);
+
+	meshGrassCluster=swapGLuint2(meshGrassCluster);
+
+	meshLightBulb=swapGLuint2(meshLightBulb);
+
+
+	meshMovingPlatform=swapGLuint2(meshMovingPlatform);
+
+	meshFireball=swapGLuint2(meshFireball);
+
+
+	meshLV1ForestTrees=swapGLuint2(meshLV1ForestTrees);
+	meshLV1Rocks=swapGLuint2(meshLV1Rocks);
+	// Level 1 - Structures
+	meshLV1Structures=swapGLuint2(meshLV1Structures);
+	// Level 1 - Floor
+	meshLV1Floor=swapGLuint2(meshLV1Floor);
+	// Level 1 - Map UI
+	meshLVSMapUI=swapGLuint2(meshLVSMapUI);
+	// Level 1 - Background Rocks
+	meshLV1BackgroundRocks=swapGLuint2(meshLV1BackgroundRocks);
+	meshLV1WaterMirror=swapGLuint2(meshLV1WaterMirror);
+
+
+
+
+
+	meshCharacterFrames[0]=swapGLuint2(meshCharacterFrames[0]);
+	for (int i = 1; i < 26; i++) {
+		meshCharacterFrames[i]=swapGLuint2(meshCharacterFrames[i]);
+	}
+	for (int i = 1; i < 6; i++) {
+		meshCharacterFrames[i + 25]=swapGLuint2(meshCharacterFrames[i + 25]);
+	}
+
+
+
+	// heart UI models
+	meshHeartUI[0]=swapGLuint2(meshHeartUI[0]);
+	meshHeartUI[1]=swapGLuint2(meshHeartUI[1]);
+	meshHeartUI[2]=swapGLuint2(meshHeartUI[2]);
+	meshHeartUI[3]=swapGLuint2(meshHeartUI[3]);
+	meshHeartUI[4]=swapGLuint2(meshHeartUI[4]);
+
+	// heart model
+	meshHeart=swapGLuint2(meshHeart);
+
+	meshHubWalls=swapGLuint2(meshHubWalls);
+
+	meshPortal=swapGLuint2(meshPortal);
+	meshPortalClosed = swapGLuint2(meshPortalClosed);
+
+	meshLVHMapUI = swapGLuint2(meshLVHMapUI);
+
+
+
+
+	//LV 1 map
+	meshLV1MapUI = swapGLuint2(meshLV1MapUI);
+	meshLV1 = swapGLuint2(meshLV1);
+	meshLV2 = swapGLuint2(meshLV2);
+	meshLV2MapUI = swapGLuint2(meshLV2MapUI);
+}
+
+GLuint2 swapGLuint2(GLuint2 list) {
+	GLuint temp = list.l1;
+	list.l1 = list.l2;
+	list.l2 = temp;
+	return list;
+}
+
+
 void drawGear1() {
-	glCallList(meshGear1);
+	glCallList(meshGear1.l1);
 }
 
 void drawGear2() {
-	glCallList(meshGear2);
+	glCallList(meshGear2.l1);
 }

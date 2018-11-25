@@ -118,33 +118,33 @@ void displayEnvironment() {
 		if (pxv == 0 && pzv == 0) {
 
 			if (canJump == true) {
-				glCallList(meshCharacterFrames[0]); // standing animation
+				glCallList(meshCharacterFrames[0].l1); // standing animation
 			}
 			else {
 				if (jumpFrame == 0) {
-					glCallList(meshCharacterFrames[26]); // jump start frame
+					glCallList(meshCharacterFrames[26].l1); // jump start frame
 				}
 				else {
 					if (jumpFrame > 0 && jumpFrame < 4) {
-						glCallList(meshCharacterFrames[27]); // jump attack frame 1
+						glCallList(meshCharacterFrames[27].l1); // jump attack frame 1
 					}
 					else {
 						if (jumpFrame < 18) {
 
 							glRotatef(jumpFrame*35.0f, 1.0, 0.0, 0.0);
 							glTranslatef(0, 0.5f, 0);
-							glCallList(meshCharacterFrames[28]); // jump attack spin frame
+							glCallList(meshCharacterFrames[28].l1); // jump attack spin frame
 							glTranslatef(0, -0.5f, 0);
 							glRotatef(-jumpFrame * 35.0f, 1.0, 0.0, 0.0);
 						}
 						else {
 							if (jumpFrame < 20) {
-								glCallList(meshCharacterFrames[29]);
+								glCallList(meshCharacterFrames[29].l1);
 							}
 							else {
 								//jumpFrame = 0;
 								camyv = camyv - 0.01f; // doubles y velocity acceleration when in attack mode
-								glCallList(meshCharacterFrames[30]);
+								glCallList(meshCharacterFrames[30].l1);
 							}
 						}
 					}
@@ -154,13 +154,13 @@ void displayEnvironment() {
 			if (itemTimer > 0 && heartPickUp) {
 				setMaterialAdvanced(materialHeart);
 				glScalef(0.5f, 0.5f, 0.5f);
-				glCallList(meshHeart);
+				glCallList(meshHeart.l1);
 				glScalef(2.0f, 2.0f, 2.0f);
 			}
 			else if (itemTimer > 0 && gemPickUp) {
 				setMaterialAdvanced(materialRuby);
 				glScalef(0.5f, 0.5f, 0.5f);
-				glCallList(meshGem);
+				glCallList(meshGem.l1);
 				glScalef(2.0f, 2.0f, 2.0f);
 			}
 		}
@@ -168,32 +168,32 @@ void displayEnvironment() {
 			runFrame = runFrame + 1;
 			if (runFrame > 25) { runFrame = 1; }
 			if (canJump == true) {
-				glCallList(meshCharacterFrames[runFrame]);
+				glCallList(meshCharacterFrames[runFrame].l1);
 			}
 			else {
 				if (jumpFrame == 0) {
-					glCallList(meshCharacterFrames[26]); // jump start frame
+					glCallList(meshCharacterFrames[26].l1); // jump start frame
 				}
 				else {
 					if (jumpFrame > 0 && jumpFrame < 4) {
-						glCallList(meshCharacterFrames[27]); // jump attack frame 1
+						glCallList(meshCharacterFrames[27].l1); // jump attack frame 1
 					}
 					else {
 						if (jumpFrame < 18) {
 							glRotatef(jumpFrame*35.0f, 1.0, 0.0, 0.0);
 							glTranslatef(0, 0.5f, 0);
-							glCallList(meshCharacterFrames[28]); // jump attack spin frame
+							glCallList(meshCharacterFrames[28].l1); // jump attack spin frame
 							glTranslatef(0, -0.5f, 0);
 							glRotatef(-jumpFrame * 35.0f, 1.0, 0.0, 0.0);
 						}
 						else {
 							if (jumpFrame < 20) {
-								glCallList(meshCharacterFrames[29]);
+								glCallList(meshCharacterFrames[29].l1);
 							}
 							else {
 								//jumpFrame = 0;
 								camyv = camyv - 0.01f; // doubles y velocity acceleration when in attack mode
-								glCallList(meshCharacterFrames[30]);
+								glCallList(meshCharacterFrames[30].l1);
 							}
 						}
 					}
@@ -202,13 +202,13 @@ void displayEnvironment() {
 			if (itemTimer > 0 && heartPickUp) {
 				setMaterialAdvanced(materialHeart);
 				glScalef(0.5f, 0.5f, 0.5f);
-				glCallList(meshHeart);
+				glCallList(meshHeart.l1);
 				glScalef(2.0f, 2.0f, 2.0f);
 			}
 			else if (itemTimer > 0 && gemPickUp) {
 				setMaterialAdvanced(materialRuby);
 				glScalef(0.5f, 0.5f, 0.5f);
-				glCallList(meshGem);
+				glCallList(meshGem.l1);
 				glScalef(2.0f, 2.0f, 2.0f);
 			}
 		}
@@ -222,7 +222,7 @@ void displayEnvironment() {
 		setMaterialAdvanced(materialPlayer);
 		glTranslatef(0, 1.5f, 0);
 		glRotatef(-90, 0, 1, 0);
-		glCallList(meshCharacterFrames[0]);
+		glCallList(meshCharacterFrames[0].l1);
 		glRotatef(90, 0, 1, 0);
 		glTranslatef(0, -1.5f, 0);
 	}
@@ -295,7 +295,7 @@ void displaySkyBox(float scale, float yAngle, int skyboxID) {
 		glTranslatef(camx, camy, camz);
 		glScalef(scale, -scale, scale);
 		glRotatef(yAngle, 0, 1.0, 0);
-		glCallList(meshSkyBox);
+		glCallList(meshSkyBox.l1);
 		glRotatef(-yAngle, 0, 1.0, 0);
 		glScalef(1.0 / scale, 1.0 / -scale, 1.0 / scale);
 		glTranslatef(-camx, -camy, -camz);

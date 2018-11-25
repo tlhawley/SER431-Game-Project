@@ -134,7 +134,7 @@ void displayPointLights() {
 	for (int i = 0; i < pointLightAmount; i++) {
 
 		glTranslatef(pointLights[i].x, pointLights[i].y, pointLights[i].z);
-		glCallList(meshLightBulb);
+		glCallList(meshLightBulb.l1);
 		glTranslatef(-pointLights[i].x, -pointLights[i].y, -pointLights[i].z);
 
 	}

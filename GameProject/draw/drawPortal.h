@@ -2,5 +2,5 @@
 void drawPortal();
 
 void drawPortal() {
-	glCallList(meshPortal);
+	glCallList(meshPortal.l1);
 }

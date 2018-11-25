@@ -2,5 +2,5 @@
 void drawGem();
 
 void drawGem() {
-	glCallList(meshGem);
+	glCallList(meshGem.l1);
 }

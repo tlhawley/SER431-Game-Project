@@ -292,7 +292,7 @@ void actionMovingPlatforms() {
 
 
 		glTranslatef(x, y, z);
-		glCallList(meshMovingPlatform);
+		glCallList(meshMovingPlatform.l1);
 		glTranslatef(-x, -y, -z);
 
 

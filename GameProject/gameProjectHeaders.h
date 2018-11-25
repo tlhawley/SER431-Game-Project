@@ -6,6 +6,7 @@ void myReshape(int w, int h);
 void myInit();
 
 
+
 #include "globalVariables.h"
 #include "materials.h"
 #include "lighting.h"

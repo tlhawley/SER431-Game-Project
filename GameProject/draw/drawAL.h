@@ -3,5 +3,5 @@
 void drawAL();
 
 void drawAL() {
-	glCallList(meshAL);
+	glCallList(meshAL.l1);
 }

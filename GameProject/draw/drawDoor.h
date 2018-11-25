@@ -8,19 +8,19 @@ void drawDoor() {
 	//setmaterial2(0.1f, 0.7f, 0.5f, 0.1f, 0.9f); //gold
 	//setmaterial2(0.1f, 0.5f, 0.5f, 0.5f, 0.9f);
 	setMaterialAdvanced(materialChrome);
-	glCallList(meshDoorFrame);
+	glCallList(meshDoorFrame.l1);
 }
 
 void drawDoorLeft() {
 	//setmaterial2(0.1f, 0.2f, 0.2f, 0.2f, 0.5f);
 	setMaterialAdvanced(materialChrome);
-	glCallList(meshDoorLeft);
+	glCallList(meshDoorLeft.l1);
 }
 
 void drawDoorRight() {
 	//setmaterial2(0.1f, 0.2f, 0.2f, 0.2f, 0.5f);
 	setMaterialAdvanced(materialChrome);
-	glCallList(meshDoorRight);
+	glCallList(meshDoorRight.l1);
 }
 
 void drawDoorLock() {
@@ -28,7 +28,7 @@ void drawDoorLock() {
 	//setmaterial2(0.1f, 0.5f, 0.5f, 0.5f, 0.9f);
 	//setMaterialAdvanced(materialObsidian);
 	setMaterialAdvanced(materialGold);
-	glCallList(meshDoorLock);
+	glCallList(meshDoorLock.l1);
 }
 
 	/*

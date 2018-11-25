@@ -2,5 +2,5 @@
 void drawPorsche();
 
 void drawPorsche() {
-	glCallList(meshPorsche);
+	glCallList(meshPorsche.l1);
 }

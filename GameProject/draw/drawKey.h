@@ -3,5 +3,5 @@ void drawKey();
 
 void drawKey() {
 	//setMaterialAdvanced(materialGold);
-	glCallList(meshKey);
+	glCallList(meshKey.l1);
 }

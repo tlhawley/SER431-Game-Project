@@ -99,7 +99,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.subParticleExitID = ParID::flameSmoke; // flame smoke sub particles
 														   //pSystemData.subParticleID = 3;
 
-		pSystemData.displayID = displayParticlePlaneFlames;
+		pSystemData.displayID = displayParticlePlaneFlames.l1;
 
 		break;
 	case ParID::flame2:
@@ -176,7 +176,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.subParticleExitID = ParID::flameSmoke; // flame smoke sub particles
 														   //pSystemData.subParticleID = 3;
 
-		pSystemData.displayID = displayParticlePlaneFlames;
+		pSystemData.displayID = displayParticlePlaneFlames.l1;
 
 		break;
 	case ParID::flameWall:
@@ -253,7 +253,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.subParticleExitID = ParID::flameSmoke; // flame smoke sub particles
 														   //pSystemData.subParticleID = 3;
 
-		pSystemData.displayID = displayParticlePlaneFlames;
+		pSystemData.displayID = displayParticlePlaneFlames.l1;
 
 		break;
 	case ParID::flameSmoke:
@@ -328,7 +328,7 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useSubParticleExit = false;
 
-		pSystemData.displayID = displayParticlePlane;
+		pSystemData.displayID = displayParticlePlane.l1;
 
 		break;
 
@@ -417,7 +417,7 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useSubParticleExit = false;
 
-		pSystemData.displayID = displayParticlePlaneFlameSparks;
+		pSystemData.displayID = displayParticlePlaneFlameSparks.l1;
 
 		break;
 
@@ -501,7 +501,7 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useSubParticleExit = false;
 
-		pSystemData.displayID = displayParticlePlaneFlameSparks;
+		pSystemData.displayID = displayParticlePlaneFlameSparks.l1;
 
 		break;
 
@@ -579,7 +579,7 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useSubParticleExit = false;
 
-		pSystemData.displayID = displayParticlePlane;
+		pSystemData.displayID = displayParticlePlane.l1;
 
 		break;
 	case ParID::snow:
@@ -666,7 +666,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.useSubParticleExit = false;
 		pSystemData.subParticleExitID = 0;
 
-		pSystemData.displayID = displayParticlePlaneSnow;
+		pSystemData.displayID = displayParticlePlaneSnow.l1;
 
 		break;
 
@@ -754,7 +754,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.useSubParticleExit = true;
 		pSystemData.subParticleExitID = ParID::rainSplash;
 
-		pSystemData.displayID = displayParticleRain;
+		pSystemData.displayID = displayParticleRain.l1;
 
 		break;
 
@@ -831,7 +831,7 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useSubParticleExit = false;
 
-		pSystemData.displayID = displayParticlePlaneRing;
+		pSystemData.displayID = displayParticlePlaneRing.l1;
 
 		break;
 
@@ -917,7 +917,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.useSubParticleExit = false;
 		//pSystemData.subParticleExitID = ParID::???;
 
-		pSystemData.displayID = displayParticlePlaneBubbles;
+		pSystemData.displayID = displayParticlePlaneBubbles.l1;
 
 		break;
 
@@ -994,7 +994,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.useSubParticleExit = true;
 		pSystemData.subParticleExitID = ParID::waterfallSub;
 
-		pSystemData.displayID = displayParticlePlane;
+		pSystemData.displayID = displayParticlePlane.l1;
 
 		break;
 
@@ -1070,7 +1070,7 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useSubParticleExit = false;
 
-		pSystemData.displayID = displayParticlePlaneWaterfallSub;
+		pSystemData.displayID = displayParticlePlaneWaterfallSub.l1;
 
 		break;
 	case ParID::frost:
@@ -1146,7 +1146,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.subParticleExitID = ParID::flameSmoke; // flame smoke sub particles
 														   //pSystemData.subParticleID = 3;
 
-		pSystemData.displayID = displayParticlePlaneFlames;
+		pSystemData.displayID = displayParticlePlaneFlames.l1;
 
 		break;
 	case ParID::frostWall:
@@ -1221,7 +1221,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.useSubParticleExit = false;
 		//pSystemData.destroyParticleID = ParID::flameSmoke; // flame smoke sub particles
 
-		pSystemData.displayID = displayParticlePlaneFlames;
+		pSystemData.displayID = displayParticlePlaneFlames.l1;
 
 		break;
 	case ParID::ash:
@@ -1308,7 +1308,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.useSubParticleExit = false;
 		pSystemData.subParticleExitID = 0;
 
-		pSystemData.displayID = displayParticlePlaneAsh;
+		pSystemData.displayID = displayParticlePlaneAsh.l1;
 
 		break;
 
@@ -1397,7 +1397,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.useSubParticleExit = false;
 		pSystemData.subParticleExitID = 0;
 
-		pSystemData.displayID = displayParticlePlaneLeaves;
+		pSystemData.displayID = displayParticlePlaneLeaves.l1;
 
 		break;
 
@@ -1473,7 +1473,7 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useSubParticleExit = false;
 
-		pSystemData.displayID = displayParticlePlane;
+		pSystemData.displayID = displayParticlePlane.l1;
 
 		break;
 
@@ -1549,7 +1549,7 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useSubParticleExit = false;
 
-		pSystemData.displayID = displayParticlePlane;
+		pSystemData.displayID = displayParticlePlane.l1;
 
 		break;
 

@@ -2,5 +2,5 @@
 void drawSkyBox();
 
 void drawSkyBox() {
-	glCallList(meshSkyBox);
+	glCallList(meshSkyBox.l1);
 }

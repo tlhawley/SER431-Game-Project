@@ -71,45 +71,45 @@ void draw2DHealthBar(){
 	if (health > 0) {
 
 		if(health <= 4) {
-			glCallList(meshHeartUI[4 - health]);
-			glTranslatef(2.25, 0, 0); glCallList(meshHeartUI[4]);
-			glTranslatef(2.25, 0, 0); glCallList(meshHeartUI[4]);
-			glTranslatef(2.25, 0, 0); glCallList(meshHeartUI[4]);
-			glTranslatef(2.25, 0, 0); glCallList(meshHeartUI[4]);
+			glCallList(meshHeartUI[4 - health].l1);
+			glTranslatef(2.25, 0, 0); glCallList(meshHeartUI[4].l1);
+			glTranslatef(2.25, 0, 0); glCallList(meshHeartUI[4].l1);
+			glTranslatef(2.25, 0, 0); glCallList(meshHeartUI[4].l1);
+			glTranslatef(2.25, 0, 0); glCallList(meshHeartUI[4].l1);
 		} else {
-		 glCallList(meshHeartUI[0]);
+		 glCallList(meshHeartUI[0].l1);
 		 if(health <= 8) {
 			 glTranslatef(2.25, 0, 0);
-			 glCallList(meshHeartUI[8 - health]);
+			 glCallList(meshHeartUI[8 - health].l1);
 			 glTranslatef(2.25, 0, 0);
-			 glCallList(meshHeartUI[4]);
+			 glCallList(meshHeartUI[4].l1);
 			 glTranslatef(2.25, 0, 0);
-			 glCallList(meshHeartUI[4]);
+			 glCallList(meshHeartUI[4].l1);
 			 glTranslatef(2.25, 0, 0);
-			 glCallList(meshHeartUI[4]);
+			 glCallList(meshHeartUI[4].l1);
 		 } else {
-		 glTranslatef(2.25, 0, 0); glCallList(meshHeartUI[0]);
+		 glTranslatef(2.25, 0, 0); glCallList(meshHeartUI[0].l1);
 		 if(health <= 12) {
 			 glTranslatef(2.25, 0, 0);
-			 glCallList(meshHeartUI[12 - health]);
+			 glCallList(meshHeartUI[12 - health].l1);
 			 glTranslatef(2.25, 0, 0);
-			 glCallList(meshHeartUI[4]);
+			 glCallList(meshHeartUI[4].l1);
 			 glTranslatef(2.25, 0, 0);
-			 glCallList(meshHeartUI[4]);
+			 glCallList(meshHeartUI[4].l1);
 		 } else {
 		 glTranslatef(2.25, 0, 0);
-		 glCallList(meshHeartUI[0]);
+		 glCallList(meshHeartUI[0].l1);
 		 if(health <= 16) {
 			 glTranslatef(2.25, 0, 0);
-			 glCallList(meshHeartUI[16 - health]);
+			 glCallList(meshHeartUI[16 - health].l1);
 			 glTranslatef(2.25, 0, 0);
-			 glCallList(meshHeartUI[4]);
+			 glCallList(meshHeartUI[4].l1);
 		 } else {
 		 glTranslatef(2.25, 0, 0);
-		 glCallList(meshHeartUI[0]);
+		 glCallList(meshHeartUI[0].l1);
 		 if(health <= 20) {
 			 glTranslatef(2.25, 0, 0);
-			 glCallList(meshHeartUI[20 - health]);
+			 glCallList(meshHeartUI[20 - health].l1);
 		 }
 		}
 	 }

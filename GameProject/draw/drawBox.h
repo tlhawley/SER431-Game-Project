@@ -3,5 +3,5 @@ void drawBox();
 
 void drawBox() {
 	//glCallList(drawList4);
-	glCallList(meshBox);
+	glCallList(meshBox.l1);
 }
