@@ -49,8 +49,8 @@ void initButtonUI() {
 	buttons[buttonAmount - 1] = newButtonUI(300, 800, false, true, "Textures OFF", "Textures ON");		// 10 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(300, 710, false, true, "Procedural OFF", "Procedural ON");	// 11 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(300, 620, false, true, "Materials OFF", "Materials ON");	// 12 -- Complete
-	buttons[buttonAmount - 1] = newButtonUI(300, 530, false, false, "Collision OFF", "Collision ON");	// 13 -- TODO
-	buttons[buttonAmount - 1] = newButtonUI(300, 440, false, false, "Terrain OFF", "Terrain ON");		// 14 -- TODO
+	buttons[buttonAmount - 1] = newButtonUI(300, 530, false, true, "Collision OFF", "Collision ON");	// 13 -- Complete
+	buttons[buttonAmount - 1] = newButtonUI(300, 440, false, true, "Terrain OFF", "Terrain ON");		// 14 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(300, 350, false, false, "View Mode OFF", "View Mode ON");	// 15 -- TODO
 
 }

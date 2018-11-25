@@ -53,7 +53,7 @@ int height = 600;
 float ratio = 1.0;
 */
 GLuint display2, display3, display4, display5;
-GLuint2 displayx1;
+GLuint2 displayx1, displayx2;
 
 // controling parameters
 int mouse_button;
@@ -414,14 +414,17 @@ Mesh* createCube() {
 // creating a triangulated plane
 Mesh* createPlane(int arena_width, int arena_depth, int arena_cell) {
 	Mesh *me = new Mesh;
-	int n = arena_width / arena_cell;
-	int m = arena_depth / arena_cell;
+	//int n = arena_width / arena_cell;
+	//int m = arena_depth / arena_cell;
+
+	int n = 129;
+	int m = 129;
 
 	// vertices
 	for (int i = 0; i<n; i++) {
 		for (int j = 0; j < m; j++) {
 			//-900, 0, 999
-			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell-900, j*arena_cell, 999.0));
+			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell-900, 10, j*arena_cell-900));
 		}
 	}
 	//texture
@@ -690,17 +693,18 @@ void initNoiseGen() {
 	//ratio = (double)width / (double)height;
 	// mesh
 	mesh1 = createTerrain(2000, 2000, 200);
+	mesh2 = createPlane(2000, 2000, 20);
 	//mesh2 = createCube();
 	//mesh3 = createCube();
 	//mesh4 = createCube();
 	//mesh5 = createPlaneMultiscale(2000, 2000, 200);
 	calculateNormalPerFace(mesh1);
-	//calculateNormalPerFace(mesh2);
+	calculateNormalPerFace(mesh2);
 	//calculateNormalPerFace(mesh3);
 	//calculateNormalPerFace(mesh4);
 	//calculateNormalPerFace(mesh5);
 	calculateNormalPerVertex(mesh1);
-	//calculateNormalPerVertex(mesh2);
+	calculateNormalPerVertex(mesh2);
 	//calculateNormalPerVertex(mesh3);
 	//calculateNormalPerVertex(mesh4);
 	//calculateNormalPerVertex(mesh5);
@@ -715,7 +719,7 @@ void initNoiseGen() {
 	//codedTexture(textureArray, 4, 1); //Marble texture - noise fire. Type=1
 									  // display lists
 	displayx1 = meshToDisplayList2(mesh1, 1, 4, blankTexture);
-	//display2 = meshToDisplayList(mesh2, 2, 1);
+	displayx2 = meshToDisplayList2(mesh2, 2, 4, blankTexture);
 	//display3 = meshToDisplayList(mesh3, 3, 2);
 	//display4 = meshToDisplayList(mesh4, 4, 3);
 	//display5 = meshToDisplayList(mesh5, 5, 4);
@@ -776,17 +780,32 @@ void renderBitmapString(float x, float y, float z, const char *string) {
 // display
 
 void displayNoiseGenPlane(void) {
-	//plane
-	glPushMatrix();
-	//glTranslatef(-900, 0, -900);
-	glTranslatef(0, -15, 0);
-	if (buttons[11].toggle) {
-		glCallList(displayx1.l1);
+	//terrain/plane
+	if (buttons[14].toggle == true) {
+		glPushMatrix();
+		//glTranslatef(-900, 0, -900);
+		glTranslatef(0, -15, 0);
+		if (buttons[11].toggle) {
+			glCallList(displayx1.l1);
+		}
+		else {
+			glCallList(displayx1.l2);
+		}
+		glPopMatrix();
 	}
 	else {
-		glCallList(displayx1.l2);
+		glPushMatrix();
+		//glTranslatef(-900, 0, -900);
+		glTranslatef(0, -15, 0);
+		if (buttons[11].toggle) {
+			glCallList(displayx2.l1);
+		}
+		else {
+			glCallList(displayx2.l2);
+		}
+		glPopMatrix();
 	}
-	glPopMatrix();
+
 }
 
 void displayNoiseGenBox1(void) {

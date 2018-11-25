@@ -639,80 +639,81 @@ void initCBoxes() {
 }
 
 void actionCBoxes() {
+	if (buttons[13].toggle == true) {
+		if (creativeMode == 2) {
+			Cboxes[CboxAmount - 1].x = (int)((camx + sin(camAngY) * 3) * 4) / 4.0;
+			Cboxes[CboxAmount - 1].y = (int)((camy + sin(camAngX) * 3) * 8) / 8.0;
+			Cboxes[CboxAmount - 1].z = (int)((camz - cos(camAngY) * 3) * 4) / 4.0;
 
-	if (creativeMode == 2) {
-		Cboxes[CboxAmount - 1].x = (int)((camx + sin(camAngY) * 3) * 4) / 4.0;
-		Cboxes[CboxAmount - 1].y = (int)((camy + sin(camAngX) * 3) * 8) / 8.0;
-		Cboxes[CboxAmount - 1].z = (int)((camz - cos(camAngY) * 3) * 4) / 4.0;
+			if (mouseRDown == true && mouseRWait == false) {
+				Cboxes[CboxAmount - 1] = newCBox((int)((camx + sin(camAngY) * 3) * 4) / 4.0, (int)((camy + sin(camAngX) * 3) * 8) / 8.0, (int)((camz - cos(camAngY) * 3) * 4) / 4.0, 1, 1, 1);
+				mouseRWait = true;
+			}
+			if (mouseRDown == false) {
+				mouseRWait = false;
+			}
+		}
+		else {
+			/*
+			Cboxes[CboxAmount - 1].x = 0.0;
+			Cboxes[CboxAmount - 1].y = -10000.0;
+			Cboxes[CboxAmount - 1].z = 0.0;
+			*/
+		}
+		//setMaterialAdvanced(materialCollisionBox);
+		for (int i = 0; i < CboxAmount; i++) {
+			// Do not render collision boxes
+			//objPlacementTRS(drawBox, Cboxes[i].x, Cboxes[i].y, Cboxes[i].z, 0.0, 0.0, 0.0, Cboxes[i].sx, Cboxes[i].sy, Cboxes[i].sz);
+			if (camx > Cboxes[i].x - playerSize - Cboxes[i].sx / 2 && camx < Cboxes[i].x + playerSize + Cboxes[i].sx / 2) {
+				if (camy > Cboxes[i].y - playerSize - Cboxes[i].sy / 2 && camy < Cboxes[i].y + playerHeight + Cboxes[i].sy / 2) {
+					if (camz > Cboxes[i].z - playerSize - Cboxes[i].sz / 2 && camz < Cboxes[i].z + playerSize + Cboxes[i].sz / 2) {
 
-		if (mouseRDown == true && mouseRWait == false) {
-			Cboxes[CboxAmount - 1] = newCBox((int)((camx + sin(camAngY) * 3) * 4) / 4.0, (int)((camy + sin(camAngX) * 3) * 8) / 8.0, (int)((camz - cos(camAngY) * 3) * 4) / 4.0, 1, 1, 1);
-			mouseRWait = true;
-		}
-		if (mouseRDown == false) {
-			mouseRWait = false;
-		}
-	}
-	else {
-		/*
-		Cboxes[CboxAmount - 1].x = 0.0;
-		Cboxes[CboxAmount - 1].y = -10000.0;
-		Cboxes[CboxAmount - 1].z = 0.0;
-		*/
-	}
-	//setMaterialAdvanced(materialCollisionBox);
-	for (int i = 0; i < CboxAmount; i++) {
-		// Do not render collision boxes
-		//objPlacementTRS(drawBox, Cboxes[i].x, Cboxes[i].y, Cboxes[i].z, 0.0, 0.0, 0.0, Cboxes[i].sx, Cboxes[i].sy, Cboxes[i].sz);
-		if (camx > Cboxes[i].x - playerSize - Cboxes[i].sx / 2 && camx < Cboxes[i].x + playerSize + Cboxes[i].sx / 2) {
-			if (camy > Cboxes[i].y - playerSize - Cboxes[i].sy / 2 && camy < Cboxes[i].y + playerHeight + Cboxes[i].sy / 2) {
-				if (camz > Cboxes[i].z - playerSize - Cboxes[i].sz / 2 && camz < Cboxes[i].z + playerSize + Cboxes[i].sz / 2) {
-					
-					if (ox >= Cboxes[i].x - playerSize - Cboxes[i].sx / 2 || ox <= Cboxes[i].x + playerSize + Cboxes[i].sx / 2) {
+						if (ox >= Cboxes[i].x - playerSize - Cboxes[i].sx / 2 || ox <= Cboxes[i].x + playerSize + Cboxes[i].sx / 2) {
+							if (oz >= Cboxes[i].z - playerSize - Cboxes[i].sz / 2 || oz <= Cboxes[i].z + playerSize + Cboxes[i].sz / 2) {
+								if (oy <= Cboxes[i].y - playerSize + 0.2 - Cboxes[i].sy / 2) {
+									camy = Cboxes[i].y - playerSize - Cboxes[i].sy / 2;
+									//oy = y;
+								}
+								if (oy >= Cboxes[i].y + playerHeight - 0.2 + Cboxes[i].sy / 2) {
+									camy = Cboxes[i].y + playerHeight + Cboxes[i].sy / 2;
+									//oy = y;
+									camyv = 0.0f;
+									jumpFrame = 0;
+									canJump = true;
+								}
+							}
+						}
+
+						if (ox >= Cboxes[i].x - playerSize - Cboxes[i].sx / 2 || ox <= Cboxes[i].x + playerSize + Cboxes[i].sx / 2) {
+							if (oy >= Cboxes[i].y - playerSize - Cboxes[i].sy / 2 && oy <= Cboxes[i].y + playerHeight - 0.2 + Cboxes[i].sy / 2) {
+								if (oz <= Cboxes[i].z - playerSize - Cboxes[i].sz / 2) {
+									camz = Cboxes[i].z - playerSize - Cboxes[i].sz / 2;
+									//oz = z;
+								}
+								if (oz >= Cboxes[i].z + playerSize + Cboxes[i].sz / 2) {
+									camz = Cboxes[i].z + playerSize + Cboxes[i].sz / 2;
+									//oz = z;
+								}
+							}
+						}
+
+
 						if (oz >= Cboxes[i].z - playerSize - Cboxes[i].sz / 2 || oz <= Cboxes[i].z + playerSize + Cboxes[i].sz / 2) {
-							if (oy <= Cboxes[i].y - playerSize + 0.2 - Cboxes[i].sy / 2) {
-								camy = Cboxes[i].y - playerSize - Cboxes[i].sy / 2;
-								//oy = y;
-							}
-							if (oy >= Cboxes[i].y + playerHeight - 0.2 + Cboxes[i].sy / 2) {
-								camy = Cboxes[i].y + playerHeight + Cboxes[i].sy / 2;
-								//oy = y;
-								camyv = 0.0f;
-								jumpFrame = 0;
-								canJump = true;
-							}
-						}
-					}
-
-					if (ox >= Cboxes[i].x - playerSize - Cboxes[i].sx / 2 || ox <= Cboxes[i].x + playerSize + Cboxes[i].sx / 2) {
-						if (oy >= Cboxes[i].y - playerSize - Cboxes[i].sy / 2 && oy <= Cboxes[i].y + playerHeight - 0.2 + Cboxes[i].sy / 2) {
-							if (oz <= Cboxes[i].z - playerSize - Cboxes[i].sz / 2) {
-								camz = Cboxes[i].z - playerSize - Cboxes[i].sz / 2;
-								//oz = z;
-							}
-							if (oz >= Cboxes[i].z + playerSize + Cboxes[i].sz / 2) {
-								camz = Cboxes[i].z + playerSize + Cboxes[i].sz / 2;
-								//oz = z;
+							if (oy >= Cboxes[i].y - playerSize - Cboxes[i].sy / 2 && oy <= Cboxes[i].y + playerHeight - 0.2 + Cboxes[i].sy / 2) {
+								if (ox <= Cboxes[i].x - playerSize - Cboxes[i].sx / 2) {
+									camx = Cboxes[i].x - playerSize - Cboxes[i].sx / 2;
+									//ox = x;
+								}
+								if (ox >= Cboxes[i].x + playerSize + Cboxes[i].sx / 2) {
+									camx = Cboxes[i].x + playerSize + Cboxes[i].sx / 2;
+									//ox = x;
+								}
 							}
 						}
+
+
+
 					}
-
-
-					if (oz >= Cboxes[i].z - playerSize - Cboxes[i].sz / 2 || oz <= Cboxes[i].z + playerSize + Cboxes[i].sz / 2) {
-						if (oy >= Cboxes[i].y - playerSize - Cboxes[i].sy / 2 && oy <= Cboxes[i].y + playerHeight - 0.2 + Cboxes[i].sy / 2) {
-							if (ox <= Cboxes[i].x - playerSize - Cboxes[i].sx / 2) {
-								camx = Cboxes[i].x - playerSize - Cboxes[i].sx / 2;
-								//ox = x;
-							}
-							if (ox >= Cboxes[i].x + playerSize + Cboxes[i].sx / 2) {
-								camx = Cboxes[i].x + playerSize + Cboxes[i].sx / 2;
-								//ox = x;
-							}
-						}
-					}
-
-
-
 				}
 			}
 		}
