@@ -116,6 +116,14 @@ void loadModels();
 void drawGear1();
 void drawGear2();
 
+/*
+struct meshTextured {
+	Mesh* aMesh;
+	GLuint textureID;
+};*/
+
+//#define maxModels 100
+//meshTextured meshArray[maxModels];
 
 GLuint loadObj(char const* file, GLuint textureID);
 
@@ -123,6 +131,8 @@ GLuint loadObj(char const* file, GLuint textureID);
 GLuint loadObj(char const* file, GLuint textureID) {
 	Mesh* aMesh = loadFile(file);
 	if (aMesh == NULL) exit(1);
+	//meshArray[uniqueMeshID].aMesh = aMesh;
+	//meshArray[uniqueMeshID].textureID = textureID;
 	uniqueMeshID = uniqueMeshID + 1;
 	return meshToDisplayList(aMesh, uniqueMeshID, textureID);
 }
@@ -138,12 +148,13 @@ Mesh* loadObjMesh(char const* file) {
 Mesh* meshParticlePlane;
 Mesh* meshParticleRain;
 
+GLuint texture_array[42];
 
 void loadModels() {
 
 	printf("Loading\n");
 
-	GLuint texture_array[42];
+	
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 1, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
@@ -198,12 +209,39 @@ void loadModels() {
 	loadBMP_custom(texture_array, "./src/textures/LV02_map512.bmp", 41, 1, 0);
 	
 
+
+
+
+
+
+
+
+
+
+	/*
+	GLuint loadObj(char const* file, GLuint textureID) {
+		Mesh* aMesh = loadFile(file);
+		if (aMesh == NULL) exit(1);
+		uniqueMeshID = uniqueMeshID + 1;
+		return meshToDisplayList(aMesh, uniqueMeshID, textureID);
+	}
+
+	// Function used for loading a mesh and returning the mesh instead of the meshID / displayListID
+	Mesh* loadObjMesh(char const* file) {
+		Mesh* aMesh = loadFile(file);
+		if (aMesh == NULL) exit(1);
+		return aMesh;
+	}
+	*/
+
+
+
 	// Load particle mesh & images
 	meshParticlePlane = loadObjMesh("./src/obj files/ParticlePlane.obj");
 	meshParticleRain = loadObjMesh("./src/obj files/ParticleRain.obj");
 
 
-	/*
+	
 	uniqueMeshID = uniqueMeshID + 1;
 	displayParticlePlane = meshToDisplayList(meshParticlePlane, uniqueMeshID, 21);
 	uniqueMeshID = uniqueMeshID + 1;
@@ -224,8 +262,8 @@ void loadModels() {
 	displayParticleRain = meshToDisplayList(meshParticleRain, uniqueMeshID, 30);
 	uniqueMeshID = uniqueMeshID + 1;
 	displayParticlePlaneRing = meshToDisplayList(meshParticlePlane, uniqueMeshID, 31);
-	*/
-
+	
+	/*
 	displayParticlePlane = loadObj("./src/obj files/ParticlePlane.obj", texture_array[21]);
 	displayParticlePlaneFlames = loadObj("./src/obj files/ParticlePlane.obj", texture_array[23]);
 	displayParticlePlaneSnow = loadObj("./src/obj files/ParticlePlane.obj", texture_array[24]);
@@ -236,8 +274,7 @@ void loadModels() {
 	displayParticlePlaneFlameSparks = loadObj("./src/obj files/ParticlePlane.obj", texture_array[29]);
 	displayParticleRain = loadObj("./src/obj files/ParticleRain.obj", texture_array[30]);
 	displayParticlePlaneRing = loadObj("./src/obj files/ParticlePlane.obj", texture_array[31]);
-
-
+	*/
 
 	/* // images currently not in use
 	//texture_from_file(&texture_array[4], "./src/textures/bricks.bmp");

@@ -127,14 +127,27 @@ void setmaterial3(float ambient, float r, float g, float b, float a, float shine
 
 void setMaterialAdvanced(float MatData[17]) {
 	// Makes a Material
-	float MatAmbient[] = { MatData[0], MatData[1], MatData[2], MatData[3] };
-	float MatDiffuse[] = { MatData[4], MatData[5], MatData[6], MatData[7] };
-	float MatSpecular[] = { MatData[8], MatData[9], MatData[10], MatData[11] };
-	float MatEmission[] = { MatData[12], MatData[13], MatData[14], MatData[15] };
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, MatAmbient);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, MatDiffuse);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, MatSpecular);
-	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, MatData[16]);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, MatEmission);
+	if (buttons[12].toggle == true) {
+		float MatAmbient[] = { MatData[0], MatData[1], MatData[2], MatData[3] };
+		float MatDiffuse[] = { MatData[4], MatData[5], MatData[6], MatData[7] };
+		float MatSpecular[] = { MatData[8], MatData[9], MatData[10], MatData[11] };
+		float MatEmission[] = { MatData[12], MatData[13], MatData[14], MatData[15] };
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, MatAmbient);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, MatDiffuse);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, MatSpecular);
+		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, MatData[16]);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, MatEmission);
+	}
+	else {
+		float MatAmbient[] = { 0, 0, 0, 0 };
+		float MatDiffuse[] = { 0, 0, 0, 0 };
+		float MatSpecular[] = { 0, 0, 0, 0 };
+		float MatEmission[] = { 0, 0, 0, 0 };
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, MatAmbient);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, MatDiffuse);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, MatSpecular);
+		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, MatEmission);
+	}
 }
 

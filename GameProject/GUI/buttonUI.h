@@ -40,7 +40,7 @@ void initButtonUI() {
 	buttons[buttonAmount - 1] = newButtonUI(300, 890, false, true, "Lights OFF", "Lights ON");			// 9 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(300, 800, false, false, "Textures OFF", "Textures ON");		// 10 -- TODO
 	buttons[buttonAmount - 1] = newButtonUI(300, 710, false, false, "Procedural OFF", "Procedural ON");	// 11 -- TODO
-	buttons[buttonAmount - 1] = newButtonUI(300, 620, false, false, "Materials OFF", "Materials ON");	// 12 -- TODO
+	buttons[buttonAmount - 1] = newButtonUI(300, 620, false, true, "Materials OFF", "Materials ON");	// 12 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(300, 530, false, false, "Collision OFF", "Collision ON");	// 13 -- TODO
 	buttons[buttonAmount - 1] = newButtonUI(300, 440, false, false, "Terrain OFF", "Terrain ON");		// 14 -- TODO
 	buttons[buttonAmount - 1] = newButtonUI(300, 350, false, false, "View Mode OFF", "View Mode ON");	// 15 -- TODO
@@ -53,9 +53,32 @@ void actionButtonUI() {
 		if (i > 0) {
 			if (buttons[0].toggle) {
 				buttons[i].active = true;
+				//for (int j = 0; j < 100; j++) {
+					//meshToDisplayList(meshArray[j].aMesh, j+1, meshArray[j].textureID);
+				//}
+				if (i == 10) {
+					for (int j = 0; j < 41; j++) {
+						
+						//glAreTexturesResident(texture_array[j]);
+						//glBitmap(texture_array[j]);
+						glDisable(GL_TEXTURE_BINDING_2D);
+						glDisable(GL_TEXTURE_BIT);
+						glDisable(GL_TEXTURE_2D);
+					}
+				}
+
 			}
 			else {
 				buttons[i].active = false;
+
+				if (i == 10) {
+					for (int j = 0; j < 41; j++) {
+						glDisable(GL_TEXTURE_BINDING_2D);
+						glDisable(GL_TEXTURE_BIT);
+						glDisable(GL_TEXTURE_2D);
+					}
+				}
+
 			}
 		}
 
