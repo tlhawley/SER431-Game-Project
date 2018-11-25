@@ -52,7 +52,8 @@ int width = 1200;
 int height = 600;
 float ratio = 1.0;
 */
-GLuint displayx1, display2, display3, display4, display5;
+GLuint display2, display3, display4, display5;
+GLuint2 displayx1;
 
 // controling parameters
 int mouse_button;
@@ -610,9 +611,10 @@ void calculateNormalPerVertex(Mesh* m) {
 */
 
 // draw
-GLuint meshToDisplayList(Mesh* m, int id, int textureId) {
-	GLuint listID = glGenLists(id);
-	glNewList(listID, GL_COMPILE);
+GLuint2 meshToDisplayList2(Mesh* m, int id, int textureId, GLuint nullTexture) {
+	GLuint2 listID;
+	listID.l1 = glGenLists(id);
+	glNewList(listID.l1, GL_COMPILE);
 	//if (id != 3) {
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -639,6 +641,45 @@ GLuint meshToDisplayList(Mesh* m, int id, int textureId) {
 		glDisable(GL_TEXTURE_2D);
 	}
 	glEndList();
+
+
+
+
+
+
+	listID.l2 = glGenLists(id);
+	glNewList(listID.l2, GL_COMPILE);
+	//if (id != 3) {
+	glEnable(GL_TEXTURE_2D);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glBindTexture(GL_TEXTURE_2D, nullTexture);
+	//}
+	glBegin(GL_TRIANGLES);
+	for (unsigned int i = 0; i < m->face_index_vertex.size(); i++) {
+		// PER VERTEX NORMALS
+		if ((!m->dot_normalPerVertex.empty() && !m->face_index_normalPerVertex.empty())) {
+			glNormal3fv(&m->dot_normalPerVertex[m->face_index_normalPerVertex[i]].x);
+		}
+		// TEXTURES
+		if (!m->dot_texture.empty() && !m->face_index_texture.empty()) {
+			glTexCoord2fv(&m->dot_texture[m->face_index_texture[i]].x);
+		}
+		// COLOR
+		Vec3f offset = (m->dot_vertex[m->face_index_vertex[i]]);
+		// VERTEX
+		glColor3f(fabs(sin(offset.x)), fabs(cos(offset.y)), fabs(offset.z));
+		glVertex3fv(&m->dot_vertex[m->face_index_vertex[i]].x);
+	}
+	glEnd();
+	if (id != 3) {
+		glDisable(GL_TEXTURE_2D);
+	}
+	glEndList();
+
+
+
+
+
 	return listID;
 }
 
@@ -673,7 +714,7 @@ void initNoiseGen() {
 	codedTexture(textureArray, 4, 4); //Floor texture - noise multiscale. Type=4
 	//codedTexture(textureArray, 4, 1); //Marble texture - noise fire. Type=1
 									  // display lists
-	displayx1 = meshToDisplayList(mesh1, 1, 4);
+	displayx1 = meshToDisplayList2(mesh1, 1, 4, blankTexture);
 	//display2 = meshToDisplayList(mesh2, 2, 1);
 	//display3 = meshToDisplayList(mesh3, 3, 2);
 	//display4 = meshToDisplayList(mesh4, 4, 3);
@@ -739,7 +780,12 @@ void displayNoiseGenPlane(void) {
 	glPushMatrix();
 	//glTranslatef(-900, 0, -900);
 	glTranslatef(0, -15, 0);
-	glCallList(displayx1);
+	if (buttons[11].toggle) {
+		glCallList(displayx1.l1);
+	}
+	else {
+		glCallList(displayx1.l2);
+	}
 	glPopMatrix();
 }
 

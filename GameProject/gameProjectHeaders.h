@@ -19,12 +19,16 @@ void myInit();
 #include "controls.h"
 #include "graphicsFunctions.h"
 
+
+
 #include "meshObjConverter.h"
 #include "modelLoading.h"
-//#include "quiz6methods.h"
 
 #include "noise.h"
 #include "noiseGenerator.h"
+//#include "quiz6methods.h"
+
+
 
 
 #include "ParticleSystem/particles.h"

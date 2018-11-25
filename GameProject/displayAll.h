@@ -65,6 +65,7 @@ void shadowMatrix(GLfloat shadowMat[4][4], Vec3f plane_normal, GLfloat lightpos[
 // init
 void initshadow() {
 
+	/*
 	mesh2 = createCube();
 	mesh3 = createCube();
 	mesh4 = createCube();
@@ -80,6 +81,7 @@ void initshadow() {
 	display2 = meshToDisplayList(mesh2, 2, 1);
 	display3 = meshToDisplayList(mesh3, 3, 1);
 	display4 = meshToDisplayList(mesh4, 4, 1);
+	*/
 
 	// shadow
 	glClearStencil(0);
