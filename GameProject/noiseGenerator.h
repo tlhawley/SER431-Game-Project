@@ -188,7 +188,7 @@ void codedTexture(UINT textureArray[], int n, int type) {
 						if (type == 3)
 							pixelColor = fireMap(t_scale(noise.perlinMultiscale(i * 5, j * 5)));
 						else
-							pixelColor = floorMap(t_scale(noise.perlinMultiscale(i * 50, j * 50)));
+							pixelColor = floorMap(t_scale(noise.perlinMultiscale(i * 25, j * 25)));
 			textureImage[i][j][0] = pixelColor[0] * 255;
 			textureImage[i][j][1] = pixelColor[1] * 255;
 			textureImage[i][j][2] = pixelColor[2] * 255;
@@ -424,7 +424,7 @@ Mesh* createPlane(int arena_width, int arena_depth, int arena_cell) {
 	for (int i = 0; i<n; i++) {
 		for (int j = 0; j < m; j++) {
 			//-900, 0, 999
-			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell-900, 10, j*arena_cell-900));
+			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell-100, 12.0, j*arena_cell-100));
 		}
 	}
 	//texture
@@ -693,7 +693,7 @@ void initNoiseGen() {
 	//ratio = (double)width / (double)height;
 	// mesh
 	mesh1 = createTerrain(2000, 2000, 200);
-	mesh2 = createPlane(2000, 2000, 20);
+	mesh2 = createPlane(2000, 2000, 2.5);
 	//mesh2 = createCube();
 	//mesh3 = createCube();
 	//mesh4 = createCube();

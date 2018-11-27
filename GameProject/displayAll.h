@@ -110,131 +110,137 @@ void displayEnvironment() {
 	glDisable(GL_BLEND);
 
 	// Character Placement
-	if (frameTimer >= N) {
-		glPushMatrix();
-		setMaterialAdvanced(materialPlayer);
-		glTranslatef(camx, camy, camz);
-		glRotatef(-camAngY * 57.29578f + 180, 0.0, 1.0, 0.0);
-		glRotatef(playerAngle * 57.29578f - 90, 0.0, 1.0, 0.0);
+	if (buttons[15].toggle == false) {
+		if (frameTimer >= N) {
+			glPushMatrix();
+			setMaterialAdvanced(materialPlayer);
+			glTranslatef(camx, camy, camz);
+			glRotatef(-camAngY * 57.29578f + 180, 0.0, 1.0, 0.0);
+			glRotatef(playerAngle * 57.29578f - 90, 0.0, 1.0, 0.0);
 
-		if (pxv == 0 && pzv == 0) {
+			if (pxv == 0 && pzv == 0) {
 
-			if (canJump == true) {
-				glCallList(meshCharacterFrames[0].l1); // standing animation
-			}
-			else {
-				if (jumpFrame == 0) {
-					glCallList(meshCharacterFrames[26].l1); // jump start frame
+				if (canJump == true) {
+					glCallList(meshCharacterFrames[0].l1); // standing animation
 				}
 				else {
-					if (jumpFrame > 0 && jumpFrame < 4) {
-						glCallList(meshCharacterFrames[27].l1); // jump attack frame 1
+					if (jumpFrame == 0) {
+						glCallList(meshCharacterFrames[26].l1); // jump start frame
 					}
 					else {
-						if (jumpFrame < 18) {
-
-							glRotatef(jumpFrame*35.0f, 1.0, 0.0, 0.0);
-							glTranslatef(0, 0.5f, 0);
-							glCallList(meshCharacterFrames[28].l1); // jump attack spin frame
-							glTranslatef(0, -0.5f, 0);
-							glRotatef(-jumpFrame * 35.0f, 1.0, 0.0, 0.0);
+						if (jumpFrame > 0 && jumpFrame < 4) {
+							glCallList(meshCharacterFrames[27].l1); // jump attack frame 1
 						}
 						else {
-							if (jumpFrame < 20) {
-								glCallList(meshCharacterFrames[29].l1);
+							if (jumpFrame < 18) {
+
+								glRotatef(jumpFrame*35.0f, 1.0, 0.0, 0.0);
+								glTranslatef(0, 0.5f, 0);
+								glCallList(meshCharacterFrames[28].l1); // jump attack spin frame
+								glTranslatef(0, -0.5f, 0);
+								glRotatef(-jumpFrame * 35.0f, 1.0, 0.0, 0.0);
 							}
 							else {
-								//jumpFrame = 0;
-								camyv = camyv - 0.01f; // doubles y velocity acceleration when in attack mode
-								glCallList(meshCharacterFrames[30].l1);
+								if (jumpFrame < 20) {
+									glCallList(meshCharacterFrames[29].l1);
+								}
+								else {
+									//jumpFrame = 0;
+									camyv = camyv - 0.01f; // doubles y velocity acceleration when in attack mode
+									glCallList(meshCharacterFrames[30].l1);
+								}
 							}
 						}
 					}
 				}
+				runFrame = 1;
+				if (itemTimer > 0 && heartPickUp) {
+					setMaterialAdvanced(materialHeart);
+					glScalef(0.5f, 0.5f, 0.5f);
+					glCallList(meshHeart.l1);
+					glScalef(2.0f, 2.0f, 2.0f);
+				}
+				else if (itemTimer > 0 && gemPickUp) {
+					setMaterialAdvanced(materialRuby);
+					glScalef(0.5f, 0.5f, 0.5f);
+					glCallList(meshGem.l1);
+					glScalef(2.0f, 2.0f, 2.0f);
+				}
 			}
-			runFrame = 1;
-			if (itemTimer > 0 && heartPickUp) {
-				setMaterialAdvanced(materialHeart);
-				glScalef(0.5f, 0.5f, 0.5f);
-				glCallList(meshHeart.l1);
-				glScalef(2.0f, 2.0f, 2.0f);
+			else {
+				runFrame = runFrame + 1;
+				if (runFrame > 25) { runFrame = 1; }
+				if (canJump == true) {
+					glCallList(meshCharacterFrames[runFrame].l1);
+				}
+				else {
+					if (jumpFrame == 0) {
+						glCallList(meshCharacterFrames[26].l1); // jump start frame
+					}
+					else {
+						if (jumpFrame > 0 && jumpFrame < 4) {
+							glCallList(meshCharacterFrames[27].l1); // jump attack frame 1
+						}
+						else {
+							if (jumpFrame < 18) {
+								glRotatef(jumpFrame*35.0f, 1.0, 0.0, 0.0);
+								glTranslatef(0, 0.5f, 0);
+								glCallList(meshCharacterFrames[28].l1); // jump attack spin frame
+								glTranslatef(0, -0.5f, 0);
+								glRotatef(-jumpFrame * 35.0f, 1.0, 0.0, 0.0);
+							}
+							else {
+								if (jumpFrame < 20) {
+									glCallList(meshCharacterFrames[29].l1);
+								}
+								else {
+									//jumpFrame = 0;
+									camyv = camyv - 0.01f; // doubles y velocity acceleration when in attack mode
+									glCallList(meshCharacterFrames[30].l1);
+								}
+							}
+						}
+					}
+				}
+				if (itemTimer > 0 && heartPickUp) {
+					setMaterialAdvanced(materialHeart);
+					glScalef(0.5f, 0.5f, 0.5f);
+					glCallList(meshHeart.l1);
+					glScalef(2.0f, 2.0f, 2.0f);
+				}
+				else if (itemTimer > 0 && gemPickUp) {
+					setMaterialAdvanced(materialRuby);
+					glScalef(0.5f, 0.5f, 0.5f);
+					glCallList(meshGem.l1);
+					glScalef(2.0f, 2.0f, 2.0f);
+				}
 			}
-			else if (itemTimer > 0 && gemPickUp) {
-				setMaterialAdvanced(materialRuby);
-				glScalef(0.5f, 0.5f, 0.5f);
-				glCallList(meshGem.l1);
-				glScalef(2.0f, 2.0f, 2.0f);
-			}
+
+			glRotatef(-playerAngle * 57.29578f + 90, 0.0, 1.0, 0.0);
+			glRotatef(camAngY * 57.29578f + 180, 0.0, 1.0, 0.0);
+			glTranslatef(-camx, -camy, -camz);
+			glPopMatrix();
 		}
 		else {
-			runFrame = runFrame + 1;
-			if (runFrame > 25) { runFrame = 1; }
-			if (canJump == true) {
-				glCallList(meshCharacterFrames[runFrame].l1);
-			}
-			else {
-				if (jumpFrame == 0) {
-					glCallList(meshCharacterFrames[26].l1); // jump start frame
-				}
-				else {
-					if (jumpFrame > 0 && jumpFrame < 4) {
-						glCallList(meshCharacterFrames[27].l1); // jump attack frame 1
-					}
-					else {
-						if (jumpFrame < 18) {
-							glRotatef(jumpFrame*35.0f, 1.0, 0.0, 0.0);
-							glTranslatef(0, 0.5f, 0);
-							glCallList(meshCharacterFrames[28].l1); // jump attack spin frame
-							glTranslatef(0, -0.5f, 0);
-							glRotatef(-jumpFrame * 35.0f, 1.0, 0.0, 0.0);
-						}
-						else {
-							if (jumpFrame < 20) {
-								glCallList(meshCharacterFrames[29].l1);
-							}
-							else {
-								//jumpFrame = 0;
-								camyv = camyv - 0.01f; // doubles y velocity acceleration when in attack mode
-								glCallList(meshCharacterFrames[30].l1);
-							}
-						}
-					}
-				}
-			}
-			if (itemTimer > 0 && heartPickUp) {
-				setMaterialAdvanced(materialHeart);
-				glScalef(0.5f, 0.5f, 0.5f);
-				glCallList(meshHeart.l1);
-				glScalef(2.0f, 2.0f, 2.0f);
-			}
-			else if (itemTimer > 0 && gemPickUp) {
-				setMaterialAdvanced(materialRuby);
-				glScalef(0.5f, 0.5f, 0.5f);
-				glCallList(meshGem.l1);
-				glScalef(2.0f, 2.0f, 2.0f);
-			}
+			setMaterialAdvanced(materialPlayer);
+			glTranslatef(0, 1.5f, 0);
+			glRotatef(-90, 0, 1, 0);
+			glCallList(meshCharacterFrames[0].l1);
+			glRotatef(90, 0, 1, 0);
+			glTranslatef(0, -1.5f, 0);
 		}
-
-		glRotatef(-playerAngle * 57.29578f + 90, 0.0, 1.0, 0.0);
-		glRotatef(camAngY * 57.29578f + 180, 0.0, 1.0, 0.0);
-		glTranslatef(-camx, -camy, -camz);
-		glPopMatrix();
 	}
 	else {
-		setMaterialAdvanced(materialPlayer);
-		glTranslatef(0, 1.5f, 0);
-		glRotatef(-90, 0, 1, 0);
-		glCallList(meshCharacterFrames[0].l1);
-		glRotatef(90, 0, 1, 0);
-		glTranslatef(0, -1.5f, 0);
 	}
-
 	
 
 
-
-
-	setMaterialAdvanced(materialSkyBox);
+	if (buttons[10].toggle == true) {
+		setMaterialAdvanced(materialEmissive);
+	}
+	else {
+		setMaterialAdvanced(materialEnvironment);
+	}
 	if (refectOn == 0) {
 		glEnable(GL_CULL_FACE);
 		displayBaseModels(); // static environment objects

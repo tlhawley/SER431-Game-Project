@@ -75,9 +75,16 @@ void Update() {
 	oy = camy;
 	oz = camz;
 
-	camxv = camxv * 0.8f;
-	camzv = camzv * 0.8f;
-	camyv = camyv - 0.01f;
+	if (buttons[15].toggle == false) {
+		camxv = camxv * 0.8f;
+		camzv = camzv * 0.8f;
+		camyv = camyv - 0.01f;
+	}
+	else { // view mode
+		camxv = camxv * 0.8f;
+		camzv = camzv * 0.8f;
+		camyv = camyv * 0.8f;
+	}
 	/*
 	if (creativeMode >= 1) {
 		canJump = true;
@@ -90,8 +97,10 @@ void Update() {
 
 	//canJump = true; // infinite jump
 	if (canJump == true && spaceKey == true) {
-		camyv = 0.25f;
-		canJump = false;
+		if (buttons[15].toggle == false) {
+			camyv = 0.25f;
+			canJump = false;
+		}
 	}
 
 	if (abs(camyv) > 0.04f) {
@@ -212,7 +221,9 @@ void Update() {
 	moveMeFlatStrafe(cos(atan2(pzv, pxv))*maxVelocity);
 	moveMeFlat(sin(atan2(pzv, pxv))*maxVelocity);
 	
-
+	if (buttons[15].toggle == true) {
+		camyv = sin(atan2(pzv, pxv))*maxVelocity*sin(camAngX)/8.0f;
+	}
 
 	//checkCollision(); // collision is now detected using collision boxes
 	if (camy < -200 || health == 0) {

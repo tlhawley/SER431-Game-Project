@@ -13,11 +13,11 @@ int score = 0;
 int inventoryKeys = 0;
 bool levelComplete = false;
 int levelUnlocked = 1;
-int currentLevel = -1; // -2 = title screen, -1 = intro level,  0 = hub world, 1 = level 1, 2 = level 2....
+int currentLevel = 0; // -2 = title screen, -1 = intro level,  0 = hub world, 1 = level 1, 2 = level 2....
 
 int SmoothingSetting = 1;
 
-float pxv = 0.0f, pzv = 0.0f;
+float pxv = 0.0f, pzv = 0.0f, pyv = 0.0f;
 float camxv = 0.0f, camyv = 0.0f, camzv = 0.0f; // x,y,z velocity
 float camx = 0.0f, camy = 1.75f, camz = 0.0f;
 float ox, oy, oz; // old x,y,z
