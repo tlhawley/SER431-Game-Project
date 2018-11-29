@@ -101,6 +101,7 @@ void actionDoorway() {
 	for (int i = 0; i < doorwayAmount; i++) {
 
 		if (abs(camx - doorways[i].x) < 3 && abs(camz - doorways[i].z) < 3 && doorways[i].locked == 1 && inventoryKeys > 0) {
+			SoundEngine->play2D("./src/audio/Large Metal Rusty Door-SoundBible.com-1645657318.mp3", GL_FALSE); //Got From http://soundbible.com/1352-Large-Metal-Rusty-Door.html
 			inventoryKeys = inventoryKeys - 1;
 			doorways[i].locked = 0;
 		}

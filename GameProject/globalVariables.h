@@ -72,6 +72,7 @@ bool mouseWait = false;
 bool windowed = true;
 bool heartPickUp = false;
 bool gemPickUp = false;
+bool keyPickUp = false;
 
 int refectOn = 0;
 

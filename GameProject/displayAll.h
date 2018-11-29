@@ -214,6 +214,14 @@ void displayEnvironment() {
 					glCallList(meshGem.l1);
 					glScalef(2.0f, 2.0f, 2.0f);
 				}
+				else if (itemTimer > 0 && keyPickUp) {
+					setMaterialAdvanced(materialGold);
+					glScalef(0.25f, 0.25f, 0.25f);
+					glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
+					glCallList(meshKey.l1);
+					glRotatef(90.0f, 0.0f, -1.0f, 0.0f);
+					glScalef(4.0f, 4.0f, 4.0f);
+				}
 			}
 
 			glRotatef(-playerAngle * 57.29578f + 90, 0.0, 1.0, 0.0);
