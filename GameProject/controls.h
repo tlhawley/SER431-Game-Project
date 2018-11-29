@@ -15,41 +15,28 @@ void UpdateCam() {
 	Geometry[1][2] = box2Z;
 
 	// use the parametric time value 0 to 1
-	//for (int i = 0; i != N - 1; i++) {
-		float t = (float)frameTimer / (N - 1);
-		// calculate blending functions
-		float b0 = 2 * t*t*t - 3 * t*t + 1;
-		float b1 = -2 * t*t*t + 3 * t*t;
-		float b2 = t * t*t - 2 * t*t + t;
-		float b3 = t * t*t - t * t;
-		// calculate the x, y and z of the curve point
-		float x = b0 * Geometry[0][0] + b1 * Geometry[1][0] + b2 * Geometry[2][0] + b3 * Geometry[3][0];
-		float y = b0 * Geometry[0][1] + b1 * Geometry[1][1] + b2 * Geometry[2][1] + b3 * Geometry[3][1];
-		float z = b0 * Geometry[0][2] + b1 * Geometry[1][2] + b2 * Geometry[2][2] + b3 * Geometry[3][2];
+	float t = (float)frameTimer / (N - 1);
+	// calculate blending functions
+	float b0 = 2 * t*t*t - 3 * t*t + 1;
+	float b1 = -2 * t*t*t + 3 * t*t;
+	float b2 = t * t*t - 2 * t*t + t;
+	float b3 = t * t*t - t * t;
+	// calculate the x, y and z of the curve point
+	float x = b0 * Geometry[0][0] + b1 * Geometry[1][0] + b2 * Geometry[2][0] + b3 * Geometry[3][0];
+	float y = b0 * Geometry[0][1] + b1 * Geometry[1][1] + b2 * Geometry[2][1] + b3 * Geometry[3][1];
+	float z = b0 * Geometry[0][2] + b1 * Geometry[1][2] + b2 * Geometry[2][2] + b3 * Geometry[3][2];
 
 
-		float t2 = (float)(frameTimer + 1) / (N - 1);
-		// calculate blending functions
-		float b02 = 2 * t2*t2*t2 - 3 * t2*t2 + 1;
-		float b12 = -2 * t2*t2*t2 + 3 * t2*t2;
-		float b22 = t2 * t2*t2 - 2 * t2*t2 + t2;
-		float b32 = t2 * t2*t2 - t2 * t2;
-		// calculate the x, y and z of the curve point
-		float x2 = b02 * Geometry[0][0] + b12 * Geometry[1][0] + b22 * Geometry[2][0] + b32 * Geometry[3][0];
-		float y2 = b02 * Geometry[0][1] + b12 * Geometry[1][1] + b22 * Geometry[2][1] + b32 * Geometry[3][1];
-		float z2 = b02 * Geometry[0][2] + b12 * Geometry[1][2] + b22 * Geometry[2][2] + b32 * Geometry[3][2];
-
-		/*
-		// specify the points
-		glVertex3f(x, y - 0.1f, z);
-		glVertex3f(x2, y2 - 0.1f, z2);
-		glVertex3f(x, y + 0.1f, z);
-
-		glVertex3f(x, y + 0.1f, z);
-		glVertex3f(x2, y2 - 0.1f, z2);
-		glVertex3f(x2, y2 + 0.1f, z2);
-		*/
-	//}
+	float t2 = (float)(frameTimer + 1) / (N - 1);
+	// calculate blending functions
+	float b02 = 2 * t2*t2*t2 - 3 * t2*t2 + 1;
+	float b12 = -2 * t2*t2*t2 + 3 * t2*t2;
+	float b22 = t2 * t2*t2 - 2 * t2*t2 + t2;
+	float b32 = t2 * t2*t2 - t2 * t2;
+	// calculate the x, y and z of the curve point
+	float x2 = b02 * Geometry[0][0] + b12 * Geometry[1][0] + b22 * Geometry[2][0] + b32 * Geometry[3][0];
+	float y2 = b02 * Geometry[0][1] + b12 * Geometry[1][1] + b22 * Geometry[2][1] + b32 * Geometry[3][1];
+	float z2 = b02 * Geometry[0][2] + b12 * Geometry[1][2] + b22 * Geometry[2][2] + b32 * Geometry[3][2];
 
 	camAngY = -atan2f(x - x2, z - z2);
 	orientMe(camAngY);
@@ -85,15 +72,6 @@ void Update() {
 		camzv = camzv * 0.8f;
 		camyv = camyv * 0.8f;
 	}
-	/*
-	if (creativeMode >= 1) {
-		canJump = true;
-		//yv = -0.02f;
-	}
-	else {
-		yv = yv - 0.01f;
-	}
-	*/
 
 	//canJump = true; // infinite jump
 	if (canJump == true && spaceKey == true) {
@@ -226,7 +204,7 @@ void Update() {
 	}
 
 	//checkCollision(); // collision is now detected using collision boxes
-	if (camy < -200 || health == 0) {
+	if (camy < -40 || health == 0) {
 		objInit();
 	}
 
