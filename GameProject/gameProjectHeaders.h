@@ -26,6 +26,8 @@ void myInit();
 
 #include "noise.h"
 #include "noiseGenerator.h"
+#include "flagCreator.h"
+#include "fractalsCreator.h"
 //#include "quiz6methods.h"
 
 
