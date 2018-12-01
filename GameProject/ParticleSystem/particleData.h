@@ -1229,9 +1229,9 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.pSystemTypeID = ParID::ash;
 
 		pSystemData.useGravity = false;
-		pSystemData.position.x = getRnd(-10.0, 10.0) + x;
-		pSystemData.position.y = 12.0f + y;
-		pSystemData.position.z = getRnd(-10.0, 10.0) + z;
+		pSystemData.position.x = getRnd(-12.0, 12.0) + x;
+		pSystemData.position.y = 6.0f + y;
+		pSystemData.position.z = getRnd(-12.0, 12.0) + z;
 
 		//pSystemData.velocity.x = (10000 - rand() % 20000) / 10000.0f + 3.0f;
 		pSystemData.velocity.x = 0.01f;
@@ -1280,7 +1280,7 @@ pSystem particleData(int p, float x, float y, float z) {
 
 		pSystemData.useFloorCollider = true;
 		pSystemData.destroyOnContact = true;
-		pSystemData.floorHeight = 0.0f;
+		pSystemData.floorHeight = -2.0f;
 		pSystemData.bounceMultiplier = 0.9f;
 		pSystemData.floorFriction = 0.9f;
 
@@ -1300,7 +1300,7 @@ pSystem particleData(int p, float x, float y, float z) {
 		pSystemData.lifeLength = pSystemData.life;
 
 		pSystemData.emissionRate = 1; // bigger number less particles
-		pSystemData.emissionAmount = 1;
+		pSystemData.emissionAmount = 4;
 
 		pSystemData.useSubParticleSpawn = false;
 		//pSystemData.subParticleSpawnID = ParID::??

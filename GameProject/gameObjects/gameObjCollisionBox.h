@@ -256,6 +256,7 @@ void initCBoxes() {
 		// portals
 		Cboxes[CboxAmount - 1] = newCBox(-20, -3.2, 10, 1.9829, 20, 6.42671);
 		Cboxes[CboxAmount - 1] = newCBox(-20, -3.2, -10, 1.9829, 20, 6.42671);
+		Cboxes[CboxAmount - 1] = newCBox(-28, -4.2, 0, 1.9829, 20, 6.42671);
 
 	}
 
