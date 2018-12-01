@@ -33,12 +33,10 @@ void initKeys() {
 		keys[keyAmount - 1] = newKey(-0.102766f, 4.32769f, -49.8305f);
 		keys[keyAmount - 1] = newKey(81.0096f , -0.26221f, -0.561697f);
 	}
-	/*
-	keys[keyAmount-1] = newKey(-20.0f, 0.0f, 0.0f);
-	keys[keyAmount-1] = newKey(26.0f, -4.0, -62.0f);
-	keys[keyAmount - 1] = newKey(-72.0, -4.0, -60.0f);
-	keys[keyAmount - 1] = newKey(-90.0, 0.0, -120.0f);
-	*/
+
+	if (currentLevel == 3) {
+		keys[keyAmount - 1] = newKey(-192.0f, 48.0f, 0.0f);
+	}
 	
 }
 

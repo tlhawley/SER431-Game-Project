@@ -160,6 +160,8 @@ void initBaseModels() {
 		//Cboxes[CboxAmount - 1] = newCBox(-20, -3.2, 10, 1.9829, 20, 6.42671);
 		baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, -10, 0, 90, 0, 4000.0, 17); // hub portal LV 2 open
 		//baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, -10, 0, 90, 0, 4000.0, 18); // hub portal LV 2 closed
+
+		baseModels[baseModelAmount - 1] = newBaseModel(-28, -4.2, 0, 0, 90, 0, 4000.0, 17); // hub portal LV 3 open
 	}
 
 	if (currentLevel == 1) { // level 1
@@ -180,6 +182,16 @@ void initBaseModels() {
 																									// TODO: Add conditions for the portals to open, close, or mark complete based on what levels are unlocked
 																									//baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, 10, 0, 90, 0, 4000.0, 17); // hub portal LV 1
 																									//baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, -10, 0, 90, 0, 4000.0, 18); // hub portal LV 2
+	}
+
+	if (currentLevel == 3) { // level 3
+		baseModels[baseModelAmount - 1] = newBaseModel(0, 0, 0, 0, 0, 0, 4000.0, 21); // level 3 walls
+
+		baseModels[baseModelAmount - 1] = newBaseModel(-256.0f, 64.0f, -4.0f, 0, 0, 0, 4000.0, 17); // portal
+
+																									  // TODO: Add conditions for the portals to open, close, or mark complete based on what levels are unlocked
+																									  //baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, 10, 0, 90, 0, 4000.0, 17); // hub portal LV 1
+																									  //baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, -10, 0, 90, 0, 4000.0, 18); // hub portal LV 2
 	}
 
 	/*

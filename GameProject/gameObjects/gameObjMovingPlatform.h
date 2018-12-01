@@ -100,18 +100,24 @@ void initMovingPlatforms() {
 
 	// LV 0 Hub world
 	if (currentLevel == 0) {
-
-		// hub map walls
 		//movingPlatforms[movingPlatformAmount - 1] = newMovingPlatform(129, 0.0, 0.0, 2, 20, 300);
 
 	}
 
 
-	// LV 1 Platforms
-	if (currentLevel == 1) {
+	// LV 3 Platforms
+	if (currentLevel == 3) {
 
 		// portal collider
-		//movingPlatforms[movingPlatformAmount - 1] = newMovingPlatform(-1.0f, 30.0f, 41.0f, 6.42671, 20, 1.9829);
+		movingPlatforms[movingPlatformAmount - 1] = newMovingPlatform(-54, -1.5, 0, -10, -1.5, 0, 0, 5, 0, 0, -5, 0, 1, 50, 1000);
+
+		movingPlatforms[movingPlatformAmount - 1] = newMovingPlatform(-64, -1.5, -10, -64, 18.5, -54, 0, 5, 0, 0, -5, 0, 1, 50, 1000);
+
+		movingPlatforms[movingPlatformAmount - 1] = newMovingPlatform(-74, 18.5, -64, -118, 46.5, -64, 0, 5, 0, 0, -5, 0, 1, 50, 1000);
+
+		movingPlatforms[movingPlatformAmount - 1] = newMovingPlatform(-128, 46.5, -54, -128, 46.5, -10, 0, 5, 0, 0, -5, 0, 1, 50, 1000);
+
+		movingPlatforms[movingPlatformAmount - 1] = newMovingPlatform(-138, 46.5, -0, -182, 46.5, 0, 0, 5, 0, 0, -5, 0, 1, 50, 1000);
 
 	}
 

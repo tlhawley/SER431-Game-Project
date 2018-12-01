@@ -109,6 +109,19 @@ void initGems() {
 
 	}
 
+	// level 3
+	if (currentLevel == 3) {
+		gems[gemAmount - 1] = newGem(-256.0f, 64.0f, 39.0f);
+		gems[gemAmount - 1] = newGem(-256.0f, 64.0f, 35.0f);
+		gems[gemAmount - 1] = newGem(-256.0f, 64.0f, 31.0f);
+		gems[gemAmount - 1] = newGem(-256.0f, 64.0f, 27.0f);
+		gems[gemAmount - 1] = newGem(-256.0f, 64.0f, 23.0f);
+		gems[gemAmount - 1] = newGem(-256.0f, 64.0f, 19.0f);
+		gems[gemAmount - 1] = newGem(-256.0f, 64.0f, 15.0f);
+		gems[gemAmount - 1] = newGem(-256.0f, 64.0f, 11.0f);
+
+	}
+
 }
 
 void actionGems() {

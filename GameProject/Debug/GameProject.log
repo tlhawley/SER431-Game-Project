@@ -6,8 +6,11 @@ c:\users\onii-chan\documents\github\ser431-game-project\gameproject\meshobjconve
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\noisegenerator.h(132): warning C4018: '<': signed/unsigned mismatch
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\noisegenerator.h(147): warning C4018: '<': signed/unsigned mismatch
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\fractalscreator.h(11): warning C4101: 'savedseed': unreferenced local variable
-c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameobjects\gameobjmovingplatform.h(153): warning C4101: 'magnitude': unreferenced local variable
-c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameobjects\gameobjmovingplatform.h(152): warning C4101: 'direction': unreferenced local variable
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\fractalscreator.h(50): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\fractalscreator.h(53): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\fractalscreator.h(54): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameobjects\gameobjmovingplatform.h(159): warning C4101: 'magnitude': unreferenced local variable
+c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameobjects\gameobjmovingplatform.h(158): warning C4101: 'direction': unreferenced local variable
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\displayall.h(114): warning C4018: '>=': signed/unsigned mismatch
 c:\users\onii-chan\documents\github\ser431-game-project\gameproject\gameproject.cpp(295): warning C4018: '<': signed/unsigned mismatch
-  GameProject.vcxproj -> C:\Users\Onii-Chan\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe
+  GameProject.vcxproj -> C:\Users\Onii-chan\Documents\GitHub\SER431-Game-Project\Debug\GameProject.exe

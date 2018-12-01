@@ -37,6 +37,7 @@ void initPortals() {
 	if (currentLevel == 0) {
 		portals[portalAmount - 1] = newPortal(-18.5f, -2.0f, 10.0f, 1);
 		portals[portalAmount - 1] = newPortal(-18.5f, -2.0f, -10.0f, 2);
+		portals[portalAmount - 1] = newPortal(-26.5f, -3.0f, 0.0f, 3);
 	}
 
 	if (currentLevel == 1) {
@@ -45,6 +46,10 @@ void initPortals() {
 
 	if (currentLevel == 2) {
 		portals[portalAmount - 1] = newPortal(-12.5f, 5.77f, -75.0f, 0);
+	}
+
+	if (currentLevel == 3) {
+		portals[portalAmount - 1] = newPortal(-256.0f, 64.0f, -2.5f, 0);
 	}
 
 }

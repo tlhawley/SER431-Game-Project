@@ -38,6 +38,13 @@ void initHealthPacks() {
 		healthPacks[healthPackAmount - 1] = newHealthPack(-188.4f, 0.5f, -24.4f);
 	}
 
+
+	if (currentLevel == 3) {
+		healthPacks[healthPackAmount - 1] = newHealthPack(-256.0f, 64.0f, 2.0f);
+		healthPacks[healthPackAmount - 1] = newHealthPack(-252.0f, 64.0f, 2.0f);
+		healthPacks[healthPackAmount - 1] = newHealthPack(-260.0f, 64.0f, 2.0f);
+	}
+
 	//healthPacks[0] = newHealthPack(-17.0f, 0.0f, 8.0f);
 
 	// Intro to graphics 332 map

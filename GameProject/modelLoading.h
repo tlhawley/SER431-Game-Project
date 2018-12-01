@@ -98,7 +98,7 @@ GLuint2 meshLV1MapUI;
 GLuint2 meshLV1;
 GLuint2 meshLV2MapUI;
 GLuint2 meshLV2;
-
+GLuint2 meshLV3;
 
 GLuint2 meshMovingPlatform;
 
@@ -156,7 +156,7 @@ void loadModels() {
 
 	printf("Loading\n");
 
-	GLuint texture_array[42];
+	GLuint texture_array[43];
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 0, 1, 0);
 	blankTexture = texture_array[0];
 
@@ -213,7 +213,7 @@ void loadModels() {
 	loadBMP_custom(texture_array, "./src/textures/LV02_map512.bmp", 41, 1, 0);
 	
 
-
+	loadBMP_custom(texture_array, "./src/textures/Level3Texture.bmp", 42, 1, 0);
 
 
 
@@ -443,6 +443,10 @@ void loadModels() {
 	meshLV2 = loadObj("./src/obj files/Level02.obj", texture_array[40]);
 	meshLV2MapUI = loadObj("./src/obj files/Level02_Map.obj", texture_array[41]);
 
+	//LV 3 Map
+	meshLV3 = loadObj("./src/obj files/Level03.obj", texture_array[42]);
+	//meshLV3MapUI = loadObj("./src/obj files/Level03_Map.obj", texture_array[43]);
+
 }
 
 
@@ -555,8 +559,12 @@ void swapLists() {
 	//LV 1 map
 	meshLV1MapUI = swapGLuint2(meshLV1MapUI);
 	meshLV1 = swapGLuint2(meshLV1);
+	//LV 2 map
 	meshLV2 = swapGLuint2(meshLV2);
 	meshLV2MapUI = swapGLuint2(meshLV2MapUI);
+	//LV 3 map
+	meshLV3 = swapGLuint2(meshLV3);
+	//meshLV3MapUI = swapGLuint2(meshLV3MapUI);
 }
 
 GLuint2 swapGLuint2(GLuint2 list) {

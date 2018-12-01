@@ -76,6 +76,10 @@ void initDoorway() {
 		doorways[doorwayAmount - 1] = newDoorway(-34.0, 0, 0, 90, 1, false);
 	}
 
+	if (currentLevel == 3) {
+		doorways[doorwayAmount - 1] = newDoorway(-128.0, 48.0, 10, 0, 1, false);
+	}
+
 	 // Intro to graphics 332 map
 	/*
 	doorways[doorwayAmount-1] = newDoorway(-30,0,0,90,1,false);

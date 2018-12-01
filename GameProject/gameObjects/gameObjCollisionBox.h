@@ -421,220 +421,43 @@ void initCBoxes() {
 
 
 
+	if (currentLevel == 3) {
+
+		Cboxes[CboxAmount - 1] = newCBox(-256.0f, 64.0f, -4.0f, 6.42671, 20, 1.9829);
+
+		Cboxes[CboxAmount - 1] = newCBox(0.0, -26.5, 0.0, 16.0, 53.0, 16.0);
+		Cboxes[CboxAmount - 1] = newCBox(-64.0, -26.5, 0.0, 16.0, 53.0, 16.0);
+		Cboxes[CboxAmount - 1] = newCBox(-128.0, -2.5, 24.0, 16.0, 101.0, 64.0);
+		Cboxes[CboxAmount - 1] = newCBox(-64.0, -16.5, -64.0, 16.0, 73.0, 16.0);
+		Cboxes[CboxAmount - 1] = newCBox(-128.0, -2.5, -64.0, 16.0, 101.0, 16.0);
+		Cboxes[CboxAmount - 1] = newCBox(-192.0, -2.5, 0.0, 16.0, 101.0, 16.0);
+		Cboxes[CboxAmount - 1] = newCBox(-133.5, 56.0, 31.0, 5.0, 16.0, 50.0);
+		Cboxes[CboxAmount - 1] = newCBox(-122.5, 56.0, 31.0, 5.0, 16.0, 50.0);
+		Cboxes[CboxAmount - 1] = newCBox(-128.0, 14.0, 64.0, 16.0, 134.0, 16.0);
+		Cboxes[CboxAmount - 1] = newCBox(-128.0, 49.0, 42.0, 6.0, 2.0, 28.0);
+		Cboxes[CboxAmount - 1] = newCBox(-128.0, 51.0, 44.0, 6.0, 2.0, 24.0);
+		Cboxes[CboxAmount - 1] = newCBox(-128.0, 53.0, 46.0, 6.0, 2.0, 20.0);
+		Cboxes[CboxAmount - 1] = newCBox(-128.0, 55.0, 48.0, 6.0, 2.0, 16.0);
+		Cboxes[CboxAmount - 1] = newCBox(-128.0, 57.0, 50.0, 6.0, 2.0, 12.0);
+		Cboxes[CboxAmount - 1] = newCBox(-128.0, 59.0, 52.0, 6.0, 2.0, 8.0);
+		Cboxes[CboxAmount - 1] = newCBox(-128.0, 61.0, 54.0, 6.0, 2.0, 4.0);
+		Cboxes[CboxAmount - 1] = newCBox(-133.5, 69.0, 25.0, 5.0, 10.0, 38.0);
+		Cboxes[CboxAmount - 1] = newCBox(-122.5, 69.0, 31.0, 5.0, 10.0, 50.0);
+		Cboxes[CboxAmount - 1] = newCBox(-192.0, 63.0, 50.0, 112.0, 2.0, 12.0);
+		Cboxes[CboxAmount - 1] = newCBox(-256.0, 5.5, 0.0, 16.0, 117.0, 16.0);
+		Cboxes[CboxAmount - 1] = newCBox(-256.0, 5.5, 50.0, 16.0, 117.0, 16.0);
+		Cboxes[CboxAmount - 1] = newCBox(-256.0, 63.0, 39.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-256.0, 63.0, 35.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-256.0, 63.0, 31.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-256.0, 63.0, 27.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-256.0, 63.0, 23.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-256.0, 63.0, 19.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-256.0, 63.0, 15.0, 2.0, 2.0, 2.0);
+		Cboxes[CboxAmount - 1] = newCBox(-256.0, 63.0, 11.0, 2.0, 2.0, 2.0);
+
+		
 
-
-
-
-
-
-	/*
-	Cboxes[CboxAmount - 1] = newCBox(0, 5, 31, 20, 10, 2); // white back wall
-	
-	
-	//Cboxes[CboxAmount - 1] = newCBox(0, 5, -31, 20, 10, 2); // yellow back wall
-	Cboxes[CboxAmount - 1] = newCBox(6, 5, -30.25, 8, 10, 0.5); // green back wall
-	Cboxes[CboxAmount - 1] = newCBox(-6, 5, -30.25, 8, 10, 0.5); // green back wall
-	Cboxes[CboxAmount - 1] = newCBox(0, 7, -30.25, 4, 6, 0.5); // green back wall
-
-
-	Cboxes[CboxAmount - 1] = newCBox(31, 5, 0, 2, 10, 20); // red back wall
-
-	//Cboxes[CboxAmount - 1] = newCBox(-31, 5, 0, 2, 10, 20); // blue back wall solid
-	Cboxes[CboxAmount - 1] = newCBox(-30.25, 5, 6, 0.5, 10, 8); // blue back wall
-	Cboxes[CboxAmount - 1] = newCBox(-30.25, 5, -6, 0.5, 10, 8); // blue back wall
-	Cboxes[CboxAmount - 1] = newCBox(-30.25, 7, 0, 0.5, 6, 4); // blue back wall
-
-	//Cboxes[CboxAmount - 1] = newCBox(-30, 2, 2.4, 1.5, 4, 2.7); // Door Frame
-	//Cboxes[CboxAmount - 1] = newCBox(-30, 2, 2.625, 1.5, 4, 2.2); // Door Frame
-	//Cboxes[CboxAmount - 1] = newCBox(-30, 2, -2.625, 1.5, 4, 2.2); // Door Frame
-	//Cboxes[CboxAmount - 1] = newCBox(-30, 3.8, 0, 1.5, 1.6, 7.25); // Door Frame
-
-	//Cboxes[CboxAmount - 1] = newCBox(-30, 2, 2.625, 1.5, 4, 2.2); // Door Frame
-	//Cboxes[CboxAmount - 1] = newCBox(-30, 2, -2.625, 1.5, 4, 2.2); // Door Frame
-
-	Cboxes[CboxAmount - 1] = newCBox(-20, 5, -20, 20, 10, 20); // Corner 1
-	Cboxes[CboxAmount - 1] = newCBox(20, 5, -20, 20, 10, 20); // Corner 2
-	Cboxes[CboxAmount - 1] = newCBox(20, 5, 20, 20, 10, 20); // Corner 3
-	Cboxes[CboxAmount - 1] = newCBox(-20, 5, 20, 20, 10, 20); // Corner 4
-
-	//Cboxes[CboxAmount - 1] = newCBox(0, -1, 0, 60, 2, 60); // Floor
-	//Cboxes[CboxAmount - 1] = newCBox(0, 11, 0, 60, 2, 60); // Ceiling
-
-
-
-	// New Environment Floor
-	// Floor/Platform Collision
-	Cboxes[CboxAmount - 1] = newCBox(0, -2.0, 0, 20.0, 4.0, 20.0);
-	Cboxes[CboxAmount - 1] = newCBox(20, -2.0, 0, 20.0, 4.0, 20.0);
-	Cboxes[CboxAmount - 1] = newCBox(-20, -2.0, 0, 20.0, 4.0, 20.0);
-	Cboxes[CboxAmount - 1] = newCBox(0, -2.0, 20, 20.0, 4.0, 20.0);
-	Cboxes[CboxAmount - 1] = newCBox(0, -2.0, -20, 20.0, 4.0, 20.0);
-
-
-	Cboxes[CboxAmount - 1] = newCBox(-50.0, -2.0, 0, 40.0, 4.0, 9.0);
-	Cboxes[CboxAmount - 1] = newCBox(-90.0, -2.0, 0, 40.0, 4.0, 40.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(-90.0, -2.0, -38.0, 12.0, 4.0, 36.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(-90.0, -2.0, -60.0, 4.0, 4.0, 2.0);
-
-	// Platforms Semetric
-	Cboxes[CboxAmount - 1] = newCBox(-95.0, -3.0, -60.0, 2.0, 4.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-85.0, -3.0, -60.0, 2.0, 4.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-99.0, -4.0, -60.0, 2.0, 4.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-81.0, -4.0, -60.0, 2.0, 4.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-103.0, -5.0, -60.0, 2.0, 4.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-77.0, -5.0, -60.0, 2.0, 4.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-108.0, -6.0, -60.0, 4.0, 4.0, 4.0);
-	Cboxes[CboxAmount - 1] = newCBox(-72.0, -6.0, -60.0, 4.0, 4.0, 4.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(-90.0, -2.0, -82.0, 12.0, 4.0, 36.0);
-	Cboxes[CboxAmount - 1] = newCBox(-90.0, -2.0, -120.0, 40.0, 4.0, 40.0); // Room
-	Cboxes[CboxAmount - 1] = newCBox(-50.0, -2.0, -120.0, 40.0, 4.0, 9.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(0.0, -2.0, -120.0, 60.0, 4.0, 60.0); // Large Room
-
-	Cboxes[CboxAmount - 1] = newCBox(0.0, -2.0, -170.0, 40.0, 4.0, 40.0); // Back1 Room
-	Cboxes[CboxAmount - 1] = newCBox(0.0, -2.0, -210.0, 40.0, 4.0, 40.0); // Back2 Room
-
-	// more platforms
-	Cboxes[CboxAmount - 1] = newCBox(0.0, -2.0, -84.0, 12.0, 4.0, 12.0);
-	Cboxes[CboxAmount - 1] = newCBox(0.0, -2.0, -72.0, 8.0, 4.0, 8.0);
-	Cboxes[CboxAmount - 1] = newCBox(0.0, -2.0, -62.0, 8.0, 4.0, 8.0);
-	Cboxes[CboxAmount - 1] = newCBox(0.0, -2.0, -52.0, 8.0, 4.0, 8.0);
-	Cboxes[CboxAmount - 1] = newCBox(0.0, -2.0, -38.0, 8.0, 4.0, 16.0);
-
-
-
-
-
-
-	// Walls
-	// Hall 1
-	Cboxes[CboxAmount - 1] = newCBox(-50.0, 2.0, 6.5, 40.0, 12.0, 4.0);
-	Cboxes[CboxAmount - 1] = newCBox(-50.0, 2.0, -6.5, 40.0, 12.0, 4.0);
-
-	// Room 1
-	Cboxes[CboxAmount - 1] = newCBox(-70.0, 5.75, 0.0, 2.0, 4.5, 4.0);
-	Cboxes[CboxAmount - 1] = newCBox(-70.0, 2.0, -11.0, 2.0, 12.0, 18.0);
-	Cboxes[CboxAmount - 1] = newCBox(-70.0, 2.0, 11.0, 2.0, 12.0, 18.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(-110.0, 2.0, 0.0, 2.0, 12.0, 40.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(-90.0, 2.0, 20.0, 40.0, 12.0, 2.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(-90.0, 5.75, -20.0, 4.0, 4.5, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-101.0, 2.0, -20.0, 18.0, 12.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-79.0, 2.0, -20.0, 18.0, 12.0, 2.0);
-
-	// Room 2
-	Cboxes[CboxAmount - 1] = newCBox(-70.0, 5.75, -120.0, 2.0, 4.5, 4.0);
-	Cboxes[CboxAmount - 1] = newCBox(-70.0, 2.0, -131.0, 2.0, 12.0, 18.0);
-	Cboxes[CboxAmount - 1] = newCBox(-70.0, 2.0, -109.0, 2.0, 12.0, 18.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(-110.0, 2.0, -120.0, 2.0, 12.0, 40.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(-90.0, 2.0, -140.0, 40.0, 12.0, 2.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(-90.0, 5.75, -100.0, 4.0, 4.5, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-101.0, 2.0, -100.0, 18.0, 12.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-79.0, 2.0, -100.0, 18.0, 12.0, 2.0);
-
-	// Hall 2
-	Cboxes[CboxAmount - 1] = newCBox(-50.0, 2.0, -113.5, 40.0, 12.0, 4.0);
-	Cboxes[CboxAmount - 1] = newCBox(-50.0, 2.0, -126.5, 40.0, 12.0, 4.0);
-
-	// Room 3
-	Cboxes[CboxAmount - 1] = newCBox(-30.0, 5.75, -120.0, 2.0, 4.5, 4.0);
-	Cboxes[CboxAmount - 1] = newCBox(-30.0, 2.0, -103.0, 2.0, 12.0, 30.0);
-	Cboxes[CboxAmount - 1] = newCBox(-30.0, 2.0, -137.0, 2.0, 12.0, 30.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(30.0, 2.0, -120.0, 2.0, 12.0, 64.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(0.0, 5.75, -90.0, 4.0, 4.5, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-17.0, 2.0, -90.0, 30.0, 12.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(17.0, 2.0, -90.0, 30.0, 12.0, 2.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(0.0, 5.75, -150.0, 4.0, 4.5, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-17.0, 2.0, -150.0, 30.0, 12.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(17.0, 2.0, -150.0, 30.0, 12.0, 2.0);
-	
-	// Room 4&5
-	Cboxes[CboxAmount - 1] = newCBox(0.0, 5.75, -190.0, 4.0, 4.5, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(-11.0, 2.0, -190.0, 18.0, 12.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(11.0, 2.0, -190.0, 18.0, 12.0, 2.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(0.0, 2.0, -230.0, 40.0, 12.0, 2.0);
-
-	Cboxes[CboxAmount - 1] = newCBox(20.0, 2.0, -190.0, 2.0, 12.0, 80.0);
-	Cboxes[CboxAmount - 1] = newCBox(-20.0, 2.0, -190.0, 2.0, 12.0, 80.0);
-
-
-	// platforms south west
-	Cboxes[CboxAmount - 1] = newCBox(26.0, -6.0, -62.0, 4.0, 4.0, 4.0);
-	Cboxes[CboxAmount - 1] = newCBox(21.0, -5.0, -62.0, 2.0, 4.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(17.0, -4.0, -62.0, 2.0, 4.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(13.0, -3.0, -62.0, 2.0, 4.0, 2.0);
-	Cboxes[CboxAmount - 1] = newCBox(8.0, -2.0, -62.0, 4.0, 4.0, 2.0);
-	*/
-
-
-
-
-
-
-
-
-
-
-
-
-	/*
-	// Bridge
-	Cboxes[CboxAmount - 1] = newCBox(-65, -0.5, 0.0, 70, 1, 9);
-	Cboxes[CboxAmount - 1] = newCBox(-65, 0, 4.5, 70, 1.8, 0.5);
-	Cboxes[CboxAmount - 1] = newCBox(-65, 0, -4.5, 70, 1.8, 0.5);
-
-
-	// Bridge End
-	Cboxes[CboxAmount - 1] = newCBox(-110, -0.5, 0.0, 20, 1, 20);
-	Cboxes[CboxAmount - 1] = newCBox(-118.75, -0.5, 8.75, 2.5, 20, 2.5);
-	Cboxes[CboxAmount - 1] = newCBox(-101.25, -0.5, 8.75, 2.5, 20, 2.5);
-	Cboxes[CboxAmount - 1] = newCBox(-101.25, -0.5, -8.75, 2.5, 20, 2.5);
-	Cboxes[CboxAmount - 1] = newCBox(-118.75, -0.5, -8.75, 2.5, 20, 2.5);
-	*/
-
-	/*
-	Cboxes[CboxAmount - 1] = newCBox(-35, 0, 0.0, 10, 0.1, 10);
-
-	for (int i = 1; i < 50; i++) {
-		Cboxes[CboxAmount - 1] = newCBox(-35 - i * 10, 0, 0.0, 10, 0.1, 10);
 	}
-	*/
-
-
-
-	//Cboxes[CboxAmount-1] = newCBox(0, 0.5, -4, 1, 1, 1);
-	
-	/*
-	CboxAmount = 0;
-	for (int i = 0; i < 19; i++) {
-		Cboxes[i] = newCBox(0, i*0.1-1.9, i*0.2+2.3, 8, 4, 0.2);
-	}
-	*/
-	/*
-	Cboxes[19] = newCBox(22, 1, 8.0, 8, 2, 4);
-	for (int i = 20; i < 40; i++) {
-		Cboxes[i] = newCBox(22, (i-20)*0.1 - 1.9, -(i-20)*0.2 - 2.3, 8, 4, 0.2);
-	}
-	Cboxes[40] = newCBox(22, 1, -8.0, 8, 2, 4);
-	Cboxes[41] = newCBox(0, 0.5, -4, 1, 1, 1);
-	*/
-	/*
-	Cboxes[0] = newCBox(22, 2, 3, 6, 4, 4);
-	Cboxes[1] = newCBox(22, 1, -3, 6, 2, 4);
-	Cboxes[2] = newCBox(22, 0.5f, -5, 6, 1, 2);
-	*/
 
 }
 
@@ -654,11 +477,6 @@ void actionCBoxes() {
 			}
 		}
 		else {
-			/*
-			Cboxes[CboxAmount - 1].x = 0.0;
-			Cboxes[CboxAmount - 1].y = -10000.0;
-			Cboxes[CboxAmount - 1].z = 0.0;
-			*/
 		}
 		//setMaterialAdvanced(materialCollisionBox);
 		for (int i = 0; i < CboxAmount; i++) {
