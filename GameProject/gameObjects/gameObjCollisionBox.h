@@ -35,15 +35,6 @@ void initCBoxes() {
 
 	CboxAmount = 0;
 
-	/*
-	// Quiz 4 map
-	Cboxes[CboxAmount - 1] = newCBox(0.0, -10.0, 0.0, 200.0, 20.0, 200.0);
-	Cboxes[CboxAmount - 1] = newCBox(0.0, 0.0, 11.0, 60.0, 40.0, 2.0);
-	*/
-
-
-
-
 
 
 	// LV -1 intro Map
@@ -297,32 +288,12 @@ void initCBoxes() {
 		Cboxes[CboxAmount - 1] = newCBox(-99.0, 13.5, -20.5, 16.0, 1.0, 19.0);
 		Cboxes[CboxAmount - 1] = newCBox(-99.0, 14.5, -21.0, 16.0, 1.0, 18.0);
 
-		/*
-		Cboxes[CboxAmount - 1] = newCBox(-99.0, 16.0, -21.5, 16.0, 2.0, 17.0);
-		Cboxes[CboxAmount - 1] = newCBox(-99.0, 17.0, -22.0, 16.0, 2.0, 16.0);
-		Cboxes[CboxAmount - 1] = newCBox(-99.0, 18.0, -22.5, 16.0, 2.0, 15.0);
-		Cboxes[CboxAmount - 1] = newCBox(-99.0, 19.0, -23.0, 16.0, 2.0, 14.0);
-		Cboxes[CboxAmount - 1] = newCBox(-88.0, -16.5, -31.5, 38.0, 73.0, 29.0);
-		*/
 		Cboxes[CboxAmount - 1] = newCBox(-99.0, 15.5, -21.5, 16.0, 1.0, 17.0);
 		Cboxes[CboxAmount - 1] = newCBox(-99.0, 16.5, -22.0, 16.0, 1.0, 16.0);
 		Cboxes[CboxAmount - 1] = newCBox(-99.0, 17.5, -22.5, 16.0, 1.0, 15.0);
 		Cboxes[CboxAmount - 1] = newCBox(-99.0, 18.5, -23.0, 16.0, 1.0, 14.0);
 		Cboxes[CboxAmount - 1] = newCBox(-99.0, 19.5, -24.0, 16.0, 1.0, 14.0);
-		//Cboxes[CboxAmount - 1] = newCBox(-88.0, -16.5, -38.0, 38.0, 73.0, 29.0);
 
-		/*
-		Cboxes[CboxAmount - 1] = newCBox(-88.0, 20.5, -38.0, 38.0, 1.0, 16.0);
-		Cboxes[CboxAmount - 1] = newCBox(-80.0, 21.5, -38.0, 22.0, 1.0, 16.0);
-		Cboxes[CboxAmount - 1] = newCBox(-79.5, 22.5, -38.0, 21.0, 1.0, 16.0);
-		Cboxes[CboxAmount - 1] = newCBox(-79.0, 23.5, -38.0, 20.0, 1.0, 16.0);
-		Cboxes[CboxAmount - 1] = newCBox(-78.5, 24.5, -38.0, 19.0, 1.0, 16.0);
-		Cboxes[CboxAmount - 1] = newCBox(-78.0, 25.5, -38.0, 18.0, 1.0, 16.0);
-		Cboxes[CboxAmount - 1] = newCBox(-77.5, 26.5, -38.0, 17.0, 1.0, 16.0);
-		Cboxes[CboxAmount - 1] = newCBox(-77.0, 27.5, -38.0, 16.0, 1.0, 16.0);
-		Cboxes[CboxAmount - 1] = newCBox(-76.5, 28.5, -38.0, 15.0, 1.0, 16.0);
-		Cboxes[CboxAmount - 1] = newCBox(-76.0, 29.5, -38.0, 14.0, 1.0, 16.0);
-		*/
 
 		Cboxes[CboxAmount - 1] = newCBox(-88.0, 19.5, -38.0, 38.0, 1.0, 16.0);
 		Cboxes[CboxAmount - 1] = newCBox(-80.0, 20.5, -38.0, 22.0, 1.0, 16.0);
@@ -336,7 +307,6 @@ void initCBoxes() {
 		Cboxes[CboxAmount - 1] = newCBox(-76.0, 28.5, -38.0, 14.0, 1.0, 16.0);
 		Cboxes[CboxAmount - 1] = newCBox(-75.0, 29.5, -38.0, 14.0, 1.0, 16.0);
 
-		//Cboxes[CboxAmount - 1] = newCBox(-88.0, 22.5, -38.0, 38.0, 15.0, 16.0);
 		Cboxes[CboxAmount - 1] = newCBox(-18.5, -11.5, -38.0, 101.0, 83.0, 16.0);
 		Cboxes[CboxAmount - 1] = newCBox(-1.0, -11.5, 38.0, 16.0, 83.0, 16.0);
 		Cboxes[CboxAmount - 1] = newCBox(2.0, 28.0, 26.0, 4.0, 4.0, 4.0);
@@ -479,10 +449,7 @@ void actionCBoxes() {
 		}
 		else {
 		}
-		//setMaterialAdvanced(materialCollisionBox);
 		for (int i = 0; i < CboxAmount; i++) {
-			// Do not render collision boxes
-			//objPlacementTRS(drawBox, Cboxes[i].x, Cboxes[i].y, Cboxes[i].z, 0.0, 0.0, 0.0, Cboxes[i].sx, Cboxes[i].sy, Cboxes[i].sz);
 			if (camx > Cboxes[i].x - playerSize - Cboxes[i].sx / 2 && camx < Cboxes[i].x + playerSize + Cboxes[i].sx / 2) {
 				if (camy > Cboxes[i].y - playerSize - Cboxes[i].sy / 2 && camy < Cboxes[i].y + playerHeight + Cboxes[i].sy / 2) {
 					if (camz > Cboxes[i].z - playerSize - Cboxes[i].sz / 2 && camz < Cboxes[i].z + playerSize + Cboxes[i].sz / 2) {
@@ -491,11 +458,9 @@ void actionCBoxes() {
 							if (oz >= Cboxes[i].z - playerSize - Cboxes[i].sz / 2 || oz <= Cboxes[i].z + playerSize + Cboxes[i].sz / 2) {
 								if (oy <= Cboxes[i].y - playerSize + 0.2 - Cboxes[i].sy / 2) {
 									camy = Cboxes[i].y - playerSize - Cboxes[i].sy / 2;
-									//oy = y;
 								}
 								if (oy >= Cboxes[i].y + playerHeight - 0.2 + Cboxes[i].sy / 2) {
 									camy = Cboxes[i].y + playerHeight + Cboxes[i].sy / 2;
-									//oy = y;
 									camyv = 0.0f;
 									jumpFrame = 0;
 									canJump = true;
@@ -507,11 +472,9 @@ void actionCBoxes() {
 							if (oy >= Cboxes[i].y - playerSize - Cboxes[i].sy / 2 && oy <= Cboxes[i].y + playerHeight - 0.2 + Cboxes[i].sy / 2) {
 								if (oz <= Cboxes[i].z - playerSize - Cboxes[i].sz / 2) {
 									camz = Cboxes[i].z - playerSize - Cboxes[i].sz / 2;
-									//oz = z;
 								}
 								if (oz >= Cboxes[i].z + playerSize + Cboxes[i].sz / 2) {
 									camz = Cboxes[i].z + playerSize + Cboxes[i].sz / 2;
-									//oz = z;
 								}
 							}
 						}
@@ -521,11 +484,9 @@ void actionCBoxes() {
 							if (oy >= Cboxes[i].y - playerSize - Cboxes[i].sy / 2 && oy <= Cboxes[i].y + playerHeight - 0.2 + Cboxes[i].sy / 2) {
 								if (ox <= Cboxes[i].x - playerSize - Cboxes[i].sx / 2) {
 									camx = Cboxes[i].x - playerSize - Cboxes[i].sx / 2;
-									//ox = x;
 								}
 								if (ox >= Cboxes[i].x + playerSize + Cboxes[i].sx / 2) {
 									camx = Cboxes[i].x + playerSize + Cboxes[i].sx / 2;
-									//ox = x;
 								}
 							}
 						}

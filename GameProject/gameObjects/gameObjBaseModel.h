@@ -85,8 +85,6 @@ void initBaseModels() {
 		baseModels[baseModelAmount - 1] = newBaseModel(-138.49, 0.000015, -15.5867, 0, 0, 0, 70.0, 7); // LV1 Grass
 		baseModels[baseModelAmount - 1] = newBaseModel(-145.209, 0.000015, -12.947, 0, 0, 0, 70.0, 7); // LV1 Grass
 		baseModels[baseModelAmount - 1] = newBaseModel(-151.329, 0.000015, -11.0272, 0, 0, 0, 70.0, 7); // LV1 Grass
-		//baseModels[baseModelAmount - 1] = newBaseModel(-112.592, 0.000015, -15.5867, 0, 0, 0, 70.0, 7); // LV1 Grass
-		//baseModels[baseModelAmount - 1] = newBaseModel(-118.81, 0.000015, -5.04331, 0, 0, 0, 70.0, 7); // LV1 Grass
 
 		baseModels[baseModelAmount - 1] = newBaseModel(20.286, 0.000015, 1.30327, 0, 0, 0, 70.0, 7); // LV1 Grass
 		baseModels[baseModelAmount - 1] = newBaseModel(23.9635, 0.000015, -13.1652, 0, 0, 0, 70.0, 7); // LV1 Grass
@@ -138,9 +136,6 @@ void initBaseModels() {
 		baseModels[baseModelAmount - 1] = newBaseModel(-145.209, 0.000015, -34.3717, 0, 0, 0, 70.0, 7); // LV1 Grass
 		baseModels[baseModelAmount - 1] = newBaseModel(-151.329, 0.000015, -32.4519, 0, 0, 0, 70.0, 7); // LV1 Grass
 		baseModels[baseModelAmount - 1] = newBaseModel(-159.051, 0.000015, -35.2836, 0, 0, 0, 70.0, 7); // LV1 Grass
-		//baseModels[baseModelAmount - 1] = newBaseModel(-99.4104, 0.000015, -36.8129, 0, 0, 0, 70.0, 7); // LV1 Grass
-		//baseModels[baseModelAmount - 1] = newBaseModel(-106.007, 0.000015, -37.3569, 0, 0, 0, 70.0, 7); // LV1 Grass
-		//baseModels[baseModelAmount - 1] = newBaseModel(-111.163, 0.000015, -48.0046, 0, 0, 0, 70.0, 7); // LV1 Grass
 
 
 
@@ -155,75 +150,28 @@ void initBaseModels() {
 	if (currentLevel == 0) { // hub world
 		baseModels[baseModelAmount - 1] = newBaseModel(0, 0, 0, 0, 0, 0, 4000.0, 16); // hub walls
 
-		// TODO: Add conditions for the portals to open, close, or mark complete based on what levels are unlocked
 		baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, 10, 0, 90, 0, 4000.0, 17); // hub portal LV 1
-		//Cboxes[CboxAmount - 1] = newCBox(-20, -3.2, 10, 1.9829, 20, 6.42671);
 		baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, -10, 0, 90, 0, 4000.0, 17); // hub portal LV 2 open
-		//baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, -10, 0, 90, 0, 4000.0, 18); // hub portal LV 2 closed
-
 		baseModels[baseModelAmount - 1] = newBaseModel(-28, -4.2, 0, 0, 90, 0, 4000.0, 17); // hub portal LV 3 open
 	}
 
-	if (currentLevel == 1) { // level 1
+	if (currentLevel == 1) { // level 1 - portal
 		baseModels[baseModelAmount - 1] = newBaseModel(0, 0, 0, 0, 0, 0, 4000.0, 19); // level 1 walls
 
 		baseModels[baseModelAmount - 1] = newBaseModel(-1.0f, 30.0f, 41.0f, 0, 180, 0, 4000.0, 17); // portal
-
-																					  // TODO: Add conditions for the portals to open, close, or mark complete based on what levels are unlocked
-		//baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, 10, 0, 90, 0, 4000.0, 17); // hub portal LV 1
-		//baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, -10, 0, 90, 0, 4000.0, 18); // hub portal LV 2
 	}
 
 	if (currentLevel == 2) { // level 2
 		baseModels[baseModelAmount - 1] = newBaseModel(0, 0, 0, 0, 0, 0, 4000.0, 20); // level 2 walls
 
 		baseModels[baseModelAmount - 1] = newBaseModel(-11.0f, 5.77f, -75.0f, 0, -90, 0, 4000.0, 17); // portal
-
-																									// TODO: Add conditions for the portals to open, close, or mark complete based on what levels are unlocked
-																									//baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, 10, 0, 90, 0, 4000.0, 17); // hub portal LV 1
-																									//baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, -10, 0, 90, 0, 4000.0, 18); // hub portal LV 2
 	}
 
 	if (currentLevel == 3) { // level 3
 		baseModels[baseModelAmount - 1] = newBaseModel(0, 0, 0, 0, 0, 0, 4000.0, 21); // level 3 walls
 
 		baseModels[baseModelAmount - 1] = newBaseModel(-256.0f, 64.0f, -4.0f, 0, 0, 0, 4000.0, 17); // portal
-
-																									  // TODO: Add conditions for the portals to open, close, or mark complete based on what levels are unlocked
-																									  //baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, 10, 0, 90, 0, 4000.0, 17); // hub portal LV 1
-																									  //baseModels[baseModelAmount - 1] = newBaseModel(-20, -3.2, -10, 0, 90, 0, 4000.0, 18); // hub portal LV 2
 	}
-
-	/*
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++) {
-			if (j % 2 == 0 && i % 2 == 0) {
-				baseModels[baseModelAmount - 1] = newBaseModel(8 + i * 4.0, 0.0f, 20.0f + j * 4.0, 0.0f, 180.0f, 0.0f, 400.0, 6); // Tree Models
-			}
-			baseModels[baseModelAmount - 1] = newBaseModel(8 + i * 4.0, 0.0f, 20.0f + j * 4.0, 0.0f, 180.0f, 0.0f, 400.0, 7); // Grass Models
-		}
-	}
-	*/
-
-	/*
-	// Intro to graphics 332 map
-	for (int i = 0; i < 4; i++) {
-	for (int j = 0; j < 4; j++) {
-		baseModels[baseModelAmount - 1] = newBaseModel(-8 + i * 4.0, 0.0f, -128.0f + j * 4.0, 0.0f, 180.0f, 0.0f, 400.0, 1);
-	}
-	}
-	baseModels[baseModelAmount -1] = newBaseModel(20.0f, 0.0f, 8.0f, 0.0f, 180.0f, 0.0f, 400.0, 4);
-	baseModels[baseModelAmount - 1] = newBaseModel(-90.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 400.0, 2);
-	baseModels[baseModelAmount - 1] = newBaseModel(-90.0f, 35.0f, 0.0f, 0.0f, 0.0f, 0.0f, 400.0, 3);
-
-	for (int i = 0; i < 5; i++) {
-		baseModels[baseModelAmount - 1] = newBaseModel(-110.0 +i*4.0f, 0.0f, -130.0f, 0.0f, 180.0f, 0.0f, 400.0, 5);
-	}
-
-	*/
-
-
-	
 
 }
 
@@ -231,7 +179,6 @@ void displayBaseModels() {
 	for (int i = 0; i < baseModelAmount; i++) {
 		if (abs(camx - baseModels[i].x) < baseModels[i].cullRange && abs(camz - baseModels[i].z) < baseModels[i].cullRange) { // only render models if they are within the cull range
 			baseModelID = baseModels[i].model;
-			//if (baseModels[i].model == 3) {
 			objPlacementTRS(drawBaseModel, baseModels[i].x, baseModels[i].y, baseModels[i].z, baseModels[i].ax , baseModels[i].ay, baseModels[i].az, 1.0, 1.0, 1.0);
 		}
 	}

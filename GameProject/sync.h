@@ -56,59 +56,6 @@ void sync() {
 		
 		mouseWait = false;
 	}
-	
-
-
-
-
-
-
-
-	/*
-	if (pKey == true) { // the mouse is being held down
-		pWait = true;
-	}
-	if (pWait == true && pKey == false) { // the mouse has been released - pKey replaced (mouseDown)
-
-		//buttonMouseActive = 0;
-
-
-		//actionButtonUI();
-
-
-
-		//if (buttonMouseActive == 0) {
-
-			if (lockMouse == true) {
-				lockMouse = false;
-				glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
-				mouseOX = width / 2;
-				mouseOY = height / 2;
-				mouseX = mouseOX;
-				mouseY = mouseOY;
-				glutWarpPointer(width / 2, height / 2);
-			}
-			else {
-				glutSetCursor(GLUT_CURSOR_NONE);
-				mouseOX = width / 2;
-				mouseOY = height / 2;
-				mouseX = mouseOX;
-				mouseY = mouseOY;
-				glutWarpPointer(width / 2, height / 2);
-				lockMouse = true;
-			}
-		//}
-		pWait = false;
-	}
-	*/
-
-
-
-
-
-
-
-
 
 
 	// Roughly syncs the framerate to 60 fps

@@ -1,7 +1,4 @@
 
-
-//GLuint meshFloor;
-
 GLuint2 displayListMaterialTest1;
 GLuint2 displayListClockFrame;
 GLuint2 displayListClockWhite;
@@ -17,9 +14,6 @@ GLuint2 meshRoomWall2;
 
 GLuint2 meshBox;
 
-//GLuint meshUIMap;
-//GLuint meshUIMapH;
-
 GLuint2 meshGem;
 GLuint2 meshKey;
 GLuint2 meshPorsche;
@@ -30,8 +24,6 @@ GLuint2 meshGear2;
 
 GLuint2 meshPortal;
 GLuint2 meshPortalClosed;
-//GLuint meshPortalE;
-//GLuint meshPortalGlow;
 
 GLuint2 meshFloor;
 GLuint2 meshWall;
@@ -63,8 +55,6 @@ GLuint2 meshLightBulb;
 
 GLuint2 meshBulb;
 
-//GLuint meshCharacterStanding01;
-//GLuint meshCharacterForward01;
 GLuint2 meshCharacterFrames[31];
 
 
@@ -117,14 +107,6 @@ void loadModels();
 void drawGear1();
 void drawGear2();
 
-/*
-struct meshTextured {
-	Mesh* aMesh;
-	GLuint textureID;
-};*/
-
-//#define maxModels 100
-//meshTextured meshArray[maxModels];
 
 GLuint2 loadObj(char const* file, GLuint textureID);
 
@@ -134,8 +116,6 @@ GLuint blankTexture;
 GLuint2 loadObj(char const* file, GLuint textureID) {
 	Mesh* aMesh = loadFile(file);
 	if (aMesh == NULL) exit(1);
-	//meshArray[uniqueMeshID].aMesh = aMesh;
-	//meshArray[uniqueMeshID].textureID = textureID;
 	uniqueMeshID = uniqueMeshID + 2;
 	return meshToDisplayList(aMesh, uniqueMeshID, textureID, blankTexture);
 }
@@ -152,6 +132,7 @@ Mesh* meshParticlePlane;
 Mesh* meshParticleRain;
 
 
+// 3, 22, 23 - null
 
 void loadModels() {
 
@@ -163,7 +144,6 @@ void loadModels() {
 
 	loadBMP_custom(texture_array, "./src/textures/nullTexture.bmp", 1, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/Spikes.bmp", 2, 1, 0);
-	//loadBMP_custom(texture_array, "./src/textures/CheckerTiles.bmp", 3, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/door.bmp", 5, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/gateTexture.bmp", 6, 1, 0);
 	loadBMP_custom(texture_array, "./src/textures/SkyBox.bmp", 9, 1, 0);
@@ -183,8 +163,6 @@ void loadModels() {
 
 	// particle images
 	loadBMP_custom(texture_array, "./src/textures/Particle Images/smoke.bmp", 21, 1, 1);
-	//loadBMP_custom(texture_array, "./BMP files/oldbox.bmp", 22, 0);
-	//loadBMP_custom(texture_array, "./src/textures/oldbox.bmp", 23, 1, 1);
 	loadBMP_custom(texture_array, "./src/textures/Particle Images/flame05.bmp", 23, 1, 1);
 	loadBMP_custom(texture_array, "./src/textures/Particle Images/snowflake.bmp", 24, 1, 1);
 	loadBMP_custom(texture_array, "./src/textures/Particle Images/bubble.bmp", 25, 1, 1);
@@ -219,56 +197,9 @@ void loadModels() {
 
 
 
-
-
-
-
-	/*
-	GLuint loadObj(char const* file, GLuint textureID) {
-		Mesh* aMesh = loadFile(file);
-		if (aMesh == NULL) exit(1);
-		uniqueMeshID = uniqueMeshID + 1;
-		return meshToDisplayList(aMesh, uniqueMeshID, textureID);
-	}
-
-	// Function used for loading a mesh and returning the mesh instead of the meshID / displayListID
-	Mesh* loadObjMesh(char const* file) {
-		Mesh* aMesh = loadFile(file);
-		if (aMesh == NULL) exit(1);
-		return aMesh;
-	}
-	*/
-
-
-
 	// Load particle mesh & images
 	meshParticlePlane = loadObjMesh("./src/obj files/ParticlePlane.obj");
 	meshParticleRain = loadObjMesh("./src/obj files/ParticleRain.obj");
-
-
-	/*
-	uniqueMeshID = uniqueMeshID + 1;
-	displayParticlePlane = meshToDisplayList(meshParticlePlane, uniqueMeshID, 21, 0);
-	uniqueMeshID = uniqueMeshID + 2;
-	displayParticlePlaneFlames = meshToDisplayList(meshParticlePlane, uniqueMeshID, 23, 0);
-	uniqueMeshID = uniqueMeshID + 2;
-	displayParticlePlaneSnow = meshToDisplayList(meshParticlePlane, uniqueMeshID, 24, 0);
-	uniqueMeshID = uniqueMeshID + 2;
-	displayParticlePlaneBubbles = meshToDisplayList(meshParticlePlane, uniqueMeshID, 25, 0);
-	uniqueMeshID = uniqueMeshID + 2;
-	displayParticlePlaneAsh = meshToDisplayList(meshParticlePlane, uniqueMeshID, 26, 0);
-	uniqueMeshID = uniqueMeshID + 2;
-	displayParticlePlaneWaterfallSub = meshToDisplayList(meshParticlePlane, uniqueMeshID, 27, 0);
-	uniqueMeshID = uniqueMeshID + 2;
-	displayParticlePlaneLeaves = meshToDisplayList(meshParticlePlane, uniqueMeshID, 28, 0);
-	uniqueMeshID = uniqueMeshID + 2;
-	displayParticlePlaneFlameSparks = meshToDisplayList(meshParticlePlane, uniqueMeshID, 29, 0);
-	uniqueMeshID = uniqueMeshID + 2;
-	displayParticleRain = meshToDisplayList(meshParticleRain, uniqueMeshID, 30, 0);
-	uniqueMeshID = uniqueMeshID + 2;
-	displayParticlePlaneRing = meshToDisplayList(meshParticlePlane, uniqueMeshID, 31, 0);
-	*/
-	
 	
 	displayParticlePlane = loadObj("./src/obj files/ParticlePlane.obj", texture_array[21]);
 	displayParticlePlaneFlames = loadObj("./src/obj files/ParticlePlane.obj", texture_array[23]);
@@ -280,108 +211,31 @@ void loadModels() {
 	displayParticlePlaneFlameSparks = loadObj("./src/obj files/ParticlePlane.obj", texture_array[29]);
 	displayParticleRain = loadObj("./src/obj files/ParticleRain.obj", texture_array[30]);
 	displayParticlePlaneRing = loadObj("./src/obj files/ParticlePlane.obj", texture_array[31]);
-	
-
-	/* // images currently not in use
-	//texture_from_file(&texture_array[4], "./src/textures/bricks.bmp");
-	//texture_from_file(&texture_array[7], "./src/textures/wood.bmp");
-	//texture_from_file(&texture_array[8], "./src/textures/RoughTexture.bmp");
-	//texture_from_file(&texture_array[12], "./src/textures/DirtGrass.bmp");
-	*/
-
-
-	//displayListMaterialTest1 = loadObj("./src/obj files/Map20.obj", texture_array[0]);
-
-	/*
-	displayListClockFrame = loadObj("./src/obj files/ClockFrame.obj", texture_array[0]);
-
-	displayListClockWhite = loadObj("./src/obj files/ClockWhite.obj", texture_array[0]);
-	*/
 
 	meshSpikes = loadObj("./src/obj files/Spikes2.obj", texture_array[2]);
 
 	meshDoorFrame = loadObj("./src/obj files/Gate.obj", texture_array[6]);
 
-	//meshDoorLeft = loadObj("./src/obj files/DoorRight3.obj", texture_array[5]);
-
-	//meshDoorRight = loadObj("./src/obj files/DoorLeft3.obj", texture_array[5]);
-
-	//meshDoorLock = loadObj("./src/obj files/DoorLock3.obj", texture_array[0]);
-
-	/*
-	meshRoomWall1 = loadObj("./src/obj files/RoomWall1Colored.obj", texture_array[0]);
-
-	meshRoomWall2 = loadObj("./src/obj files/RoomWall2Colored.obj", texture_array[0]);
-	*/
-
 	meshBox = loadObj("./src/obj files/box.obj", texture_array[0]);
-
-	//meshUIMap = loadObj("./src/obj files/Map18_map.obj", texture_array[0]);
-	//meshUIMap = loadObj("./src/obj files/q4_Map.obj", texture_array[3]);
 
 	meshGem = loadObj("./src/obj files/Gem.obj", texture_array[0]);
 
 	meshKey = loadObj("./src/obj files/Key.obj", texture_array[0]);
 
-	//meshPorsche = loadObj("./src/obj files/porsche.obj", texture_array[0]);
-
-	//meshAL = loadObj("./src/obj files/al.obj", texture_array[0]);
-
-	//meshGear1 = loadObj("./src/obj files/Gear1.obj", texture_array[0]);
-
-	//meshGear2 = loadObj("./src/obj files/Gear2.obj", texture_array[0]);
-
-	//meshPortal = loadObj("./src/obj files/Portal.obj", texture_array[0]);
-
-	//meshFloor = loadObj("./src/obj files/Map18_Floor.obj", texture_array[3]);
-	
-	//meshWall = loadObj("./src/obj files/Map18Wall.obj", texture_array[4]);
-
-	//meshBench = loadObj("./src/obj files/furniture/Bench.obj", texture_array[7]);
-
-	//meshChair = loadObj("./src/obj files/furniture/Chair.obj", texture_array[7]);
-
-	//hangingLamp = loadObj("./src/obj files/furniture/hangingLamp.obj", texture_array[0]);
-	
-	//hangingLampE = loadObj("./src/obj files/furniture/hangingLampE.obj", texture_array[0]);
-
-	//meshCouch = loadObj("./src/obj files/furniture/Couch.obj", texture_array[0]);
-
-	//meshDesk = loadObj("./src/obj files/furniture/Desk.obj", texture_array[7]);
-
 	meshSkyBox = loadObj("./src/obj files/CubeMap.obj",texture_array[9]);
 
 	meshABox = loadObj("./src/obj files/aBox.obj", texture_array[1]);
-
-	//meshq3MirrorRoom = loadObj("./src/obj files/q3MirrorRoom.obj", texture_array[3]);
-
-	//meshq3MirrorPlane = loadObj("./src/obj files/q3MirrorPlane.obj", texture_array[3]);
 
 	meshTree = loadObj("./src/obj files/LowPolyTree.obj", texture_array[10]);
 
 	meshGrassCluster = loadObj("./src/obj files/GrassCluster.obj", texture_array[11]);
 
-
-	// Quiz 4 models
-	//meshStar = loadObj("./src/obj files/star.obj", texture_array[0]);
-
-	//meshBigRock = loadObj("./src/obj files/bigRock.obj", texture_array[0]);
-
-	//meshQ4Map = loadObj("./src/obj files/q4_02.obj", texture_array[3]);
-
 	meshLightBulb = loadObj("./src/obj files/LightBulb.obj", texture_array[13]);
-
-	//meshBulb = loadObj("./src/obj files/bulb.obj", texture_array[0]);
-
-
 
 	meshMovingPlatform = loadObj("./src/obj files/MovingPlatform.obj", texture_array[38]);
 
 	meshFireball = loadObj("./src/obj files/Fireball.obj", texture_array[39]);
 
-
-	// Level 1 - Forest Grass
-	//meshLV1ForestGrass = loadObj("./src/obj files/LV1Grass.obj", texture_array[11]);
 	// Level 1 - Forest Trees
 	meshLV1ForestTrees = loadObj("./src/obj files/LV1Trees.obj", texture_array[10]);
 	// Level 1 - Forest Rocks
@@ -396,11 +250,8 @@ void loadModels() {
 	meshLV1BackgroundRocks = loadObj("./src/obj files/LV1BackgroundRocks.obj", texture_array[19]);
 	meshLV1WaterMirror = loadObj("./src/obj files/LV1WaterMirror.obj", texture_array[0]);
 
-
-	//meshCharacterStanding01 = loadObj("./src/obj files/CharacterStanding01.obj", texture_array[20]);
-	//meshCharacterForward01 = loadObj("./src/obj files/CharacterForward01.obj", texture_array[20]);
-
 	
+	// character animation frames
 	meshCharacterFrames[0] = loadObj("./src/obj files/CharacterStanding01.obj", texture_array[20]);
 	for (int i = 1; i < 26; i++) {
 		std::string str = "./src/obj files/CharacterRun/Main Character _ Pose_Run_B" + std::to_string(i) + ".obj";
@@ -413,7 +264,6 @@ void loadModels() {
 		meshCharacterFrames[i+25] = loadObj(c, texture_array[20]);
 	}
 	
-
 	
 	// heart UI models
 	meshHeartUI[0] = loadObj("./src/obj files/HeartUI01.obj", texture_array[18]);

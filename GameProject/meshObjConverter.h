@@ -18,17 +18,6 @@ Mesh* loadFile(const char* file);
 void calculateNormalPerFace(Mesh* m);
 void calculateNormalPerVertex(Mesh* m);
 GLuint2 meshToDisplayList(Mesh* m, int id, GLuint texture, GLuint textureNull);
-/*
-// Older functions
-struct MeshO;
-//vector<string> split_stringO(const string& str, const string& split_str);
-//MeshO* loadFileO(const char* file);
-vector<string> split_stringO(const string& str, const string& split_str);
-MeshO* loadFileO(const char* file);
-GLuint meshToDisplayListO(MeshO* m2, int id);
-*/
-
-
 
 
 // mesh data structure
@@ -46,76 +35,6 @@ struct Mesh {
 	vector<int> face_index_normalPerVertex;
 	vector<int> face_index_texture;
 };
-
-/*
-//typedef Vec3<float> Vec3f;
-//typedef Vec2<float> Vec2f;
-struct MeshO {
-	// vertex
-	vector<Vec3f> dot_vertex;
-	vector<Vec3f> dot_normal;
-	vector<Vec2f> dot_texture;
-	// faces
-	vector<int> face_index_vertex;
-	vector<int> face_index_normal;
-	vector<int> face_index_texture;
-};
-*/
-
-
-// Load a DIB or BMP file from disk. // NO LONGER IN USE
-/*
-GLubyte* load_bmp_file(const char *filename, BITMAPINFO **info) {
-	FILE *fp;
-	GLubyte * bits; // bitmap pixel bits
-	int bitsize;
-	int infosize;
-	BITMAPFILEHEADER header;
-	if ((fp = fopen(filename, "rb")) == NULL) return NULL;
-	// read the file header and any following bitmap information.
-	if (fread(&header, sizeof(BITMAPFILEHEADER), 1, fp) < 1) {
-		fclose(fp); // Couldn't read the file header - return NULL.
-		return (NULL);
-	}
-	// Check for BM reversed.
-	if (header.bfType != 'MB') {
-		// not a bitmap file - return NULL.
-		fclose(fp);
-		return (NULL);
-	}
-	infosize = header.bfOffBits - sizeof(BITMAPFILEHEADER);
-	if ((*info = (BITMAPINFO *)malloc(infosize)) == NULL) {
-		fclose(fp);
-		return (NULL); // couldn't allocate memory for bitmap info
-	}
-	if (fread(*info, 1, infosize, fp) < infosize) {
-		free(*info);
-		fclose(fp);
-		return (NULL); // Couldn't read the bitmap header.
-	}
-	// Allocate memory for the bitmap and read
-	if ((bitsize = (*info)->bmiHeader.biSizeImage) == 0)
-		bitsize = ((*info)->bmiHeader.biWidth*(*info)->bmiHeader.biBitCount + 7) / 8 * abs((*info)->bmiHeader.biHeight);
-	if ((bits = (GLubyte *)malloc(bitsize)) == NULL) {
-		free(*info);
-		fclose(fp);
-		return (NULL); // Couldn't allocate memory
-	}
-	if (fread(bits, 1, bitsize, fp) < bitsize) {
-		free(*info);
-		free(bits);
-		fclose(fp);
-		return (NULL); // Couldn't read bitmap
-	}
-	fclose(fp);
-	return (bits); // Everything fine, return the allocated bitmap.
-}
-*/
-
-
-
-
-
 
 
 
@@ -178,8 +97,6 @@ GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info, int alphaType) {
 }
 
 
-
-//UINT textureArray[], const char *file, int n, byte alphaType
 
 // Source: https://github.com/javiergs/SER431/blob/master/Lecture10/shadows.cpp
 // A function for loading bmp file textures
@@ -328,66 +245,6 @@ void loadBMP_customz(GLuint textureArray[], const char * imagepath, int n, int f
 
 
 
-
-/*
-// Load a DIB/BMP file from disk. - NOTE: Modified to accept rgb or rgba files
-GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info, byte alphaType) {
-	FILE *fp;      // open file pointer
-	GLubyte * bits; // bitmap pixel bits
-	int bitsize;   // Size of bitmap
-	int infosize;  // Size of header information
-	BITMAPFILEHEADER header; // File header
-							 // try opening the file; use "rb" mode to read this *binary* file.
-	if ((fp = fopen(filename, "rb")) == NULL)
-		return (NULL);
-	// read the file header and any following bitmap information.
-	if (fread(&header, sizeof(BITMAPFILEHEADER), 1, fp) < 1) {
-		// Couldn't read the file header - return NULL.
-		fclose(fp);
-		return (NULL);
-	}
-	// Check for BM reversed.
-	if (header.bfType != 'MB') {
-		// not a bitmap file - return NULL.
-		fclose(fp);
-		return (NULL);
-	}
-	infosize = header.bfOffBits - sizeof(BITMAPFILEHEADER);
-	if ((*info = (BITMAPINFO *)malloc(infosize)) == NULL) {
-		// couldn't allocate memory for bitmap info - return NULL.
-		fclose(fp);
-		return (NULL);
-	}
-	if (fread(*info, 1, infosize, fp) < infosize) {
-		// Couldn't read the bitmap header - return NULL.
-		free(*info);
-		fclose(fp);
-		return (NULL);
-	}
-	// Now that we have all the header info read in, allocate memory for the bitmap and read *it* in.
-	if ((bitsize = (*info)->bmiHeader.biSizeImage) == 0) {
-		bitsize = ((*info)->bmiHeader.biWidth*(*info)->bmiHeader.biBitCount + 7) / 8 * abs((*info)->bmiHeader.biHeight);
-		if (alphaType == 1) { bitsize = bitsize + (*info)->bmiHeader.biWidth * abs((*info)->bmiHeader.biHeight) * 8; }
-	}
-	if ((bits = (GLubyte *)malloc(bitsize)) == NULL) {
-		// Couldn't allocate memory - return NULL!
-		free(*info);
-		fclose(fp);
-		return (NULL);
-	}
-	if (fread(bits, 1, bitsize, fp) < bitsize) {
-		// couldn't read bitmap - free memory and return NULL!
-		free(*info);
-		free(bits);
-		fclose(fp);
-		return (NULL);
-	}
-	// OK, everything went fine - return the allocated bitmap.
-	fclose(fp);
-	return (bits);
-}
-*/
-
 // Create texture from BMP file - NOTE: Modified to accept rgb or rgba files
 void bmpTexture(UINT textureArray[], const char *file, int n, byte alphaType) {
 	BITMAPINFO *bitmapInfo; // Bitmap information
@@ -415,27 +272,6 @@ void bmpTexture(UINT textureArray[], const char *file, int n, byte alphaType) {
 
 
 
-
-
-
-// Create texture from a DIB or BMP file // NO LONGER USED FOR BMP LOADING
-/*
-void texture_from_file(GLuint *textureArray, const char * file) {
-	BITMAPINFO *bitmapInfo; // Bitmap information
-	GLubyte    *bitmapBits; // Bitmap data
-	if (!file) {
-		cout << "texture file not found!" << endl;
-		return;
-	}
-	// load image
-	bitmapBits = load_bmp_file(file, &bitmapInfo);
-	// setup texture
-	glGenTextures(1, textureArray);
-	glBindTexture(GL_TEXTURE_2D, *textureArray);
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // must set to 1 for compact data
-	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, bitmapInfo->bmiHeader.biWidth, bitmapInfo->bmiHeader.biHeight, GL_BGR_EXT, GL_UNSIGNED_BYTE, bitmapBits);
-}
-*/
 
 /* -------------------------------------------- BEGIN::OBJ-------------------------------------------- */
 // str to int
@@ -625,9 +461,9 @@ GLuint2 meshToDisplayList(Mesh* m, int id, GLuint texture, GLuint textureNull) {
 			glTexCoord2fv(&m->dot_texture[m->face_index_texture[i]].x);
 		}
 		// COLOR
-		//Vec3f offset = (m->dot_vertex[m->face_index_vertex[i]]);
+		Vec3f offset = (m->dot_vertex[m->face_index_vertex[i]]);
 		// VERTEX
-		//glColor3f(fabs(sin(offset.x)), fabs(cos(offset.y)), fabs(offset.z));
+		glColor3f(fabs(sin(offset.x)), fabs(cos(offset.y)), fabs(offset.z));
 		glVertex3fv(&m->dot_vertex[m->face_index_vertex[i]].x);
 	}
 
@@ -655,9 +491,9 @@ GLuint2 meshToDisplayList(Mesh* m, int id, GLuint texture, GLuint textureNull) {
 			glTexCoord2fv(&m->dot_texture[m->face_index_texture[i]].x);
 		}
 		// COLOR
-		//Vec3f offset = (m->dot_vertex[m->face_index_vertex[i]]);
+		Vec3f offset = (m->dot_vertex[m->face_index_vertex[i]]);
 		// VERTEX
-		//glColor3f(fabs(sin(offset.x)), fabs(cos(offset.y)), fabs(offset.z));
+		glColor3f(fabs(sin(offset.x)), fabs(cos(offset.y)), fabs(offset.z));
 		glVertex3fv(&m->dot_vertex[m->face_index_vertex[i]].x);
 	}
 

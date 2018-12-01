@@ -29,14 +29,7 @@ void reflection(void(*objFunction)(), Position pos, MirrorDirection mirrorDir) {
 														// PLAIN for the stencil
 	glPushMatrix();
 
-	//objPlacementTRS(objFunction(),0,0,0,0,0,0,0,0,0) // assumes the 
-	//glTranslatef(50, 0, 0);
 	objFunction(); // assumes the location, angle, and scale are predefined in the model
-	//glTranslatef(-50, 0, 0);
-	//psudo code for getting the rotation of a plane from the direction vector provided
-	//yang = tan(z/x)
-	//xang = tan(y/(sqrt(z*z+x*x)))
-	//zang = rollVariable - would need to be added to the function
 
 	glPopMatrix();
 	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE); //Reenable color
@@ -44,24 +37,7 @@ void reflection(void(*objFunction)(), Position pos, MirrorDirection mirrorDir) {
 	glStencilFunc(GL_EQUAL, 1, 0xFFFFFFFF);
 	glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP); //Keep the pixel
 
-
-
-
-	/*
-	// blue atmospheric fog
-	glEnable(GL_FOG);
-	GLfloat color[4] = { 0.75f, 0.8f, 1.0f, 1.0f };
-	glFogfv(GL_FOG_COLOR, color);
-	//glFogf(GL_FOG_START, 1);
-	//glFogf(GL_FOG_END, 50.0);
-	glFogi(GL_FOG_MODE, GL_EXP);
-	glFogf(GL_FOG_DENSITY, .007);
-	*/
-
 	setlight();
-
-
-
 
 	// mirrored display
 	glTranslatef(pos.x, pos.y, pos.z);
@@ -74,24 +50,10 @@ void reflection(void(*objFunction)(), Position pos, MirrorDirection mirrorDir) {
 	glTranslatef(-pos.x, -pos.y, -pos.z);
 
 
-
-	// TODO: replace with a displaySkybox function
-
 	// Mirrored Sky box
 	glScalef(mirrorDir.x, mirrorDir.y, mirrorDir.z);
 	displaySkyBox(2000, 90, 0);
 	glScalef(1.0 / mirrorDir.x, 1.0 / mirrorDir.y, 1.0 / mirrorDir.z);
-
-
-
-
-
-
-
-
-
-
-
 	
 	// STENCIL-STEP 4. disable it
 	glDisable(GL_STENCIL_TEST);
@@ -101,11 +63,7 @@ void reflection(void(*objFunction)(), Position pos, MirrorDirection mirrorDir) {
 	setMaterialAdvanced(matarialAlpha1); // sets a transparent material
 
 	glPushMatrix();
-
-	//glTranslatef(50, 0, 0);
 	objFunction(); // assumes the location, angle, and scale are predefined in the model
-	//glTranslatef(-50, 0, 0);
-
 	glPopMatrix();
 
 	refectOn = 0;

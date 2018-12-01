@@ -4,7 +4,7 @@
 // Now uses a struct for particle variable data - the data being used can be found in particleData.h
 // Added: velocity, acceleration, multipliers, rotation settings, scale settings, floor collision, noise offset settings, emissionRate, emissionAmount, sub particles...
 
-#define dt 0.01666666666666f // frames are capped at 60fps, delta time is assumed to run at 60 fps 1/60
+#define dt 0.01666666666666f // Sync() timer bug fix - frames are capped at 60fps, delta time is assumed to run at 60 fps 1/60
 
 // Enum used to identify different particle systems & particle color functions
 enum ParID { flame, flame2, flameWall, flameSparks, flameWallSparks, flameSmoke, smoke, snow, rain, rainSplash, bubbles, waterfall, waterfallSub, frost, frostWall, ash, leaves, fog };
@@ -186,12 +186,9 @@ public:
 	void update() {
 		Particle* p = particle_head;
 		while (p) {
-			//dt = 0.016666666666;
 
 			// decrease lifespan
 			p->pSystemData.life -= dt;
-			// apply gravity
-			//p->pSystemData.velocity.y -= 9.81f * dt;
 
 			// Velocity Multiplier
 			if (p->pSystemData.useVelocityMultiplier) {
@@ -292,7 +289,7 @@ public:
 						p->pSystemData.velocity.x = p->pSystemData.velocity.x * p->pSystemData.floorFriction;
 						p->pSystemData.velocity.z = p->pSystemData.velocity.z * p->pSystemData.floorFriction;
 					}
-					//p->position[1] -= dt * p->direction[1];
+
 				}
 			}
 
@@ -308,7 +305,6 @@ public:
 			if (curr->pSystemData.life<0 || clearParticles == 1) {
 				if (curr->pSystemData.useSubParticleExit) {
 					add(curr->pSystemData.subParticleExitID, curr->pSystemData.position.x, curr->pSystemData.position.y, curr->pSystemData.position.z);
-					//addParticleAt(particleData(curr->pSystemData.destroyParticleID, 0, 0, 0), curr->pSystemData.position);
 				}
 
 				if (prev) {
@@ -334,7 +330,7 @@ ParticleSystem ps;
 void setParticleColor(Particle* curr); // forward declares color gradient function
 
 
-									   // draw particles
+// draw particles
 void drawParticles() {
 
 	glDepthMask(GL_FALSE); // Fixes Transparency glitch
@@ -347,10 +343,6 @@ void drawParticles() {
 		setParticleColor(curr);
 
 		glPushMatrix();
-		//glScalef(100.0, 100.0, 100.0); // scale rotation and color complete
-		//glScalef(0.2, 0.2, 0.2);
-
-		// scale rotation and color complete
 
 									   // Positioning
 									   // Offsets the position with perlin noise
@@ -382,30 +374,18 @@ void drawParticles() {
 
 		// Makes particles rotate to face the same angle as the camera
 		if (curr->pSystemData.pointAtCam) {
-			//glRotatef(-y_angle, 0.0f, 1.0f, 0.0f);
-			//glRotatef(-x_angle, 1.0f, 0.0f, 0.0f);
-			//glRotatef(curr->pSystemData.rotation.z, 0.0f, 0.0f, 1.0f);
-			//glRotatef(-90, 1.0f, 0.0f, 0.0f);
-
 
 			glRotatef(-camAngY* 57.29578, 0.0f, 1.0f, 0.0f);
 			glRotatef(camAngX* 57.29578, 1.0f, 0.0f, 0.0f);
 
-			//glRotatef(-atan2f(camz - curr->pSystemData.position.z, camx - curr->pSystemData.position.x)* 57.29578, 0.0f, 1.0f, 0.0f);
-			//float nummy = sqrtf((camz - curr->pSystemData.position.z)*(camz - curr->pSystemData.position.z) + (camx - curr->pSystemData.position.x)*(camx - curr->pSystemData.position.x));
-			//glRotatef(atan2f(camy - curr->pSystemData.position.y, nummy)* 57.29578, 1.0f, 0.0f, 0.0f);
-			//glRotatef(90, 1.0f, 0.0f, 0.0f);
 			glRotatef(curr->pSystemData.rotation.z, 0.0f, 0.0f, 1.0f);
 			glRotatef(-90, 1.0f, 0.0f, 0.0f);
-			//glRotatef(180, 0.0f, 1.0f, 0.0f);
 		}
 		else { // rotates the particles using the given angle
 			glRotatef(curr->pSystemData.rotation.x, 1.0f, 0.0f, 0.0f);
 			glRotatef(curr->pSystemData.rotation.y, 0.0f, 1.0f, 0.0f);
 			glRotatef(curr->pSystemData.rotation.z, 0.0f, 0.0f, 1.0f);
 		}
-
-
 
 		glCallList(curr->pSystemData.displayID);
 		glPopMatrix();

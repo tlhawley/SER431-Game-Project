@@ -117,64 +117,72 @@ void Update() {
 		orientMe2(camAngX);
 	}
 
-	/*
-	if (upPressed == true) {
-		//moveMeFlat(1.1f);
-		crateY = crateY + 1.1f;
-	}
-	if (downPressed == true) {
-		//moveMeFlat(-1.1f);
-		crateY = crateY - 1.1f;
-	}
-	*/
 	
 	if (leftPressed == true) {
 		camAngY -= 0.03f;
 		orientMe(camAngY);
-		//crateX = crateX + 1.1f;
+
 	}
 	if (rightPressed == true) {
 		camAngY += 0.03f;
 		orientMe(camAngY);
-		//crateX = crateX - 1.1f;
+
 	}
 	if (aKey == true) {
 		pxv = pxv - 0.2f;
-		if (pxv < -1.5f) {
-			pxv = -1.5f;
+		if (buttons[15].toggle == false) {
+			if (pxv < -1.5f) {
+				pxv = -1.5f;
+			}
 		}
-		//moveMeFlatStrafe(-2.1f);
+		else {
+			if (pxv < -4.5f) {
+				pxv = -4.5f;
+			}
+		}
+
 	}
 	if (dKey == true) {
 		pxv = pxv + 0.2f;
-		if (pxv > 1.5f) {
-			pxv = 1.5f;
+		if (buttons[15].toggle == false) {
+			if (pxv > 1.5f) {
+				pxv = 1.5f;
+			}
 		}
-		//moveMeFlatStrafe(2.1f);
+		else {
+			if (pxv > 4.5f) {
+				pxv = 4.5f;
+			}
+		}
+
 	}
 	if (wKey == true || upPressed == true) {
 		pzv = pzv + 0.2f;
-		if (pzv > 1.5f) {
-			pzv = 1.5f;
-		}
-		/*
-		if (sprint == false) {
-			moveMeFlat(2.1f);
+		if (buttons[15].toggle == false) {
+			if (pzv > 1.5f) {
+				pzv = 1.5f;
+			}
 		}
 		else {
-			moveMeFlat(2.0f);
+			if (pzv > 4.5f) {
+				pzv = 4.5f;
+			}
 		}
-		*/
 
-		//y = y + 0.1;
 	}
 	if (sKey == true || downPressed == true) {
 		pzv = pzv - 0.2f;
-		if (pzv < -1.5f) {
-			pzv = -1.5f;
+		if (buttons[15].toggle == false) {
+			if (pzv < -1.5f) {
+				pzv = -1.5f;
+			}
 		}
-		//moveMeFlat(-2.1f);
-		//y = y - 0.1;
+		else {
+			if (pzv < -4.5f) {
+				pzv = -4.5f;
+			}
+		}
+
 	}
 	if (aKey == false && dKey == false && wKey == false && sKey == false) {
 		pxv = pxv * 0.95f;
@@ -191,11 +199,17 @@ void Update() {
 	pzv = pzv * 0.92f;
 
 	float maxVelocity = abs(pxv) + abs(pzv);
-	if (maxVelocity > 1.5f) {
-		maxVelocity = 1.5f;
+	if (buttons[15].toggle == false) {
+		if (maxVelocity > 1.5f) {
+			maxVelocity = 1.5f;
+		}
 	}
-	//moveMeFlatStrafe(pxv);
-	//moveMeFlat(pzv);
+	else {
+		if (maxVelocity > 4.5f) {
+			maxVelocity = 4.5f;
+		}
+	}
+
 	moveMeFlatStrafe(cos(atan2(pzv, pxv))*maxVelocity);
 	moveMeFlat(sin(atan2(pzv, pxv))*maxVelocity);
 	
@@ -203,7 +217,6 @@ void Update() {
 		camyv = sin(atan2(pzv, pxv))*maxVelocity*sin(camAngX)/8.0f;
 	}
 
-	//checkCollision(); // collision is now detected using collision boxes
 	if (camy < -40 || health == 0) {
 		objInit();
 	}

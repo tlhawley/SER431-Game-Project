@@ -1,8 +1,6 @@
 
 
 struct pointLight {
-	//int motion;
-	//float offset;
 	float x;
 	float y;
 	float z;
@@ -38,15 +36,6 @@ pointLight newPointLight(float x, float y, float z, float range, float r, float 
 
 void initPointLights() {
 	pointLightAmount = 0;
-
-	/*
-	if (currentLevel == -1) {
-		pointLights[pointLightAmount - 1] = newPointLight(-189.8, 4.5, -21.6, 200, 1.0, 0.7f, 0.3);
-		pointLights[pointLightAmount - 1] = newPointLight(-189.8, 4.5, -18.4, 200, 1.0, 0.7f, 0.3);
-	}
-	*/
-
-	//pointLights[pointLightAmount - 1] = newPointLight(2, 2, 0, 1, 0.5, 0.4f, 0.3);
 
 }
 

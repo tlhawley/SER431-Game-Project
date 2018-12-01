@@ -77,7 +77,6 @@ void objInit() {
 	// load game objects
 	initHealthPacks();
 	initSpinSpikes();
-	initBoxes();
 	initCBoxes();
 	initDoorway();
 	initKeys();
@@ -165,7 +164,6 @@ void loadLevel(int mapID) {
 	// load game objects
 	initHealthPacks();
 	initSpinSpikes();
-	initBoxes();
 	initCBoxes();
 	initDoorway();
 	initKeys();

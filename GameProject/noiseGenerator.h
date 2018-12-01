@@ -8,37 +8,15 @@ javiergs@asu.edu
 
 #include <vector>
 #include "imathvec.h"
-//#include "glut.h" // already included in GameProject.cpp
 #include<iostream>
 #include<fstream>
 #include<string>
 #include <windows.h>
 #include <wingdi.h>
-//#include "noise.h" // already included in GameProject.cpp
 
-//#define PI 3.1415926 // already defined in globalVariables.h
 
 using namespace std;
 using namespace Imath;
-
-/* // already defined in meshObjConverter.h
-typedef Vec3<float> Vec3f;
-typedef Vec2<float> Vec2f;
-
-// mesh data structure
-struct Mesh {
-	// vertex
-	vector<Vec3f> dot_vertex;
-	vector<Vec3f> dot_normalPerFace;
-	vector<Vec3f> dot_normalPerVertex;
-	vector<Vec2f> dot_texture;
-	// faces
-	vector<int> face_index_vertex;
-	vector<int> face_index_normalPerFace;
-	vector<int> face_index_normalPerVertex;
-	vector<int> face_index_texture;
-};
-*/
 
 // global
 Mesh* mesh1;
@@ -47,11 +25,7 @@ Mesh* mesh3;
 Mesh* mesh4;
 Mesh* mesh5;
 
-/* // already defined
-int width = 1200;
-int height = 600;
-float ratio = 1.0;
-*/
+
 GLuint display2, display3, display4, display5;
 GLuint2 displayx1, displayx2;
 
@@ -159,17 +133,6 @@ GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info) {
 // Create texture from algorithm
 void codedTexture(UINT textureArray[], int n, int type) {
 
-	/*
-	int TexHeight = 2;
-	int TexWidth = 2;
-
-	if (type == 4){
-		const int TexHeight = 512;
-		const int TexWidth = 512;
-	}
-	else {
-	}
-	*/
 	const int TexHeight = 512;
 	const int TexWidth = 512;
 
@@ -217,119 +180,6 @@ void bmpTexture(UINT textureArray[], const char *file, int n) {
 	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, bitmapInfo->bmiHeader.biWidth, bitmapInfo->bmiHeader.biHeight, GL_BGR_EXT, GL_UNSIGNED_BYTE, bitmapBits);
 }
 
-// OBJ file - str to int
-/*
-int StrToInt(const string &str) {
-	int i;
-	if (sscanf_s(str.c_str(), "%i", &i) == 1) return i;
-	else return 0;
-}
-
-// OBJ file - split string
-vector<string> split_string(const string& str, const string& split_str) {
-	vector<string> stlv_string;
-	string part_string("");
-	string::size_type i;
-	i = 0;
-	while (i < str.size()) {
-		if (split_str.find(str[i]) != string::npos) {
-			stlv_string.push_back(part_string);
-			part_string = "";
-			while (split_str.find(str[i]) != string::npos) {
-				++i;
-			}
-		}
-		else {
-			part_string += str[i];
-			++i;
-		}
-	}
-	if (!part_string.empty())
-		stlv_string.push_back(part_string);
-	return stlv_string;
-}
-
-// OBJ file - load file
-Mesh* loadFile(const char* file) {
-	Mesh *m = new Mesh;
-	m->dot_vertex.clear();
-	m->face_index_vertex.clear();
-	ifstream infile(file);
-	if (infile.fail()) {
-		cout << "Error opening file " << file;
-		return NULL;
-	}
-	char current_line[1024];
-	while (!infile.eof()) {
-		infile.getline(current_line, 1024);
-		switch (current_line[0]) {
-		case'v':
-			float x, y, z;
-			switch (current_line[1]) {
-			case 'n':
-				sscanf_s(current_line, "vn %f %f %f", &x, &y, &z);
-				m->dot_normalPerFace.push_back(Vec3f(x, y, z));
-				m->dot_normalPerVertex.push_back(Vec3f(x, y, z));
-				break;
-			case 't':
-				sscanf_s(current_line, "vt %f %f", &x, &y);
-				m->dot_texture.push_back(Vec2f(x, y));
-				break;
-			default:
-				sscanf_s(current_line, "v %f %f %f", &x, &y, &z);
-				m->dot_vertex.push_back(Vec3f(x, y, z));
-				break;
-			}
-			break;
-		case 'f': {
-			vector<string> faces = split_string(current_line, " \t.\r\n");
-			int vnt[3][3] = { { -1, -1, -1 },{ -1, -1, -1 },{ -1, -1, -1 } };
-			string::size_type begin, end;
-			for (int i = 0; i < 2; i++) {
-				begin = 0;
-				int j = 0;
-				do {
-					end = faces[i + 1].find_first_of("/", begin);
-					if (begin < end) {
-						vnt[i][j] = StrToInt(faces[i + 1].substr(begin, end - begin)) - 1;
-					}
-					else {
-						vnt[i][j] = -1;
-					}
-					begin = end + 1;
-					j++;
-				} while (end != string::npos);
-			}
-			for (unsigned int i = 3; i < faces.size(); i++) {
-				begin = 0;
-				int j = 0;
-				do {
-					end = faces[i].find_first_of("/", begin);
-					if (begin < end) {
-						vnt[2][j] = StrToInt(faces[i].substr(begin, end - begin)) - 1;
-					}
-					else {
-						vnt[2][j] = -1;
-					}
-					begin = end + 1;
-					j++;
-				} while (end != string::npos);
-				for (int j = 0; j < 3; j++) {
-					m->face_index_vertex.push_back(vnt[j][0]);
-					if (vnt[j][1] != -1) m->face_index_texture.push_back(vnt[j][1]);
-					if (vnt[j][2] != -1) m->face_index_normalPerFace.push_back(vnt[j][2]);
-					if (vnt[j][2] != -1) m->face_index_normalPerVertex.push_back(vnt[j][2]);
-				}
-				memcpy(&vnt[1], &vnt[2], sizeof(int) * 3);
-			}
-		}
-				  break;
-		default:
-			break;
-		}
-	}
-	return m;
-}*/
 
 // create a triangulated diamond
 Mesh* createCube() {
@@ -414,8 +264,6 @@ Mesh* createCube() {
 // creating a triangulated plane
 Mesh* createPlane(int arena_width, int arena_depth, int arena_cell) {
 	Mesh *me = new Mesh;
-	//int n = arena_width / arena_cell;
-	//int m = arena_depth / arena_cell;
 
 	int n = 129;
 	int m = 129;
@@ -423,7 +271,6 @@ Mesh* createPlane(int arena_width, int arena_depth, int arena_cell) {
 	// vertices
 	for (int i = 0; i<n; i++) {
 		for (int j = 0; j < m; j++) {
-			//-900, 0, 999
 			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell-100, 12.0, j*arena_cell-100));
 		}
 	}
@@ -475,26 +322,6 @@ Mesh* createTerrain(int arena_width, int arena_depth, int arena_cell) {
 		}
 	}
 
-	/*
-	int n = arena_width / arena_cell;
-	int m = arena_depth / arena_cell;
-
-	ImprovedNoise noise; // modified for terrain
-	Vec3f pixelColor; // modified for terrain
-	// vertices
-	for (int i = 0; i<n; i++) {
-		for (int j = 0; j < m; j++) {
-
-			//pixelColor = marbleMap(t_scale(noise.perlinMarble(i * 20, j * 20))); // terrain height / pixel brightness using marble texture
-
-			//me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell, pixelColor[0]*400.0f-100.0f, j*arena_cell));
-
-			pixelColor = marbleMap(t_scale(noise.perlinMarble(i * 20, j * 20))); // terrain height / pixel brightness using marble texture
-
-			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell*0.01f - 9.0f, (pixelColor[0] * 400.0f - 100.0f)*0.01f, (j*arena_cell*0.01f) - 9.0f));
-		}
-	}
-	*/
 
 	//texture
 	me->dot_texture.push_back(Vec2<GLfloat>(0.0, 0.0));
@@ -532,13 +359,7 @@ Mesh* createPlaneMultiscale(int arena_width, int arena_depth, int arena_cell) {
 					  // vertices
 	for (int i = 0; i<n; i++) {
 		for (int j = 0; j < m; j++) {
-
-			//pixelColor = marbleMap(t_scale(noise.perlinMarble(i * 20, j * 20))); // terrain height / pixel brightness using marble texture
-
-			//me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell, pixelColor[0]*400.0f-100.0f, j*arena_cell));
-
 			pixelColor = marbleMap(t_scale(noise.perlinMultiscale(i * 20, j * 20))); // terrain height / pixel brightness using marble texture
-
 			me->dot_vertex.push_back(Vec3<GLfloat>(i*arena_cell*0.01f - 9.0f, (pixelColor[0] * 400.0f - 100.0f)*0.01f, (j*arena_cell*0.01f) - 9.0f));
 		}
 	}
@@ -567,62 +388,16 @@ Mesh* createPlaneMultiscale(int arena_width, int arena_depth, int arena_cell) {
 	return me;
 }
 
-// normal per face
-/*
-void calculateNormalPerFace(Mesh* m) {
-	Vec3<float> v1, v2, v3, v4, v5;
-	for (int i = 0; i < m->face_index_vertex.size(); i += 3) {
-		v1 = m->dot_vertex[m->face_index_vertex[i]];
-		v2 = m->dot_vertex[m->face_index_vertex[i + 1]];
-		v3 = m->dot_vertex[m->face_index_vertex[i + 2]];
-		v4 = (v2 - v1);
-		v5 = (v3 - v1);
-		v4 = v4.cross(v5);
-		v4.normalize();
-		m->dot_normalPerFace.push_back(v4);
-		int pos = m->dot_normalPerFace.size() - 1;
-		// same normal for all vertex in this face
-		m->face_index_normalPerFace.push_back(pos);
-		m->face_index_normalPerFace.push_back(pos);
-		m->face_index_normalPerFace.push_back(pos);
-	}
-}
-
-// calculate normal per vertex
-void calculateNormalPerVertex(Mesh* m) {
-	m->dot_normalPerVertex.clear();
-	m->face_index_normalPerVertex.clear();
-	Vec3<float> suma; suma.x = 0; suma.y = 0; suma.z = 0;
-	//initialize
-	for (unsigned int val = 0; val < m->dot_vertex.size(); val++) {
-		m->dot_normalPerVertex.push_back(suma);
-	}
-	// calculate sum for vertex
-	for (long pos = 0; pos < m->face_index_vertex.size(); pos++) {
-		m->dot_normalPerVertex[m->face_index_vertex[pos]] +=
-			m->dot_normalPerFace[m->face_index_normalPerFace[pos]];
-	}
-	// normalize for vertex 
-	for (unsigned int val = 0; val < m->dot_normalPerVertex.size(); val++) {
-		m->dot_normalPerVertex[val] = m->dot_normalPerVertex[val].normalize();
-	}
-	//normalVertexIndex is the same that vertexIndex
-	for (unsigned int pos = 0; pos < m->face_index_vertex.size(); pos++) {
-		m->face_index_normalPerVertex.push_back(m->face_index_vertex[pos]);
-	}
-}
-*/
 
 // draw
 GLuint2 meshToDisplayList2(Mesh* m, int id, int textureId, GLuint nullTexture) {
 	GLuint2 listID;
 	listID.l1 = glGenLists(id);
 	glNewList(listID.l1, GL_COMPILE);
-	//if (id != 3) {
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	glBindTexture(GL_TEXTURE_2D, textureArray[textureId]);
-	//}
+
 	glBegin(GL_TRIANGLES);
 	for (unsigned int i = 0; i < m->face_index_vertex.size(); i++) {
 		// PER VERTEX NORMALS
@@ -652,11 +427,10 @@ GLuint2 meshToDisplayList2(Mesh* m, int id, int textureId, GLuint nullTexture) {
 
 	listID.l2 = glGenLists(id);
 	glNewList(listID.l2, GL_COMPILE);
-	//if (id != 3) {
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	glBindTexture(GL_TEXTURE_2D, nullTexture);
-	//}
+
 	glBegin(GL_TRIANGLES);
 	for (unsigned int i = 0; i < m->face_index_vertex.size(); i++) {
 		// PER VERTEX NORMALS
@@ -688,54 +462,16 @@ GLuint2 meshToDisplayList2(Mesh* m, int id, int textureId, GLuint nullTexture) {
 
 // init
 void initNoiseGen() {
-	//glShadeModel(GL_SMOOTH);
-	//glEnable(GL_DEPTH_TEST);
-	//ratio = (double)width / (double)height;
 	// mesh
 	mesh1 = createTerrain(2000, 2000, 200);
 	mesh2 = createPlane(2000, 2000, 2.5);
-	//mesh2 = createCube();
-	//mesh3 = createCube();
-	//mesh4 = createCube();
-	//mesh5 = createPlaneMultiscale(2000, 2000, 200);
 	calculateNormalPerFace(mesh1);
 	calculateNormalPerFace(mesh2);
-	//calculateNormalPerFace(mesh3);
-	//calculateNormalPerFace(mesh4);
-	//calculateNormalPerFace(mesh5);
 	calculateNormalPerVertex(mesh1);
 	calculateNormalPerVertex(mesh2);
-	//calculateNormalPerVertex(mesh3);
-	//calculateNormalPerVertex(mesh4);
-	//calculateNormalPerVertex(mesh5);
-	// textures
-	//bmpTexture(textureArray, "../../BMP files/brick.bmp", 0);
-	//bmpTexture(textureArray, "../../BMP files/oldbox.bmp", 1);
-	//bmpTexture(textureArray, "./src/textures/brick.bmp", 0);
-	//bmpTexture(textureArray, "./src/textures/oldbox.bmp", 1);
-	//codedTexture(textureArray, 2, 0); //Sky texture - noise multiscale. Type=0
-	//codedTexture(textureArray, 3, 2); //Fire texture - noise marble. Type=2
 	codedTexture(textureArray, 4, 4); //Floor texture - noise multiscale. Type=4
-	//codedTexture(textureArray, 4, 1); //Marble texture - noise fire. Type=1
-									  // display lists
 	displayx1 = meshToDisplayList2(mesh1, 1, 4, blankTexture);
 	displayx2 = meshToDisplayList2(mesh2, 2, 4, blankTexture);
-	//display3 = meshToDisplayList(mesh3, 3, 2);
-	//display4 = meshToDisplayList(mesh4, 4, 3);
-	//display5 = meshToDisplayList(mesh5, 5, 4);
-	// light
-	/*
-	GLfloat light_ambient[] = { 0.5, 0.5, 0.5, 1.0 };
-	GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
-	GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
-	GLfloat light_position[] = { 0.0, 0.0, 1.0, 0.0 };
-	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
-	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-	glEnable(GL_LIGHT0);
-	glEnable(GL_LIGHTING);
-	*/
 }
 
 // reshape
@@ -783,7 +519,6 @@ void displayNoiseGenPlane(void) {
 	//terrain/plane
 	if (buttons[14].toggle == true) {
 		glPushMatrix();
-		//glTranslatef(-900, 0, -900);
 		glTranslatef(0, -15, 0);
 		if (buttons[11].toggle) {
 			glCallList(displayx1.l1);
@@ -795,7 +530,6 @@ void displayNoiseGenPlane(void) {
 	}
 	else {
 		glPushMatrix();
-		//glTranslatef(-900, 0, -900);
 		glTranslatef(0, -15, 0);
 		if (buttons[11].toggle) {
 			glCallList(displayx2.l1);
@@ -832,44 +566,11 @@ void displayNoiseGenBox3(void) {
 void displayNoiseGenLavaPlane(void) {
 	//plane
 	glPushMatrix();
-	//glTranslatef(-900, 0, -900);
 	glCallList(display5);
 	glPopMatrix();
 }
 
 void displayNoiseGen(void) {
-
-	/*
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	// projection
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-	glViewport(0, 0, width, height);
-	gluPerspective(45, ratio, 1, 1000);
-	// view
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadIdentity();
-	// lookAt
-	gluLookAt(0.0f, 40.0f, 320.0,
-		0.0f, 1.0f, -1.0f,
-		0.0f, 1.0f, 0.0f);
-	// camera
-	glScalef(scale, scale, scale);
-	glRotatef(x_angle, 1.0f, 0.0f, 0.0f);
-	glRotatef(y_angle, 0.0f, 1.0f, 0.0f);
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	
-
-	//plane
-	glPushMatrix();
-	glTranslatef(-900, 0, -900);
-	glCallList(display1);
-	glPopMatrix();
-
-	*/
 
 	glScalef(0.01f, 0.01f, 0.01f);
 	// box 1
@@ -888,50 +589,4 @@ void displayNoiseGen(void) {
 	glPopMatrix();
 	glScalef(100.0f, 100.0f, 100.0f);
 
-
-	// end
-	/*
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
-	// texto
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-	gluOrtho2D(0, width, 0, height);
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadIdentity();
-	glColor3f(1.0, 1.0, 1.0);
-	renderBitmapString(0.0, height - 13.0f, 0.0f, "Use [Mouse Left Key] to rotate");
-	renderBitmapString(0.0, height - 26.0f, 0.0f, "Use [Mouse Right Key] to scale");
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
-	glutSwapBuffers();
-
-	*/
-
 }
-
-// main
-/*
-void main(int argc, char* argv[]) {
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowPosition(0, 0);
-	glutInitWindowSize(width, height);
-	glutCreateWindow("Textures");
-	glutReshapeFunc(reshape);
-	glutDisplayFunc(display);
-	glutIdleFunc(display);
-	glutMouseFunc(mouse);
-	glutMotionFunc(motion);
-
-	init();
-
-	glutMainLoop();
-}
-*/

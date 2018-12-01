@@ -27,9 +27,7 @@ portal newPortal(float x, float y, float z, int lv) {
 
 void initPortals() {
 	portalAmount = 0;
-	/* // Intro to graphics 332 map
-	portals[0] = newPortal(0.0f, 0.0f, -220.0f);
-	*/
+
 	if (currentLevel == -1) {
 		portals[portalAmount-1] = newPortal(-192.5f, 1.0f, -20.0f, 0);
 	}
@@ -56,23 +54,18 @@ void initPortals() {
 
 void actionPortals() {
 	for (int i = 0; i < portalAmount; i++) {
-		//objPlacementTRS(drawPortal, portals[i].x, 0.0, portals[i].z, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0);
 		if (portals[i].active == true) {
 			
-			//objPlacementTRS(drawportal, portals[i].x, -sin(timer * 4)*0.1f + portals[i].y - 0.8f, portals[i].z, 0.0, timer * 100, 0.0, 1.0, -1.0, 1.0);
 			if (camx < portals[i].x + 1.0 && camx > portals[i].x - 1.0 && camz < portals[i].z + 1.0 && camz > portals[i].z - 1.0 && camy < portals[i].y + 3 && camy > portals[i].y - 3) {
 				portals[i].active = false;
 				clearParticles = 1;
+
 				//level unlocks
 				if (levelUnlocked < currentLevel) {
 					levelUnlocked = currentLevel;
 				}
 				loadLevel(portals[i].levelID);
 
-
-				//score = score + 1000;
-				//levelComplete = true;
-				//inventoryportals = inventoryportals + 1;
 			}
 		}
 	}

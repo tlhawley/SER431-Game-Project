@@ -45,18 +45,6 @@ void initHealthPacks() {
 		healthPacks[healthPackAmount - 1] = newHealthPack(-260.0f, 64.0f, 2.0f);
 	}
 
-	//healthPacks[0] = newHealthPack(-17.0f, 0.0f, 8.0f);
-
-	// Intro to graphics 332 map
-	/*
-	healthPacks[0] = newHealthPack(-17.0f, 0.0f, 8.0f);
-	healthPacks[1] = newHealthPack(-20.0f, 0.0f, 8.0f);
-	healthPacks[2] = newHealthPack(-23.0f, 0.0f, 8.0f);
-	healthPacks[3] = newHealthPack(-17.0f, 0.0f, -8.0f);
-	healthPacks[4] = newHealthPack(-20.0f, 0.0f, -8.0f);
-	healthPacks[5] = newHealthPack(-23.0f, 0.0f, -8.0f);
-	*/
-
 
 }
 
@@ -91,7 +79,6 @@ void displayHealthPacks() {
 		if (healthPacks[i].active == true) {
 			if (abs(camx - healthPacks[i].x) < 120 && abs(camz - healthPacks[i].z) < 120) {
 				objPlacementTRS(drawHealthPack, healthPacks[i].x, sin(timer * 4)*0.1f + healthPacks[i].y, healthPacks[i].z, 0.0, timer * 100, 0.0, 1.0, 1.0, 1.0);
-				//objPlacementTRS(drawHealthPack, healthPacks[i].x, -sin(timer * 4)*0.1f + healthPacks[i].y, healthPacks[i].z, 0.0, timer * 100, 0.0, 1.0, -1.0, 1.0);
 			}
 		}
 	}

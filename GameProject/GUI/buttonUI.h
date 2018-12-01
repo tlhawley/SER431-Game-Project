@@ -51,7 +51,7 @@ void initButtonUI() {
 	buttons[buttonAmount - 1] = newButtonUI(300, 620, false, true, "Materials OFF", "Materials ON");	// 12 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(300, 530, false, true, "Collision OFF", "Collision ON");	// 13 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(300, 440, false, true, "Terrain OFF", "Terrain ON");		// 14 -- Complete
-	buttons[buttonAmount - 1] = newButtonUI(300, 350, false, false, "View Mode OFF", "View Mode ON");	// 15 -- TODO
+	buttons[buttonAmount - 1] = newButtonUI(300, 350, false, false, "View Mode OFF", "View Mode ON");	// 15 -- Complete
 
 }
 
@@ -101,15 +101,8 @@ void displayButtonUI() {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	//glViewport(width - width * 0.2, height - width * 0.25, width*0.2, width*0.04);
-
 	glViewport(0, 0, width, height);
-
-	//glViewport(width - width * 0.2, width * 0.2, width*0.2, width*0.04);
 	gluPerspective(0, 0, 0.1, 1000);
-
-	//glOrtho(-10, 10, -10, 10, -10, 10);
-
 	glOrtho(0, 1920, 1080, 0, -10, 10);
 
 	for (int i = 0; i < buttonAmount; i++) {
@@ -128,13 +121,7 @@ void displayButtonUI() {
 			glColor3f(1, 1, 1);
 			renderBitmapString(buttons[i].x + 31, buttons[i].y + 38, 0.0, GLUT_BITMAP_HELVETICA_18, msgXYZ); // uses graphicsFunctions.h
 
-
-
-
 			glBegin(GL_POLYGON);
-
-
-
 
 			if (i > 0) {
 				glColor4f(.0, .0, .0, 0.5);
@@ -157,12 +144,6 @@ void displayButtonUI() {
 			glVertex3f(buttons[i].x + 5 + 220, buttons[i].y + 5 + 64, 0);
 			glVertex3f(buttons[i].x - 5, buttons[i].y + 5 + 64, 0);
 			glEnd();
-
-
-
-
-			//glColor3f(0.0, 0.0, 0.0);
-			//renderBitmapString(buttons[i].x + 6, buttons[i].y + 4, 0.0, GLUT_BITMAP_HELVETICA_18, msgXYZ); // uses "graphicsFunctions.h"
 
 
 		}
