@@ -94,8 +94,6 @@ void initFlags() {
 
 	if (currentLevel == 0) {
 		flags[flagAmount - 1] = newFlag(-18.5f, 8.0f, 10.0f);
-		flags[flagAmount - 1] = newFlag(-18.5f, 8.0f, -10.0f);
-		flags[flagAmount - 1] = newFlag(-26.5f, 8.0f, 0.0f);
 	}
 
 }
@@ -104,7 +102,7 @@ void displayFlags() {
 	for (int i = 0; i < flagAmount; i++) {
 		if (flags[i].active == true) {
 			if (abs(camx - flags[i].x) < 120 && abs(camz - flags[i].z) < 120) {
-				objPlacementTRS(draw_nurb, flags[i].x, sin(timer * 4)*0.1f + flags[i].y + 0.8f, flags[i].z, 0.0, timer * 100, 0.0, 25.0, 20.0, 20.0);
+				objPlacementTRS(draw_nurb, flags[i].x, flags[i].y, flags[i].z, 0.0, 0.0, 90.0, 0.5, 0.5, 0.5);
 			}
 		}
 	}
