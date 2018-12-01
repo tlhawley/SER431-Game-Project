@@ -24,8 +24,6 @@ void myInit();
 
 #include "noise.h"
 #include "noiseGenerator.h"
-#include "flagCreator.h"
-#include "fractalsCreator.h"
 
 
 
@@ -51,6 +49,8 @@ void myInit();
 #include "draw/drawSkyBox.h"
 #include "draw/drawMirror1.h"
 #include "draw/drawBaseModel.h"
+#include "flagCreator.h"
+#include "fractalsCreator.h"
 
 #include "gameObjects/gameObjHealthPack.h"
 #include "gameObjects/gameObjSpinSpike.h"

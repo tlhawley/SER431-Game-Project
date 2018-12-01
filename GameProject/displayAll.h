@@ -293,6 +293,8 @@ void displayGameObjects() {
 
 		setMaterialAdvanced(materialHeart);
 		displayHealthPacks();
+
+		displayFlags();
 	}
 
 }
