@@ -119,3 +119,53 @@ void CreateTreeLists(void) {
 	glPopMatrix();
 	glEndList();
 }
+
+void drawFractals() {
+	FractalTree(7);
+}
+
+struct fractal {
+	bool active;
+	float x;
+	float y;
+	float z;
+};
+
+fractal newFractal(float x, float y, float z);
+void initFractals();
+void displayFractals();
+
+#define maxFractals 20
+fractal fractals[maxFractals];
+int fractalAmount;
+
+fractal newFractal(float x, float y, float z) {
+	fractalAmount++;
+	fractal theFractal;
+	theFractal.active = true;
+	theFractal.x = x;
+	theFractal.y = y;
+	theFractal.z = z;
+	return theFractal;
+}
+
+void initFractals() {
+	fractalAmount = 0;
+	// Intro to graphics 332 map
+
+
+	if (currentLevel == -1) {
+		fractals[fractalAmount - 1] = newFractal(-18.5f, 0.0f, 10.0f);
+	}
+
+}
+
+void displayFractals() {
+	for (int i = 0; i < fractalAmount; i++) {
+		if (fractals[i].active == true) {
+			if (abs(camx - fractals[i].x) < 120 && abs(camz - fractals[i].z) < 120) {
+				objPlacementTRS(drawFractals, fractals[i].x, fractals[i].y, fractals[i].z, 0.0, 0.0, 90.0, 0.5, 0.5, 0.5);
+			}
+		}
+	}
+}

@@ -295,6 +295,8 @@ void displayGameObjects() {
 		displayHealthPacks();
 
 		displayFlags();
+
+		displayFractals();
 	}
 
 }
