@@ -65,24 +65,6 @@ void shadowMatrix(GLfloat shadowMat[4][4], Vec3f plane_normal, GLfloat lightpos[
 // init
 void initshadow() {
 
-	/*
-	mesh2 = createCube();
-	mesh3 = createCube();
-	mesh4 = createCube();
-	calculateNormalPerFace(mesh1);
-	calculateNormalPerFace(mesh2);
-	calculateNormalPerFace(mesh3);
-	calculateNormalPerFace(mesh4);
-	calculateNormalPerVertex(mesh1);
-	calculateNormalPerVertex(mesh2);
-	calculateNormalPerVertex(mesh3);
-	calculateNormalPerVertex(mesh4);
-
-	display2 = meshToDisplayList(mesh2, 2, 1);
-	display3 = meshToDisplayList(mesh3, 3, 1);
-	display4 = meshToDisplayList(mesh4, 4, 1);
-	*/
-
 	// shadow
 	glClearStencil(0);
 	// floor vertex
