@@ -17,7 +17,7 @@ void myInit();
 #include "controls.h"
 #include "graphicsFunctions.h"
 
-
+#include "fractalsCreator.h"
 
 #include "meshObjConverter.h"
 #include "modelLoading.h"
@@ -50,7 +50,7 @@ void myInit();
 #include "draw/drawMirror1.h"
 #include "draw/drawBaseModel.h"
 #include "flagCreator.h"
-#include "fractalsCreator.h"
+
 
 #include "gameObjects/gameObjHealthPack.h"
 #include "gameObjects/gameObjSpinSpike.h"

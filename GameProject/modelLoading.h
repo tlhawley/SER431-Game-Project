@@ -136,6 +136,8 @@ Mesh* meshParticleRain;
 
 void loadModels() {
 
+	CreateTreeLists();
+
 	printf("Loading\n");
 
 	GLuint texture_array[44];

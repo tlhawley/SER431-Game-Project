@@ -59,6 +59,7 @@ void draw_nurb() {
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient2);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_specular2);
 	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 32.0);
+	glPopMatrix();
 
 }
 

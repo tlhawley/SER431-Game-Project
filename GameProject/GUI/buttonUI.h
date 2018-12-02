@@ -1,6 +1,6 @@
 // This is used for menu buttons
 
-
+void CreateTreeLists(void);
 
 int buttonAmount;
 int buttonMouseActive = 0; // used with buttonUI.h to detect if the mouse is available to click on the button
@@ -44,7 +44,7 @@ void initButtonUI() {
 	buttons[buttonAmount - 1] = newButtonUI(0, 440, false, true, "Reflections OFF", "Reflections ON");	// 6 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(0, 350, false, false, "Shadows OFF", "Shadows ON");			// 7 -- TODO
 
-	buttons[buttonAmount - 1] = newButtonUI(300, 980, false, false, "Fractals OFF", "Fractals ON");		// 8 -- TODO
+	buttons[buttonAmount - 1] = newButtonUI(300, 980, false, true, "Fractals OFF", "Fractals ON");		// 8 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(300, 890, false, true, "Lights OFF", "Lights ON");			// 9 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(300, 800, false, true, "Textures OFF", "Textures ON");		// 10 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(300, 710, false, true, "Procedural OFF", "Procedural ON");	// 11 -- Complete
@@ -74,16 +74,22 @@ void actionButtonUI() {
 				if (buttons[i].toggle) {
 					buttons[i].toggle = false;
 					if (i == 10) {
-						if (i == 10) {
-							swapLists();
+						swapLists();
+					}
+					if (i == 12) {
+						if (currentLevel == -1) {
+							CreateTreeLists();
 						}
 					}
 				}
 				else {
 					buttons[i].toggle = true;
 					if (i == 10) {
-						if (i == 10) {
-							swapLists();
+						swapLists();
+					}
+					if (i == 12) {
+						if (currentLevel == -1) {
+							CreateTreeLists();
 						}
 					}
 				}

@@ -89,6 +89,10 @@ void objInit() {
 	initPointLights();
 	initMovingPlatforms();
 
+	if (currentLevel == -1) {
+		CreateTreeLists();
+	}
+
 }
 
 // loads a new level
@@ -177,5 +181,9 @@ void loadLevel(int mapID) {
 	initBaseModels();
 	initPointLights();
 	initMovingPlatforms();
+
+	if (currentLevel == -1) {
+		CreateTreeLists();
+	}
 
 }
