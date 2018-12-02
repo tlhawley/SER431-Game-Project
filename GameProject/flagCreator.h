@@ -26,7 +26,7 @@ void draw_nurb() {
 	glEnable(GL_AUTO_NORMAL);
 	glEnable(GL_NORMALIZE);
 	nurbsflag = gluNewNurbsRenderer();
-	gluNurbsProperty(nurbsflag, GLU_SAMPLING_TOLERANCE, 100.0);
+	gluNurbsProperty(nurbsflag, GLU_SAMPLING_TOLERANCE, 2000.0);
 	gluNurbsProperty(nurbsflag, GLU_DISPLAY_MODE, GLU_FILL); //GLU_OUTLINE_POLYGON
 
 	GLfloat mat_diffuse[] = { 1.0f, 0.5f, 0.31f, 1. };
@@ -90,8 +90,6 @@ flag newFlag(float x, float y, float z) {
 
 void initFlags() {
 	flagAmount = 0;
-	// Intro to graphics 332 map
-
 
 	if (currentLevel == 0) {
 		flags[flagAmount - 1] = newFlag(-18.5f, 8.0f, 10.0f);
@@ -100,6 +98,7 @@ void initFlags() {
 }
 
 void displayFlags() {
+	
 	for (int i = 0; i < flagAmount; i++) {
 		if (flags[i].active == true) {
 			if (abs(camx - flags[i].x) < 120 && abs(camz - flags[i].z) < 120) {
@@ -107,4 +106,5 @@ void displayFlags() {
 			}
 		}
 	}
+	
 }
