@@ -38,11 +38,11 @@ void initButtonUI() {
 	buttons[buttonAmount - 1] = newButtonUI(0, 980, true, false, "Menu OFF", "Menu ON");				// 0 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(0, 890,false,false,"Boundbox OFF","Boundbox ON");			// 1 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(0, 800, false, true, "Particles OFF", "Particles ON");		// 2 -- Complete
-	buttons[buttonAmount - 1] = newButtonUI(0, 710, false, false, "Info OFF", "Info ON");				// 3 -- Complete
+	buttons[buttonAmount - 1] = newButtonUI(0, 710, false, true, "Info OFF", "Info ON");				// 3 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(0, 620, false, true, "Sky OFF", "Sky ON");					// 4 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(0, 530, false, true, "Fog OFF", "Fog ON");					// 5 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(0, 440, false, true, "Reflections OFF", "Reflections ON");	// 6 -- Complete
-	buttons[buttonAmount - 1] = newButtonUI(0, 350, false, false, "Shadows OFF", "Shadows ON");			// 7 -- TODO
+	buttons[buttonAmount - 1] = newButtonUI(0, 350, false, true, "Shadows OFF", "Shadows ON");			// 7 -- Complete
 
 	buttons[buttonAmount - 1] = newButtonUI(300, 980, false, true, "Fractals OFF", "Fractals ON");		// 8 -- Complete
 	buttons[buttonAmount - 1] = newButtonUI(300, 890, false, true, "Lights OFF", "Lights ON");			// 9 -- Complete

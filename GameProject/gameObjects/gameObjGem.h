@@ -153,10 +153,18 @@ void actionGems() {
 
 
 void displayGems() {
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	for (int i = 0; i < gemAmount; i++) {
 		if (gems[i].active == true) {
 			if (abs(camx - gems[i].x) < 60 && abs(camz - gems[i].z) < 60) {
+				setMaterialAdvanced(materialRuby);
 				objPlacementTRS(drawGem, gems[i].x, sin(timer * 4)*0.1f + gems[i].y + 0.2f, gems[i].z, 0.0, timer * 100, 0.0, 1.0, 1.0, 1.0);
+				if (buttons[7].toggle == true) {
+					setMaterialAdvanced(materialShadow);
+					glEnable(GL_BLEND);
+					objPlacementTRS(drawGem, gems[i].x, gems[i].y + 0.01f, gems[i].z - sin(timer * 4)*0.1f -0.2f, 0.0, timer * 100, 0.0, 1.0, 0.001f, 1.0f);
+					glDisable(GL_BLEND);
+				}
 			}
 		}
 	}
